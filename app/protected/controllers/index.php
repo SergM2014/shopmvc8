@@ -9,22 +9,19 @@ use App\Models\DB_Index;
   class Index  extends BaseController
   {
       /**
-       *
-       *
-       * fire toff he index action
+       * fire off he index action
        *
        * @return array
        */
     public function index()
 	{
-        $model = new DB_Index();
-        $result = $model->getResult();
-        $pages = $model->getPublishedPages();
+       $model = new DB_Index();
 
-        $builder = $model->printCaptcha();
+        $slider = $model->getSlider();
 
+        $carousel = $model->getCarousel();
 
-      return ['view'=>'customer/index.php', 'builder'=>$builder, 'result'=>$result, 'pages'=>$pages];
+      return ['view'=>'customer/index.php', 'slider'=>$slider, 'carousel'=>$carousel];
     }
 
     public function refreshCaptcha()

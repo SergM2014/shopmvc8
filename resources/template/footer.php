@@ -2,7 +2,7 @@
             <footer class="site-footer">
                 <p class="site-footer__mark"><?= $footer_disclaimer ?></p>
 
-                <?php include_once PATH_SITE.'/resources/customer/partials/translation.php'?>
+
 
             </footer>
 

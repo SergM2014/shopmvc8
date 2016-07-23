@@ -22,7 +22,7 @@ class DataBase {
 
         }catch(\PDOException $e) {die("Ошибка соединения с базой или хостом:".$e->getMessage());}
 
-        $this->conn->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
+        $this->conn->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_OBJ);
 
         if(DEBUG_MODE){
          //на время разработки

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Июл 22 2016 г., 11:54
+-- Время создания: Июл 23 2016 г., 11:34
 -- Версия сервера: 5.5.49-0ubuntu0.14.04.1
 -- Версия PHP: 7.0.8-4+deb.sury.org~trusty+1
 
@@ -31,7 +31,22 @@ CREATE TABLE IF NOT EXISTS `carousel` (
   `image` varchar(50) DEFAULT NULL,
   `url` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
+
+--
+-- Дамп данных таблицы `carousel`
+--
+
+INSERT INTO `carousel` (`id`, `image`, `url`) VALUES
+(15, '/uploads/carousel/carrier.gif', '/'),
+(16, '/uploads/carousel/ch.gif', '/'),
+(17, '/uploads/carousel/daikin.gif', '/'),
+(18, '/uploads/carousel/fujitsu.gif', '/'),
+(19, '/uploads/carousel/general_climat.gif', '/'),
+(20, '/uploads/carousel/gree.gif', '/'),
+(21, '/uploads/carousel/mitsubishi.gif', '/'),
+(22, '/uploads/carousel/panasonic.gif', '/'),
+(23, '/uploads/carousel/toshiba.gif', '/');
 
 -- --------------------------------------------------------
 
@@ -70,16 +85,16 @@ CREATE TABLE IF NOT EXISTS `comments` (
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `manufacturer`
+-- Структура таблицы `manufacturers`
 --
 
-CREATE TABLE IF NOT EXISTS `manufacturer` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `translited_title` varchar(50) NOT NULL,
-  `url` varchar(50) NOT NULL,
-  `title` varchar(50) NOT NULL,
+CREATE TABLE IF NOT EXISTS `manufacturers` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `translitedInEngTitle` varchar(255) NOT NULL,
+  `originTitle` varchar(255) NOT NULL,
+  `url` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -131,7 +146,15 @@ CREATE TABLE IF NOT EXISTS `slider` (
   `url` varchar(50) NOT NULL,
   `title` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+
+--
+-- Дамп данных таблицы `slider`
+--
+
+INSERT INTO `slider` (`id`, `image`, `url`, `title`) VALUES
+(13, '111.jpg', '/', '111'),
+(14, '222.jpg', '/', '222');
 
 -- --------------------------------------------------------
 
