@@ -1,48 +1,54 @@
-var slider_number = document.getElementById('slider').querySelectorAll('.thumb');
-//console.log(slider_number.length);
+//get amount of slider
+var slider_number = document.getElementById('slider').querySelectorAll('.slider_image');
 
 
 
-function toggle(id)//спочатку получаемо цифру 1
+
+function toggleImage(id)//спочатку получаемо цифру 1
 {
-    var e = document.getElementById(id);
-    var dh = gh(id);//получаем высоту элемента
-    var elems = e.getElementsByTagName('*');//елкмкнты що маються в теге содержащиго картинку
+    var currentElem = document.getElementById(id);
+    var currentElemHeight = getElemHeight(id);//получаем высоту элемента
+    var elems = currentElem.getElementsByTagName('*');//елкмкнты що маються в теге содержащиго картинку
     var flag;
+//elem are [div.bottom,a ]
 
 
-    if (e.style.display == "none")
+    if(currentElem.classList.contains('notdisplayed'))
     {
-        if (flag != 0)// припустимо шо !=0 и underfined не одне й те саме
-        {
-            flag = 0;
-            for(var i=0; i<elems.length; i++){vhe(elems[i], "hidden");}//функция устанавлюе свойство
+//hide bottom title
+              for(var i=0; i<elems.length; i++){elems[i].classList.add('unvisible');}
             //для visibility
 
-            e.style.height="1px";
-            e.style.display = "block";
+            currentElem.style.height="1px";
+            currentElem.classList.toggle('notdisplayed');
+
+            //image will be larging(sliding down)
             for(var i=0;i<=100;i+=5)
             {
                 (function()
                 {
                     var pos=i;
-                    setTimeout(function(){e.style.height = (pos/100)*dh+1+"px";},pos*5);
+                    setTimeout(function(){currentElem.style.height = (pos/100)*currentElemHeight+1+"px";},pos*5);
                 }
                 )();
             }
-            setTimeout(function(){for(var i=0; i<elems.length; i++){elems[i].style.visibility="visible";}},500);
-            return true;
-            flag = 1;
-        }
+
+//botom titel elems are shown
+
+        setTimeout(function(){for(var i=0; i<elems.length; i++){elems[i].classList.remove('unvisible'); }},500);
+
+
+
+
+
     }
     else
-    {
-        if (flag != 0)
-        {
-            flag = 0;
-            var lh=dh-1+"px";
+    { //reduce slider image(sliding up)
 
-            for(var i=0; i<elems.length; i++){vhe(elems[i], "hidden");}
+            var theHeight= currentElemHeight-1+"px";
+
+
+        for(var i=0; i<elems.length; i++){elems[i].classList.add('unvisible');}
 
             for (var i=100;i>=0;i-=5)
             {
@@ -51,66 +57,67 @@ function toggle(id)//спочатку получаемо цифру 1
                     var pos=i;
                     setTimeout(function()
                     {
-                        e.style.height = (pos/100)*dh+"px";
+                        currentElem.style.height = (pos/100)*currentElemHeight+"px";
                         if (pos<=0)
                         {
-                            e.style.display = "none";
-                            e.style.height=lh;
+                            currentElem.classList.toggle('notdisplayed');
+                            currentElem.style.height=theHeight;
+
                         }
                     },1000-(pos*5));
                 }
                 )();
             }
-            return true;
-            flag = 1;
-        }
+
+
     }
-    return false;
+
 }
 
 
-function vhe(obj, vh){obj.style.visibility=vh;}
 
-function gh(id)
+function getElemHeight(id)
 {
-    var e = document.getElementById(id);
-    if(e.style.display == "none")
+    var currentElem = document.getElementById(id);
+
+    if(currentElem.classList.contains('notdisplayed'))
     {
-        e.style.visibility = "hidden";
-        e.style.display = "block";
-        dh = e.clientHeight||e.offsetHeight+5; // Высота
-        e.style.display = "none";
-        e.style.visibility = "visible";
+        currentElem.classList.add('unvisible');
+
+        currentElem.classList.remove('notdisplayed');
+
+        elemHeight = currentElem.clientHeight||currentElem.offsetHeight+5; // Высота
+
+        currentElem.classList.add('notdisplayed');
+
+        currentElem.classList.remove('unvisible');
     }
     else
     {
-        dh = e.clientHeight||e.offsetHeight+5; // Высота
+        elemHeight = currentElem.clientHeight||currentElem.offsetHeight+5; // Высота
     }
-    return dh;
+    return elemHeight;
 }
 
-function slider(now, last)
+function startSliding(now, last)
 {
     var newnow;
 
-        if(now== slider_number.length ){
+        if(now == slider_number.length ){
 
             newnow=1;
         } else {
-            newnow=(Number(now)+1);
+            newnow = (Number(now)+1);
         }
-    if(slider_number.length== 1) newnow=1;
+    if(slider_number.length == 1) newnow=1;
 
 
-    if(last!=0){toggle(last);}
+    if(last!=0)  {toggleImage(last);}
 
-    setTimeout(function(){toggle(now);},1000);//запустыть функцию через промежуток
+    setTimeout(function(){toggleImage(now);},1000);//запустыть функцию через промежуток
 
-    setTimeout(function(){slider(newnow, now);}, 6000);
+    setTimeout(function(){startSliding(newnow, now);}, 6000);
 }
 
-window.onload = run_function;
-function run_function()
-{
-    slider('1', '0');
-}
+
+window.onload = startSliding('1', '0');

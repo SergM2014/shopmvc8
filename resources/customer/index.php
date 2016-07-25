@@ -7,15 +7,15 @@
     <?php $num=1; if(!empty($slider)): ?>
         <div id="slider">
             <?php foreach($slider as $image): ?>
-                <div class="thumb" style="display:none; background: url(<?php echo '/uploads/slider/'.$image->image; ?>)  100%;" id="<?php echo $num;?>">
+                <div class="slider_image notdisplayed" style="/*display:none;*/ background:  url(<?php echo '/uploads/slider/'.$image->image; ?>)  50% 50%" id="<?php echo $num;?>">
 
-                    <div class="bottom">
+                    <div class="bottom bottom_title">
                         <a href="/<?php echo $image->url; ?>">
                             <?php echo $image->title; ?>
                         </a>
                     </div>
 
-                </div><!-- thumb -->
+                </div><!-- slider_thumb -->
                 <?php $num++; endforeach; ?>
         </div>
     <?php endif; ?>
