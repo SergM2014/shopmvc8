@@ -20,9 +20,7 @@
     visibility:visible;
 }
 
-.visible{
-    visibility:visible;
-}
+
 
 .unvisible{
     visibility:hidden!important;
@@ -32,6 +30,4 @@
     display:none!important;
 }
 
-.displayed{
-    display:block!important;
-}
+
