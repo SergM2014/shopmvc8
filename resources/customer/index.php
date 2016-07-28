@@ -23,3 +23,19 @@
 
 
     <script src="/lib/jqueryfreeslider/script.js"></script>
+
+   <!-- <div class="clearfix"></div>-->
+
+    <link rel="stylesheet" href="/lib/jqueryfreecarousel/style.css">
+
+    <div id="scroller_container" >
+        <div>
+            <?php
+            foreach($carousel as $image){
+                ?> <a href="<?php echo $image->url; ?>"><img src="<?php echo URL.'uploads/carousel/'.$image->image; ?>"></a>
+            <?php    } ?>
+
+        </div>
+    </div>
+
+    <script src="/lib/jqueryfreecarousel/script.js"></script>

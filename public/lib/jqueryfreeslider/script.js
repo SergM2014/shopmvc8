@@ -13,18 +13,17 @@ class Slider {
     {
         let currentElem = document.getElementById(id);
         let currentElemHeight = Slider.getElemHeight(currentElem);//получаем высоту элемента
-        let elems = currentElem.getElementsByTagName('*');//елкмкнты що маються в теге содержащиго картинку
+        let titleElems = currentElem.getElementsByTagName('*');//елкмкнты що маються в теге содержащиго картинку
 
 
         if (currentElem.classList.contains('notdisplayed')) {
 //hide bottom title
-            for (let i = 0; i < elems.length; i++) {
-               elems[i].classList.add('unvisible');
+            for (let i = 0; i < titleElems.length; i++) {
+               titleElems[i].classList.add('unvisible');
             }
             //для visibility
-
             currentElem.style.height = "1px";
-            currentElem.classList.toggle('notdisplayed');
+            currentElem.classList.remove('notdisplayed');
 
             //image will be larging(sliding down)
             for (let i = 0; i <= 100; i += 5) {
@@ -39,11 +38,10 @@ class Slider {
 //botom titel elems are shown
 
             setTimeout(function () {
-                for (let i = 0; i < elems.length; i++) {
-                    elems[i].classList.remove('unvisible');
+                for (let i = 0; i < titleElems.length; i++) {
+                    titleElems[i].classList.remove('unvisible');
                 }
             }, 500);
-
 
         }
         else { //reduce slider image(sliding up)
@@ -51,17 +49,17 @@ class Slider {
             let theHeight = currentElemHeight - 1 + "px";
 
 
-            for (let i = 0; i < elems.length; i++) {
-                elems[i].classList.add('unvisible');
+            for (let i = 0; i < titleElems.length; i++) {
+                titleElems[i].classList.add('unvisible');
             }
 
             for (let i = 100; i >= 0; i -= 5) {
-                (function () {
+               (function () {
                     let pos = i;
                     setTimeout(function () {
                         currentElem.style.height = (pos / 100) * currentElemHeight + "px";
                         if (pos <= 0) {
-                            currentElem.classList.toggle('notdisplayed');
+                            currentElem.classList.add('notdisplayed');
                             currentElem.style.height = theHeight;
 
                         }
@@ -69,6 +67,7 @@ class Slider {
                 })();
             }
 
+       // currentElem.classList.add('notdisplayed');
 
         }
 
@@ -108,7 +107,7 @@ class Slider {
    startSliding(now, last)
    {
         let newnow;
-//if thelast slider than reset
+//if thelast slider than reset nex slider to number 1
         if (now == this.slider_number) {
             newnow = 1;
         } else {
