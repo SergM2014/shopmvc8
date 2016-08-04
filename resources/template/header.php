@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords" content="Comments ">
-    <meta name="description" content="create comments">
-    <title>Comments Page</title>
+    <meta name="keywords" content="E shop ">
+    <meta name="description" content="training shop">
+    <title>Internet shop</title>
 
 
 	<link href="/assets/css/default.css" rel="stylesheet">
@@ -42,13 +42,14 @@
                 <a class="main-header__admin" href="/<?= \Lib\HelperService::currentLang() ?>admin"><?php if(isset($_SESSION['login'])){echo "Админзона";}else {echo "$enter_admin";};  ?></a>
 
                 <?php $langs = \Lib\HelperService::prozessLangArray(); ?>
-                <select name="language" class="main-header__language-select" onchange="window.location.href=this.options[this.selectedIndex].value" >
-                    <option selected disabled>Language/Мова</option>
-                    <?php foreach ($langs as $key => $value): ?>
 
-                        <option VALUE="/<?= \Lib\HelperService::overrideLang($key) ?>"><?= $value ?></option>
-                    <?php endforeach; ?>
-                </select>
+                    <select name="language" class="main-header__language-select" onchange="window.location.href=this.options[this.selectedIndex].value" >
+                        <option selected disabled>Language/Мова</option>
+                        <?php foreach ($langs as $key => $value): ?>
+
+                            <option VALUE="/<?= \Lib\HelperService::overrideLang($key) ?>"><?= $value ?></option>
+                        <?php endforeach; ?>
+                    </select>
 
 
 

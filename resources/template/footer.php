@@ -1,6 +1,6 @@
             </section><!-- content-->
             <footer class="site-footer">
-                <p class="site-footer__mark"><?= $footer_disclaimer ?></p>
+                <span class="site-footer__mark"><?= $footer_disclaimer ?></span>
 
 
 

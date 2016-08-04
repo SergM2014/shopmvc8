@@ -1,4 +1,4 @@
-<section class="slider-content">
+<section class="content__slider">
 
 
     <!-- realization of slider-->
@@ -23,9 +23,11 @@
 
 
     <script src="/lib/jqueryfreeslider/script.js"></script>
-
+</section>
    <!-- <div class="clearfix"></div>-->
 
+
+<section class="content__carousel">
     <link rel="stylesheet" href="/lib/jqueryfreecarousel/style.css">
 
     <div id="scroller_container" >
@@ -39,3 +41,4 @@
     </div>
 
     <script src="/lib/jqueryfreecarousel/script.js"></script>
+</section>
