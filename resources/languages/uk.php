@@ -30,6 +30,7 @@ $admin_entry_title = "Вхід до адмін зони";
 $login_title = "Логін";
 $password_title = "Пароль";
 $go_to_admin_title = "Ввійти";
+$admin_zone ="Адмін зона";
 
 $in_admin_now = "Ви знаходитеся на разі в адмін зоні";
 $this_is_admin_part = "Адміністративна частина";

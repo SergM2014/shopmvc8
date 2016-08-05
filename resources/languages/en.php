@@ -27,6 +27,7 @@ $admin_entry_title = "Enter to admin zone";
 $login_title = "Login";
 $password_title = "Password";
 $go_to_admin_title = "Enter";
+$admin_zone ="AdminZone";
 
 $in_admin_now = "You are in admin zone now!";
 $this_is_admin_part = "Admin part";

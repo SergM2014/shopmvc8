@@ -66,8 +66,15 @@
 }
 
 .main-header__language-select{
-  display:inline-block;
+  /*display:inline-block;*/
+  background-color:#8abeb7;
+  list-style-type:none;
+  cursor:pointer;
+  min-width:100px;
+  text-align:center;
 }
+
+
 
 .main-header__touch-button{
   height:25px;
@@ -91,6 +98,37 @@
   border:1px solid #000000;
 }
 
+.hidden{
+  display:none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -100,8 +138,25 @@
     display:flex;
   }
 
-  .main-header__menu, .main-header__logo{
+  .main-header__logo{
     display:none;
+  }
+
+  .main-header__menu{
+    position:absolute;
+    left:-1500px;
+    min-width:300px;
+    min-height:200px;
+    z-index:100;
+    background-color:#00cc66;
+    border-radius:0 10px 10px 0;
+    padding:10px;
+    opacity:0.9;
+    transition:1.2s ease-out;
+  }
+
+  .showMenu{
+    left:-1px!important;
   }
 
 

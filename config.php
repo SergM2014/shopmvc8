@@ -23,6 +23,7 @@
 	define('LINKCOUNT',5);
 	define('ADMINEMAIL', 'weisse@ukr.net');
     define('DEFAULT_LANG', 'uk');
+    define('DEFAULT_LANG_TITLE', 'Українська');
 
     const LANG = ['uk=>Українська', 'en=>English'];
 	

@@ -39,19 +39,18 @@
                 </ul>
 
 
-                <a class="main-header__admin" href="/<?= \Lib\HelperService::currentLang() ?>admin"><?php if(isset($_SESSION['login'])){echo "Админзона";}else {echo "$enter_admin";};  ?></a>
+                <a class="main-header__admin" href="/<?= \Lib\HelperService::currentLang() ?>admin"><?php if(isset($_SESSION['login'])){echo "$admin_zone";}else {echo "$enter_admin";};  ?></a>
 
-                <?php $langs = \Lib\HelperService::prozessLangArray(); ?>
+<?php //get the given languages arrat
+$langs = \Lib\HelperService::prozessLangArray(); ?>
 
-                    <select name="language" class="main-header__language-select" onchange="window.location.href=this.options[this.selectedIndex].value" >
-                        <option selected disabled>Language/Мова</option>
-                        <?php foreach ($langs as $key => $value): ?>
-
-                            <option VALUE="/<?= \Lib\HelperService::overrideLang($key) ?>"><?= $value ?></option>
+                <ul class="main-header__language-select"><?= \Lib\HelperService::getCurrentLanguageTitle() ?>
+                    <div class="main-header__language-select-dropdown hidden">
+                        <?php foreach($langs as $key => $value): ?>
+                            <li><a href="/<?= \Lib\HelperService::overrideLangInUrl($key) ?>"><?= $value ?></a></li>
                         <?php endforeach; ?>
-                    </select>
-
-
+                    </div>
+                </ul>
 
              </nav>
 

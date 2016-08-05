@@ -79,7 +79,7 @@ class HelperService {
 
         $url = $_SERVER['REQUEST_URI'];
         $url = trim($url, '/');
-        $url = trim($url, ' ');
+        $url = trim($url);
         foreach ($langs as $key => $value){
             $position = strpos($url, $key);
             if($position === 0) { return $key.'/';}
@@ -88,23 +88,40 @@ class HelperService {
         return '';
     }
 
+     public static function getCurrentLanguageTitle()
+    {
+        $langs = self::prozessLangArray();
+
+        $url = $_SERVER['REQUEST_URI'];
+        $url = trim($url, '/');
+        $url = trim($url);
+        foreach ($langs as $key => $value){
+            $position = strpos($url, $key);
+            if($position === 0) { return $value;}
+        }
+
+        return DEFAULT_LANG_TITLE;
+
+    }
+
 
     /**
      *
      * for droplist of the possible language in the header
-     * override language in url
+     * override/rewtite language in url for necessary one
      *
      * @param $lang
      * @return string url
      */
-    public static function overrideLang($lang)
+    public static function overrideLangInUrl($lang)
     {
         //get associative array of languages
         $langs = self::prozessLangArray();
 
         $url = $_SERVER['REQUEST_URI'];
         $url = trim($url, '/');
-        $url = trim($url, ' ');
+       // $url = trim($url, ' ');
+        $url = trim($url);
 
       if(strpos($url, '/')) {
        $url = explode('/', $url);
@@ -120,7 +137,7 @@ class HelperService {
 
       }
 
-        if(is_string($url)) {$adress= $url; $url= []; $url[0] = $adress;}
+        if(@ is_string($url)) {$adress= $url; $url= []; $url[0] = $adress;}
         if(!isset($url)) $url =[];
 
         if(DEFAULT_LANG != $lang)  array_unshift($url, $lang);
