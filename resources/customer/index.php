@@ -7,7 +7,7 @@
     <?php $num=1; if(!empty($slider)): ?>
         <div id="slider">
             <?php foreach($slider as $image): ?>
-                <div class="slider_image notdisplayed" style="/*display:none;*/ background:  url(<?php echo '/uploads/slider/'.$image->image; ?>)  50% 50%" id="<?php echo $num;?>">
+                <div class="slider_image notdisplayed" style="/*display:none;*/ background-image:  url(<?php echo '/uploads/slider/'.$image->image; ?>) ;" id="<?php echo $num;?>">
 
                     <div class="bottom bottom_title">
                         <a href="/<?php echo $image->url; ?>">
