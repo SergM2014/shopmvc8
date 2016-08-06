@@ -68,6 +68,10 @@ $are = "";
 $comment_number = "Комментар під номером ";
 $updated = " оновленно";
 
+$amount ="Кількість";
+$sum = "Сума";
+$ukr_currency = "грн";
+
 //this section is for translation for adjax
 
 function restricted_file_type()

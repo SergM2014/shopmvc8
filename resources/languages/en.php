@@ -65,6 +65,10 @@ $are = "are";
 $comment_number = "Comment number ";
 $updated = " updated";
 
+$amount ="Amount";
+$sum = "Sum";
+$ukr_currency = "hrn";
+
 //this section is for translation for adjax
 
 function restricted_file_type()

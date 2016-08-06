@@ -27,7 +27,7 @@ html, body {
   margin: 0 auto; }
 
 .content__slider {
-  margin-top: 20px; }
+  margin-top: 5px; }
 
 .content__carousel {
   margin-top: 20px; }
@@ -80,7 +80,13 @@ html, body {
   list-style-type: none;
   cursor: pointer;
   min-width: 100px;
-  text-align: center; }
+  text-align: center;
+  position: relative; }
+
+.main-header__language-select-dropdown {
+  position: absolute;
+  background-color: #8abeb7;
+  min-width: 100px; }
 
 .main-header__touch-button {
   height: 25px;
@@ -101,6 +107,22 @@ html, body {
   height: 2px;
   /* margin:2px;*/
   border: 1px solid #000000; }
+
+.busket__container {
+  width: 100%;
+  height: 50px; }
+
+.busket__info {
+  min-width: 100px;
+  float: right;
+  margin-top: 5px; }
+
+.busket__info-item {
+  color: #990000; }
+
+.busket {
+  height: 100%;
+  float: right; }
 
 .hidden {
   display: none; }
