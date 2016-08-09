@@ -72,6 +72,11 @@ $amount ="Кількість";
 $sum = "Сума";
 $ukr_currency = "грн";
 
+$about_us="Про нас";
+$download="Скачати";
+$contacts="Контакти";
+$search="пошук";
+
 //this section is for translation for adjax
 
 function restricted_file_type()

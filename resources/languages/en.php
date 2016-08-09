@@ -1,7 +1,7 @@
 <?php
 $our_brand = "Our Brand";
 $main_customer_page = "To the customer part";
-$main_page = "main";
+$main_page = "Main";
 $enter_admin = "Enter";
 $welcome = "Wellcome";
 $admin_zone = "Admin zone";
@@ -69,6 +69,10 @@ $amount ="Amount";
 $sum = "Sum";
 $ukr_currency = "hrn";
 
+$about_us="About Us";
+$download="Downloads";
+$contacts="Contacts";
+$search="search";
 //this section is for translation for adjax
 
 function restricted_file_type()

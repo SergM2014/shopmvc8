@@ -35,13 +35,16 @@
                 </div>
 
                  <ul class="main-header__menu" >
-                     <li class="main-header__menu-item"><a href="/<?= \Lib\HelperService::currentLang() ?>#"><?= $main_page ?></a></li>
+                     <li class="main-header__menu-item"><a href="/<?= \Lib\HelperService::currentLang() ?>"><?= $main_page ?></a></li>
+                     <li class="main-header__menu-item"><a href="/<?= \Lib\HelperService::currentLang() ?>aboutus"><?= $about_us ?></a></li>
+                     <li class="main-header__menu-item"><a href="/<?= \Lib\HelperService::currentLang() ?>downloads"><?= $download ?></a></li>
+                     <li class="main-header__menu-item"><a href="/<?= \Lib\HelperService::currentLang() ?>contacts"><?= $contacts ?></a></li>
                 </ul>
 
 
                 <a class="main-header__admin" href="/<?= \Lib\HelperService::currentLang() ?>admin"><?php if(isset($_SESSION['login'])){echo "$admin_zone";}else {echo "$enter_admin";};  ?></a>
 
-<?php //get the given languages arrat
+<?php //get the given languages array
 $langs = \Lib\HelperService::prozessLangArray(); ?>
 
                 <ul class="main-header__language-select"><?= \Lib\HelperService::getCurrentLanguageTitle() ?>
@@ -51,6 +54,8 @@ $langs = \Lib\HelperService::prozessLangArray(); ?>
                         <?php endforeach; ?>
                     </div>
                 </ul>
+
+                <span class="main-header__search-container" ><?= $search ?> <input type="text" name="search" id="search" class="main-header__search-field"  maxlength="20" autofocus > </span>
 
              </nav>
 

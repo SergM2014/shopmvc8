@@ -27,9 +27,20 @@ html, body {
   margin: 0 auto; }
 
 .content__slider {
-  margin-top: 5px; }
+  float: right;
+  min-width: 80%; }
+
+.left-menu {
+  float: left;
+  min-width: 200px;
+  max-width: 19%;
+  height: 600px;
+  border: 1px solid #000000;
+  padding: 5px;
+  overflow: auto; }
 
 .content__carousel {
+  width: 100%;
   margin-top: 20px; }
 
 .site-footer {
@@ -70,9 +81,16 @@ html, body {
   display: inline-block;
   margin-left: 10px; }
 
-.main-header__admin, .main-header__language-select {
+.main-header__admin, .main-header__language-select, .main-header__search-container {
   float: right;
   margin-left: 10px; }
+
+.main-header__search-container {
+  font-size: 15px;
+  color: red; }
+
+.main-header__search-field {
+  width: 100px; }
 
 .main-header__language-select {
   /*display:inline-block;*/
@@ -110,7 +128,8 @@ html, body {
 
 .busket__container {
   width: 100%;
-  height: 50px; }
+  height: 50px;
+  cursor: pointer; }
 
 .busket__info {
   min-width: 100px;
@@ -124,8 +143,29 @@ html, body {
   height: 100%;
   float: right; }
 
+.breadcrumbs {
+  width: 100%;
+  height: 30px;
+  border: 1px solid #000000;
+  margin-bottom: 5px;
+  padding: 5px; }
+
+.breadcrumb__item--current {
+  font-style: italic;
+  font-weight: bold;
+  margin-left: 7px;
+  text-transform: capitalize; }
+
+/*this is technical classes*/
 .hidden {
   display: none; }
+
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table; }
+
+.clearfix:after {
+  clear: both; }
 
 @media screen and (max-width: 750px) {
   .main-header__touch-button {

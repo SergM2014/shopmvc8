@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Core\BaseController;
 use App\Models\DB_Index;
+use App\Models\Categories;
 
 
   class Index  extends BaseController
@@ -21,8 +22,12 @@ use App\Models\DB_Index;
 
         $carousel = $model->getCarousel();
 
-      return ['view'=>'customer/index.php', 'slider'=>$slider, 'carousel'=>$carousel];
+        $categories = (new Categories())->getVerticalMenu();
+
+      return ['view'=>'customer/index.php', 'slider'=>$slider, 'carousel'=>$carousel, 'categories'=>$categories];
     }
+
+
 
     public function refreshCaptcha()
     {

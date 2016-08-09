@@ -3,8 +3,8 @@
     width: 100%;
     /*важлива якисть все що не влазить в текущий див ховаеться */
     overflow: hidden;
-height:120px;
-padding-top:20px;
+    height:120px;
+    padding-top:20px;
     line-height:0;
     font-size:0;
     border:1px solid #d2171f;

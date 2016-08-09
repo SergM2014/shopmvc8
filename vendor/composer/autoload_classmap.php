@@ -19,6 +19,7 @@ return array(
     'App\\Core\\Upper\\MainDispatcher' => $baseDir . '/app/core/upper/maindispatcher.php',
     'App\\Models\\AdminModel' => $baseDir . '/app/protected/models/admin.php',
     'App\\Models\\Avatar' => $baseDir . '/app/protected/models/avatar.php',
+    'App\\Models\\Categories' => $baseDir . '/app/protected/models/categories.php',
     'App\\Models\\CheckForm' => $baseDir . '/app/protected/models/check_form.php',
     'App\\Models\\DB_Index' => $baseDir . '/app/protected/models/db_index.php',
     'Gregwar\\Captcha\\CaptchaBuilder' => $vendorDir . '/gregwar/captcha/CaptchaBuilder.php',

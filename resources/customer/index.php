@@ -1,3 +1,18 @@
+<section class="breadcrumbs">
+
+    <span class="breadcrumb__item--current"><?=  $main_page ?></span>
+
+</section>
+
+
+
+<section class="left-menu">
+<?php var_dump($categories); ?>
+</section>
+
+
+
+
 <section class="content__slider">
 
 
@@ -24,10 +39,11 @@
 
     <script src="/lib/jqueryfreeslider/script.js"></script>
 </section>
-   <!-- <div class="clearfix"></div>-->
 
 
-<section class="content__carousel">
+<div class="clearfix"></div>
+
+<section class="content__carousel ">
     <link rel="stylesheet" href="/lib/jqueryfreecarousel/style.css">
 
     <div id="scroller_container" >
