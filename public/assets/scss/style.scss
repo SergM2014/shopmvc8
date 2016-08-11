@@ -167,6 +167,30 @@
   text-transform: capitalize;
 }
 
+.left-menu__item{
+  border:1px solid black;
+  width:200px;
+  height:30px;
+  padding:3px;
+  border-radius:5px;
+  margin-top: 5px;
+  text-align:center;
+
+}
+
+.left-menu__link{
+  text-decoration: none;
+  color: #2348df;
+}
+
+.left-menu__link:hover{
+  color:#df1522;
+  font-size: 120%;
+}
+
+
+
+
 
 
 

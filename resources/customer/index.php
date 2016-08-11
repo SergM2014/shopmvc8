@@ -7,7 +7,9 @@
 
 
 <section class="left-menu">
-<?php var_dump($categories); ?>
+
+        <?= $categoriesVertMenu ?>
+
 </section>
 
 

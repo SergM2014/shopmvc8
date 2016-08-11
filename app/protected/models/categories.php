@@ -13,7 +13,7 @@ use App\Core\DataBase;
 
 class Categories extends DataBase
 {
-    public $categories;
+    private $categories;
 
     public  function __construct()
     {
@@ -26,25 +26,39 @@ class Categories extends DataBase
         $this->categories = $categories;
     }
 
-    public function getVerticalMenu($parent = 0)
+
+
+    private function printOutMenu($parent = 0)
     {
-//die(var_dump($this->categories));
+        if(!isset($print))$print='';
 
-        foreach ($this->categories as $category) {
-            if($category->parent_id == $parent){
-                $print = '<li><span>'.$category->title.'</span>';
+        foreach($this->categories as $category){
+            if($category->parent_id ==$parent ){
+
+                $print.='<li class="left-menu__item"><a href="/categories?title='.$category->eng_translit_title.'" class="left-menu__link">'. $category->title .'</a>' ;
+
                 foreach($this->categories as $sub_cat){
-                    if($sub_cat->parent_id == $category->id){$flag = true; break;}
+                    if($sub_cat->parent_id == $category->id){ $flag = TRUE; break; }
                 }
 
-                if($flag == true){
-                    $print.='<ul>';
-                    $print.= $this->getVerticalMenu($category->id);
-                    $print.= '<ul>';
-                    $print.= '<li>';
+                if(isset($flag)){
+                    $print.= "<ul class='hidden'>";
+                    $print.= $this->printOutMenu($category->id);
+                    $print.= "</ul>";
+                    $print.= "</li>";
+                } else{
+                    $print.="</li>";
                 }
-            }//end if
-        }//end foreach
+            }
+        }
         return $print;
+    }
+
+    public function getVerticalMenu()
+    {
+        $leftMenu ="<ul>";
+        $leftMenu.= $this->printOutMenu();
+        $leftMenu.= "</ul>";
+        return $leftMenu;
     }
 }

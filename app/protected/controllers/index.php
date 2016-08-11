@@ -22,9 +22,9 @@ use App\Models\Categories;
 
         $carousel = $model->getCarousel();
 
-        $categories = (new Categories())->getVerticalMenu();
+        $categoriesVertMenu = (new Categories())->getVerticalMenu();
 
-      return ['view'=>'customer/index.php', 'slider'=>$slider, 'carousel'=>$carousel, 'categories'=>$categories];
+      return ['view'=>'customer/index.php', 'slider'=>$slider, 'carousel'=>$carousel, 'categoriesVertMenu'=>$categoriesVertMenu];
     }
 
 
