@@ -167,14 +167,22 @@
   text-transform: capitalize;
 }
 
+.left-menu__ul{
+  width:100%;
+}
+
+.left-menu_li{
+
+
+}
+
 .left-menu__item{
   border:1px solid black;
-  width:200px;
-  height:30px;
   padding:3px;
   border-radius:5px;
   margin-top: 5px;
   text-align:center;
+  position:relative;
 
 }
 
@@ -186,6 +194,18 @@
 .left-menu__link:hover{
   color:#df1522;
   font-size: 120%;
+}
+.left-menu__contains-subcatetegories-sign{
+  position:absolute;
+  right:0;
+  top:0;
+
+  cursor:pointer;
+  height:25px;
+}
+
+.left-menu__contains-subcatetegories-sign:hover{
+  background-color: #df3825;
 }
 
 
@@ -208,8 +228,17 @@
 
 }
 
+.nested-1{
+  background-color: #89a8ff;
+}
 
+.nested-2{
+  background-color: #6ccc7a;
+}
 
+.nested-3{
+  background-color: #ab968c;
+}
 
 
 

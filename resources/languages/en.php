@@ -73,6 +73,20 @@ $about_us="About Us";
 $download="Downloads";
 $contacts="Contacts";
 $search="search";
+
+function has_sub_categories(){
+    return "contains additional categories";
+}
+
+function click_it()
+{
+    return "click it";
+}
+
+
+
+
+
 //this section is for translation for adjax
 
 function restricted_file_type()

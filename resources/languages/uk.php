@@ -77,6 +77,19 @@ $download="Скачати";
 $contacts="Контакти";
 $search="пошук";
 
+
+
+
+function has_sub_categories(){
+    return "має додаткові категорії";
+}
+
+function click_it()
+{
+    return "натисніть тут";
+}
+//$click_it= "натисніть тут";
+
 //this section is for translation for adjax
 
 function restricted_file_type()
