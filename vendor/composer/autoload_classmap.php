@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Controllers\\Admin' => $baseDir . '/app/protected/controllers/admin.php',
     'App\\Controllers\\Admincomments' => $baseDir . '/app/protected/controllers/admincomments.php',
+    'App\\Controllers\\Catalog' => $baseDir . '/app/protected/controllers/catalog.php',
     'App\\Controllers\\Comments' => $baseDir . '/app/protected/controllers/comments.php',
     'App\\Controllers\\Error_404' => $baseDir . '/app/protected/controllers/404.php',
     'App\\Controllers\\Image' => $baseDir . '/app/protected/controllers/image.php',
@@ -21,6 +22,7 @@ return array(
     'App\\Models\\Avatar' => $baseDir . '/app/protected/models/avatar.php',
     'App\\Models\\Categories' => $baseDir . '/app/protected/models/categories.php',
     'App\\Models\\CheckForm' => $baseDir . '/app/protected/models/check_form.php',
+    'App\\Models\\DB_Catalog' => $baseDir . '/app/protected/models/db_catalog.php',
     'App\\Models\\DB_Index' => $baseDir . '/app/protected/models/db_index.php',
     'Gregwar\\Captcha\\CaptchaBuilder' => $vendorDir . '/gregwar/captcha/CaptchaBuilder.php',
     'Gregwar\\Captcha\\CaptchaBuilderInterface' => $vendorDir . '/gregwar/captcha/CaptchaBuilderInterface.php',

@@ -76,7 +76,20 @@ $about_us="Про нас";
 $download="Скачати";
 $contacts="Контакти";
 $search="пошук";
+$catalog = "Каталог";
 
+$categoriesTitles ="Рубрики";
+$manufacturersTitles = "Виробники";
+
+$author = "Автор";
+$product_title = "Назва продукту";
+$description = "Опис";
+$body = "Витяг";
+$price = "Ціна";
+$category = "Категория";
+$manufacturer = "Виробник";
+
+$display_item="Показати товар";
 
 
 

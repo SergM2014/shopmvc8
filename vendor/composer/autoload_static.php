@@ -31,6 +31,7 @@ class ComposerStaticInit14fc953014b49481d3c9d0477a55e3f8
     public static $classMap = array (
         'App\\Controllers\\Admin' => __DIR__ . '/../..' . '/app/protected/controllers/admin.php',
         'App\\Controllers\\Admincomments' => __DIR__ . '/../..' . '/app/protected/controllers/admincomments.php',
+        'App\\Controllers\\Catalog' => __DIR__ . '/../..' . '/app/protected/controllers/catalog.php',
         'App\\Controllers\\Comments' => __DIR__ . '/../..' . '/app/protected/controllers/comments.php',
         'App\\Controllers\\Error_404' => __DIR__ . '/../..' . '/app/protected/controllers/404.php',
         'App\\Controllers\\Image' => __DIR__ . '/../..' . '/app/protected/controllers/image.php',
@@ -44,6 +45,7 @@ class ComposerStaticInit14fc953014b49481d3c9d0477a55e3f8
         'App\\Models\\Avatar' => __DIR__ . '/../..' . '/app/protected/models/avatar.php',
         'App\\Models\\Categories' => __DIR__ . '/../..' . '/app/protected/models/categories.php',
         'App\\Models\\CheckForm' => __DIR__ . '/../..' . '/app/protected/models/check_form.php',
+        'App\\Models\\DB_Catalog' => __DIR__ . '/../..' . '/app/protected/models/db_catalog.php',
         'App\\Models\\DB_Index' => __DIR__ . '/../..' . '/app/protected/models/db_index.php',
         'Gregwar\\Captcha\\CaptchaBuilder' => __DIR__ . '/..' . '/gregwar/captcha/CaptchaBuilder.php',
         'Gregwar\\Captcha\\CaptchaBuilderInterface' => __DIR__ . '/..' . '/gregwar/captcha/CaptchaBuilderInterface.php',

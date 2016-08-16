@@ -13,6 +13,27 @@
   min-width:80%;
 }
 
+.content-zone{
+  float:right;
+  width:80%;
+}
+
+.content-zone__header{
+  text-align: center;
+  color: #df1522;
+}
+
+.content-zone__item{
+  padding:5px;
+  margin-top:25px;
+  border-bottom:2px solid black;
+
+}
+/*.content-zone__item:last-of-type{
+  border-bottom: none;
+}*/
+
+
 .left-menu{
   float:left;
   min-width:200px;
@@ -167,6 +188,13 @@
   text-transform: capitalize;
 }
 
+.breadcrumb__item{
+  font-style: italic;
+  font-weight: bold;
+  margin:0 7px;
+  text-transform: capitalize;
+}
+
 .left-menu__ul{
   width:100%;
 }
@@ -183,8 +211,10 @@
   margin-top: 5px;
   text-align:center;
   position:relative;
+  border-bottom:2px solid #000000;
 
 }
+
 
 .left-menu__link{
   text-decoration: none;
@@ -208,6 +238,77 @@
   background-color: #df3825;
 }
 
+.left-catalog-menu{
+
+  list-style-type: circle;
+  list-style-position: inside;
+  margin-top:10px;
+
+}
+
+.left-catalog-menu__item{
+  padding-left:10px;
+  list-style-type: circle;
+
+}
+.left-catalog-menu__link{
+  text-decoration: none;
+}
+
+.left-catalog-menu__link:hover{
+  color: #e8606a;
+  font-size: 120%;
+}
+
+.left-menu__header{
+  text-align:center;
+  color: #ad212c;
+  margin-top:10px;
+}
+.left-menu__header-manufacturers{
+  text-align:center;
+  color: #ad212c;
+  margin-top:30px;
+}
+
+.content-zone__display-btn{
+  float:right;
+  min-height:30px;
+  min-width:120px;
+  padding:5px;
+  cursor:pointer;
+  border-radius: 5px;
+}
+.content-zone__display-btn:hover{
+  background-color: #7192cc;
+  color: #cc352d;
+  font-size:110%;
+  border-radius:10px;
+  padding:5px 10px 5px;
+
+}
+
+.content-zone__starting-line-number{
+  float:left;
+  width:2%;
+  font-size:30px;
+  font-weight:bold;
+  color: #11ee13;
+}
+
+.content-zone__item-output{
+  float:right;
+  width:97%;
+}
+
+.content-zone__item-output-title{
+  color: #4684df;
+  font-style: italic;
+}
+
+.content-zone__reset-filters{
+  float:right;
+}
 
 
 
@@ -219,11 +320,11 @@
   display:none;
 }
 
-.clearfix:before, .clearfix:after{
+.clearfix:before, .clearfix:after, .content:before, .content:after{
   content:"";
   display:table;
 }
-.clearfix:after{
+.clearfix:after, .content:after{
   clear:both;
 
 }

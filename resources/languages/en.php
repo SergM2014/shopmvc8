@@ -73,6 +73,22 @@ $about_us="About Us";
 $download="Downloads";
 $contacts="Contacts";
 $search="search";
+$catalog = "Catalog";
+
+$categoriesTitles = "Categories";
+$manufacturersTitles = "Manufacturers";
+
+$author = "Author";
+$product_title = "Title of the product";
+$description = "Description";
+$body = "excerpts";
+$price = "Price";
+$category = "Category";
+$manufacturer = "Manufacturer";
+
+$display_item="display the item";
+
+
 
 function has_sub_categories(){
     return "contains additional categories";

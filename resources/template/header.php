@@ -36,6 +36,7 @@
 
                  <ul class="main-header__menu" >
                      <li class="main-header__menu-item"><a href="/<?= \Lib\HelperService::currentLang() ?>"><?= $main_page ?></a></li>
+                     <li class="main-header__menu-item"><a href="/<?= \Lib\HelperService::currentLang() ?>catalog"><?= $catalog ?></a></li>
                      <li class="main-header__menu-item"><a href="/<?= \Lib\HelperService::currentLang() ?>aboutus"><?= $about_us ?></a></li>
                      <li class="main-header__menu-item"><a href="/<?= \Lib\HelperService::currentLang() ?>downloads"><?= $download ?></a></li>
                      <li class="main-header__menu-item"><a href="/<?= \Lib\HelperService::currentLang() ?>contacts"><?= $contacts ?></a></li>
@@ -50,6 +51,7 @@ $langs = \Lib\HelperService::prozessLangArray(); ?>
                 <ul class="main-header__language-select"><?= \Lib\HelperService::getCurrentLanguageTitle() ?>
                     <div class="main-header__language-select-dropdown hidden">
                         <?php foreach($langs as $key => $value): ?>
+
                             <li><a href="/<?= \Lib\HelperService::overrideLangInUrl($key) ?>"><?= $value ?></a></li>
                         <?php endforeach; ?>
                     </div>

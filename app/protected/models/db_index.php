@@ -11,9 +11,7 @@ use function \deleted;*/
 
  class DB_Index extends DataBase
  {
-    // private static $categories;
 
-     //get results for slider
     public function getSlider()
     {
         $sql = "SELECT `image`, `url`, `title` FROM `slider`";

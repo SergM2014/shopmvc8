@@ -128,7 +128,7 @@ class HelperService {
           foreach ($langs as $key=> $value){
 
               $position = array_search($key, $url);
-              if(($position != false)) { unset($url[$position]);}
+              if(($position !== false)) { unset($url[$position]);}
           }
       } else {
           foreach($langs as $key=>$value){

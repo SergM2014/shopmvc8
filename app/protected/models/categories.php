@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: s
- * Date: 09.08.16
- * Time: 12:15
- */
+
 
 namespace App\Models;
 
@@ -29,10 +24,17 @@ class Categories extends DataBase
     }
 
 
-
-    private function printOutMenu($parent = 0)
+    public function getVerticalMenu()
     {
-static $suffix = 1;
+        $leftMenu ="<ul class='left-menu__ul'>";
+        $leftMenu.= $this->printOutLeftMenu();
+        $leftMenu.= "</ul>";
+        return $leftMenu;
+    }
+
+    private function printOutLeftMenu($parent = 0)
+    {
+        static $suffix = 1;
         if(!isset($print)){$print=''; }
 
         foreach($this->categories as $category){
@@ -45,13 +47,13 @@ static $suffix = 1;
                 }
 
                 if(isset($flag)){
-$suffix=$suffix+1;
+                    $suffix=$suffix+1;
                     $print.= "<img src='/img/arrow_down.png' alt='".has_sub_categories()."' title='".click_it()."' class='left-menu__contains-subcatetegories-sign'  > </div> <ul class='hidden'>";
-                    $print.= $this->printOutMenu($category->id);
+                    $print.= $this->printOutLeftMenu($category->id);
                     $print.= "</ul>";
                     $print.= "</li>";
                     $flag = null;
-$suffix = $suffix-1;
+                    $suffix = $suffix-1;
                 } else{
                     $print.="</div></li>";
                 }
@@ -60,11 +62,44 @@ $suffix = $suffix-1;
         return $print;
     }
 
-    public function getVerticalMenu()
+
+
+    public function getLeftCataloglMenu()
     {
-        $leftMenu ="<ul class='left-menu__ul'>";
-        $leftMenu.= $this->printOutMenu();
+        $leftMenu ="<ul class='left-catalog-menu'>";
+        $leftMenu.= $this->printOutlLeftCatalogMenu();
         $leftMenu.= "</ul>";
         return $leftMenu;
     }
+
+
+    protected function printOutlLeftCatalogMenu(  $parent = 0)
+    {
+        if(!isset($print)){$print='';}
+        foreach($this->categories as $category){
+            if($category->parent_id ==$parent ){
+
+                $print.='<li  class="left-catalog-menu__item"><a href="'.URL.'catalog?category='. $category->title .'" class="left-catalog-menu__link">'.$category->eng_translit_title.'</a>' ;
+                foreach($this->categories as $sub_cat){
+                    if($sub_cat->parent_id == $category->id){
+                        $flag = TRUE; break;
+                    }
+                }
+
+                if(isset($flag)){
+                    $print.= "<ul>";
+                    $print.= $this->printOutlLeftCatalogMenu( $category->id);
+                    $print.= "</ul>";
+                    $print.= "</li>";
+                } else{
+                    $print.="</li>";
+                }
+            }
+        }
+        return $print;
+    }
+
+
+
+
 }
