@@ -32,7 +32,7 @@ html, body {
 
 .content-zone {
   float: right;
-  width: 80%; }
+  max-width: 80%; }
 
 .content-zone__header {
   text-align: center;
@@ -43,14 +43,10 @@ html, body {
   margin-top: 25px;
   border-bottom: 2px solid black; }
 
-/*.content-zone__item:last-of-type{
-  border-bottom: none;
-}*/
 .left-menu {
   float: left;
-  min-width: 200px;
-  max-width: 19%;
-  height: 600px;
+  width: 19%;
+  min-height: 600px;
   border: 1px solid #000000;
   padding: 5px;
   overflow: auto; }
@@ -113,7 +109,7 @@ html, body {
   background-color: #8abeb7;
   list-style-type: none;
   cursor: pointer;
-  min-width: 100px;
+  min-width: 80px;
   text-align: center;
   position: relative; }
 
@@ -229,6 +225,9 @@ html, body {
   color: #ad212c;
   margin-top: 10px; }
 
+.left-menu__manufacturers-block {
+  margin-left: 10px; }
+
 .left-menu__header-manufacturers {
   text-align: center;
   color: #ad212c;
@@ -266,6 +265,23 @@ html, body {
 
 .content-zone__reset-filters {
   float: right; }
+
+.pagination {
+  text-align: center;
+  margin: 10px 0; }
+
+.pagination__current-item {
+  color: #cc2226;
+  font-weight: bold;
+  font-size: 120%;
+  background-color: #58c158;
+  padding: 0 2px;
+  border-radius: 2px;
+  text-decoration: none;
+  cursor: default; }
+
+.pagination__current-item-link {
+  text-decoration: none; }
 
 /*this is technical classes*/
 .hidden {
@@ -307,6 +323,55 @@ html, body {
     transition: 1.2s ease-out; }
 
   .showMenu {
-    left: -1px !important; } }
+    left: -1px !important; }
+
+  .left-menu {
+    float: none;
+    width: 100%;
+    min-height: min-content; }
+
+  .left-menu__header, .left-menu__header-manufacturers {
+    text-align: left; }
+
+  .left-catalog-menu {
+    float: left;
+    width: 49%; }
+
+  .left-menu__manufacturers-block {
+    float: right;
+    width: 49%;
+    margin-top: -45px; }
+
+  .left-catalog-menu {
+    width: 45%;
+    list-style-type: circle;
+    list-style-position: inside; }
+
+  .content-zone {
+    float: none;
+    width: 100%; }
+
+  .content-zone__starting-line-number {
+    float: none; }
+
+  .content-zone__reset-filters {
+    margin-top: 18px; }
+
+  .main-header__language-select {
+    width: 60px; }
+
+  .main-header__menu-item {
+    display: block;
+    font-size: 20px;
+    margin-top: 10px; }
+
+  .main-header__menu-item:first-of-type {
+    margin-top: 0; }
+
+  .sort-container {
+    margin-left: 10px; }
+
+  .content__slider {
+    width: 100%; } }
 
 /*# sourceMappingURL=default.css.map */

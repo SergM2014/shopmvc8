@@ -10,7 +10,8 @@
 <h4 class="left-menu__header"><?= $categoriesTitles ?></h4>
     <?= $leftCatalogMenu ?>
 
-    <h4 class="left-menu__header-manufacturers"><?= $manufacturersTitles ?></h4>
+    <div class="left-menu__manufacturers-block">
+        <h4 class="left-menu__header-manufacturers"><?= $manufacturersTitles ?></h4>
 
         <ul class="left-catalog-menu">
             <?php foreach($manufacturersList as $manuf): ?>
@@ -19,6 +20,8 @@
 
             <?php endforeach; ?>
         </ul>
+    </div>
+
 </section>
 
 
@@ -31,25 +34,25 @@
     <p>
 
         <form action="/catalog/index" id="reset_all" class="content-zone__reset-filters">
-            <button>Сбросить все фильтры</button>
+            <button><?= $resetAllFilters ?></button>
         </form>
 
         <?php if(!empty($catalog)) : ?>
 
 
 
-        <form  method="GET" action="/catalog/index">
+        <form  method="GET" action="/catalog/index" class="sort-container">
 
             <?php if (isset($_GET['category'])) { ?> <input type="hidden" name="category" value="<?php echo $_GET['category']; ?>" > <?php }
             if(isset($_GET['manufacturer'])) { ?> <input type="hidden" name="manufacturer" value="<?php echo $_GET['manufacturer']; ?>" > <?php } ?>
 
-            <label for="select">Сортировать по: </label>
+            <label for="select"><?= $sortDueTo ?>: </label>
             <select size="1" name="order" id="select">
                 <option value="default"></option>
-                <option value="abc">а-я</option>
-                <option value="cba">я-а</option>
-                <option value="cheap_first">сначала дешевые</option>
-                <option value="expensive_first">сначала дорогие</option>
+                <option value="abc"><?= $aZ ?></option>
+                <option value="cba"><?= $zA ?></option>
+                <option value="cheap_first"><?= $cheapFirst ?></option>
+                <option value="expensive_first"><?= $expensiveFirst ?></option>
             </select>
 
             <input type="submit" value="OK">
@@ -75,7 +78,7 @@
                 <p><span class="content-zone__item-output-title"><?= $price ?> : </span><?= $item->price .' '.$ukr_currency?></p>
                 <p><span class="content-zone__item-output-title"><?= $category ?> : </span><?= $item->category_title ?></p>
                 <p><span class="content-zone__item-output-title"><?= $manufacturer ?> : <?= $item->manufacturer_title ?></span></p>
-                <p><button class="content-zone__display-btn"><?= $display_item ?></button></p>
+                <p><button class="content-zone__display-btn"><?= $displayItem ?></button></p>
 
             </div>
 
@@ -86,25 +89,29 @@
 
 
 
-        <nav class="content-zone__pagination">
+        <nav class="pagination">
 
             <?php
             $current = (isset($_GET['p']))? $_GET['p']: 1;
 
             for($i =0; $i<$pages; $i++): ?>
 
-                <?php if($i==0 && $current>1){ ?>  <a href="<?php echo URL.'p=1' ?>"> << </a> <?php } ?>
-                <?php if($i == 0 && $pages>1 && $current>1) {  ?> <a href="<?php echo URL.'p='.($current-1) ?>"> < </a>  ... <?php } ?>
+                <?php if($i==0 && $current>1){ ?>  <a href="<?php echo URL.\Lib\HelperService::getRidOfRepeatedItemsInUrl('p').'p=1' ?>"> << </a> <?php } ?>
+                <?php if($i == 0 && $pages>1 && $current>1) {  ?> <a href="<?= URL.\Lib\HelperService::getRidOfRepeatedItemsInUrl('p').'p='.($current-1) ?>"> < </a>  ... <?php } ?>
                 <?php
 
                 if($i> ($current-6) && $i<($current+4)): ?>
 
-                    <a href="<?php echo URL.'p='.($i+1); ?>"><?php if($i+1==$current){echo '<b>'.($i+1).'</b>'; } else { echo ($i+1);} ?></a>
+                    <?php if($i+1 == $current): ?>
+                        <a href="<?php echo URL.\Lib\HelperService::getRidOfRepeatedItemsInUrl('p').'p='.($i+1); ?>" class="pagination__current-item-link" ><span class="pagination__current-item"><?php echo $i+1 ?></span>
+                         <?php else:  ?>
+                        <a href="<?php echo URL.\Lib\HelperService::getRidOfRepeatedItemsInUrl('p').'p='.($i+1); ?>" ><?php echo ($i+1); ?></a>
+                        <?php  endif;
 
-                <?php endif; ?>
+            endif; ?>
                 <?php if($current<$pages): ?>
-                    <?php if($i == $pages-1 && $pages>1 && $current<$pages) {  ?>...  <a href="<?php echo URL.'p='.($current+1) ?>"> > </a> <?php } ?>
-                    <?php if($i==$pages-1){ ?>  <a href="<?php echo URL.'p='.$pages ?>"> >> </a> <?php } ?>
+                    <?php if($i == $pages-1 && $pages>1 && $current<$pages) {  ?>...  <a href="<?php echo URL.\Lib\HelperService::getRidOfRepeatedItemsInUrl('p').'p='.($current+1) ?>"> > </a> <?php } ?>
+                    <?php if($i==$pages-1){ ?>  <a href="<?php echo URL.\Lib\HelperService::getRidOfRepeatedItemsInUrl('p').'p='.$pages ?>"> >> </a> <?php } ?>
                 <?php endif; ?>
 
 

@@ -86,8 +86,13 @@ $price = "Price";
 $category = "Category";
 $manufacturer = "Manufacturer";
 
-$display_item="display the item";
-
+$displayItem="display the item";
+$resetAllFilters = "Reset all filters";
+$sortDueTo ="Sort due to";
+$aZ = "a-z";
+$zA = "z-a";
+$cheapFirst = "cheap first";
+$expensiveFirst = "expensive first";
 
 
 function has_sub_categories(){

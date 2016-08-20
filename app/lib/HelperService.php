@@ -88,6 +88,11 @@ class HelperService {
         return '';
     }
 
+    /**
+     * get titles of languages in the header
+     *
+     * @return mixed|string
+     */
      public static function getCurrentLanguageTitle()
     {
         $langs = self::prozessLangArray();
@@ -143,6 +148,33 @@ class HelperService {
         if(DEFAULT_LANG != $lang)  array_unshift($url, $lang);
 
         $url = @ implode($url, '/');
+        return $url;
+
+    }
+
+
+
+    public static function getRidOfRepeatedItemsInUrl($item = ''){
+
+        $url = $_SERVER['REQUEST_URI'];
+        $url= trim($url, '/');
+        $url= explode('?', $url);
+        $url= $url[0];
+
+
+        $i=0;
+        foreach ($_GET as $key=> $value){
+            if($key == $item or $value =='catalog' or $key=='url') continue;
+            if($key=='p') {$p=$value; continue;}
+            if($i == 0){$url.='?'.$key.'='.$value; } else {$url.='&'.$key.'='.$value; }
+            $i++;
+
+        }
+
+
+        $question_mark= strpos($url, '?');
+        if($question_mark){$url = $url.'&';} else {$url = $url.'?';}
+
         return $url;
 
     }

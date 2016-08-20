@@ -89,8 +89,13 @@ $price = "Ціна";
 $category = "Категория";
 $manufacturer = "Виробник";
 
-$display_item="Показати товар";
-
+$displayItem="Показати товар";
+$resetAllFilters = "Скинути всі фільтри";
+$sortDueTo ="Сортувати по";
+$aZ = "а-я";
+$zA = "я-А";
+$cheapFirst = "дешеві спочатку";
+$expensiveFirst = "дорожчі спочатку";
 
 
 function has_sub_categories(){
