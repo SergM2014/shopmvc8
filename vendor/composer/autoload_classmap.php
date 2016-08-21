@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Controllers\\Aboutus' => $baseDir . '/app/protected/controllers/aboutUs.php',
     'App\\Controllers\\Admin' => $baseDir . '/app/protected/controllers/admin.php',
     'App\\Controllers\\Admincomments' => $baseDir . '/app/protected/controllers/admincomments.php',
     'App\\Controllers\\Catalog' => $baseDir . '/app/protected/controllers/catalog.php',

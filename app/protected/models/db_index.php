@@ -30,6 +30,15 @@ use function \deleted;*/
 
      }
 
+     public function getAboutUsInfo()
+     {
+        $sql= "SELECT `aboutUs` FROM `background`";
+         $result = $this->conn->query($sql);
+         $aboutUs = $result->fetchColumn(0);
+
+         return $aboutUs;
+     }
+
 
 
  }
