@@ -1,6 +1,6 @@
 <section class="breadcrumbs">
 
-    <span class="breadcrumb__item--current"><?=  $main_page ?></span>
+    <a href="/" class="breadcrumb__item"><?= $main_page ?></a>  => <span class="breadcrumb__item--current"><?=  $about_us ?></span>
 
 </section>
 

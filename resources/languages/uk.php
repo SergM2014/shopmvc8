@@ -97,6 +97,14 @@ $zA = "я-А";
 $cheapFirst = "дешеві спочатку";
 $expensiveFirst = "дорожчі спочатку";
 
+$writeUs = "Написати нам";
+$send = "Надiслати";
+$enterYourName = "Введіть Ваше імя";
+$enterYourEmail = "Введіть Ваш Email";
+$enterYourMessage = "Введіть Ваше послання";
+$writeUsNameError = "Введіть не менше трьох символів";
+$writeUsEmailError = "некоректный email";
+$tagsMessageRemark = "можна використовувати будь-якы нешкідливі теги";
 
 function has_sub_categories(){
     return "має додаткові категорії";

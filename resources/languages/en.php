@@ -94,6 +94,17 @@ $zA = "z-a";
 $cheapFirst = "cheap first";
 $expensiveFirst = "expensive first";
 
+$writeUs = "Write us";
+$send = "Send";
+
+$enterYourName = "Enter Your Name";
+$enterYourEmail = "Enter Your Email";
+$enterYourMessage = "Enter Your Message";
+$writeUsNameError = "Type at least 3 letters";
+$writeUsEmailError = "false email";
+$tagsMessageRemark = "any harmless taggs are allowed";
+
+
 
 function has_sub_categories(){
     return "contains additional categories";

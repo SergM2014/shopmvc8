@@ -11,6 +11,8 @@ return array(
     'App\\Controllers\\Admincomments' => $baseDir . '/app/protected/controllers/admincomments.php',
     'App\\Controllers\\Catalog' => $baseDir . '/app/protected/controllers/catalog.php',
     'App\\Controllers\\Comments' => $baseDir . '/app/protected/controllers/comments.php',
+    'App\\Controllers\\Contacts' => $baseDir . '/app/protected/controllers/contacts.php',
+    'App\\Controllers\\Downloads' => $baseDir . '/app/protected/controllers/downloads.php',
     'App\\Controllers\\Error_404' => $baseDir . '/app/protected/controllers/404.php',
     'App\\Controllers\\Image' => $baseDir . '/app/protected/controllers/image.php',
     'App\\Controllers\\Index' => $baseDir . '/app/protected/controllers/index.php',

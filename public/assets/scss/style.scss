@@ -330,6 +330,58 @@
   text-decoration:none;
 }
 
+.content-zone__write-us{
+  border-top:1px solid black;
+  margin-top:20px;
+  padding-top:20px;
+}
+
+.content-zone__form{
+  width: 390px;
+  margin:0 auto;
+}
+
+.content-zone__form-element{
+  height:65px;
+ /* border:1px solid red;*/
+}
+.content-zone__form-element-field{
+  display:block;
+ /* margin:0 0 10px 10px;*/
+  margin-left:10px;
+}
+.content-zone__form-element-submit{
+
+  margin:0 0 10px 10px;
+  float:right;
+}
+
+.content-zone__form-element-submit-container{
+ padding:10px;
+}
+.content-zone__write-us-header{
+  text-align:center;
+  color:#2C009F;
+}
+
+.content-zone__form-element-titel{
+  margin-left:10px;
+  font-size:90%;
+  color:#9c3328;
+}
+
+.content-zone__form-error{
+  border-bottom:2px dotted red;
+  margin-left:10px;
+  width:150px;
+  color:red;
+  text-transform: lowercase;
+}
+
+.content-zone__form-error--hidden{
+  display:none;
+}
+
 
 
 

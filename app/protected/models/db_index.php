@@ -23,7 +23,7 @@ use function \deleted;*/
      //get results for carousel
      public function getCarousel()
      {
-         $sql = "SELECT `image`, `url` FROM `carousel`";
+         $sql = "SELECT `image`, `url` FROM `carousel` ";
          $result = $this->conn->query($sql);
          $carousel = $result->fetchAll();
          return $carousel;
@@ -32,11 +32,28 @@ use function \deleted;*/
 
      public function getAboutUsInfo()
      {
-        $sql= "SELECT `aboutUs` FROM `background`";
+        $sql= "SELECT `aboutUs` FROM `background` WHERE `id`= 1";
          $result = $this->conn->query($sql);
-         $aboutUs = $result->fetchColumn(0);
+         $aboutUs = $result->fetch();
 
-         return $aboutUs;
+         return $aboutUs->aboutUs;
+     }
+
+     public function getDownloads()
+     {
+         $sql= "SELECT `downloads` FROM `background` WHERE `id` = 1";
+         $result = $this->conn->query($sql);
+         $result = $result->fetch();
+
+         return $result->downloads;
+     }
+
+     public function getContactsInfo()
+     {
+         $sql= "SELECT `contacts` FROM `background` WHERE `id` = 1";
+         $result = $this->conn->query($sql);
+         $result = $result->fetch();
+         return $result->contacts;
      }
 
 
