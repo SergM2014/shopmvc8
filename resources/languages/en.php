@@ -103,8 +103,10 @@ $enterYourMessage = "Enter Your Message";
 $writeUsNameError = "Type at least 3 letters";
 $writeUsEmailError = "false email";
 $tagsMessageRemark = "any harmless taggs are allowed";
-
-
+$writeUsMessageError = "Write something";
+$enterYourPhone = "enter Your phone";
+$writeUsPhoneError = "Wrong phone format";
+$phoneFormatExample = "Enter phone in format 050-123-45-67";
 
 function has_sub_categories(){
     return "contains additional categories";

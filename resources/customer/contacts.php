@@ -37,14 +37,26 @@
             </p>
 
             <p class="content-zone__form-element">
+                <label for="writeUsPhone" class="content-zone__form-element-titel"><?= $enterYourPhone ?></label>
+                <br>
+                <small><?= $phoneFormatExample ?></small>
+                <input type="tel" name="writeUsPhone" id="writeUsPhone" class="content-zone__form-element-field" required>
+                <small id="writeUsPhoneError" class="content-zone__form-error--hidden"><?= $writeUsPhoneError ?></small>
+            </p>
+
+            <p class="content-zone__form-element">
                 <label for="writeUsEmail" class="content-zone__form-element-titel"><?= $enterYourEmail ?></label>
                 <input type="email" name="writeUsEmail" id="writeUsEmail" class="content-zone__form-element-field" required>
                 <small id="writeUsEmailError" class="content-zone__form-error--hidden"><?= $writeUsEmailError ?></small>
             </p>
 
-            <p class="content-zone__form-element-titel"><?= $enterYourMessage ?></p>
-            <small><?= $tagsMessageRemark ?></small>
-            <textarea name="message" id="writeUsMessage" class="content-zone__form-element-message" required></textarea>
+
+                <label class="content-zone__form-element-titel"><?= $enterYourMessage ?></label>
+                <p><small><?= $tagsMessageRemark ?></small></p>
+                <textarea name="message" id="writeUsMessage" class="content-zone__form-element-message" required></textarea>
+                <small id="writeUsMessageError" class="content-zone__form-error--hidden"><?= $writeUsMessageError ?></small>
+
+
             <p class="content-zone__form-element-submit-container">
                 <button class="content-zone__form-element-submit" id="sendMessage"> <?= $send ?></button>
             </p>

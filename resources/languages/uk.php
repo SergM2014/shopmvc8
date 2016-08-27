@@ -105,6 +105,10 @@ $enterYourMessage = "Введіть Ваше послання";
 $writeUsNameError = "Введіть не менше трьох символів";
 $writeUsEmailError = "некоректный email";
 $tagsMessageRemark = "можна використовувати будь-якы нешкідливі теги";
+$writeUsMessageError = "Напишiть що небуть";
+$enterYourPhone = "Введіть Ваш Телефон";
+$writeUsPhoneError = "Неправильний формат номера";
+$phoneFormatExample = "Введіть номер у форматі 050-123-45-67";
 
 function has_sub_categories(){
     return "має додаткові категорії";
