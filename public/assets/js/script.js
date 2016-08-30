@@ -4,11 +4,19 @@ let windowWidth = document.documentElement.clientWidth,
     languagesBox = document.getElementsByClassName('main-header__language-select')[0],
     writeUsNameError = document.getElementById('writeUsNameError'),
     writeUsEmailError = document.getElementById('writeUsEmailError'),
-    writeUsMessageError = document.getElementById('writeUsMessageError');
+    writeUsMessageError = document.getElementById('writeUsMessageError'),
+    writeUsPhoneError = document.getElementById('writeUsPhoneError');
 
 function validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
+}
+
+function validatePhone(phone){
+   let regexp = /\d{3}-\d{3}-\d{2}-\d{2}/;
+    if (regexp.test(phone))  return true;
+
+    return false;
 }
 
 touchButton.addEventListener('click', function(){
@@ -69,8 +77,9 @@ document.getElementById('sendMessage').addEventListener('click', function(e){
     let inputError = false;
 
     let ckeditorData = CKEDITOR.instances.writeUsMessage.getData();
+//CKEDITOR.instances.writeUsMessage.destroy();
 
-    if(ckeditorData.length == 0){
+    /*if(ckeditorData.length == 0){
         writeUsMessageError.className = "content-zone__form-error";
         inputError = true;
     }  else {
@@ -86,7 +95,6 @@ document.getElementById('sendMessage').addEventListener('click', function(e){
     }
 
 
-    //let email = validateEmail(document.getElementById('writeUsEmail').value);
     if(!validateEmail(document.getElementById('writeUsEmail').value)) {
         writeUsEmailError.className = "content-zone__form-error";
         inputError = true;
@@ -94,12 +102,28 @@ document.getElementById('sendMessage').addEventListener('click', function(e){
         writeUsEmailError.className="content-zone__form-error--hidden";
     }
 
+    if(!validatePhone(document.getElementById('writeUsPhone').value)){
+        writeUsPhoneError.className = "content-zone__form-error";
+        inputError = true;
+    } else {
+        writeUsPhoneError.className="content-zone__form-error--hidden";
+    }*/
+
+
+
     if(inputError) console.log('exit');
 
 
-    let name = document.getElementById('writeUsName').value;
-    let email = document.getElementById('writeUsEmail').value;
+    let formData = new FormData(document.getElementById('content-zone__form'));
 
+    formData.set  ('writeUsMessage', ckeditorData);
 
+    fetch('/contacts/addMessage' , {
+        method:"POST",
+        body: formData
+    })
+        .then(responce => responce.text())
+        .then(html =>document.getElementsByClassName('content-zone__write-us')[0].innerHTML = html)
+        //.then( CKEDITOR.replace('writeUsMessage'))
 
 });

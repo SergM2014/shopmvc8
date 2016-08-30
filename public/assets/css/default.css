@@ -293,7 +293,7 @@ html, body {
   margin: 0 auto; }
 
 .content-zone__form-element {
-  height: 65px;
+  /* height:65px;*/
   /* border:1px solid red;*/ }
 
 .content-zone__form-element-field {

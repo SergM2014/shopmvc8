@@ -30,7 +30,7 @@ class Contacts  extends BaseController
 
     public function addMessage()
     {
-        echo 1111;
+        return ['view'=>'customer/partials/writeUsForm.php', 'ajax'=> true ];
     }
 
 
