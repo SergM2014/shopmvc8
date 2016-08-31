@@ -107,6 +107,9 @@ $writeUsMessageError = "Write something";
 $enterYourPhone = "enter Your phone";
 $writeUsPhoneError = "Wrong phone format";
 $phoneFormatExample = "Enter phone in format 050-123-45-67";
+$changeCaptcha = "Click captcha to change it";
+$enterCaptcha = "Enter captcha";
+$inputRemark ="Fields with * are necessary";
 
 function has_sub_categories(){
     return "contains additional categories";

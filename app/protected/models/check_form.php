@@ -4,12 +4,12 @@ namespace App\Models;
 use App\Core\DataBase;
 use Lib\CheckFieldsService;
 use Lib\HelperService;
-use function \empty_field;
+/*use function \empty_field;
 use function \wrong_email;
 use function \wrong_captcha;
 use function \empty_comment;
 use function \updated_comment;
-use function \changed_yes;
+use function \changed_yes;*/
 
 class CheckForm extends DataBase
 {

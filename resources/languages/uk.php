@@ -109,6 +109,9 @@ $writeUsMessageError = "Напишiть що небуть";
 $enterYourPhone = "Введіть Ваш Телефон";
 $writeUsPhoneError = "Неправильний формат номера";
 $phoneFormatExample = "Введіть номер у форматі 050-123-45-67";
+$changeCaptcha = "Щоб змінити капчу клікніть по ній";
+$enterCaptcha = "Введіть капчу";
+$inputRemark ="Поля позначені * є обовязковими";
 
 function has_sub_categories(){
     return "має додаткові категорії";

@@ -25,11 +25,14 @@ class Contacts  extends BaseController
 
         $categoriesVertMenu = (new Categories())->getVerticalMenu();
 
-        return ['view'=>'customer/contacts.php', 'contactsInfo' => $contactsInfo, 'carousel'=>$carousel, 'categoriesVertMenu'=>$categoriesVertMenu];
+        $builder = $model->printCaptcha();
+
+        return ['view'=>'customer/contacts.php', 'contactsInfo' => $contactsInfo, 'carousel'=>$carousel, 'categoriesVertMenu'=>$categoriesVertMenu, 'builder'=>$builder];
     }
 
     public function addMessage()
     {
+
         return ['view'=>'customer/partials/writeUsForm.php', 'ajax'=> true ];
     }
 

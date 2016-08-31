@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Core\DataBase;
+use Gregwar\Captcha\CaptchaBuilder;
 
 //these function are for ajax translation
 /*use function \published;
@@ -54,6 +55,14 @@ use function \deleted;*/
          $result = $this->conn->query($sql);
          $result = $result->fetch();
          return $result->contacts;
+     }
+
+     public function printCaptcha()
+     {
+         $builder = new CaptchaBuilder;
+         $builder->build();
+         $_SESSION['phrase'] = $builder->getPhrase();
+         return $builder;
      }
 
 

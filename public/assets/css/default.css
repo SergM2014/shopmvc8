@@ -327,6 +327,9 @@ html, body {
 .content-zone__form-error--hidden {
   display: none; }
 
+#captcha-img-container, .content-zone__form-element-submit {
+  cursor: pointer; }
+
 /*this is technical classes*/
 .hidden {
   display: none; }
