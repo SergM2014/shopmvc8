@@ -23,9 +23,15 @@
 
     </div>
 
-    <div class="content-zone__write-us">
-        <?php include_once (PATH_SITE.'/resources/customer/partials/writeUsForm.php') ?>
-    </div>
+    <?php if(@ $success) : ?>
+
+        <h2 class="success"><?= $succesedMessage ?></h2>
+
+    <?php else: ?>
+        <div class="content-zone__write-us">
+            <?php include_once (PATH_SITE.'/resources/customer/partials/writeUsForm.php') ?>
+        </div>
+    <?php endif; ?>
 
 </section>
 

@@ -112,6 +112,7 @@ $phoneFormatExample = "Введіть номер у форматі 050-123-45-67
 $changeCaptcha = "Щоб змінити капчу клікніть по ній";
 $enterCaptcha = "Введіть капчу";
 $inputRemark ="Поля позначені * є обовязковими";
+$succesedMessage= "Ваше повідомлення успішно доставленно";
 
 function has_sub_categories(){
     return "має додаткові категорії";
@@ -149,22 +150,25 @@ function file_deleted()
 {
     return "Файл стерто";
 }
-
+//+
 function empty_field()
 {
     return "пусте поле!";
 }
+//+
 function wrong_email()
 {
     return "Неправильний формат адрессу пошти";
 }
+//+
 function wrong_captcha()
 {
     return "неправильна капча";
 }
-function empty_comment()
+//+
+function empty_message()
 {
-    return "Пусте поле коментарю";
+    return "Пусте поле повідомлення";
 }
 function updated_comment()
 {

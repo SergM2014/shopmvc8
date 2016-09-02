@@ -110,6 +110,7 @@ $phoneFormatExample = "Enter phone in format 050-123-45-67";
 $changeCaptcha = "Click captcha to change it";
 $enterCaptcha = "Enter captcha";
 $inputRemark ="Fields with * are necessary";
+$succesedMessage= "You message is succeded";
 
 function has_sub_categories(){
     return "contains additional categories";
@@ -163,9 +164,10 @@ function wrong_captcha()
 {
 return "Wrong captcha";
 }
-function empty_comment()
+//+
+function empty_message()
 {
-return "Empty comment's field";
+return "Empty message field";
 }
 function updated_comment()
 {

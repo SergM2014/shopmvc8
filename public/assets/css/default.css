@@ -330,6 +330,10 @@ html, body {
 #captcha-img-container, .content-zone__form-element-submit {
   cursor: pointer; }
 
+.success {
+  text-align: center;
+  color: #990000; }
+
 /*this is technical classes*/
 .hidden {
   display: none; }

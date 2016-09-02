@@ -4,12 +4,12 @@ namespace App\Models;
 use App\Core\DataBase;
 use Lib\CheckFieldsService;
 use Lib\HelperService;
-/*use function \empty_field;
+use function \empty_field;
 use function \wrong_email;
 use function \wrong_captcha;
-use function \empty_comment;
+use function \empty_message;
 use function \updated_comment;
-use function \changed_yes;*/
+use function \changed_yes;
 
 class CheckForm extends DataBase
 {
@@ -23,11 +23,11 @@ class CheckForm extends DataBase
      */
     private function checkIfNotEmpty()
     {
-        $data= HelperService::cleanInput($_POST, 'comment');
+        $data= HelperService::cleanInput($_POST, 'message');
         $error=[];
         if(empty($data['name'])) $error['name']= empty_field();
         if(empty($data['email'])) $error['email']= empty_field();
-        if(empty($data['comment'])) $error['comment']= empty_comment();
+        if(empty($data['message'])) $error['message']= empty_message();
         if(empty($data['captcha'])) $error['captcha']= empty_field();
 
         return $error;
