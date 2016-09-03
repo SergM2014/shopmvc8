@@ -3,7 +3,7 @@
 
 
 
-<form class="content-zone__form" method="POST" action="/contacts/addMessage" id="content-zone__form">
+<form class="content-zone__form" method="POST" action="/<?= \Lib\HelperService::currentLang() ?>contacts/addMessage" id="content-zone__form">
     <p class="content-zone__form-element">
         <label for="name" class="content-zone__form-element-titel"><?= $enterYourName ?> *</label>
         <input type="text" name="name"  class="content-zone__form-element-field" value="<?= @ $_POST['name'] ?>" required>

@@ -6,6 +6,7 @@ use App\Core\BaseController;
 use App\Models\DB_Index;
 use App\Models\Categories;
 use App\Models\CheckForm;
+use Lib\HelperService;
 
 
 class Contacts  extends BaseController
@@ -51,6 +52,10 @@ class Contacts  extends BaseController
             $builder = (new DB_Index())->printCaptcha();
             return ['view' => 'customer/contacts.php', 'error' => $error, 'builder' => $builder, 'contactsInfo' => $contactsInfo, 'carousel'=>$carousel, 'categoriesVertMenu'=>$categoriesVertMenu,];
         }
+
+        $model2->insertMessage();
+
+        HelperService::toMail($_POST['message'], $_POST['email'], $_POST['name'], $_POST['phone'] );
 
         return ['view' => 'customer/contacts.php', 'success'=> true, 'contactsInfo' => $contactsInfo, 'carousel'=>$carousel, 'categoriesVertMenu'=>$categoriesVertMenu,];
     }

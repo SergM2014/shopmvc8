@@ -69,6 +69,15 @@ document.getElementsByClassName('left-menu')[0].addEventListener('click', functi
 
 });
 
+document.body.addEventListener('click', function(e){
+    if(e.target.id != "captcha_img") return;
 
-
+    fetch(
+        '/index/refreshCaptcha',{
+            method: 'POST',
+            credentials:'same-origin'
+        })
+        .then(response =>response.text())
+        .then(html => {document.querySelector('#captcha-img-container').innerHTML = html; })
+});
 

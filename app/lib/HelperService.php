@@ -36,7 +36,7 @@ class HelperService {
      * @param $name
      * @param $phone
      */
-    public static function tomail( $message, $from, $name, $phone){
+    public static function toMail( $message, $from, $name, $phone){
          $time_now = LangService::rus_date("j F Y H:i ", time());
          $to= ADMINEMAIL;
          $title = $time_now. "\n Повидомлення з сайту Имя ".$name." Телефон ".$phone;

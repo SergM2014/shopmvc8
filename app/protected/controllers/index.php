@@ -28,7 +28,11 @@ use App\Models\Categories;
     }
 
 
-
+      public function refreshCaptcha()
+      {
+          $builder = (new DB_Index)->printCaptcha();
+          return ['view' => 'customer/partials/captcha.php', 'builder' => $builder, 'ajax' => true];
+      }
 	
   }
   

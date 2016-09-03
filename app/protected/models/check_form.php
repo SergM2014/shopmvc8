@@ -41,42 +41,33 @@ class CheckForm extends DataBase
         return $error;
     }
 
-    public function insertComment()
+    public function insertMessage()
     {
-        $data= HelperService::cleanInput($_POST, 'comment');
-        $data['comment'] = $this->stripTags($_POST['comment']);
+        $data= HelperService::cleanInput($_POST, 'message');
+        $data['message'] = $this->stripTags($_POST['message']);
 
-        $avatar = @ $_SESSION['avatar'];
 
-        $sql = "INSERT INTO `comments` (`avatar`, `name`, `email`, `comment`, `published`, `changed`, `date`) VALUES (?, ?, ?, ?, '0', '0', NOW())";
+
+        $sql = "INSERT INTO `messages` (`name`, `email`, `phone`, `message`, `date`) VALUES (?, ?, ?, ?, NOW())";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bindValue(1, $avatar, \PDO::FETCH_ASSOC);
-        $stmt->bindValue(2, $data['name'], \PDO::FETCH_ASSOC);
-        $stmt->bindValue(3, $data['email'], \PDO::FETCH_ASSOC);
-        $stmt->bindValue(4, $data['comment'], \PDO::FETCH_ASSOC);
+
+        $stmt->bindValue(1, $data['name'], \PDO::FETCH_ASSOC);
+        $stmt->bindValue(2, $data['email'], \PDO::FETCH_ASSOC);
+        $stmt->bindValue(3, $data['phone'], \PDO::FETCH_ASSOC);
+        $stmt->bindValue(4, $data['message'], \PDO::FETCH_ASSOC);
         $stmt->execute();
 
 
-         unset ($_SESSION['avatar']);
+
     }
 
-    public function ifCommentNotEmpty()
+    public function ifMessageNotEmpty()
     {
-        if(empty($_POST['comment'])) return ["comment_error" => empty_comment()];
+        if(empty($_POST['message'])) return ["message_error" => empty_message()];
     }
 
 
-    public function updateComment()
-    {
-        $comment = $this->stripTags($_POST['comment']);
-        $sql = "UPDATE `comments` SET `comment`= ?, `published`=?, `changed`= '1' WHERE `id` =?";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bindValue(1, $comment, \PDO::PARAM_STR);
-        $stmt->bindValue(2, $_POST['published'], \PDO::PARAM_STR);
-        $stmt->bindValue(3, $_POST['id'], \PDO::PARAM_INT);
-        $stmt->execute();
-        return ["comment"=> $comment, "success" => updated_comment(), "changed"=>"YES", "published" => $_POST['published']];
-    }
+
 
 
 }
