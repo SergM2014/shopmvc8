@@ -16,6 +16,7 @@ return array(
     'App\\Controllers\\Error_404' => $baseDir . '/app/protected/controllers/404.php',
     'App\\Controllers\\Image' => $baseDir . '/app/protected/controllers/image.php',
     'App\\Controllers\\Index' => $baseDir . '/app/protected/controllers/index.php',
+    'App\\Controllers\\Search' => $baseDir . '/app/protected/controllers/search.php',
     'App\\Core\\AdminController' => $baseDir . '/app/core/admincontroller.php',
     'App\\Core\\Application' => $baseDir . '/app/core/application.php',
     'App\\Core\\BaseController' => $baseDir . '/app/core/basecontroller.php',

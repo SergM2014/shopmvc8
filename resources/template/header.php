@@ -57,7 +57,9 @@ $langs = \Lib\HelperService::prozessLangArray(); ?>
                     </div>
                 </ul>
 
-                <span class="main-header__search-container" ><?= $search ?> <input type="text" name="search" id="search" class="main-header__search-field"  maxlength="20" autofocus > </span>
+                <div class="main-header__search-container" ><?= $search ?> <input type="text" name="search" id="search" class="main-header__search-field"  maxlength="20" autofocus >
+                    <aside class="main-header__search-result-box--hidden" id="search-results"></aside>
+                </div>
 
              </nav>
 

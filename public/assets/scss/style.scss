@@ -99,6 +99,23 @@
 .main-header__search-container{
   font-size: 15px;
   color:red;
+  position:relative;
+}
+
+.main-header__search-result-box{
+  position:absolute;
+  width:245px;
+  min-height:150px;
+  border-radius:0 10px 10px 10px;
+  border:1px solid darkblue;
+  background-color: #dc7b9a;
+  left:42px;
+  transition: left 1.5s ease-out;
+  z-index:1000;
+}
+
+.main-header__search-result-box--hidden{
+  left:1700px;
 }
 
 .main-header__search-field{
@@ -528,6 +545,10 @@
   }
   .content__slider{
     width:100%;
+  }
+  .main-header__search-result-box{
+    left:0;
+    width:285px;
   }
 
 

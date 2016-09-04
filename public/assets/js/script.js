@@ -2,10 +2,7 @@ let windowWidth = document.documentElement.clientWidth,
     touchButton= document.getElementsByClassName('main-header__touch-button')[0],
     headerMenu =  document.getElementsByClassName('main-header__menu')[0],
     languagesBox = document.getElementsByClassName('main-header__language-select')[0],
-    writeUsNameError = document.getElementById('writeUsNameError'),
-    writeUsEmailError = document.getElementById('writeUsEmailError'),
-    writeUsMessageError = document.getElementById('writeUsMessageError'),
-    writeUsPhoneError = document.getElementById('writeUsPhoneError');
+    searchResultsBox = document.getElementById('search-results');
 
 function validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -70,14 +67,51 @@ document.getElementsByClassName('left-menu')[0].addEventListener('click', functi
 });
 
 document.body.addEventListener('click', function(e){
-    if(e.target.id != "captcha_img") return;
 
-    fetch(
-        '/index/refreshCaptcha',{
-            method: 'POST',
-            credentials:'same-origin'
-        })
-        .then(response =>response.text())
-        .then(html => {document.querySelector('#captcha-img-container').innerHTML = html; })
+//catch the refresh captcha event
+    if(e.target.id == "captcha_img") {
+        fetch(
+            '/index/refreshCaptcha', {
+                method: 'POST',
+                credentials: 'same-origin'
+            })
+            .then(response =>response.text())
+            .then(html => {
+                document.querySelector('#captcha-img-container').innerHTML = html;
+            })
+    }
+
+
+//remove search-result is clicke outside the search-container
+    if(!e.target.closest('.main-header__search-container')){
+        searchResultsBox.className = "main-header__search-result-box--hidden";
+        searchResultsBox.innerHTML ='';
+    }
+
+
 });
+
+//toggle search-results field if keyboard events take place in search area
+document.getElementById('search').addEventListener('keyup', function(){
+    if(this.value.length === 0) {
+        searchResultsBox.className = "main-header__search-result-box--hidden";
+        searchResultsBox.innerHTML ='';
+        return;
+    }
+    searchResultsBox.className = "main-header__search-result-box";
+
+    fetch('/search/index',
+        {
+            method:'POST',
+        }
+    )
+        .then(responce => responce.text())
+        .then(html => searchResultsBox.innerHTML = html)
+});
+
+
+
+
+
+
 
