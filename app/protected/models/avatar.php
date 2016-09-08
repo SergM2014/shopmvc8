@@ -31,7 +31,7 @@ class Avatar extends DataBase
             // Проверяем размер файла
             if ($_FILES['add-comment__choose-avatar']['size'] > $size)
 
-                return $response =["message"=>"<span class='add-comment__avatar-image--error'>". too_big_blog().$_FILES['FileInput']['size']."</span>", "error" => true];
+                return $response =["message"=>"<span class='add-comment__avatar-image--error'>". too_big_file().$_FILES['FileInput']['size']."</span>", "error" => true];
 
             $name = $this->resizeAvatar($_FILES['add-comment__choose-avatar'], $tmp_path);
 

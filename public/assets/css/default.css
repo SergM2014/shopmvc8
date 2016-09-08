@@ -106,9 +106,10 @@ html, body {
   position: absolute;
   width: 245px;
   min-height: 150px;
+  padding: 5px;
   border-radius: 0 10px 10px 10px;
   border: 1px solid darkblue;
-  background-color: #dc7b9a;
+  background-color: #dec9c5;
   left: 42px;
   transition: left 1.5s ease-out;
   z-index: 1000; }
@@ -348,6 +349,15 @@ html, body {
 .success {
   text-align: center;
   color: #990000; }
+
+.search-results__item {
+  color: #2d8f6f;
+  cursor: pointer; }
+
+.search-results__nothing-found {
+  color: red;
+  margin-top: 30px;
+  text-align: center; }
 
 /*this is technical classes*/
 .hidden {

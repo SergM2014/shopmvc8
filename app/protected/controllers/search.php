@@ -9,12 +9,16 @@
 namespace App\Controllers;
 
 use App\Core\BaseController;
+use App\Models\DB_Search;
+use function \nothingFound;
 
 class Search extends BaseController
 {
     public function index()
     {
-        echo 111;
-        die();
+        $model = new DB_Search();
+        $searchResults = $model->index();
+
+        return ['view'=>'customer/searchResults.php', 'searchResults'=> $searchResults, 'nothingFound'=>nothingFound(), 'ajax' => true];
     }
 }

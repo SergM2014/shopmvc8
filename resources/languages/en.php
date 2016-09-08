@@ -111,6 +111,13 @@ $changeCaptcha = "Click captcha to change it";
 $enterCaptcha = "Enter captcha";
 $inputRemark ="Fields with * are necessary";
 $succesedMessage= "You message is succeded";
+//$nothingFound = "nothing is found";
+
+
+function nothingFound(){
+    return "Nothing is found";
+}
+
 
 function has_sub_categories(){
     return "contains additional categories";

@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Core\BaseController;
 use App\Models\DB_Index;
 use App\Models\Categories;
+use Lib\HelperService;
 
 
   class Index  extends BaseController
@@ -32,6 +33,14 @@ use App\Models\Categories;
       {
           $builder = (new DB_Index)->printCaptcha();
           return ['view' => 'customer/partials/captcha.php', 'builder' => $builder, 'ajax' => true];
+      }
+
+      public function findOutLanguage()
+      {
+          $language = HelperService::currentLang();
+
+          echo json_encode(["language" => $language]);
+          die();
       }
 	
   }

@@ -51,6 +51,7 @@ class ComposerStaticInit14fc953014b49481d3c9d0477a55e3f8
         'App\\Models\\CheckForm' => __DIR__ . '/../..' . '/app/protected/models/check_form.php',
         'App\\Models\\DB_Catalog' => __DIR__ . '/../..' . '/app/protected/models/db_catalog.php',
         'App\\Models\\DB_Index' => __DIR__ . '/../..' . '/app/protected/models/db_index.php',
+        'App\\Models\\DB_Search' => __DIR__ . '/../..' . '/app/protected/models/db_search.php',
         'Gregwar\\Captcha\\CaptchaBuilder' => __DIR__ . '/..' . '/gregwar/captcha/CaptchaBuilder.php',
         'Gregwar\\Captcha\\CaptchaBuilderInterface' => __DIR__ . '/..' . '/gregwar/captcha/CaptchaBuilderInterface.php',
         'Gregwar\\Captcha\\ImageFileHandler' => __DIR__ . '/..' . '/gregwar/captcha/ImageFileHandler.php',

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Авг 16 2016 г., 10:29
+-- Время создания: Сен 04 2016 г., 10:25
 -- Версия сервера: 5.7.13-0ubuntu0.16.04.2
 -- Версия PHP: 7.0.9-1+deb.sury.org~trusty+2
 
@@ -19,6 +19,26 @@ SET time_zone = "+00:00";
 --
 -- База данных: `shopmvc8`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `background`
+--
+
+CREATE TABLE `background` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `aboutUs` text NOT NULL,
+  `downloads` text NOT NULL,
+  `contacts` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `background`
+--
+
+INSERT INTO `background` (`id`, `aboutUs`, `downloads`, `contacts`) VALUES
+(1, 'This is the about text', 'this is downloads text', 'This is our contacts');
 
 -- --------------------------------------------------------
 
@@ -120,6 +140,39 @@ INSERT INTO `manufacturers` (`id`, `translitedInEngTitle`, `originTitle`, `url`)
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `messages`
+--
+
+CREATE TABLE `messages` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `date` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `messages`
+--
+
+INSERT INTO `messages` (`id`, `name`, `email`, `phone`, `message`, `date`) VALUES
+(1, '1', 'weisse@ukr.net', '050-123-12-12', 'ww', '2016-09-03 09:58:20'),
+(2, 'me', 'weisse@ukr.net', '050-123-12-12', 'wwww', '2016-09-03 11:47:14'),
+(3, 'me', 'weisse@ukr.net', '050-123-12-12', 'wwww', '2016-09-03 11:48:28'),
+(4, 'qwerty', 'weisse@ukr.net', '050-123-12-12', 'qqq', '2016-09-03 11:50:51'),
+(5, 'asd', 'weisse@ukr.net', '050-123-12-12', 'wwww', '2016-09-03 11:56:40'),
+(6, '11111', 'weisse@ukr.net', '050-123-12-12', 'wwww', '2016-09-03 12:00:05'),
+(7, 'www', 'weisse@ukr.net', '050-123-12-12', 'www', '2016-09-03 12:06:21'),
+(8, 'zzzz', 'weisse@ukr.net', '050-123-12-12', 'www', '2016-09-03 12:10:49'),
+(9, 'tt', 'weisse@ukr.net', '050-123-12-12', 'www', '2016-09-03 12:17:07'),
+(10, 'www', 'weisse@ukr.net', '050-123-12-12', 'www', '2016-09-03 12:21:29'),
+(11, 'ddd', 'weisse@ukr.net', '050-123-12-12', 'eeee', '2016-09-03 12:26:45'),
+(12, 'kkk', 'weisse@ukr.net', '050-123-12-12', 'www', '2016-09-03 12:29:03');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `orders`
 --
 
@@ -215,6 +268,12 @@ INSERT INTO `users` (`id`, `login`, `password`, `role`) VALUES
 --
 
 --
+-- Индексы таблицы `background`
+--
+ALTER TABLE `background`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `carousel`
 --
 ALTER TABLE `carousel`
@@ -240,6 +299,12 @@ ALTER TABLE `manufacturers`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `orders`
 --
 ALTER TABLE `orders`
@@ -251,7 +316,10 @@ ALTER TABLE `orders`
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
   ADD KEY `cat_id` (`cat_id`),
-  ADD KEY `manf_id` (`manf_id`);
+  ADD KEY `manf_id` (`manf_id`),
+  ADD KEY `author` (`author`,`title`),
+  ADD KEY `author_2` (`author`),
+  ADD KEY `title` (`title`);
 
 --
 -- Индексы таблицы `slider`
@@ -269,6 +337,11 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для сохранённых таблиц
 --
 
+--
+-- AUTO_INCREMENT для таблицы `background`
+--
+ALTER TABLE `background`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT для таблицы `carousel`
 --
@@ -289,6 +362,11 @@ ALTER TABLE `comments`
 --
 ALTER TABLE `manufacturers`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT для таблицы `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT для таблицы `orders`
 --

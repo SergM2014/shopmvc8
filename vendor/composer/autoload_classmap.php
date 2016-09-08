@@ -28,6 +28,7 @@ return array(
     'App\\Models\\CheckForm' => $baseDir . '/app/protected/models/check_form.php',
     'App\\Models\\DB_Catalog' => $baseDir . '/app/protected/models/db_catalog.php',
     'App\\Models\\DB_Index' => $baseDir . '/app/protected/models/db_index.php',
+    'App\\Models\\DB_Search' => $baseDir . '/app/protected/models/db_search.php',
     'Gregwar\\Captcha\\CaptchaBuilder' => $vendorDir . '/gregwar/captcha/CaptchaBuilder.php',
     'Gregwar\\Captcha\\CaptchaBuilderInterface' => $vendorDir . '/gregwar/captcha/CaptchaBuilderInterface.php',
     'Gregwar\\Captcha\\ImageFileHandler' => $vendorDir . '/gregwar/captcha/ImageFileHandler.php',
