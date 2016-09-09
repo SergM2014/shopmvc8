@@ -5,10 +5,7 @@ namespace App\Models;
 use App\Core\DataBase;
 use Gregwar\Captcha\CaptchaBuilder;
 
-//these function are for ajax translation
-/*use function \published;
-use function \unpublished;
-use function \deleted;*/
+
 
  class DB_Index extends DataBase
  {

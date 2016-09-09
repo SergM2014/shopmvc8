@@ -9,6 +9,7 @@ let windowWidth = document.documentElement.clientWidth,
 
 
 
+
 function validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
@@ -125,6 +126,38 @@ document.body.addEventListener('click', function(e){
     if(!e.target.closest('.main-header__search-container')){
         searchResultsBox.className = "main-header__search-result-box--hidden";
         searchResultsBox.innerHTML ='';
+    }
+
+    if(e.target.closest('.search-results__item')){
+        let elem = e.target.closest('.search-results__item');
+        let id = elem.dataset.id;
+//console.log(id)
+        let darkLayer = document.createElement('div'); // слой затемнения
+        darkLayer.className = 'background-shadow'; // class чтобы подхватить стиль
+        document.body.appendChild(darkLayer); // включаем затемнение
+
+        let modalwindow = document.createElement('section');
+        modalwindow.className = 'product-window';
+        document.body.appendChild(modalwindow);
+
+        let formData = new FormData;
+        let founded_lang =  new LangForAjax().getLanguage();
+        let url =  founded_lang+"/product/index";
+
+        formData.append('id', id);
+        fetch(url, {
+            method: 'POST',
+            body:formData
+        })
+            .then( responce => responce.text())
+            .then(html => modalwindow.innerHTML = html)
+
+
+    }
+
+    if(e.target.id == "close-preview-product" || e.target.className == "background-shadow") {
+        document.getElementsByClassName('background-shadow')[0].remove();
+        document.getElementsByClassName('product-window')[0].remove();
     }
 
 

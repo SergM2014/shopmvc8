@@ -113,12 +113,10 @@ $changeCaptcha = "Щоб змінити капчу клікніть по ній"
 $enterCaptcha = "Введіть капчу";
 $inputRemark ="Поля позначені * є обовязковими";
 $succesedMessage= "Ваше повідомлення успішно доставленно";
-//$nothingFound = "Нічого не знайдено";
+$nothingFound = "Нічого не знайдено";
+$goToProduct = "Перейти на сторінку продукту";
 
 
-function nothingFound(){
-    return "Нічого не знайдено";
-}
 
 
 function has_sub_categories(){
