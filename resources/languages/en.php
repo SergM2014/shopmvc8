@@ -6,8 +6,8 @@ $enter_admin = "Enter";
 $welcome = "Wellcome";
 $admin_zone = "Admin zone";
 
-$old_first = "Old first";
-$new_first = "New first";
+$oldFirst = "Old first";
+$newFirst = "New first";
 $mail_order = "Email order";
 $name_order = "Name order";
 $add_comment = "Add comment";
@@ -113,8 +113,10 @@ $inputRemark ="Fields with * are necessary";
 $succesedMessage= "You message is succeded";
 $nothingFound = "nothing is found";
 $goToProduct = "go to the product page";
-
-
+$noComments = "No comments yet, You can be first!";
+$buy = "Buy";
+$product = "Product";
+$addYourComment = "Add Your Comment";
 
 
 

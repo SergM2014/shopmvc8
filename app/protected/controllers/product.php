@@ -16,10 +16,17 @@ use App\Models\DB_Product;
 
        $product_info = (new DB_Product())->getPreview();
 
-      return ['view'=>'customer/product.php', 'product_info'=> $product_info, 'ajax'=> true ];
+      return ['view'=>'customer/product/preview.php', 'product_info'=> $product_info, 'ajax'=> true ];
     }
 
+    public function show()
+    {
+        $model = new DB_Product();
+        $productInfo = $model->getProduct();
+        $productComments = $model->getComments();
 
+        return ['view'=>'customer/product/show.php', 'productInfo'=> $productInfo, 'productComments' => $productComments ];
+    }
 
 
 	
