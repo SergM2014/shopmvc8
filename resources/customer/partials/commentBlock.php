@@ -1,40 +1,49 @@
-<div class="content__comment-block">
-    <h2><?= $addYourComment ?></h2>
+<section class="content__comment-block">
+    <h2 class="content__comment-block-title"><?= $addYourComment ?></h2>
+
+    <section class="content__comment-block-load-avatar">
+        <?php  include PATH_SITE.'/resources/customer/partials/upload.php'  ?>
+    </section>
 
 
-    <?php  include PATH_SITE.'/resources/customer/partials/upload.php'  ?>
 
 
+    <form class="content-zone__form" method="POST" action="/<?= \Lib\HelperService::currentLang() ?>comments/addComment" id="content-zone__form">
+        <p class="content-zone__form-element">
+            <label for="name" class="content-zone__form-element-titel"><?= $enterYourName ?> *</label>
+            <input type="text" name="name"  class="content-zone__form-element-field" value="<?= @ $_POST['name'] ?>" required>
+            <small id="nameError" class="content-zone__form-error"><?= @ $error['name'] ?></small>
+        </p>
 
-    <form method="post" id="send_comment" >
-        <p>Поля обозначеные <span class="red">*</span> есть обязательными</p>
-        <br>
+        <p class="content-zone__form-element">
+            <label for="email" class="content-zone__form-element-titel"><?= $enterYourEmail ?> *</label>
+            <input type="email" name="email"  class="content-zone__form-element-field" value="<?= @ $_POST['email'] ?>">
+            <small id="emailError" class="content-zone__form-error"><?=  @ $error['email'] ?></small>
+        </p>
 
 
-        <label for="name"><?= $name ?><span class="red">*</span></label>  <small class="red"><?php if(isset($error['name'])) echo $error['name']; ?></small>
-        <p> <input type="text" name="name" id="name" placeholder="<?= $enterYourName ?>" class="input <?php if(isset($error['name'])) echo 'error'; ?>"
-                   value="<?php if(isset($post['name'])) echo $post['name']; ?>" maxlength="15" required ></p>
+        <label class="content-zone__form-element-titel"><?= $enterYourMessage ?> *</label>
+        <p><small><?= $tagsMessageRemark ?></small></p>
+        <textarea name="message" id="message" class="content-zone__form-element-message" cols="45" rows="15" required><?= @ $_POST['message'] ?></textarea>
+        <small id="messageError" class="content-zone__form-error"><?= @ $error['message'] ?></small>
 
-        <label for="email"><?= $email ?><span class="red">*</span></label>   <small class="red"><?php if(isset($error['email'])) echo $error['email']; ?></small>
-        <p><input type="email" name="email" id="email" placeholder="<?= $writeYourEmail ?>" class="input <?php if(isset($error['email'])) echo 'error'; ?>"
-                  value="<?php if(isset($post['email'])) echo $post['email']; ?>" maxlength="15" required ></p>
 
-        <label for="message"><?= $message ?><span class="red">*</span></label>   <small class="red"><?php if(isset($error['message'])) echo $error['message']; ?></small>
-        <p><textarea name="message" id="message" placeholder="<?= $writeYourMessage ?>" cols="40" rows="8"
-                     class="input" required ><?php if(isset($post['message'])) echo $post['message']; ?></textarea></p>
-        <p class="<?php if(isset($error['message'])) echo 'error'; ?>"></p>
-        <br>
+        <div class="content-zone__form-element">
+            <label for="captcha-img-container" class="content-zone__form-element-titel"><?= $changeCaptcha ?></label>
+            <div id="captcha-img-container" class="content-zone__form-element-field">
+                <?php include PATH_SITE.'/resources/customer/partials/captcha.php'; ?>
+            </div>
+            <label for="captcha" class="content-zone__form-element-titel"><?= $enterCaptcha ?> *</label>
+            <input type="text" name="captcha" id="captcha" placeholder="<?= $enterCaptcha ?>"  class="content-zone__form-element-field <?php if(isset($error['captcha'])) echo "error"; ?>" required>
+            <small class="content-zone__form-error"><?= @$error['captcha'] ?></small>
+        </div>
 
-        <small><?= $changeCaptcha ?></small>
-        <p><img src="<?php echo URL ?>lib/kcaptcha/index.php?<?php echo session_name()?>=<?php echo session_id()?>" id="kcaptcha"></p>
-        <label for="keystring">Введите капчу<span class="red">*</span></label>   <small class="red"><?php if(isset($error['keystring'])) echo $error['keystring']; ?></small>
+        <p class="content-zone__form-element-submit-container">
+            <button class="content-zone__form-element-submit" id="sendMessage"> <?= $send ?></button>
+        </p>
 
-        <p><input type="text" name="keystring" id="keystring" class="input <?php if(isset($error['keystring'])) echo 'error'; ?>" maxlength="10" required ></p>
-
-        <p><input type="hidden" name="_token"  value=""></p>
-        <br>
-        <p><input type="submit" id="submitComment" value="Отправить"></p>
+        <p class="content-zone__form-element-titel"><?= $inputRemark ?></p>
     </form>
 
 
-</div>
+</section>

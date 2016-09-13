@@ -56,8 +56,9 @@
                 <label><input name="comments_order" type="radio" value="old_first"> <?= $oldFirst ?> </label>
 
             </form>
-            <div id="ordered_comments"
+            <section id="ordered_comments">
             <?php include PATH_SITE.'/resources/customer/partials/orderedComments.php'; ?>
+            </section>
         </div>
         <?php endif; ?>
 

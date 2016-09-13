@@ -26,7 +26,7 @@ class Comments  extends BaseController
     }
 
     /**
-     * chec the correct fulfillment of input fields
+     * check the correct fulfillment of input fields
      * in error case reloud the form with errors
      * in case of sucess reload success mesage
      *
@@ -34,13 +34,13 @@ class Comments  extends BaseController
      */
     public function addComment()
     {
-        TokenService::check('add_comment');
+       // TokenService::check('add_comment');
 
         $model = new CheckForm;
         $error = $model->checkFields();//checkIfNotEmpty();
         if (!empty($error)) {
             $builder = (new DB_Index)->printCaptcha();
-            return ['view' => 'customer/partials/comment_form.php', 'error' => $error, 'builder' => $builder, 'data' => $_POST, 'ajax' => true];
+            return ['view' => 'customer/product/show.php', 'error' => $error, 'builder' => $builder, 'data' => $_POST];
         }
 
         $model->insertComment();

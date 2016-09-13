@@ -39,7 +39,7 @@ $prozess_your_comment = "Comments prozessing";
 $name = "Name";
 $avatar = "Avatar";
 $email = "Email";
-$comment = "comment";
+$commentTitle = "Comment";
 $date = "Date";
 $published = "Published";
 $changed = "Changed";
@@ -117,8 +117,8 @@ $noComments = "No comments yet, You can be first!";
 $buy = "Buy";
 $product = "Product";
 $addYourComment = "Add Your Comment";
-
-
+$addAvatar = "Add avatar";
+$load = "Load";
 
 function has_sub_categories(){
     return "contains additional categories";

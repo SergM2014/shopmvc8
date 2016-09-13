@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Core\BaseController;
 use App\Models\DB_Product;
-
+use App\Models\DB_Index;
 
 
 
@@ -24,8 +24,9 @@ use App\Models\DB_Product;
         $model = new DB_Product();
         $productInfo = $model->getProduct();
         $productComments = $model->getComments();
+        $builder = (new DB_Index)->printCaptcha();
 
-        return ['view'=>'customer/product/show.php', 'productInfo'=> $productInfo, 'productComments' => $productComments ];
+        return ['view'=>'customer/product/show.php', 'productInfo'=> $productInfo, 'productComments' => $productComments, 'builder' => $builder ];
     }
 
 

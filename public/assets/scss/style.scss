@@ -464,6 +464,39 @@
   margin-top:20px;
 }
 
+.content__product-details{
+  padding:5px;
+  margin:20px 0;
+}
+.content__product-commentsarea{
+  padding:5px;
+  margin-bottom:10px;
+  border-bottom:2px solid red;
+}
+.content__comment-block{
+  padding:5px;
+  margin-bottom:20px;
+}
+.product__comment-item{
+  margin-top:10px;
+  border-bottom:1px solid black;
+}
+.product__comment-item:last-of-type{
+  border-bottom:none;
+}
+.product__comment-item-time{
+  text-align:right;
+  color:#9c3328;
+}
+.content__comment-block-title{
+  text-align:center;
+  color:red;
+}
+.content__comment-block-load-avatar{
+  width:390px;
+  margin:20px auto 40px auto;
+}
+
 
 
 
@@ -491,6 +524,10 @@
 
 .nested-3{
   background-color: #ab968c;
+}
+
+.invisible{
+  visibility: hidden;
 }
 
 

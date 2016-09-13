@@ -1,16 +1,16 @@
-<?php foreach($productComments as $comment): ?>
+<?php foreach($productComments as $commentItem): ?>
 
 
-    <article class="the_comment">
-        <div class=" left_of_comment ">
-            <?php if (isset($comment->avatar)){ ?> <p><img src="/uploads/avatars/<?php echo $comment->avatar; ?>" > </p> <?php } ?>
-            <b> <?php echo $comment->name ?></b>
+    <article class="product__comment-item">
+        <div class=" product__comment-item-avatar ">
+            <?php if (isset($commentItem->avatar)){ ?> <p><img src="/uploads/avatars/<?php echo $commentItem->avatar; ?>" > </p> <?php } ?>
+            <b> <?php echo $commentItem->name ?></b>
         </div>
-        <div class="right_of_comment">
-            <i><?php echo $comment->comment ?></i>
+        <div class="product__comment-item-text">
+            <i><?php echo $commentItem->comment ?></i>
 
         </div>
-        <b class="comment_time red" ><?php echo date('d-m-Y H:i',strtotime($comment->created_at)); ?></b>
+        <p class="product__comment-item-time" ><b><?php echo date('d-m-Y H:i',strtotime($commentItem->created_at)); ?></b></p>
     </article>
 
 
