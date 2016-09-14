@@ -8,8 +8,7 @@ use function \empty_field;
 use function \wrong_email;
 use function \wrong_captcha;
 use function \empty_message;
-use function \updated_comment;
-use function \changed_yes;
+
 
 class CheckForm extends DataBase
 {
@@ -45,16 +44,29 @@ class CheckForm extends DataBase
     {
         $data= HelperService::cleanInput($_POST, 'message');
         $data['message'] = $this->stripTags($_POST['message']);
-
-
-
         $sql = "INSERT INTO `messages` (`name`, `email`, `phone`, `message`, `date`) VALUES (?, ?, ?, ?, NOW())";
         $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(1, $data['name'], \PDO::PARAM_STR);
+        $stmt->bindValue(2, $data['email'], \PDO::PARAM_STR);
+        $stmt->bindValue(3, $data['phone'], \PDO::PARAM_STR);
+        $stmt->bindValue(4, $data['message'], \PDO::PARAM_STR);
+        $stmt->execute();
+    }
 
-        $stmt->bindValue(1, $data['name'], \PDO::FETCH_ASSOC);
-        $stmt->bindValue(2, $data['email'], \PDO::FETCH_ASSOC);
-        $stmt->bindValue(3, $data['phone'], \PDO::FETCH_ASSOC);
-        $stmt->bindValue(4, $data['message'], \PDO::FETCH_ASSOC);
+    public function insertComment()
+    {
+        $data= HelperService::cleanInput($_POST, 'message');
+        $data['message'] = $this->stripTags($_POST['message']);
+
+
+
+        $sql = "INSERT INTO `comments` (`product_id`, `name`, `email`, `comment`, `created_at`) VALUES (?, ?, ?, ?, NOW())";
+        $stmt = $this->conn->prepare($sql);
+
+        $stmt->bindValue(1, $_POST['id'], \PDO::PARAM_INT);
+        $stmt->bindValue(2, $data['name'], \PDO::PARAM_STR);
+        $stmt->bindValue(3, $data['email'], \PDO::PARAM_STR);
+        $stmt->bindValue(4, $data['message'], \PDO::PARAM_STR);
         $stmt->execute();
 
 

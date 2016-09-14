@@ -1,4 +1,5 @@
 <section class="content__comment-block">
+
     <h2 class="content__comment-block-title"><?= $addYourComment ?></h2>
 
     <section class="content__comment-block-load-avatar">
@@ -9,6 +10,9 @@
 
 
     <form class="content-zone__form" method="POST" action="/<?= \Lib\HelperService::currentLang() ?>comments/addComment" id="content-zone__form">
+
+        <input type="hidden" name="id" id="productId" value="<?php echo $_GET['id'] ?? $_POST['id'] ?>">
+
         <p class="content-zone__form-element">
             <label for="name" class="content-zone__form-element-titel"><?= $enterYourName ?> *</label>
             <input type="text" name="name"  class="content-zone__form-element-field" value="<?= @ $_POST['name'] ?>" required>

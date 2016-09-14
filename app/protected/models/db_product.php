@@ -23,6 +23,8 @@ class DB_Product extends DataBase
 
     public function getProduct()
     {
+        $id= $_GET['id'] ?? $_POST['id'];
+
         $sql = "SELECT `p`.`id` AS `product_id`, `p`.`author`, `p`.`title` AS `title`, `p`.`description`,
         `p`.`body`, `p`.`price`, `p`.`cat_id`, `p`.`manf_id`, `p`.`images`, `c`.`id`, `c`.`title` AS `category_title`,
         `c`.`parent_id`, `c`.`eng_translit_title` AS `category_eng_title`, `m`.`id`, `m`.`eng_translit_title` AS `manf_eng_title`,
@@ -30,7 +32,7 @@ class DB_Product extends DataBase
         ON `p`.`cat_id`=`c`.`id` LEFT JOIN `manufacturers` `m` ON `p`.`manf_id`= `m`.`id` WHERE `p`.`id`=?";
 
         $stmt = $this->conn->prepare($sql);
-        $stmt->bindValue(1, $_GET['id'], \PDO::PARAM_INT);
+        $stmt->bindValue(1, $id, \PDO::PARAM_INT);
         $stmt->execute();
         $result = $stmt->fetch();
 
@@ -39,9 +41,11 @@ class DB_Product extends DataBase
 
     public function getComments()
     {
-        $sql = "SELECT `avatar`, `name`, `email`, `comment`, `created_at`, `changed`, `published` FROM `comments` WHERE `product_id`= ?";
+        $id= $_GET['id'] ?? $_POST['id'];
+
+        $sql = "SELECT `avatar`, `name`, `email`, `comment`, `created_at`, `changed`, `published` FROM `comments` WHERE `product_id`= ? AND `published`='1'";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bindValue(1, $_GET['id'], \PDO::PARAM_INT);
+        $stmt->bindValue(1, $id, \PDO::PARAM_INT);
         $stmt-> execute();
         $result= $stmt->fetchAll();
 
