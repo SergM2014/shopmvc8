@@ -20,6 +20,7 @@
     define('DEBUG_MODE', true ); //режим отладки
 
 	define('UPLOAD_FILE','/public/uploads/');
+   // define('UPLOAD_FILE','/uploads/');
 	define('LINKCOUNT',5);
 	define('ADMINEMAIL', 'weisse@ukr.net');
     define('DEFAULT_LANG', 'uk');

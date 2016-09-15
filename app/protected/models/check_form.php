@@ -44,7 +44,7 @@ class CheckForm extends DataBase
     {
         $data= HelperService::cleanInput($_POST, 'message');
         $data['message'] = $this->stripTags($_POST['message']);
-        $sql = "INSERT INTO `messages` (`name`, `email`, `phone`, `message`, `date`) VALUES (?, ?, ?, ?, NOW())";
+        $sql = "INSERT INTO `messages` (`name`, `email`, `phone`, `message`) VALUES (?, ?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(1, $data['name'], \PDO::PARAM_STR);
         $stmt->bindValue(2, $data['email'], \PDO::PARAM_STR);
@@ -60,7 +60,7 @@ class CheckForm extends DataBase
 
 
 
-        $sql = "INSERT INTO `comments` (`product_id`, `name`, `email`, `comment`, `created_at`) VALUES (?, ?, ?, ?, NOW())";
+        $sql = "INSERT INTO `comments` (`product_id`, `name`, `email`, `comment`) VALUES (?, ?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
 
         $stmt->bindValue(1, $_POST['id'], \PDO::PARAM_INT);

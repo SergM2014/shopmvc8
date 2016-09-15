@@ -16,6 +16,9 @@ class Avatar extends DataBase
 
         $path = PATH_SITE.UPLOAD_FILE.'avatars/';
         $tmp_path= PATH_SITE.UPLOAD_FILE.'tmp/';
+/*var_dump($path);
+echo "<br>";
+var_dump($tmp_path);*/
         // Массив допустимых значений типа файла
         $types = array('image/gif', 'image/png', 'image/jpeg');
 
@@ -24,27 +27,27 @@ class Avatar extends DataBase
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Проверяем тип файла
-            if (!in_array(strtolower($_FILES['add-comment__choose-avatar']['type']), $types))
+            if (!in_array(strtolower($_FILES['FileInput']['type']), $types))
 
-                return $response =["message"=>"<span class='error'>".restricted_file_type(). "</span>", "error"=>true];
+                return $response =["message"=>"<span class='avatar-upload--failed'>".restricted_file_type(). "</span>", "error"=>true];
 
             // Проверяем размер файла
-            if ($_FILES['add-comment__choose-avatar']['size'] > $size)
+            if ($_FILES['FileInput']['size'] > $size)
 
-                return $response =["message"=>"<span class='add-comment__avatar-image--error'>". too_big_file().$_FILES['FileInput']['size']."</span>", "error" => true];
+                return $response =["message"=>"<span class='avatar-upload--failed'>". too_big_file().$_FILES['FileInput']['size']."</span>", "error" => true];
 
-            $name = $this->resizeAvatar($_FILES['add-comment__choose-avatar'], $tmp_path);
+            $name = $this->resizeAvatar($_FILES['FileInput'], $tmp_path);
 
             // Загрузка файла и вывод сообщения
             if(!@copy($tmp_path.$name, $path.$name)) {
-                return $response =["message"=>"<span class='add-comment__avatar-image--error'>". smth_is_wrong()." </span>", "error" => true];
+                return $response =["message"=>"<span class='avatar-upload--failed'>". smth_is_wrong()." </span>", "error" => true];
             }
             else {
 
                 $_SESSION['avatar']= $name;
 
 
-                $response=["message"=>"<span class='add-comment__avatar-image--loaded'>".succeeded_upload()."</span>", "success"=>true, "bild"=>$_SESSION['avatar']];
+                $response=["message"=>"<span class='avatar-upload--succeded'>".succeeded_upload()."</span>", "success"=>true, "bild"=>$_SESSION['avatar']];
                 chmod ($path.$name , 0777);
             }
             // Удаляем временный файл
@@ -121,7 +124,7 @@ class Avatar extends DataBase
         $avatar = @ $_SESSION['avatar'];
         @ unlink ( PATH_SITE.UPLOAD_FILE.'avatars/'.$_SESSION['avatar']);
         unset ( $_SESSION['avatar']);
-        $response= ["message"=>"<span class='add-comment__avatar-image--deleted'>". file_deleted() ."</span>", "bild"=> $avatar];
+        $response= ["message"=>"<span class='avatar-delete--succeded'>". file_deleted() ."</span>", "bild"=> $avatar];
 
         return $response;
     }

@@ -504,6 +504,39 @@
   text-align:center;
   color:#9c3328;
 }
+.avatar-thumb-preview{
+  float:left;
+  /*max-width:150px;*/
+  max-height:130px;
+  border-radius:6px;
+  margin-top:10px;
+}
+.file-input{
+  float:left;
+
+}
+.avatar-submit-btn{
+  float:right;
+  margin-left:10px;
+}
+.avatar-reset-btn{
+  float:right;
+  margin-left:10px;
+}
+.avatar-upload--succeded{
+  color: #2eff3d;
+  margin-left:20px;
+}
+.avatar-upload--failed{
+  color:red;
+}
+.avatar__progress-container{
+ /* height:100px;*/
+  margin-top:50px;
+}
+.avatar-delete--succeded{
+  color:#00A6C7;
+}
 
 
 

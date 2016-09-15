@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Сен 04 2016 г., 10:25
--- Версия сервера: 5.7.13-0ubuntu0.16.04.2
+-- Время создания: Сен 14 2016 г., 19:35
+-- Версия сервера: 5.7.15-0ubuntu0.16.04.1
 -- Версия PHP: 7.0.9-1+deb.sury.org~trusty+2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -109,10 +109,21 @@ CREATE TABLE `comments` (
   `name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `comment` text NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `changed` enum('0','1') NOT NULL,
   `published` enum('0','1') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `comments`
+--
+
+INSERT INTO `comments` (`id`, `product_id`, `avatar`, `name`, `email`, `comment`, `created_at`, `changed`, `published`) VALUES
+(3, 16, NULL, 'qqq', 'qqq', 'Обыски провели в одесских и столичных фирмах. По мнению правоохранителей, фирмы-подрядчики, занимавшиеся поставками и установкой оборудования для «Олимпийского», украли у государства 9 млн гривен.\nЭти деньги были выделены на то, чтобы закупить все необходимое для реконструкции стадиона. Подрядчики действительно купили оборудование, но по явно завышенным ценам. На приобретение и установку светодиодных электронных табло и кресел они потратили на 9 млн гривен больше необходимого.\nДо сих пор продолжаются следственные действия по делу.', '2016-09-03 21:00:00', '0', '1'),
+(4, 16, NULL, 'qwerty1', 'qwerty1', 'Херсонский государственный завод (ХГЗ) "Паллада" заложил современный композитный плавучий док для кипрской компании Multimarine Shipyards Ltd.\r\n\r\nОб этом сообщает ЦТС со ссылкой на информацию "Укроборонпрома", куда входит ХГЗ "Паллада".\r\n\r\nКонструктивной особенностью данного дока будет являться то, что корпус построят из бетона, а башни - из судостроительной стали. Это позволит снизить эксплуатационные расходы дока в 2-2,5 раза по сравнению с аналогичными стальными доками.', '2016-08-31 21:00:00', '0', '1'),
+(5, 16, NULL, 'qwerty2', 'weisse@ukr.net', 'Кроме того, новый док сможет доковать суда и плавучие сооружения, используемые при освоении шельфа.\r\n\r\nРанее ЦТС сообщал, что док для киприотов будет обладать грузоподъемностью 7,1 тыс. тонн.\r\n\r\nДлина стапель-палубы дока - 120 метров, предельная глубина погружения - 12,2 метра. Эксплуатационный срок службы корпуса дока составит 50 лет.\r\n\r\nХГЗ "Паллада" в настоящее время - единственное в мире судостроительное предприятие, специализирующееся на строительстве композитных плавучих доков нового поколения для обслуживания судов гражданского и военного флота. Гарантийный срок эксплуатации техники - 50 лет. Среди заказчиков предприятия: Япония, Южная Корея, Финляндия, Болгария, Турция, Алжир, Хорватия, Франция, ЮАР. С апреля 2011 года по решению правительства Украины ХГЗ "Паллада" входит в состав госконцерна "Укроборонпром".', '2016-09-01 21:00:00', '0', '1'),
+(28, 16, NULL, '111', 'weisse@ukr.net', 'das ist text wieder noch zuerueck 2te mal 3te mal', '2016-09-14 16:29:25', '0', '1'),
+(36, 16, NULL, 'asdf', 'weisse@ukr.net', 'noch ein text ueber uns.genau so, das ist testing', '2016-09-14 16:22:07', '1', '1');
 
 -- --------------------------------------------------------
 
@@ -122,8 +133,8 @@ CREATE TABLE `comments` (
 
 CREATE TABLE `manufacturers` (
   `id` int(10) UNSIGNED NOT NULL,
-  `translitedInEngTitle` varchar(255) NOT NULL,
-  `originTitle` varchar(255) NOT NULL,
+  `eng_translit_title` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
   `url` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -131,7 +142,7 @@ CREATE TABLE `manufacturers` (
 -- Дамп данных таблицы `manufacturers`
 --
 
-INSERT INTO `manufacturers` (`id`, `translitedInEngTitle`, `originTitle`, `url`) VALUES
+INSERT INTO `manufacturers` (`id`, `eng_translit_title`, `title`, `url`) VALUES
 (1, 'siemens ag', 'siemens ag', '/'),
 (2, 'heinkel ag', 'heinkel ag', '/'),
 (3, 'sumsung ', 'sumsung', '/'),
@@ -149,7 +160,7 @@ CREATE TABLE `messages` (
   `email` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
   `message` text NOT NULL,
-  `date` varchar(255) NOT NULL
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -168,7 +179,8 @@ INSERT INTO `messages` (`id`, `name`, `email`, `phone`, `message`, `date`) VALUE
 (9, 'tt', 'weisse@ukr.net', '050-123-12-12', 'www', '2016-09-03 12:17:07'),
 (10, 'www', 'weisse@ukr.net', '050-123-12-12', 'www', '2016-09-03 12:21:29'),
 (11, 'ddd', 'weisse@ukr.net', '050-123-12-12', 'eeee', '2016-09-03 12:26:45'),
-(12, 'kkk', 'weisse@ukr.net', '050-123-12-12', 'www', '2016-09-03 12:29:03');
+(12, 'kkk', 'weisse@ukr.net', '050-123-12-12', 'www', '2016-09-03 12:29:03'),
+(13, 'Das ich bin', 'weisse@ukr.net', '050-123-12-12', 'text text text again text', '2016-09-14 19:27:35');
 
 -- --------------------------------------------------------
 
@@ -317,9 +329,7 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
   ADD KEY `cat_id` (`cat_id`),
   ADD KEY `manf_id` (`manf_id`),
-  ADD KEY `author` (`author`,`title`),
-  ADD KEY `author_2` (`author`),
-  ADD KEY `title` (`title`);
+  ADD KEY `author` (`author`,`title`);
 
 --
 -- Индексы таблицы `slider`
@@ -356,7 +366,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT для таблицы `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 --
 -- AUTO_INCREMENT для таблицы `manufacturers`
 --
@@ -366,7 +376,7 @@ ALTER TABLE `manufacturers`
 -- AUTO_INCREMENT для таблицы `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT для таблицы `orders`
 --
