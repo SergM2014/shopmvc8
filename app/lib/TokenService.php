@@ -2,6 +2,8 @@
 
 namespace Lib;
 
+use \smthWentWrong;
+
 class TokenService
 {
     /**
@@ -53,7 +55,7 @@ class TokenService
         if(!isset($_POST['_token']) OR $_POST['_token']!= $_SESSION['_token'][$action]) {
 
             if(isset($_POST['ajax'])) {
-                echo json_encode(["message"=>"Something went wrong!", "error"=> true ]); exit();
+                echo json_encode(["message"=>smthWentWrong(), "error"=> true ]); exit();
             }
 
             header('Location:'.$_SERVER['HTTP_REFERER']); exit();

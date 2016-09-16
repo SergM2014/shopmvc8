@@ -60,16 +60,17 @@ class CheckForm extends DataBase
 
 
 
-        $sql = "INSERT INTO `comments` (`product_id`, `name`, `email`, `comment`) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO `comments` (`product_id`, `avatar`, `name`, `email`, `comment`) VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
 
         $stmt->bindValue(1, $_POST['id'], \PDO::PARAM_INT);
-        $stmt->bindValue(2, $data['name'], \PDO::PARAM_STR);
-        $stmt->bindValue(3, $data['email'], \PDO::PARAM_STR);
-        $stmt->bindValue(4, $data['message'], \PDO::PARAM_STR);
+        $stmt->bindValue(2, @ $_SESSION['avatar']);
+        $stmt->bindValue(3, $data['name'], \PDO::PARAM_STR);
+        $stmt->bindValue(4, $data['email'], \PDO::PARAM_STR);
+        $stmt->bindValue(5, $data['message'], \PDO::PARAM_STR);
         $stmt->execute();
 
-
+        unset ($_SESSION['avatar']);
 
     }
 

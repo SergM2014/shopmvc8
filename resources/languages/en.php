@@ -202,5 +202,7 @@ function deleted ()
 return " deleted";
 }
 
-
-?>
+function smthWentWrong()
+{
+    return "Something went wrong";
+}

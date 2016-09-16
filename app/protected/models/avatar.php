@@ -16,9 +16,7 @@ class Avatar extends DataBase
 
         $path = PATH_SITE.UPLOAD_FILE.'avatars/';
         $tmp_path= PATH_SITE.UPLOAD_FILE.'tmp/';
-/*var_dump($path);
-echo "<br>";
-var_dump($tmp_path);*/
+
         // Массив допустимых значений типа файла
         $types = array('image/gif', 'image/png', 'image/jpeg');
 
@@ -56,7 +54,6 @@ var_dump($tmp_path);*/
 
         return $response;
     }
-
 
 
     private function resizeAvatar($file, $tmp_path)

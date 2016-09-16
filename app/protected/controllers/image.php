@@ -18,9 +18,7 @@ class Image extends BaseController
 
     public function upload()
     {
-
-// die (var_dump($_FILES));
-        //TokenService::check('prozess_avatar');
+        TokenService::check('prozessAvatar');
 
         $model = new Avatar;
         $message = $model->uploadAvatar();
@@ -32,7 +30,7 @@ class Image extends BaseController
 
     public function delete()
     {
-     // TokenService::check('prozess_avatar');
+       TokenService::check('prozessAvatar');
 
         $model = new Avatar;
         $message = $model->deleteAvatar();

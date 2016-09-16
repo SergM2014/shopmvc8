@@ -53,10 +53,10 @@ if(submit_btn){
         let file=document.getElementById("FileInput").files[0];
 
         let formdata= new FormData();
-        //let _token = document.getElementById('commentForm_token').value;
+        let _token = document.getElementById('prozessAvatar').value;
 
         formdata.append("FileInput", file);
-        //formdata.append("_token", _token);
+        formdata.append("_token", _token);
 
         let send_image=new XMLHttpRequest();
         send_image.upload.addEventListener("progress", progressHandler, false);
@@ -105,28 +105,19 @@ if(reset_btn) {
     reset_btn.onclick = function (e) {
         e.preventDefault();
 
-        //let _token = document.getElementById('commentForm_token').value;
+        let _token = document.getElementById('prozessAvatar').value;
 
         document.getElementById('image_preview').setAttribute('src', '/img/noavatar.jpg');
         document.getElementById('FileInput').classList.remove('invisible');
 
-        // xhr2 = new XMLHttpRequest();
-        // xhr2.open('POST', '/image/delete', true);
-        // xhr2.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        // xhr2.onreadystatechange = function () {
-        //     if (xhr2.readyState == 4) {
-        //         if (xhr2.status == 200) {
-        //             var response = JSON.parse(xhr2.responseText);
-        //             output.innerHTML = response.message;
-        //         }
-        //     }
-        // };
-        //  xhr2.send(/*'_token='+_token*/);
+        let formData = new FormData;
+        formData.append('_token', _token);
 
         fetch('/image/delete',
             {
                 method : "POST",
-                //body:
+                credentials: "same-origin",
+                body:formData
 
             })
             .then(responce => responce.json())

@@ -131,7 +131,7 @@ function click_it()
 {
     return "натисніть тут";
 }
-//$click_it= "натисніть тут";
+
 
 //this section is for translation for adjax
 
@@ -205,4 +205,7 @@ function deleted ()
 }
 
 
-?>
+function smthWentWrong()
+{
+    return "Щось пішло не так";
+}
