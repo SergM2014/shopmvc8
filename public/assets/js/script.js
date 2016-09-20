@@ -194,6 +194,32 @@ searchField.addEventListener('keyup', function(){
 });
 
 
+//change the comments order
+document.getElementById('comments_order').addEventListener('change', function(e){
+    let order = e.target.value;
+
+    let id = document.getElementById('productId').value;
+
+    let formData = new FormData;
+    formData.append('order', order);
+    formData.append('id', id);
+
+    let founded_lang =  new LangForAjax().getLanguage();
+    let url =  founded_lang+"/comments/reorder";
+
+
+
+    fetch( url,
+        {
+            method: "POST",
+            body: formData
+        })
+        .then(responce => responce.text())
+        .then(html => document.getElementById('ordered_comments').innerHTML = html)
+
+});
+
+
 
 
 

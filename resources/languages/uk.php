@@ -121,6 +121,7 @@ $product = "Продукт";
 $addYourComment = "Додайте Ваш коментар";
 $addAvatar = "Додати аватар";
 $load = "Завнтажити";
+$commentAdded ="Ващ коментар додано. Його буде опубліковано відразу після модераціі";
 
 
 function has_sub_categories(){

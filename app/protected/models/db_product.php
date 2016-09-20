@@ -43,7 +43,9 @@ class DB_Product extends DataBase
     {
         $id= $_GET['id'] ?? $_POST['id'];
 
-        $sql = "SELECT `avatar`, `name`, `email`, `comment`, `created_at`, `changed`, `published` FROM `comments` WHERE `product_id`= ? AND `published`='1'";
+        $order = (@ $_POST['order'] == 'old_first')? 'ASC': 'DESC';
+
+        $sql = "SELECT `avatar`, `name`, `email`, `comment`, `created_at`, `changed`, `published` FROM `comments` WHERE `product_id`= ? AND `published`='1' ORDER BY `created_at` $order";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(1, $id, \PDO::PARAM_INT);
         $stmt-> execute();

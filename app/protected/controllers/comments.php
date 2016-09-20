@@ -6,7 +6,7 @@ use App\Core\BaseController;
 use App\Models\CheckForm;
 use App\Models\DB_Index;
 use App\Models\DB_Product;
-use Lib\TokenService;
+
 
 
 class Comments  extends BaseController
@@ -19,11 +19,10 @@ class Comments  extends BaseController
      */
     public function reorder()
     {
-        $model = new DB_Index;
-        $result = $model->getResult();
-        $pages = $model->getPublishedPages();
+        $model = new DB_Product();
+        $result = $model->getComments();
 
-        return ['view'=>'customer/partials/comments_list.php','result'=>$result, 'pages'=> $pages, 'ajax'=>true ];
+        return ['view'=>'customer/partials/orderedComments.php','productComments'=>$result, 'ajax'=>true ];
     }
 
     /**

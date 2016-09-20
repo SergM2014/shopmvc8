@@ -119,6 +119,8 @@ $product = "Product";
 $addYourComment = "Add Your Comment";
 $addAvatar = "Add avatar";
 $load = "Load";
+$commentAdded ="You comment is added. It will be published immidiatly after moderation";
+
 
 function has_sub_categories(){
     return "contains additional categories";

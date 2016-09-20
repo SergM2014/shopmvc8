@@ -1,1 +1,1 @@
-<p class = "success">Success</p>
+<p class = "success"><?= $commentAdded ?></p>
