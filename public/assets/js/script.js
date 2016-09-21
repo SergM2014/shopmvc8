@@ -219,6 +219,33 @@ document.getElementById('comments_order').addEventListener('change', function(e)
 
 });
 
+
+//add item into small busket
+document.getElementById('add-item').addEventListener('click', function(){
+   //console.log(121);
+    let founded_lang =  new LangForAjax().getLanguage();
+    let url =  founded_lang+"/busket/add";
+
+    let id= this.dataset.item;
+
+    let price = document.getElementById('the_price').innerText;
+//console.log(price);
+
+    let formData = new FormData;
+    formData.append('id', id);
+    formData.append('price', price);
+
+    fetch( url,
+        {
+            method: "POST",
+             body: formData,
+            credentials:'same-origin'
+        })
+        .then(responce => responce.text())
+        .then(html => document.getElementById('busket-info').innerHTML = html)
+});
+
+
 //show the busket
 document.getElementById('busket-container').addEventListener('click', function () {
 
@@ -243,31 +270,6 @@ document.getElementById('busket-container').addEventListener('click', function (
 
 
 
-});
-
-
-document.getElementById('add-item').addEventListener('click', function(){
-   //console.log(121);
-    let founded_lang =  new LangForAjax().getLanguage();
-    let url =  founded_lang+"/busket/add";
-
-    let id= this.dataset.item;
-
-    let price = document.getElementById('the_price').innerText;
-//console.log(price);
-
-    let formData = new FormData;
-    formData.append('id', id);
-    formData.append('price', price);
-
-    fetch( url,
-        {
-            method: "POST",
-             body: formData,
-            credentials:'same-origin'
-        })
-        .then(responce => responce.text())
-        .then(html => document.getElementById('busket-info').innerHTML = html)
 });
 
 

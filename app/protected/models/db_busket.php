@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Core\DataBase;
+use Lib\CookieService;
 
 
 
@@ -22,8 +23,9 @@ use App\Core\DataBase;
 
      protected function addToSmallBusket(){
 
-        @ $_SESSION['total_amount'] +=1;
+         @ $_SESSION['total_amount'] +=1;
          @ $_SESSION['total_sum'] += $this->price;
+         CookieService::addCookies();
      }
 
      public function add()
