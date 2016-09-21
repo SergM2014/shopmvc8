@@ -37,7 +37,7 @@
         <?php if (isset($productInfo->category_title)) echo '<p> <b>'.  $category .' :</b> '.$productInfo->category_eng_title.'</p><br>'; ?>
         <?php if (isset($productInfo->manufacturer_title)) echo '<p> <b>'.$manufacturer.' :</b> '.$productInfo->manufacturer_title.'</p><br>'; ?>
         <p class="red"><b><?= $price ?>:</b> <span id="the_price"><?php echo $productInfo->price; ?></span> грн</p>
-        <button  id="add_item" data-item="<?php echo $_GET['id']; ?>" class="content__product--add" data-token="">  <?= $buy ?>  </button>
+        <button  id="add-item" data-item="<?php echo $_GET['id']; ?>" class="content__product--add" data-token="">  <?= $buy ?>  </button>
     </article>
 
     <section class="content__product-commentsarea">

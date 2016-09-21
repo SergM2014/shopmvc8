@@ -156,9 +156,10 @@ html, body {
   border: 1px solid #000000; }
 
 .busket__container {
-  width: 100%;
+  /*width:100%;*/
   height: 50px;
-  cursor: pointer; }
+  cursor: pointer;
+  float: right; }
 
 .busket__info {
   min-width: 100px;
@@ -377,7 +378,6 @@ html, body {
 .product-window {
   min-height: 200px;
   width: 80%;
-  border: 3px outset gray;
   background-color: rgba(55, 175, 226, 0.99);
   top: 20%;
   /* отступ сверху */
@@ -417,6 +417,18 @@ html, body {
   padding: 5px;
   margin-bottom: 10px;
   border-bottom: 2px solid red; }
+
+.content__product--add {
+  float: right;
+  cursor: pointer;
+  width: 200px;
+  height: 35px;
+  color: #00ff00;
+  font-size: 20px;
+  border-radius: 5px; }
+
+.content__product--add:hover {
+  color: #e88abc; }
 
 .content__comment-block {
   padding: 5px;
@@ -476,6 +488,24 @@ html, body {
 
 .avatar-delete--succeded {
   color: #00A6C7; }
+
+.busket-window {
+  min-height: 200px;
+  width: 80%;
+  background-color: rgba(226, 216, 201, 0.99);
+  top: 20%;
+  /* отступ сверху */
+  right: 0;
+  left: 0;
+  font-size: 14px;
+  margin: 0 auto;
+  z-index: 1002;
+  /* поверх всех */
+  position: fixed;
+  /* фиксированное позиционирование, окно стабильно при прокрутке */
+  padding: 15px;
+  border: 1px solid #383838;
+  border-radius: 10px; }
 
 /*this is technical classes*/
 .hidden {

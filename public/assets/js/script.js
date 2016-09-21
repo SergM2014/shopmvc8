@@ -219,6 +219,57 @@ document.getElementById('comments_order').addEventListener('change', function(e)
 
 });
 
+//show the busket
+document.getElementById('busket-container').addEventListener('click', function () {
+
+    let darkLayer = document.createElement('div'); // слой затемнения
+    darkLayer.className = 'background-shadow'; // class чтобы подхватить стиль
+    document.body.appendChild(darkLayer); // включаем затемнение
+
+    let busketWindow = document.createElement('section');
+    busketWindow.className = 'busket-window';
+
+    let founded_lang =  new LangForAjax().getLanguage();
+    let url =  founded_lang+"/busket/index";
+
+    fetch(url, {
+        method: "POST",
+
+    })
+        .then(responce => responce.text())
+        .then(html => busketWindow.innerHTML = html);
+
+    document.body.appendChild(busketWindow);
+
+
+
+});
+
+
+document.getElementById('add-item').addEventListener('click', function(){
+   //console.log(121);
+    let founded_lang =  new LangForAjax().getLanguage();
+    let url =  founded_lang+"/busket/add";
+
+    let id= this.dataset.item;
+
+    let price = document.getElementById('the_price').innerText;
+//console.log(price);
+
+    let formData = new FormData;
+    formData.append('id', id);
+    formData.append('price', price);
+
+    fetch( url,
+        {
+            method: "POST",
+             body: formData,
+            credentials:'same-origin'
+        })
+        .then(responce => responce.text())
+        .then(html => document.getElementById('busket-info').innerHTML = html)
+});
+
 
 
 

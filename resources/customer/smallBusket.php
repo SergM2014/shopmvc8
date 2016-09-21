@@ -1,0 +1,2 @@
+<p class="busket__info-item" ><?= $amount ?> : <?php echo (@ $_SESSION['total_amount'])?: '0';  echo ' '.$ukr_currency;?> </p>
+<p class="busket__info-item" ><?= $sum ?> : <?php echo (@ $_SESSION['total_sum'])?: '0';  echo ' '.$ukr_currency ?> </p>
