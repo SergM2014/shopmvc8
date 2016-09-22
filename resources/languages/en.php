@@ -67,7 +67,7 @@ $updated = " updated";
 
 $amount ="Amount";
 $sum = "Sum";
-$ukr_currency = "hrn";
+$ukrCurrency = "hrn";
 
 $about_us="About Us";
 $download="Downloads";
@@ -79,7 +79,7 @@ $categoriesTitles = "Categories";
 $manufacturersTitles = "Manufacturers";
 
 $author = "Author";
-$product_title = "Title of the product";
+$productTitle = "Title of the product";
 $description = "Description";
 $body = "excerpts";
 $price = "Price";
@@ -120,7 +120,9 @@ $addYourComment = "Add Your Comment";
 $addAvatar = "Add avatar";
 $load = "Load";
 $commentAdded ="You comment is added. It will be published immidiatly after moderation";
-
+$closeBusket = "Close Busket";
+$generalPrice = "General Price";
+$busketHeader = "Busket Content";
 
 function has_sub_categories(){
     return "contains additional categories";

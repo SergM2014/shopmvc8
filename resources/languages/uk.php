@@ -70,7 +70,7 @@ $updated = " оновленно";
 
 $amount ="Кількість";
 $sum = "Сума";
-$ukr_currency = "грн";
+$ukrCurrency = "грн";
 
 $about_us="Про нас";
 $download="Скачати";
@@ -82,7 +82,7 @@ $categoriesTitles ="Рубрики";
 $manufacturersTitles = "Виробники";
 
 $author = "Автор";
-$product_title = "Назва продукту";
+$productTitle = "Назва продукту";
 $description = "Опис";
 $body = "Витяг";
 $price = "Ціна";
@@ -122,6 +122,10 @@ $addYourComment = "Додайте Ваш коментар";
 $addAvatar = "Додати аватар";
 $load = "Завнтажити";
 $commentAdded ="Ващ коментар додано. Його буде опубліковано відразу після модераціі";
+$closeBusket = "Закрити корзину";
+$generalPrice = "Загальна ціна";
+$busketHeader = "Зміст Кошика";
+
 
 
 function has_sub_categories(){

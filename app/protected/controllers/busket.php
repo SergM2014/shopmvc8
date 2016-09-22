@@ -4,10 +4,10 @@ namespace App\Controllers;
 
 use App\Core\BaseController;
 use App\Models\DB_Busket;
+use App\Models\DB_Index;
 
 
-
-  class Busket  extends BaseController
+class Busket  extends BaseController
   {
       /**
        * fire off he index action
@@ -16,10 +16,10 @@ use App\Models\DB_Busket;
        */
     public function index()
 	{
-       //$model = new DB_Index();
+        $busketItems =(new DB_Busket())->getBusketInfo();
 
 
-      return ['view'=>'customer/busket.php', 'ajax'=>true ];
+      return ['view'=>'customer/busket.php', 'busketItems' => $busketItems, 'ajax'=>true ];
     }
 
 

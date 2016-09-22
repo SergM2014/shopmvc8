@@ -54,4 +54,16 @@ class DB_Product extends DataBase
         return $result;
     }
 
+    public function getProductForBusket($id)
+    {
+        $sql = "SELECT `id`, `author`, `title`, `description`, `price` FROM `products` WHERE `id` = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(1, $id, \PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetch(/*\PDO::FETCH_ASSOC*/);
+
+        return $result;
+
+    }
+
 }

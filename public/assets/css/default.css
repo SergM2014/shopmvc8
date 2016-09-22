@@ -507,6 +507,26 @@ html, body {
   border: 1px solid #383838;
   border-radius: 10px; }
 
+.busket__close {
+  float: right;
+  cursor: pointer; }
+
+.busket__close-btn {
+  float: right;
+  width: 100px;
+  height: 35px;
+  border-radius: 5px;
+  padding: 3px;
+  color: red;
+  cursor: pointer; }
+
+.busket__header {
+  text-align: center;
+  color: #0f74a8; }
+
+.busket__change-price {
+  width: 25px; }
+
 /*this is technical classes*/
 .hidden {
   display: none; }
