@@ -516,16 +516,49 @@ html, body {
   width: 100px;
   height: 35px;
   border-radius: 5px;
-  padding: 3px;
   color: red;
-  cursor: pointer; }
+  cursor: pointer;
+  margin-right: 10px; }
 
 .busket__header {
   text-align: center;
   color: #0f74a8; }
 
-.busket__change-price {
+.busket__change-amount {
   width: 25px; }
+
+.busket__update-btn {
+  float: right;
+  width: 100px;
+  height: 35px;
+  border-radius: 5px;
+  color: #019c05;
+  cursor: pointer;
+  margin-right: 10px; }
+
+.busket__product-title {
+  color: #a26fa6; }
+
+.busket__product-price {
+  color: #9c3328;
+  font-weight: bold; }
+
+.product__general-price-description {
+  text-align: right;
+  font-weight: bold;
+  font-size: 20px;
+  color: #0000cc; }
+
+.busket__general-price-sum {
+  color: #9c3328;
+  font-weight: bold;
+  font-size: 20px; }
+
+.busket__product-description {
+  font-style: italic; }
+
+.busket__product-amount {
+  text-align: center; }
 
 /*this is technical classes*/
 .hidden {

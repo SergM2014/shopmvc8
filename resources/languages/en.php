@@ -123,6 +123,9 @@ $commentAdded ="You comment is added. It will be published immidiatly after mode
 $closeBusket = "Close Busket";
 $generalPrice = "General Price";
 $busketHeader = "Busket Content";
+$updateBusket = "Update Busket";
+$emptyBusket = "Your busket is empty";
+
 
 function has_sub_categories(){
     return "contains additional categories";

@@ -7,10 +7,16 @@ class CookieService {
 
     public static function addCookies()
     {
-        $cookies = serialize($_SESSION['busket']);
-        setcookie('busket', $cookies, time()+1209600, '/');
-        setcookie('totalAmount', $_SESSION['total_amount'], time()+1209600, '/');
-        setcookie('totalSum', $_SESSION['total_sum'], time()+1209600, '/');
+        $expire_time = time()+1209600;
+        $value = @json_encode($_SESSION['busket']);
+        setcookie('busket', $value, $expire_time, '/');
+        setcookie('totalSum', (int)$_SESSION['total_sum'], $expire_time, '/');
+        setcookie('totalAmount', (int)$_SESSION['total_amount'], $expire_time, '/');
+
+       /* var_dump($_SESSION);
+        echo  "<br>";
+        print_r($_COOKIE);*/
+
     }
 
 
@@ -29,6 +35,13 @@ class CookieService {
             $_SESSION['total_sum'] = $_COOKIE['totalSum'];
         }
 
+
+    }
+
+    public static function updateCookies()
+    {
+        $cookies = serialize($_SESSION['busket']);
+        setcookie('busket', $cookies, time()+1209600, '/');
 
     }
 

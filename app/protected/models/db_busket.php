@@ -36,7 +36,7 @@ use App\Models\DB_Product;
            if(!isset($_SESSION['busket'])){
                $_SESSION['busket'][$this->newId] = 1;
            } else {
-               $_SESSION['busket'][$this->newId] += 1;
+               @$_SESSION['busket'][$this->newId] += 1;
            }
 
        } else {
@@ -61,6 +61,50 @@ use App\Models\DB_Product;
            $items[] = $item;
         }
         return $items;
+     }
+
+
+     protected  function refreshAmountAndSumInBusket()
+     {
+         $amountOfItems = 0;
+         $totalSum = 0;
+         foreach($_SESSION['busket'] as $key => $value){
+            $amountOfItems += $value;
+
+             $sql ="SELECT `price` FROM `products` WHERE `id`=?";
+             $stmt = $this->conn->prepare($sql);
+             $stmt->bindValue(1, $key, \PDO::PARAM_INT);
+             $stmt->execute();
+             $result = $stmt->fetch();
+
+             $currentPrice = $result->price;
+
+             $totalSum += $currentPrice*$value;
+
+         }
+
+         $_SESSION['total_amount'] = $amountOfItems;
+         $_SESSION['total_sum'] = $totalSum;
+     }
+
+     public function refreshBusketSession()
+     {
+ /*var_dump($_POST);
+ echo "<br>";*/
+         $busket = $_POST;
+         foreach ($busket as $key => &$value){
+             $value = abs($value);
+             if($value =="" OR $value == 0) unset($busket[$key]);
+         }
+
+/* var_dump($busket);
+ die();*/
+        $_SESSION['busket'] = $busket;
+         $this->refreshAmountAndSumInBusket();
+
+         CookieService::addCookies();
+
+
      }
 
  }

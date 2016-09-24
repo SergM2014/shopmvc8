@@ -22,11 +22,25 @@ class Busket  extends BaseController
       return ['view'=>'customer/busket.php', 'busketItems' => $busketItems, 'ajax'=>true ];
     }
 
+    public function refreshSmallBusket()
+    {
+        return ['view'=> 'customer/smallBusket.php', 'ajax'=>true ];
+    }
+
 
     public function add()
     {
         (new DB_Busket())->add();
-        return ['view'=> 'customer/smallBusket.php', 'ajax'=>true ];
+        /*return ['view'=> 'customer/smallBusket.php', 'ajax'=>true ];*/
+        return $this->refreshSmallBusket();
+    }
+
+    public function recount()
+    {
+
+        (new DB_Busket())->refreshBusketSession();
+
+        return $this->index();
     }
 
 

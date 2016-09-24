@@ -194,6 +194,37 @@ document.body.addEventListener('click', function(e){
         document.getElementsByClassName('busket-window')[0].remove();
     }
 
+    if(e.target.id == "busket-update-btn"){
+        e.preventDefault();
+
+        let busketOrder = document.getElementById('busketOrder');
+
+        let formData = new FormData(busketOrder);
+
+        let founded_lang = new LangForAjax().getLanguage();
+        let url = founded_lang + "/busket/recount";
+
+        fetch(url,
+            {
+                method: "POST",
+                body: formData,
+                credentials: 'same-origin'
+            })
+            .then(responce => responce.text())
+            .then(html => document.getElementsByClassName('busket-window')[0].innerHTML = html)
+
+
+            .then(()=>{ return fetch( '/busket/refreshSmallBusket', {
+                method:"POST",
+                credentials:"same-origin"
+                }
+
+            ) })
+            .then(responce => responce.text())
+            .then(html => document.getElementById('busket-info').innerHTML = html)
+
+    }
+
 
 });//ends of events hanged on the body
 
