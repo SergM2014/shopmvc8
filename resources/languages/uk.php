@@ -127,7 +127,7 @@ $generalPrice = "Загальна ціна";
 $busketHeader = "Зміст Кошика";
 $updateBusket = "Оновити Кошик";
 $emptyBusket = "Ваш кошик пустий";
-
+$makeOrder = "Зробити замовлення";
 
 
 function has_sub_categories(){

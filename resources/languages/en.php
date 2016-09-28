@@ -125,6 +125,7 @@ $generalPrice = "General Price";
 $busketHeader = "Busket Content";
 $updateBusket = "Update Busket";
 $emptyBusket = "Your busket is empty";
+$makeOrder = "Make Order";
 
 
 function has_sub_categories(){

@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Core\BaseController;
 use App\Models\DB_Busket;
-use App\Models\DB_Index;
+use Lib\TokenService;
 
 
 class Busket  extends BaseController
@@ -22,6 +22,7 @@ class Busket  extends BaseController
       return ['view'=>'customer/busket.php', 'busketItems' => $busketItems, 'ajax'=>true ];
     }
 
+
     public function refreshSmallBusket()
     {
         return ['view'=> 'customer/smallBusket.php', 'ajax'=>true ];
@@ -31,12 +32,14 @@ class Busket  extends BaseController
     public function add()
     {
         (new DB_Busket())->add();
-        /*return ['view'=> 'customer/smallBusket.php', 'ajax'=>true ];*/
+
         return $this->refreshSmallBusket();
     }
 
+
     public function recount()
     {
+        TokenService::check('prozessBusket');
 
         (new DB_Busket())->refreshBusketSession();
 

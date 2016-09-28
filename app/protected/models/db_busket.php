@@ -51,11 +51,11 @@ use App\Models\DB_Product;
 
      public function getBusketInfo()
      {
-
+        if(@ !$_SESSION['busket']) return false;
          $model = new DB_Product();
          $items =[];
 
-        foreach ( $_SESSION['busket'] as $key => $value){
+         foreach ( $_SESSION['busket'] as $key => $value){
            $item = $model->getProductForBusket($key);
            $item->number = $value;
            $items[] = $item;

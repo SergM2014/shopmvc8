@@ -12,11 +12,6 @@ class CookieService {
         setcookie('busket', $value, $expire_time, '/');
         setcookie('totalSum', (int)$_SESSION['total_sum'], $expire_time, '/');
         setcookie('totalAmount', (int)$_SESSION['total_amount'], $expire_time, '/');
-
-       /* var_dump($_SESSION);
-        echo  "<br>";
-        print_r($_COOKIE);*/
-
     }
 
 
@@ -24,7 +19,7 @@ class CookieService {
     {
 
         if(!isset($_SESSION['busket']) && isset($_COOKIE['busket'])){
-            $_SESSION['busket']= unserialize($_COOKIE['busket']);
+            $_SESSION['busket']= json_decode($_COOKIE['busket'], true);
         }
 
         if(!isset($_SESSION['total_amount']) && isset($_COOKIE['totalAmount'])){

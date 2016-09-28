@@ -126,10 +126,10 @@ document.body.addEventListener('click', function(e){
 
     }
 
-    if(e.target.id == "close-preview-product" || e.target.className == "background-shadow") {
+    /*if(e.target.id == "close-preview-product" || e.target.className == "background-shadow") {
         document.getElementsByClassName('background-shadow')[0].remove();
         document.getElementsByClassName('product-window')[0].remove();
-    }
+    }*/
 
 
     //vertical menu slideUp/Down
@@ -177,6 +177,7 @@ document.body.addEventListener('click', function(e){
         let formData = new FormData;
         formData.append('id', id);
         formData.append('price', price);
+//formData.append('ajax', true);
 
         fetch( url,
             {
@@ -191,15 +192,17 @@ document.body.addEventListener('click', function(e){
 
     if(e.target.id == "busket-close" || e.target.id == "busket-close-btn"){
         document.getElementsByClassName('background-shadow')[0].remove();
-        document.getElementsByClassName('busket-window')[0].remove();
+        document.getElementById('busket-window').remove();
     }
 
+    //click update big busket
     if(e.target.id == "busket-update-btn"){
         e.preventDefault();
 
         let busketOrder = document.getElementById('busketOrder');
 
         let formData = new FormData(busketOrder);
+        formData.append('ajax', true);
 
         let founded_lang = new LangForAjax().getLanguage();
         let url = founded_lang + "/busket/recount";
@@ -214,19 +217,61 @@ document.body.addEventListener('click', function(e){
             .then(html => document.getElementsByClassName('busket-window')[0].innerHTML = html)
 
 
-            .then(()=>{ return fetch( '/busket/refreshSmallBusket', {
+            .then(()=> fetch( '/busket/refreshSmallBusket', {
                 method:"POST",
                 credentials:"same-origin"
                 }
 
-            ) })
+            ) )
             .then(responce => responce.text())
             .then(html => document.getElementById('busket-info').innerHTML = html)
 
     }
 
 
+    if(e.target.id == "busket-make-order"){
+        e.preventDefault();
+        document.getElementById('busket-window').className = "busket-window--hidden";
+
+
+        document.getElementById('busket-window').addEventListener('transitionend', function(){
+//console.log('hura das ist end');
+
+// let formData = new FormData;
+// formData.append('ajax', true);
+// formData.append('_token', document.getElementsByName('_token')[0].value);
+
+
+            let orderForm = document.createElement('div');
+            orderForm.className = 'order-form--hidden';
+            orderForm.id = 'order-form';
+            document.body.appendChild(orderForm);
+
+            let founded_lang = new LangForAjax().getLanguage();
+            let url = founded_lang + "/order/showForm";
+
+            fetch(url,
+                {
+                    method: "POST",
+//body: formData,
+                    credentials: 'same-origin'
+                })
+                .then(responce => responce.text())
+                .then(html => document.getElementById('order-form').innerHTML = html)
+                .then(()=> document.getElementById('order-form').className = "order-form")
+
+
+        })
+
+
+    }
+
+
 });//ends of events hanged on the body
+
+
+
+
 
 //toggle search-results field if keyboard events take place in search area
 searchField.addEventListener('keyup', function(){
@@ -297,6 +342,7 @@ document.getElementById('busket-container').addEventListener('click', function (
 
     let busketWindow = document.createElement('section');
     busketWindow.className = 'busket-window';
+    busketWindow.id = "busket-window";
 
     let founded_lang =  new LangForAjax().getLanguage();
     let url =  founded_lang+"/busket/index";

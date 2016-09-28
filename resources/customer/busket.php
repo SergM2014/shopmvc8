@@ -27,11 +27,18 @@
     </tr>
     </table>
 
-    <p>
-        <button type="button" class="busket__close-btn" id="busket-close-btn"><?= $closeBusket ?></button>
+    <div class="busket__footer">
+
+        <input type="hidden" name="_token" value="<?= \Lib\TokenService::printTocken('prozessBusket') ?>">
+
+        <button type="submit" class="busket__make-order" id="busket-make-order"><?= $makeOrder ?></button>
+
         <button type="submit" class="busket__update-btn" id="busket-update-btn"><?= $updateBusket ?></button>
 
-    </p>
+        <button type="button" class="busket__close-btn" id="busket-close-btn"><?= $closeBusket ?></button>
+
+
+    </div>
 </form>
 
 <?php else: ?>
