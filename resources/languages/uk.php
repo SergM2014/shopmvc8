@@ -1,6 +1,5 @@
 <?php
 
-//echo 'YOu are somewhere now()';
 
 $our_brand = "Наш Бренд";
 $main_customer_page = "До користувацької частини";
@@ -75,7 +74,7 @@ $ukrCurrency = "грн";
 $about_us="Про нас";
 $download="Скачати";
 $contacts="Контакти";
-$search="пошук";
+$search= "пошук";
 $catalog = "Каталог";
 
 $categoriesTitles ="Рубрики";
@@ -108,7 +107,7 @@ $tagsMessageRemark = "можна використовувати будь-якы 
 $writeUsMessageError = "Напишiть що небуть";
 $enterYourPhone = "Введіть Ваш Телефон";
 $writeUsPhoneError = "Неправильний формат номера";
-$phoneFormatExample = "Введіть номер у форматі 050-123-45-67";
+$phoneFormatExample = "Введіть телефонний номер у форматі 0XX-123-45-67";
 $changeCaptcha = "Щоб змінити капчу клікніть по ній";
 $enterCaptcha = "Введіть капчу";
 $inputRemark ="Поля позначені * є обовязковими";
@@ -128,7 +127,10 @@ $busketHeader = "Зміст Кошика";
 $updateBusket = "Оновити Кошик";
 $emptyBusket = "Ваш кошик пустий";
 $makeOrder = "Зробити замовлення";
-
+$busketErrorsTitle = "Ви зробили деякі помилки в оформлені заявки";
+$tryOneMoreTime = "Спробуйте ще раз!";
+$youMadeErrorIn = "Ви зробили помилку в полі";
+$phone = "Телефон";
 
 function has_sub_categories(){
     return "має додаткові категорії";

@@ -126,6 +126,10 @@ $busketHeader = "Busket Content";
 $updateBusket = "Update Busket";
 $emptyBusket = "Your busket is empty";
 $makeOrder = "Make Order";
+$busketErrorsTitle = "You have made some mistakes making the order";
+$tryOneMoreTime = "Try one more time";
+$youMadeErrorIn = "You have made error in ";
+$phone = "Phone";
 
 
 function has_sub_categories(){

@@ -47,6 +47,14 @@ class Busket  extends BaseController
     }
 
 
+    public function makeOrder()
+    {
+        $model =  new DB_Busket;
+        $errors = $model->checkIfNotEmpty();
+        if(!empty($errors)){
+            return ['view' => 'customer/makeOrderErrors.php', 'errors' => $errors];
+        }
+    }
 
 	
   }

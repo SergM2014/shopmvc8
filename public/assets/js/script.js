@@ -235,14 +235,8 @@ document.body.addEventListener('click', function(e){
 
 
         document.getElementById('busket-window').addEventListener('transitionend', function(){
-//console.log('hura das ist end');
 
-// let formData = new FormData;
-// formData.append('ajax', true);
-// formData.append('_token', document.getElementsByName('_token')[0].value);
-
-
-            let orderForm = document.createElement('div');
+            let orderForm = document.createElement('section');
             orderForm.className = 'order-form--hidden';
             orderForm.id = 'order-form';
             document.body.appendChild(orderForm);
@@ -260,12 +254,19 @@ document.body.addEventListener('click', function(e){
                 .then(html => document.getElementById('order-form').innerHTML = html)
                 .then(()=> document.getElementById('order-form').className = "order-form")
 
-
         })
 
 
     }
 
+
+    /*if(e.target.id == "final-order-form__submit-btn"){
+
+
+        document.getElementById("final-order-form__submit-btn").addEventListener('click', function(e){
+            e.preventDefault(); console.log(111); alert ('222');
+        })
+    }*/
 
 });//ends of events hanged on the body
 

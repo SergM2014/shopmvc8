@@ -4,12 +4,16 @@ namespace App\Models;
 
 use App\Core\DataBase;
 use Lib\CookieService;
-use App\Models\DB_Product;
+use Lib\CheckFieldsService;
+use Lib\HelperService;
+use function \empty_field;
 
 
 
  class DB_Busket extends DataBase
  {
+     use CheckFieldsService;
+
      protected $newId;
 
      protected $newPrice;
@@ -89,22 +93,39 @@ use App\Models\DB_Product;
 
      public function refreshBusketSession()
      {
- /*var_dump($_POST);
- echo "<br>";*/
+
          $busket = $_POST;
          foreach ($busket as $key => &$value){
              $value = abs($value);
              if($value =="" OR $value == 0) unset($busket[$key]);
          }
 
-/* var_dump($busket);
- die();*/
         $_SESSION['busket'] = $busket;
          $this->refreshAmountAndSumInBusket();
 
          CookieService::addCookies();
 
 
+     }
+
+
+     public function checkIfNotEmpty()
+     {
+         $data= HelperService::cleanInput($_POST);
+         $error=[];
+         if(empty($data['name'])) $error['name']= empty_field();
+         if(empty($data['phone'])) $error['phone']= empty_field();
+
+         return $error;
+     }
+
+
+     public function makeOrder()
+     {
+        $error = $this->checkIfNotEmpty();
+         if(!empty($error)){
+             return ['view' => ''];
+         }
      }
 
  }
