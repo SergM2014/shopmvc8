@@ -16,7 +16,7 @@
         <ul class="left-catalog-menu">
             <?php foreach($manufacturersList as $manuf): ?>
 
-                <li><a href="/catalog?manufacturer=<?= $manuf->translitedInEngTitle ?>" class="left-catalog-menu__link"><?= $manuf->originTitle ?></a></li>
+                <li><a href="/catalog?manufacturer=<?= $manuf->eng_translit_title ?>" class="left-catalog-menu__link"><?= $manuf->title ?></a></li>
 
             <?php endforeach; ?>
         </ul>
@@ -71,14 +71,14 @@
             <div class="content-zone__item-output">
 
                 <img src="/uploads/" alt="" onerror="this.style.display='none'">
-                <h3><span class="content-zone__item-output-title"><?= $product_title ?> : </span> <?=$item->product_title ?></h3>
+                <h3><span class="content-zone__item-output-title"><?= $productTitle ?> : </span> <?=$item->product_title ?></h3>
                 <h4><span class="content-zone__item-output-title"><?= $author ?> : </span><?= $item->author ?></h4>
                 <p><span class="content-zone__item-output-title"><?= $description ?> : </span><?= $item->description ?></p>
                 <p><span class="content-zone__item-output-title"><?= $body ?> : </span><?= $item->body ?></p>
-                <p><span class="content-zone__item-output-title"><?= $price ?> : </span><?= $item->price .' '.$ukr_currency?></p>
+                <p><span class="content-zone__item-output-title"><?= $price ?> : </span><?= $item->price .' '.$ukrCurrency?></p>
                 <p><span class="content-zone__item-output-title"><?= $category ?> : </span><?= $item->category_title ?></p>
                 <p><span class="content-zone__item-output-title"><?= $manufacturer ?> : <?= $item->manufacturer_title ?></span></p>
-                <p><button class="content-zone__display-btn"><?= $displayItem ?></button></p>
+                <p><a href="/product/show?id=<?= $item->product_id ?>" class="content-zone__display-btn"><?= $displayItem ?></a></p>
 
             </div>
 

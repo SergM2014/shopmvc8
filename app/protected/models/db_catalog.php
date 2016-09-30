@@ -56,10 +56,9 @@ class DB_Catalog extends DataBase
 
         $sql="SELECT `p`.`id` AS product_id , `p`.`author`, `p`.`title` as product_title , `p`.`description`, `p`.`body`,
               `p`.`price`, `p`.`cat_id` AS `product_cat_id`, `p`.`manf_id`, `p`.`images`, `c`.`id` AS `category_id`, `c`.`title` AS category_title , 
-              `c`.`eng_translit_title`, `c`.`parent_id`, `m`.`id` as manufacturer_id , `m`.`originTitle` AS manufacturer_title
+              `c`.`eng_translit_title`, `c`.`parent_id`, `m`.`id` as manufacturer_id , `m`.`title` AS manufacturer_title
                FROM `products` `p` LEFT JOIN `categories` `c` ON `p`.`cat_id` = `c`.`id` LEFT JOIN `manufacturers` `m` 
-               ON `p`.`manf_id` = `m`.`id` ".$this->category.$this->manufacturer.$this->order."
-               LIMIT ?, ".$this->amount;
+               ON `p`.`manf_id` = `m`.`id` ".$this->category.$this->manufacturer.$this->order." LIMIT ?, ".$this->amount;
 
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(1, $page, \PDO::PARAM_INT);
@@ -108,7 +107,7 @@ class DB_Catalog extends DataBase
     }
 
     public function getManufacturers(){
-        $sql ="SELECT `id`, `translitedInEngTitle`, `originTitle` FROM `manufacturers`";
+        $sql ="SELECT `id`, `eng_translit_title`, `title` FROM `manufacturers`";
         $res= $this->conn->query($sql);
         $manufacturers= $res->fetchAll();
         return $manufacturers;
