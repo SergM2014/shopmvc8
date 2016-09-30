@@ -3,9 +3,10 @@
 namespace App\Models;
 
 use App\Core\DataBase;
-use Lib\CookieService;
 use Lib\CheckFieldsService;
 use Lib\HelperService;
+use Lib\CookieService;
+
 use function \empty_field;
 
 
@@ -120,12 +121,34 @@ use function \empty_field;
      }
 
 
-     public function makeOrder()
+     public function addOrder()
      {
-        $error = $this->checkIfNotEmpty();
-         if(!empty($error)){
-             return ['view' => ''];
-         }
+         $data = HelperService::cleanInput($_POST , 'message');
+         $message = $this->stripTags($_POST['message']);
+
+         $products = @ json_encode($_SESSION['busket']);
+ //защита против повтоного обновления makeorder
+         if(!isset($_SESSION['busket'])) { return;}
+
+         $sql = "INSERT INTO `orders` (`name`, `email`, `phone`, `message`, `products`) VALUES (?, ?, ?, ?, ?)";
+         $stmt = $this->conn ->prepare($sql);
+         $stmt -> bindValue(1, $data['name'], \PDO::PARAM_STR);
+         $stmt -> bindValue(2, $data['email'], \PDO::PARAM_STR);
+         $stmt -> bindValue(3, $data['phone'], \PDO::PARAM_STR);
+         $stmt -> bindValue(4, $message, \PDO::PARAM_STR);
+         $stmt -> bindValue(5, $products, \PDO::PARAM_STR);
+         $stmt -> execute();
+
+         $currentId = $this->conn ->LastInsertId();
+
+         unset ($_SESSION['busket']);
+         unset ($_SESSION['total_amount']);
+         unset ($_SESSION['total_sum']);
+
+         CookieService::deleteBusketCookies();
+
+         HelperService::toMail($message, 'order#'.$currentId , $data['name'], $data['phone']);
+
      }
 
  }

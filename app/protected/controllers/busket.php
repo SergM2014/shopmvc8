@@ -49,11 +49,15 @@ class Busket  extends BaseController
 
     public function makeOrder()
     {
+        TokenService::check('prozessBusket');
         $model =  new DB_Busket;
         $errors = $model->checkIfNotEmpty();
         if(!empty($errors)){
             return ['view' => 'customer/makeOrderErrors.php', 'errors' => $errors];
         }
+
+        $model-> addOrder();
+        return ['view' => 'customer/succeededOrder.php'];
     }
 
 	

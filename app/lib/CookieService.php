@@ -33,11 +33,11 @@ class CookieService {
 
     }
 
-    public static function updateCookies()
+    public static function deleteBusketCookies()
     {
-        $cookies = serialize($_SESSION['busket']);
-        setcookie('busket', $cookies, time()+1209600, '/');
-
+        setcookie('busket', NULL, -1, '/');
+        setcookie('totalSum', NULL, -1, '/');
+        setcookie('totalAmount', NULL, -1, '/');
     }
 
 }
