@@ -15,7 +15,7 @@
     </head>
     <body>
 
-        <?php  include PATH_SITE.'/resources/admin/partials/message_area.php'  ?>
+       <!-- --><?php /* include PATH_SITE.'/resources/admin/partials/message_area.php'  */?>
 
 
     <div class="container">
@@ -26,7 +26,7 @@
 
         <header class="main-header ">
 
-            <h1 class="main-header__h1"><?= $this_is_admin_part ?></h1>
+            <h1 class="main-header__title--h1"><?= $this_is_admin_part ?></h1>
 
 
             <nav class="main-header__nav ">
@@ -43,21 +43,39 @@
 
                      <li class="main-header__menu-item"><a href="/<?= \Lib\HelperService::currentLang() ?>" class="main-header__menu-item-link"><?= $main_customer_page ?></a></li>
 
-                     <li class="main-header__menu-item"><a href="/<?= \Lib\HelperService::currentLang() ?>admin" class="main-header__menu-item-link"><?= $main_page ?></a></li>
+                     <li class="main-header__menu-item"><a href="/<?= \Lib\HelperService::currentLang() ?>adminProducts" class="main-header__menu-item-link"><?= $editProducts ?></a></li>
 
                      <li class="main-header__menu-item"><a href="/<?= \Lib\HelperService::currentLang() ?>admincomments" class="main-header__menu-item-link"><?= $comments ?></a></li>
 
-                </ul>
-                 <a class="main-header__admin" href="/<?= \Lib\HelperService::currentLang() ?>admin/out" ><?= $exit ?></a>
+                     <li class="main-header__admin"> <a href="/<?= \Lib\HelperService::currentLang() ?>admin/leave" ><?= $exit ?></a></li>
 
-                <?php $langs = \Lib\HelperService::prozessLangArray(); ?>
+                     <li class="main-header__language-select">
+
+                         <?php $langs = \Lib\HelperService::prozessLangArray(); ?>
+
+                         <select name="language"  onchange="window.location.href=this.options[this.selectedIndex].value" >
+                             <option selected disabled>Language/Мова</option>
+                             <?php foreach ($langs as $key => $value): ?>
+
+                                 <option VALUE="/<?= \Lib\HelperService::overrideLangInUrl($key) ?>"><?= $value ?></option>
+
+                             <?php endforeach; ?>
+                         </select>
+
+                     </li>
+
+                </ul>
+
+                <?php /*$langs = \Lib\HelperService::prozessLangArray(); */?><!--
+
                 <select name="language" class="main-header__language-select" onchange="window.location.href=this.options[this.selectedIndex].value" >
                     <option selected disabled>Language/Мова</option>
-                    <?php foreach ($langs as $key => $value): ?>
+                    <?php /*foreach ($langs as $key => $value): */?>
 
-                        <option VALUE="/<?= \Lib\HelperService::overrideLang($key) ?>"><?= $value ?></option>
-                    <?php endforeach; ?>
-                </select>
+                        <option VALUE="/<?/*= \Lib\HelperService::overrideLangInUrl($key) */?>"><?/*= $value */?></option>
+
+                    <?php /*endforeach; */?>
+                </select>-->
              </nav>
 
 
@@ -68,4 +86,4 @@
        <section class="content">
 
          <!--Here include translation block for ajax-->
-           <?php include_once ('/admin/partials/translation_for_ajax.php');?>
+           <?php /*include_once ('/admin/partials/translation_for_ajax.php');*/?>

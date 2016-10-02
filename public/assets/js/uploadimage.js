@@ -5,40 +5,6 @@ let progress=document.getElementById('progress-bar'),
 
 
 
-class LangForImageProzess{
-    constructor ()
-    {
-        //get the Array of languages
-        let langsArray = [];
-        for(let i=0; i<arrayLangsList.length; i++){
-            let langItem = arrayLangsList[i].split('=>');
-            langsArray.push(langItem[0].trim());
-        }
-
-
-        this.url_lang ='';
-        // this.needed_lang;
-        this.langs_array = langsArray;
-
-        this.default_lang = defaultLang;
-
-        this.url = document.location.href;
-        this.url_array = this.url.split('/');
-    }
-
-    getLanguage(){
-        for(let i=0; i< this.langs_array.length; i++){
-            let match = this.url_array.indexOf(this.langs_array[i]);
-            if (match>=0) { this.needed_lang = this.langs_array[i];  break; }
-        }
-
-        if(typeof this.needed_lang != "undefined" &&
-            (typeof this.needed_lang != "undefined" && this.needed_lang != this.default_lang))  { this.url_lang = '/'+this.needed_lang; }
-
-        return this.url_lang;
-    }
-}
-
 // this background is for imageupload
 
 function progressHandler(event){
@@ -123,7 +89,7 @@ if(submit_btn){
         formdata.append("FileInput", file);
         formdata.append("_token", _token);
 
-        let founded_lang =  new LangForImageProzess().getLanguage();
+        let founded_lang =  new LangForAjax().getLanguage();
         let url =  founded_lang+"/image/upload";
 
         let send_image=new XMLHttpRequest();
@@ -150,7 +116,7 @@ if(reset_btn) {
         document.getElementById('image_preview').setAttribute('src', '/img/noavatar.jpg');
         document.getElementById('FileInput').classList.remove('invisible');
 
-        let founded_lang =  new LangForImageProzess().getLanguage();
+        let founded_lang =  new LangForAjax().getLanguage();
         let url =  founded_lang+"/image/delete";
 
         let formData = new FormData;

@@ -132,6 +132,11 @@ $tryOneMoreTime = "Спробуйте ще раз!";
 $youMadeErrorIn = "Ви зробили помилку в полі";
 $phone = "Телефон";
 
+
+$youAreInAdminNow = "Ви знаходитеся наразі в адміністративній зоні";
+$editProducts = "Редагувати продукти";
+
+
 function has_sub_categories(){
     return "має додаткові категорії";
 }

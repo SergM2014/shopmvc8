@@ -131,6 +131,9 @@ $tryOneMoreTime = "Try one more time";
 $youMadeErrorIn = "You have made error in ";
 $phone = "Phone";
 
+$youAreInAdminNow = "You are in Admin zone now";
+$editProducts = "Edit Products";
+
 
 function has_sub_categories(){
     return "contains additional categories";

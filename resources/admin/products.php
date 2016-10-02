@@ -1,4 +1,4 @@
-<script src="/lib/ckeditor/ckeditor/ckeditor.js"></script>
+
 
 
 <h2 class="content__h2-heading"><?= $prozess_your_comment ?></h2>
@@ -15,6 +15,6 @@
 
 <div id="insert-comments">
 
-    <?php include PATH_SITE.'/resources/admin/partials/comments_list.php'; ?>
+   <!-- --><?php /*include PATH_SITE.'/resources/admin/partials/productsList.php'; */?>
 
 </div>

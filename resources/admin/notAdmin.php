@@ -1,20 +1,19 @@
 <?php
 
-if(!isset($_SESSION['admin'])):
-    ?>
+if(!isset($_SESSION['admin'])): ?>
 
     <style type="text/css">
-        .login_form {width:400px;   margin:0 auto; padding:10px; border:1px solid #000000 }
+        .login_form {width:400px;   margin:100px auto; padding:10px; border:1px solid #000000 }
     </style>
 
-    <a href="/"><?= $back_to_site ?></a>
+    <a href="/<?= \Lib\HelperService::currentLang() ?>"><?= $back_to_site ?></a>
     <div class="login_form">
         <h3><?= $admin_entry_title ?></h3>
-        <!--<div id="login">-->
+
 
 
                 <form  method="POST" action="/<?= \Lib\HelperService::currentLang() ?>admin">
-                    <input type="hidden" name="_token" value="<?php \Lib\TokenService::printTocken('enter_admin') ?>">
+                    <input type="hidden" name="_token" value="<?php \Lib\TokenService::printTocken('enterAdmin') ?>">
                     <p><label for="login"><?= $login_title ?></label><br>
                         <input   name="login" id="login" type="text"  maxlength="25"> </p>
                     <p><label for="password"><?= $password_title ?></label><br>
@@ -28,9 +27,9 @@ if(!isset($_SESSION['admin'])):
 
 
         </div><!--login
-    </div><!--login_form
 
 
-    </div><!--frame-->
+
+
 <?php endif; ?>
 

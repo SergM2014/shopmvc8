@@ -25,3 +25,33 @@ html, body {
 .container {
   max-width: 1200px;
   margin: 0 auto; }
+
+.main-header__title--h1 {
+  text-align: center;
+  margin: 20px; }
+
+.main-header__menu-item {
+  display: inline-block;
+  list-style-type: none;
+  margin-right: 5px; }
+
+.main-header__admin {
+  float: right;
+  display: inline-block;
+  list-style-type: none; }
+
+.main-header__menu {
+  width: 100%;
+  margin-bottom: 20px; }
+
+.admin-zone--greeting {
+  text-align: center;
+  color: red; }
+
+.main-header__language-select {
+  float: right;
+  display: inline-block;
+  list-style-type: none;
+  margin-right: 10px; }
+
+/*# sourceMappingURL=admin.css.map */

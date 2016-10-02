@@ -12,21 +12,21 @@ class Admin  extends BaseController
 
     public function index()
     {
-        TokenService::checkAdmin('enter_admin');
+        TokenService::checkAdmin('enterAdmin');
+
         (new AdminModel)->getAdminUser();
 
-
       if(!isset($_SESSION['admin'])){
-          return ['view'=>'admin/not_admin.php'];
+          return ['view'=>'admin/notAdmin.php'];
       }
-        return ['view'=>'admin/enter_admin.php'];
+        return ['view'=>'admin/admin.php'];
 
     }
 
-    public function out()
+    public function leave()
     {
         unset($_SESSION['admin']);
-        return ['view'=>'admin/not_admin.php'];
+        return ['view'=>'admin/notAdmin.php'];
     }
 
 }

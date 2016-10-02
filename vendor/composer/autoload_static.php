@@ -31,6 +31,7 @@ class ComposerStaticInit14fc953014b49481d3c9d0477a55e3f8
     public static $classMap = array (
         'App\\Controllers\\Aboutus' => __DIR__ . '/../..' . '/app/protected/controllers/aboutUs.php',
         'App\\Controllers\\Admin' => __DIR__ . '/../..' . '/app/protected/controllers/admin.php',
+        'App\\Controllers\\AdminProducts' => __DIR__ . '/../..' . '/app/protected/controllers/adminProducts.php',
         'App\\Controllers\\Admincomments' => __DIR__ . '/../..' . '/app/protected/controllers/admincomments.php',
         'App\\Controllers\\Busket' => __DIR__ . '/../..' . '/app/protected/controllers/busket.php',
         'App\\Controllers\\Catalog' => __DIR__ . '/../..' . '/app/protected/controllers/catalog.php',

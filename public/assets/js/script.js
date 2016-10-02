@@ -17,9 +17,10 @@ function validateEmail(email) {
 
 function validatePhone(phone){
    let regexp = /\d{3}-\d{3}-\d{2}-\d{2}/;
-    if (regexp.test(phone))  return true;
+    //if (regexp.test(phone))  return true;
+    return (regexp.test(phone));
 
-    return false;
+   // return false;
 }
 
 class LangForAjax{
@@ -27,7 +28,7 @@ class LangForAjax{
     {
         //get the Array of languages
         let langsArray = [];
-        for(let i=0; i<arrayLangsList.length; i++){
+        for(let i=0; i < arrayLangsList.length; i++){
             let langItem = arrayLangsList[i].split('=>');
             langsArray.push(langItem[0].trim());
         }
