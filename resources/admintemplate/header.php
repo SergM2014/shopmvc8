@@ -55,27 +55,17 @@
 
                          <select name="language"  onchange="window.location.href=this.options[this.selectedIndex].value" >
                              <option selected disabled>Language/Мова</option>
+
                              <?php foreach ($langs as $key => $value): ?>
-
                                  <option VALUE="/<?= \Lib\HelperService::overrideLangInUrl($key) ?>"><?= $value ?></option>
-
                              <?php endforeach; ?>
+
                          </select>
 
                      </li>
 
                 </ul>
 
-                <?php /*$langs = \Lib\HelperService::prozessLangArray(); */?><!--
-
-                <select name="language" class="main-header__language-select" onchange="window.location.href=this.options[this.selectedIndex].value" >
-                    <option selected disabled>Language/Мова</option>
-                    <?php /*foreach ($langs as $key => $value): */?>
-
-                        <option VALUE="/<?/*= \Lib\HelperService::overrideLangInUrl($key) */?>"><?/*= $value */?></option>
-
-                    <?php /*endforeach; */?>
-                </select>-->
              </nav>
 
 
@@ -85,5 +75,4 @@
 
        <section class="content">
 
-         <!--Here include translation block for ajax-->
-           <?php /*include_once ('/admin/partials/translation_for_ajax.php');*/?>
+

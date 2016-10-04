@@ -8,8 +8,8 @@ $admin_zone = "Admin zone";
 
 $oldFirst = "Old first";
 $newFirst = "New first";
-$mail_order = "Email order";
-$name_order = "Name order";
+$mailOrder = "Email order";
+$nameOrder = "Name order";
 $add_comment = "Add comment";
 $comments = "Comments";
 
@@ -51,14 +51,10 @@ $hide_btn = "Hide";
 $update_btn = "Update";
 $delete_btn = "Delete";
 
-$you_should_choose_only_one_comment = "Choose only one comment";
-$you_should_choose_any_comment = "Choose any comment";
+
 $delete = "Delete";
 $abort = "Abort";
-$nothing_to_publish = "Nothing to publish";
-$nothing_to_unpublish = "noting to unpublish";
-$nothing_to_delete = "nothing to delete";
-$do_you_really_want_to_delete = "do you realy want to delete";
+
 $comments = "Comments";
 $is = "is";
 $are = "are";
@@ -77,6 +73,7 @@ $catalog = "Catalog";
 
 $categoriesTitles = "Categories";
 $manufacturersTitles = "Manufacturers";
+$manufacturerTitle = "Manufacturer";
 
 $author = "Author";
 $productTitle = "Title of the product";
@@ -133,6 +130,9 @@ $phone = "Phone";
 
 $youAreInAdminNow = "You are in Admin zone now";
 $editProducts = "Edit Products";
+$prozessYourProducts = "Prozess Your Products";
+$images = "Images";
+$number = "Number";
 
 
 function has_sub_categories(){

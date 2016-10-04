@@ -3,18 +3,21 @@
 namespace App\Controllers;
 
 use App\Core\AdminController;
-use App\Models\AdminModel;
-use App\Models\DB_Index;
-use Lib\TokenService;
-use App\Models\CheckForm;
+use App\Models\Categories;
+use App\Models\DB_Catalog;
+
 
 class AdminProducts extends AdminController {
 
     public function index()
     {
-        //die('111');
+        $categories = (new Categories)->getDropDownMenu();
+        $catalog = new DB_Catalog(true);
+        $manufacturers = $catalog->getManufacturers();
+        $products = $catalog->getCatalog();
+        $pages = $catalog->countPages();
 
-        return ['view'=> 'admin/products.php',  /*'loop_counter'=>$loop_counter*/];
+        return ['view'=> 'admin/products.php', 'categories' => $categories, 'manufacturers'=>$manufacturers, 'products' =>$products, 'pages'=>$pages /*'loop_counter'=>$loop_counter*/];
     }
 
     public function paginate()

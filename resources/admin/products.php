@@ -1,20 +1,32 @@
 
 
 
-<h2 class="content__h2-heading"><?= $prozess_your_comment ?></h2>
+<h2 class="admin__h2-title"><?= $prozessYourProducts ?></h2>
 
 <div  class="select-order__container">
     <select  name="order">
-        <option  value="old_first"><?= $old_first ?></option>
-        <option  value="new_first"><?= $new_first ?></option>
-        <option value="email"><?= $mail_order ?></option>
-        <option value="name"><?= $name_order ?></option>
+        <option  value="old_first"><?= $oldFirst ?></option>
+        <option  value="new_first"><?= $newFirst ?></option>
+        <option value="email"><?= $mailOrder ?></option>
+        <option value="name"><?= $nameOrder ?></option>
     </select>
-    <button id="reorder" class="select-order__button">OK<button>
+
+
+    <?= $categories  ?>
+
+    <select name="manufacturers" class="manufacturers-drop-down-menu">
+        <option></option>
+        <?php foreach ($manufacturers as $manufacturer): ?>
+            <option value ="<?= $manufacturer->eng_translit_title ?>"><?= $manufacturer->title ?></option>
+
+        <?php endforeach; ?>
+    </select>
+
+    <button type="button" id="reorder" class="select-order__button">OK<button>
 </div>
 
-<div id="insert-comments">
+<div id="insert-products" class="admin-products-list-container">
 
-   <!-- --><?php /*include PATH_SITE.'/resources/admin/partials/productsList.php'; */?>
+    <?php include PATH_SITE.'/resources/admin/partials/productsList.php'; ?>
 
 </div>

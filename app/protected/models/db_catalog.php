@@ -15,10 +15,12 @@ class DB_Catalog extends DataBase
     private $category;
     private $manufacturer;
 
-    public function __construct($in_admin=false)
+    public function __construct($inAdmin = false)
     {
-        $this->amount = ($in_admin)? AMOUNTONPAGEADMIN: AMOUNTONPAGE;
-        $this->page = (isset($_GET['p']))? $_GET['p']: 1;
+
+        $this->amount = ($inAdmin)? AMOUNTONPAGEADMIN: AMOUNTONPAGE;
+
+        $this->page = $_GET['p']?? $_POST['p']?? 1;
         $this->category='';
         $this->manufacturer='';
 
@@ -32,8 +34,12 @@ class DB_Catalog extends DataBase
         $this->order='';
 
 
-        if(isset($_GET['order'])) {
-            switch($_GET['order']){
+        $order= $_GET['order']?? $_POST['order']?? null;
+        $category = $_GET['category']?? $_POST['category']?? null;
+        $manufacturer= $_GET['manufacturer']?? $_POST['manufacturer']?? null;
+
+        if(isset($order)) {
+            switch($order){
                 case 'abc': $this->order=' ORDER BY `p`.`title` ASC'; break;
                 case 'cba': $this->order=' ORDER BY `p`.`title` DESC'; break;
                 case 'cheap_first': $this->order=' ORDER BY `p`.`price` ASC'; break;
@@ -42,16 +48,18 @@ class DB_Catalog extends DataBase
             }
         }
 
-        if(isset($_GET['category'])){
-            $this->category = $this->conn->quote($_GET['category']);
-            $this->category = "WHERE `c`.`title`=".$this->category." ";
+        if(isset($category)){
+            $this->category = $this->conn->quote($category);
+
+            $this->category = "WHERE `c`.`eng_translit_title`=".$this->category." ";
             $conjunction =" AND";
         }
 
-        if(isset($_GET['manufacturer'])){
+        if(isset($manufacturer)){
             if(!isset($conjunction)) { $conjunction = " WHERE ";} else {$conjunction = " AND "; }
-            $name= $this->conn->quote($_GET['manufacturer']);
-            $this->manufacturer = $conjunction."`m`.`title`=".$name." ";
+            $name= $this->conn->quote($manufacturer);
+
+            $this->manufacturer = $conjunction."`m`.`eng_translit_title`=".$name." ";
         }
 
         $sql="SELECT `p`.`id` AS product_id , `p`.`author`, `p`.`title` as product_title , `p`.`description`, `p`.`body`,
@@ -83,15 +91,18 @@ class DB_Catalog extends DataBase
     public function countPages()
     {
 
-        if(isset($_GET['category'])){
-            $this->category = $this->conn->quote($_GET['category']);
+        $category = $_GET['category']?? $_POST['category']?? null;
+        $manufacturer= $_GET['manufacturer']?? $_POST['manufacturer']?? null;
+
+        if(isset($category)){
+            $this->category = $this->conn->quote($category);
             $this->category = "WHERE `c`.`title`=".$this->category." ";
             $conjunction =" AND";
         }
 
-        if(isset($_GET['manufacturer'])){
+        if(isset($manufacturer)){
             if(!isset($conjunction)) { $conjunction = " WHERE ";} else {$conjunction = " AND "; }
-            $name= $this->conn->quote($_GET['manufacturer']);
+            $name= $this->conn->quote($manufacturer);
             $this->manufacturer = $conjunction."`m`.`title`=".$name." ";
         }
 
@@ -99,7 +110,7 @@ class DB_Catalog extends DataBase
               `categories` `c` ON `p`.`cat_id` = `c`.`id` LEFT JOIN `manufacturers` `m` ON `p`.`id` = `m`.`id` ".$this->category.$this->manufacturer;
         $res= $this->conn->query($sql);
         $res= $res->fetch();
-   // var_dump($res);
+   
         $pages= ceil($res->number/$this->amount);
 
         return $pages;

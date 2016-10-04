@@ -32,6 +32,8 @@ class Categories extends DataBase
         return $leftMenu;
     }
 
+
+//для выпадающего меню
     private function printOutLeftMenu($parent = 0)
     {
         static $suffix = 1;
@@ -79,7 +81,7 @@ class Categories extends DataBase
         foreach($this->categories as $category){
             if($category->parent_id ==$parent ){
 
-                $print.='<li  class="left-catalog-menu__item"><a href="'.URL.'catalog?category='. $category->title .'" class="left-catalog-menu__link">'.$category->eng_translit_title.'</a>' ;
+                $print.='<li  class="left-catalog-menu__item"><a href="'.URL.'catalog?category='. $category->eng_translit_title .'" class="left-catalog-menu__link">'.$category->title.'</a>' ;
                 foreach($this->categories as $sub_cat){
                     if($sub_cat->parent_id == $category->id){
                         $flag = TRUE; break;
@@ -97,6 +99,50 @@ class Categories extends DataBase
             }
         }
         return $print;
+    }
+
+
+
+
+
+
+
+// dropdown categories menu in admin part
+    protected function printOutDropDownMenu( $parent=0)
+    {
+        static $suffix = 1;
+        if(!isset($print)){$print='';}
+        foreach($this->categories as $category){
+            if($category->parent_id ==$parent ){
+
+                $print.="<option class='drop-down-menu-item  nested-$suffix' value='$category->eng_translit_title' >$category->title</option>" ;
+                foreach($this->categories as $sub_cat){
+                    if($sub_cat->parent_id == $category->id){
+                        $flag = TRUE; break;
+                    }
+                }
+
+                if(isset($flag)){
+                    $suffix++;
+                    $print.= $this->printOutDropDownMenu( $category->id);
+                    $print.= "</option>";
+                    $suffix--;
+                } else{
+                    $print.="</option>";
+                }
+            }
+        }
+        return $print;
+    }
+
+    public function getDropDownMenu()
+    {
+        $dropDownMenu ="<select class='categories-drop-down-menu'>";
+        $dropDownMenu.="<option></option>";
+        $dropDownMenu.= $this->printOutDropDownMenu();
+        $dropDownMenu.= "</select>";
+
+        return $dropDownMenu;
     }
 
 

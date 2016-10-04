@@ -10,8 +10,8 @@ $admin_zone = "Адмiн зона";
 
 $oldFirst = "Спочатку старі";
 $newFirst = "Спочатку нові";
-$mail_order = "По почті";
-$name_order = "По імені";
+$mailOrder = "По почті";
+$nameOrder = "По імені";
 $add_comment = "Додати коментар";
 $comments = "Коментарі";
 
@@ -53,14 +53,7 @@ $hide_btn = "Сховати";
 $update_btn = "Оновити";
 $delete_btn = "Видалити";
 
-$you_should_choose_only_one_comment = "Вибрати лише один комментарій";
-$you_should_choose_any_comment = "Виберіть якийсь коментарій";
-$delete = "Видалити";
-$abort = "Відмінити";
-$nothing_to_publish = "Немає данних для публікації";
-$nothing_to_unpublish = "Немає данних для непублікації";
-$nothing_to_delete = "Немає данних для видалення";
-$do_you_really_want_to_delete = "Ви справді хочете видалення";
+
 $comments = "Коментарії";
 $is = "";
 $are = "";
@@ -79,13 +72,14 @@ $catalog = "Каталог";
 
 $categoriesTitles ="Рубрики";
 $manufacturersTitles = "Виробники";
+$manufacturerTitle = "Виробник";
 
 $author = "Автор";
 $productTitle = "Назва продукту";
 $description = "Опис";
 $body = "Витяг";
 $price = "Ціна";
-$category = "Категория";
+$category = "Категорія";
 $manufacturer = "Виробник";
 
 $displayItem="Показати товар";
@@ -135,6 +129,9 @@ $phone = "Телефон";
 
 $youAreInAdminNow = "Ви знаходитеся наразі в адміністративній зоні";
 $editProducts = "Редагувати продукти";
+$prozessYourProducts = "Обробка Продуктів";
+$images = "Зоображення";
+$number = "Номер";
 
 
 function has_sub_categories(){

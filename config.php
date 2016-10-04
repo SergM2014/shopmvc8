@@ -15,12 +15,12 @@
     define('HOST', 'localhost'); //сервер
     define('USER', 'root'); //пользователь
     define('PASSWORD', '1'); //пароль
-    //define('NAME_BD', 'database/database.sqlite');
+
     define('NAME_BD', 'shopmvc8');
     define('DEBUG_MODE', true ); //режим отладки
 
 	define('UPLOAD_FILE','/public/uploads/');
-   // define('UPLOAD_FILE','/uploads/');
+
 	define('LINKCOUNT',5);
 	define('ADMINEMAIL', 'weisse@ukr.net');
     define('DEFAULT_LANG', 'uk');

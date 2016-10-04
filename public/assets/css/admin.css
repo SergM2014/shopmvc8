@@ -54,4 +54,39 @@ html, body {
   list-style-type: none;
   margin-right: 10px; }
 
+.admin__h2-title {
+  text-align: center; }
+
+.nested-1 {
+  background-color: #97c6c7; }
+
+.nested-2 {
+  background-color: #827bcc; }
+
+.nested-3 {
+  background-color: rgba(156, 132, 126, 0.8); }
+
+.categories-drop-down-menu, .manufacturers-drop-down-menu {
+  margin-left: 5px; }
+
+.admin-products-list {
+  border-spacing: 2px; }
+
+.admin-products-list-container {
+  margin-top: 20px; }
+
+.admin-products-list__header {
+  background: rgba(156, 101, 117, 0.86);
+  color: #ad0521; }
+
+.admin-products-list__row {
+  cursor: pointer;
+  background: rgba(0, 204, 102, 0.53); }
+
+.admin-products-list__row:nth-child(2n) {
+  background: #ada787; }
+
+.admin-products-list th, .admin-products-list td {
+  padding: 2px; }
+
 /*# sourceMappingURL=admin.css.map */
