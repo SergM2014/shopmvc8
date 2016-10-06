@@ -29,12 +29,13 @@ class DB_Catalog extends DataBase
 
     public function getCatalog()
     {
-
+//die(var_dump($_POST));
         $page= ($this->page-1)*$this->amount;
         $this->order='';
 
 
         $order= $_GET['order']?? $_POST['order']?? null;
+//die(var_dump($order));
         $category = $_GET['category']?? $_POST['category']?? null;
         $manufacturer= $_GET['manufacturer']?? $_POST['manufacturer']?? null;
 

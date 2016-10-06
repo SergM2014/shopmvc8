@@ -81,3 +81,25 @@
   padding:2px;
 
 }
+.pagination-item{
+  cursor: pointer;
+  border: 1px solid black;
+  padding: 3px;
+  margin: 3px;
+  border-radius: 3px;
+  background-color: #83abbf;
+
+}
+.pagination-item-current{
+  cursor:default;
+  border: 1px solid black;
+  padding: 3px;
+  margin: 3px;
+  border-radius: 3px;
+  background-color: rgba(191, 28, 52, 0.77);
+}
+
+.products-pagination{
+  text-align:center;
+  margin-top:20px;
+}

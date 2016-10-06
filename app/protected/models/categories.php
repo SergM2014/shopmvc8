@@ -137,7 +137,7 @@ class Categories extends DataBase
 
     public function getDropDownMenu()
     {
-        $dropDownMenu ="<select class='categories-drop-down-menu'>";
+        $dropDownMenu ="<select class='categories-drop-down-menu'  id='categories-drop-down-menu'>";
         $dropDownMenu.="<option></option>";
         $dropDownMenu.= $this->printOutDropDownMenu();
         $dropDownMenu.= "</select>";
