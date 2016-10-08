@@ -58,7 +58,6 @@
   margin-left:5px;
 }
 .admin-products-list{
-
   border-spacing: 2px;
 
 }
@@ -102,4 +101,22 @@
 .products-pagination{
   text-align:center;
   margin-top:20px;
+}
+
+.popup-menu{
+  width:100px;
+  height:60px;
+  background-color: #e2dd9a;
+  border:1px solid black;
+  border-radius:5px;
+  position:absolute;
+  z-index:1000;
+  padding: 3px;
+  color: #3c384a;
+}
+.popUp-menu-item{
+  cursor:pointer;
+  margin-top:1px;
+  color: #3c384a;
+  text-decoration:none;
 }

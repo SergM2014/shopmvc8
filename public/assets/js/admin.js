@@ -37,6 +37,72 @@ class LangForAjax{
 }
 
 
+class PopupMenu{
+    constructor(e){
+        this.x = e.pageX;
+        this.y = e.pageY;
+
+        this.screenWidth = document.body.clientWidth;
+        this.screenHeight = document.body.clientHeight;
+
+        this.id =  e.target.closest('.admin-products-list__row').dataset.id;
+//console.log(`this is x =>${this.x} , thus is y=>${this.y}`)
+//console.log('qwerty')
+        console.log(this.id)
+    }
+
+
+    drawMenu(){
+       PopupMenu.deleteMenu();
+
+        this.popUp = document.createElement('div');
+        this.popUp.className = "popup-menu";
+        this.popUp.id = "popup-menu";
+
+        //document.body.insertBefore(this.popUp, document.getElementsByClassName('container')[0]);
+        document.body.insertBefore(this.popUp, document.body.firstChild);
+
+        if(this.x+100 >this.screenWidth+pageXOffset) this.x= (this.screenWidth+pageXOffset-100);
+        if(this.y+60 >this.screenHeight+pageYOffset) this.y= (this.screenHeight+pageYOffset-60);
+
+
+        this.popUp.style.left = this.x+"px";
+        this.popUp.style.top = this.y+"px";
+    }
+
+    static deleteMenu()
+    {
+        if(document.getElementById('popup-menu')){document.getElementById('popup-menu').remove();}
+    }
+
+    fillUpProdactsContent()
+    {
+        let lang =  new LangForAjax().getLanguage();
+
+        let url = lang+"/adminProducts/createProductsPopUpMenu";
+        let formData = new FormData;
+        formData.append('id', this.id);
+
+        fetch(url, {
+            method:'POST',
+            credentials:'same-origin',
+            body: formData
+        })
+            .then(response => response.text())
+            .then(html =>document.getElementById('popup-menu').innerHTML= html);
+
+
+    }
+
+
+}
+
+
+document.body.addEventListener('click', function(e){
+    if(!e.target.closest("#admin-products-list") ) {
+        PopupMenu.deleteMenu();
+    }
+});
 
 
 document.getElementById('insert-products').addEventListener('click', function(e){
@@ -75,7 +141,26 @@ document.getElementById('insert-products').addEventListener('click', function(e)
 
     }
 
+//click upon the products list to get POPup menu
+    if(e.target.closest("#admin-products-list") && !e.target.closest("#admin-products-list__header")){
+
+        let popUp = new PopupMenu(e);
+        popUp.drawMenu();
+        popUp.fillUpProdactsContent();
+
+    }
+
+
 });
+
+
+
+
+
+
+
+
+
 
 document.getElementById('products__drop-down-container-btn').addEventListener('click', function(){
 

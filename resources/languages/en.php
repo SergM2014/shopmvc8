@@ -133,6 +133,8 @@ $editProducts = "Edit Products";
 $prozessYourProducts = "Prozess Your Products";
 $images = "Images";
 $number = "Number";
+$update = "Update";
+$delete = "Delete";
 
 
 function has_sub_categories(){

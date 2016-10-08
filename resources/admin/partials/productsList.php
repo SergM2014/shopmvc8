@@ -1,12 +1,12 @@
 
-<table class="admin-products-list">
-    <tr class="admin-products-list__header">
+<table class="admin-products-list" id="admin-products-list">
+    <tr class="admin-products-list__header" id="admin-products-list__header">
         <th>№</th><th><?= $images ?></th><th><?= $author ?></th><th><?= $productTitle ?></th><th><?= $description ?></th><th><?= $price ?></th><th><?= $category ?></th><th><?= $manufacturerTitle ?></th>
     </tr>
 <?php foreach ($products as $product): ?>
 
 
-    <tr class="admin-products-list__row">
+    <tr class="admin-products-list__row" data-id="<?= $product->product_id ?>">
         <td><?= $product->startingLineNumber ?></td><td><?= $product->images ?></td><td><?= $product->author ?></td><td><?= $product->product_title ?></td>
         <td><i><?= $product->description ?></i></td><td><?= $product->price ?></td><td><?= $product->category_title ?></td><td><?= $product->manufacturer_title ?></td>
     </tr>

@@ -25,9 +25,18 @@ class AdminProducts extends AdminController {
     {
         $catalog = new DB_Catalog(true);
         $products = $catalog->getCatalog();
-//die(var_dump($products));//0
         $pages = $catalog->countPages();
         return ['view'=> 'admin/partials/productsList.php', 'products' =>$products, 'pages'=>$pages, 'ajax'=>true ];
+    }
+
+    public function update()
+    {
+        die('You are in update now');
+    }
+
+    public function createProductsPopUpMenu()
+    {
+        return ['view' =>'admin/partials/createProductsPopUpMenu.php', 'ajax'=>true ];
     }
 
 }

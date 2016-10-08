@@ -132,6 +132,8 @@ $editProducts = "Редагувати продукти";
 $prozessYourProducts = "Обробка Продуктів";
 $images = "Зоображення";
 $number = "Номер";
+$update = "Оновити";
+$delete = "Видалити";
 
 
 function has_sub_categories(){
