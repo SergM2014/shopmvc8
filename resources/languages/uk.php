@@ -135,6 +135,9 @@ $number = "Номер";
 $update = "Оновити";
 $delete = "Видалити";
 
+$youHaveChangedProductNumber = "Ви успішно обновили продукт під номером № ";
+
+
 
 function has_sub_categories(){
     return "має додаткові категорії";

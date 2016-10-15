@@ -27,6 +27,7 @@ return array(
     'App\\Core\\DataBase' => $baseDir . '/app/core/database.php',
     'App\\Core\\Upper\\MainDispatcher' => $baseDir . '/app/core/upper/maindispatcher.php',
     'App\\Models\\AdminModel' => $baseDir . '/app/protected/models/admin.php',
+    'App\\Models\\Admin_Product' => $baseDir . '/app/protected/models/admin_product.php',
     'App\\Models\\Avatar' => $baseDir . '/app/protected/models/avatar.php',
     'App\\Models\\Categories' => $baseDir . '/app/protected/models/categories.php',
     'App\\Models\\CheckForm' => $baseDir . '/app/protected/models/check_form.php',

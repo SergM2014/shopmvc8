@@ -147,5 +147,47 @@ class Categories extends DataBase
 
 
 
+    protected function printOutAdminDropDownMenu( $parent=0)
+    {
+        static $suffix = 1;
+        if(!isset($print)){$print='';}
+        foreach($this->categories as $category){
+            if($category->parent_id ==$parent ){
+
+                $print.="<option class='drop-down-menu-item  nested-$suffix' value='$category->id' >$category->title</option>" ;
+                foreach($this->categories as $sub_cat){
+                    if($sub_cat->parent_id == $category->id){
+                        $flag = TRUE; break;
+                    }
+                }
+
+                if(isset($flag)){
+                    $suffix++;
+                    $print.= $this->printOutAdminDropDownMenu( $category->id);
+                    $print.= "</option>";
+                    $suffix--;
+                } else{
+                    $print.="</option>";
+                }
+            }
+        }
+        return $print;
+    }
+
+
+    public function getAdminDropDownMenu($product)
+    {
+
+        $dropDownMenu ="<select id='category' name='category'>";
+        $dropDownMenu.="<option class='drop-down-menu-item' selected value='$product->cat_id' >$product->category_title</option>";
+        $dropDownMenu.= $this->printOutAdminDropDownMenu();
+        $dropDownMenu.= "</select>";
+
+        return $dropDownMenu;
+    }
+
+
+
+
 
 }

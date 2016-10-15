@@ -126,4 +126,32 @@ html, body {
   color: #3c384a;
   text-decoration: none; }
 
+.admin-product__field {
+  margin-top: 10px; }
+
+.admin-product__field-label {
+  color: #00A6C7;
+  font: bold italic 110% serif; }
+
+.admin-product__field-error {
+  color: red;
+  display: block; }
+
+.admin-product-list-notice {
+  border: 1px solid red;
+  text-align: center;
+  background-color: #489455;
+  padding: 10px;
+  margin: 20px 0;
+  color: red; }
+
+.admin-products-list-notice__close {
+  color: red;
+  float: right;
+  cursor: pointer;
+  font-size: 150%;
+  margin-top: -5px;
+  background: #3d3d73;
+  padding: 0 5px; }
+
 /*# sourceMappingURL=admin.css.map */

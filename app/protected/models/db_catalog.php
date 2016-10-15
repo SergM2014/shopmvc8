@@ -29,15 +29,19 @@ class DB_Catalog extends DataBase
 
     public function getCatalog()
     {
-//die(var_dump($_POST));
+
         $page= ($this->page-1)*$this->amount;
         $this->order='';
 
 
         $order= $_GET['order']?? $_POST['order']?? null;
-//die(var_dump($order));
+
         $category = $_GET['category']?? $_POST['category']?? null;
         $manufacturer= $_GET['manufacturer']?? $_POST['manufacturer']?? null;
+
+//for admin part
+        if(is_numeric($category)) $category= null;
+        if(is_numeric($manufacturer)) $manufacturer = null;
 
         if(isset($order)) {
             switch($order){
@@ -94,6 +98,9 @@ class DB_Catalog extends DataBase
 
         $category = $_GET['category']?? $_POST['category']?? null;
         $manufacturer= $_GET['manufacturer']?? $_POST['manufacturer']?? null;
+
+        if(is_numeric($category)) $category= null;
+        if(is_numeric($manufacturer)) $manufacturer = null;
 
         if(isset($category)){
             $this->category = $this->conn->quote($category);

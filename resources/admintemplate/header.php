@@ -20,7 +20,7 @@
 
     <div class="container">
 
-        <section id="update-area" class="update-area--hidden"></section>
+
 
         <?php if(isset($_SESSION['admin'])) : ?>
 

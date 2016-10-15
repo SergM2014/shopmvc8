@@ -1,0 +1,68 @@
+<section id="admin-product__update-form" class="admin-product__update-form">
+
+
+
+    <h2>This is product</h2>
+
+    <form action="/adminProducts/update" method="post">
+
+        <input type="hidden" name="id" id="id" value="<?= $product->product_id ?>">
+
+        <div class="admin-product__field" >
+            <label for="author" class="admin-product__field-label" ><?= $author ?></label><br>
+            <input type="text" name="author" id="author" value="<?= $product->author ?>">
+            <small class="admin-product__field-error"><?= @ $errors['author'] ?></small>
+        </div>
+
+        <div class="admin-product__field">
+            <label for="title" class="admin-product__field-label"><?= $productTitle ?></label><br>
+            <input type="text" name="title" id="title" value="<?= $product->title ?>">
+            <small class="admin-product__field-error"><?= @ $errors['title'] ?></small>
+        </div>
+
+        <div class="admin-product__field">
+            <label for="description" class="admin-product__field-label"><?= $description ?></label><br>
+            <textarea id="description" cols="45" rows="15" name="description"><?= $product->description ?></textarea>
+            <small class="admin-product__field-error"><?= @ $errors['description'] ?></small>
+        </div>
+
+        <div class="admin-product__field">
+            <label for="body" class="admin-product__field-label"><?= $body ?></label><br>
+            <textarea id="body" cols="45" rows="15" name="body"><?= $product->body ?></textarea>
+            <small class="admin-product__field-error"><?= @ $errors['body'] ?></small>
+        </div>
+
+        <div class="admin-product__field">
+            <label for="price" class="admin-product__field-label"><?= $price ?></label><br>
+            <input type="text" id="price" name="price" value="<?= $product->price ?>">
+            <small class="admin-product__field-error"><?= @ $errors['price'] ?></small>
+        </div>
+
+        <div class="admin-product__field">
+            <label for="category" class="admin-product__field-label"><?= $category ?></label><br>
+            <?= $categories ?>
+        </div>
+
+        <div class="admin-product__field">
+            <label for="manufacturer" class="admin-product__field-label"><?= $manufacturerTitle ?></label><br>
+            <select name="manufacturer"  id="manufacturer">
+                <option selected value="<?= $product->manf_id ?>"><?= $product->manf_title ?></option>
+
+                <?php foreach ($manufacturers as $manufacturer): ?>
+
+                    <option value ="<?= $manufacturer->id ?>"><?= $manufacturer->title ?></option>
+
+                <?php endforeach; ?>
+
+            </select>
+        </div>
+
+        <div class="admin-product__field">
+            <button type="submit"><?= $update ?></button>
+        </div>
+
+
+    </form>
+
+</section>
+
