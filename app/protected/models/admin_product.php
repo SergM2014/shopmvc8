@@ -12,9 +12,8 @@ class Admin_Product extends DataBase
 
     public function checkIfNotEmpty($updatedProduct)
     {
-        $fieldsArray=['author', 'title', 'price', 'description', 'body', 'manufacturer', 'category'];
+        $fieldsArray=['author', 'title', 'price', 'description', 'body', 'manufacturer_id', 'category_id'];
         $error= [];
-
 
         foreach ($fieldsArray as $item){
             if(strlen($_POST[$item])<1) $error[$item]= empty_field();
@@ -34,8 +33,8 @@ class Admin_Product extends DataBase
         $stmt->bindValue(3, $_POST['description'], \PDO::PARAM_STR);
         $stmt->bindValue(4, $_POST['body'], \PDO::PARAM_STR);
         $stmt->bindValue(5, $_POST['price'], \PDO::PARAM_STR);
-        $stmt->bindValue(6, $_POST['category'], \PDO::PARAM_INT);
-        $stmt->bindValue(7, $_POST['manufacturer'], \PDO::PARAM_INT);
+        $stmt->bindValue(6, $_POST['category_id'], \PDO::PARAM_INT);
+        $stmt->bindValue(7, $_POST['manufacturer_id'], \PDO::PARAM_INT);
         $stmt->bindValue(8, $_POST['id'], \PDO::PARAM_INT);
         $stmt->execute();
 

@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Models;
-
 
 use App\Core\DataBase;
 
@@ -17,9 +15,7 @@ class DB_Catalog extends DataBase
 
     public function __construct($inAdmin = false)
     {
-
         $this->amount = ($inAdmin)? AMOUNTONPAGEADMIN: AMOUNTONPAGE;
-
         $this->page = $_GET['p']?? $_POST['p']?? 1;
         $this->category='';
         $this->manufacturer='';
@@ -39,19 +35,16 @@ class DB_Catalog extends DataBase
         $category = $_GET['category']?? $_POST['category']?? null;
         $manufacturer= $_GET['manufacturer']?? $_POST['manufacturer']?? null;
 
-//for admin part
-        if(is_numeric($category)) $category= null;
-        if(is_numeric($manufacturer)) $manufacturer = null;
 
-        if(isset($order)) {
-            switch($order){
+
+            switch( @ $order){
                 case 'abc': $this->order=' ORDER BY `p`.`title` ASC'; break;
                 case 'cba': $this->order=' ORDER BY `p`.`title` DESC'; break;
                 case 'cheap_first': $this->order=' ORDER BY `p`.`price` ASC'; break;
                 case 'expensive_first': $this->order= ' ORDER BY `p`.`price` DESC'; break;
-                case 'default': $this->order= ' ORDER BY `p`.`title` ASC'; break;
+                default: $this->order= ' ORDER BY `p`.`title` ASC'; break;
             }
-        }
+
 
         if(isset($category)){
             $this->category = $this->conn->quote($category);
@@ -71,11 +64,12 @@ class DB_Catalog extends DataBase
               `p`.`price`, `p`.`cat_id` AS `product_cat_id`, `p`.`manf_id`, `p`.`images`, `c`.`id` AS `category_id`, `c`.`title` AS category_title , 
               `c`.`eng_translit_title`, `c`.`parent_id`, `m`.`id` as manufacturer_id , `m`.`title` AS manufacturer_title
                FROM `products` `p` LEFT JOIN `categories` `c` ON `p`.`cat_id` = `c`.`id` LEFT JOIN `manufacturers` `m` 
-               ON `p`.`manf_id` = `m`.`id` ".$this->category.$this->manufacturer.$this->order." LIMIT ?, ".$this->amount;
+               ON `p`.`manf_id` = `m`.`id` $this->category $this->manufacturer $this->order LIMIT ?, $this->amount";
 
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(1, $page, \PDO::PARAM_INT);
         $stmt->execute();
+
         $result= $stmt->fetchAll();
 
 //добавляем порядковый номер товарыв для вывода таблиць и розюыраемось з изображениямы
@@ -95,12 +89,8 @@ class DB_Catalog extends DataBase
 
     public function countPages()
     {
-
         $category = $_GET['category']?? $_POST['category']?? null;
         $manufacturer= $_GET['manufacturer']?? $_POST['manufacturer']?? null;
-
-        if(is_numeric($category)) $category= null;
-        if(is_numeric($manufacturer)) $manufacturer = null;
 
         if(isset($category)){
             $this->category = $this->conn->quote($category);

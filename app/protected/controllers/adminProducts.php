@@ -20,7 +20,8 @@ class AdminProducts extends AdminController {
         $pages = $catalog->countPages();
 
 
-        return ['view'=> 'admin/products.php', 'categories' => $categories, 'manufacturers'=>$manufacturers, 'products' =>$products, 'pages'=>$pages, 'success' =>$updatedProductId];
+        return ['view'=> 'admin/products.php', 'categories' => $categories, 'manufacturers'=>$manufacturers,
+            'products' =>$products, 'pages'=>$pages, 'success' =>$updatedProductId ];
     }
 
     public function refresh()
@@ -72,11 +73,13 @@ class AdminProducts extends AdminController {
             $updatedProduct->manf_title = $product->manf_title;
             $updatedProduct->manf_eng_title = $product->manf_eng_title;
 
-            return ['view'=> 'admin/productView.php', 'product' => $updatedProduct, 'categories'=> $categories, 'manufacturers'=>$manufacturers, 'errors' => $errors];
+            return ['view'=> 'admin/productView.php', 'product' => $updatedProduct, 'categories'=> $categories,
+                'manufacturers'=>$manufacturers, 'errors' => $errors];
 
         }
 
         $model->updateProduct();
+
         return $this->index($_POST['id']);
 
     }

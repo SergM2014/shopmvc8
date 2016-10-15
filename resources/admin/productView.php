@@ -39,13 +39,13 @@
         </div>
 
         <div class="admin-product__field">
-            <label for="category" class="admin-product__field-label"><?= $category ?></label><br>
+            <label for="category_id" class="admin-product__field-label"><?= $category ?></label><br>
             <?= $categories ?>
         </div>
 
         <div class="admin-product__field">
-            <label for="manufacturer" class="admin-product__field-label"><?= $manufacturerTitle ?></label><br>
-            <select name="manufacturer"  id="manufacturer">
+            <label for="manufacturer_id" class="admin-product__field-label"><?= $manufacturerTitle ?></label><br>
+            <select name="manufacturer_id"  id="manufacturer_id">
                 <option selected value="<?= $product->manf_id ?>"><?= $product->manf_title ?></option>
 
                 <?php foreach ($manufacturers as $manufacturer): ?>

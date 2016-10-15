@@ -178,7 +178,7 @@ class Categories extends DataBase
     public function getAdminDropDownMenu($product)
     {
 
-        $dropDownMenu ="<select id='category' name='category'>";
+        $dropDownMenu ="<select id='category_id' name='category_id'>";
         $dropDownMenu.="<option class='drop-down-menu-item' selected value='$product->cat_id' >$product->category_title</option>";
         $dropDownMenu.= $this->printOutAdminDropDownMenu();
         $dropDownMenu.= "</select>";
