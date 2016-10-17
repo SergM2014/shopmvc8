@@ -15,7 +15,7 @@ if(!isset($_SESSION['admin'])): ?>
                 <form  method="POST" action="/<?= \Lib\HelperService::currentLang() ?>admin">
                     <input type="hidden" name="_token" value="<?php \Lib\TokenService::printTocken('enterAdmin') ?>">
                     <p><label for="login"><?= $login_title ?></label><br>
-                        <input   name="login" id="login" type="text"  maxlength="25"> </p>
+                        <input   name="login" id="login" type="text"  maxlength="25" autofocus > </p>
                     <p><label for="password"><?= $password_title ?></label><br>
                         <input   name="password" id="password" type="password" maxlength="20" > </p>
                     <!--<p><input type="checkbox" id="remember_me" name="remember_me" >

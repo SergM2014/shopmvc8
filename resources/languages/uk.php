@@ -134,6 +134,8 @@ $images = "Зоображення";
 $number = "Номер";
 $update = "Оновити";
 $delete = "Видалити";
+$add = "Добавити";
+$addImage = "Додати зоображеня";
 
 $youHaveChangedProductNumber = "Ви успішно обновили продукт під номером № ";
 

@@ -1,6 +1,40 @@
 <section id="admin-product__update-form" class="admin-product__update-form">
 
+    <section class="update-form__images">
+        <div class="update-form__images-list">
 
+
+
+        </div>
+
+
+        <button type="button" class="update-form__add-image-btn"><?= $addImage ?></button>
+
+        <form id="update-form__image-area" class="update-form__image-area" enctype="multipart/form-data" method="post" >
+
+            <div class="update-form__image-area-left">
+
+                <img src="/img/nophoto.jpg" class="update-form__image-thumb" id="image_preview" alt="" title="">
+
+
+               <div class="update-form__progress-container" id="progress-container" hidden >
+                   <progress id="progress" max="100" value="0">
+
+                   </progress>
+               </div>
+
+            </div>
+            <div class="update-form__image-area-right">
+                <input type="file" id="file" >
+                <span class="update-form__image-area-output" id="output"></span>
+                <button type="button" class="update-form__image-area-btn" id="image-submit-btn" hidden ><?= $load ?></button>
+                <button type="button" class="update-form__image-area-btn" id="image-reset-btn" hidden ><?= $delete ?></button>
+
+            </div>
+
+        </form>
+<script src="/assets/js/adminUploadImage.js"></script>
+    </section>
 
     <h2>This is product</h2>
 

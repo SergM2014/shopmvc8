@@ -111,7 +111,7 @@ html, body {
 
 .popup-menu {
   width: 100px;
-  height: 60px;
+  /* height:60px;*/
   background-color: #e2dd9a;
   border: 1px solid black;
   border-radius: 5px;
@@ -153,5 +153,41 @@ html, body {
   margin-top: -5px;
   background: #3d3d73;
   padding: 0 5px; }
+
+.update-form__add-image-btn {
+  cursor: pointer; }
+
+.update-form__image-area {
+  border: 1px solid darkmagenta;
+  border-radius: 10px;
+  margin: 10px 0;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-start; }
+
+.update-form__image-thumb {
+  border: 1px solid darkblue;
+  width: 115px;
+  float: left;
+  margin-bottom: 10px; }
+
+.update-form__image-area-left {
+  /* background-color: rgba(146, 204, 134, 0.4);*/
+  height: 145px; }
+
+.update-form__image-area-right {
+  padding: 30px 10px; }
+
+.update-form__image-area-btn {
+  margin-left: 10px; }
+
+.update-form__image-area-btn--hidden {
+  display: none; }
+
+.image-upload--failed {
+  color: #9c3328; }
+
+.image-upload--succeded, .image-delete--succeded {
+  color: #2bcc26; }
 
 /*# sourceMappingURL=admin.css.map */

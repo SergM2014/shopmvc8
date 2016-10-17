@@ -137,7 +137,8 @@ $update = "Update";
 $delete = "Delete";
 
 $youHaveChangedProductNumber = "You have updated successfuly product № ";
-
+$add = "Add";
+$addImage = "Add Image";
 
 function has_sub_categories(){
     return "contains additional categories";

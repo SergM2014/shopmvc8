@@ -52,6 +52,8 @@ class AdminProducts extends AdminController {
         return ['view' =>'admin/partials/createProductsPopUpMenu.php', 'ajax'=>true ];
     }
 
+
+
     public function update()
     {
         $updatedProduct = new \stdClass();
@@ -60,18 +62,13 @@ class AdminProducts extends AdminController {
         if(!empty($errors)){
 
             $model = new DB_Product();
-
             $product = $model->getProduct();
 
             $manufacturers = (new DB_Catalog(true))->getManufacturers();
 
             $categories = (new Categories)->getAdminDropDownMenu($product);
 
-            $updatedProduct->category_eng_title = $product->category_eng_title;
-            $updatedProduct->category_title = $product->category_title;
-            $updatedProduct->product_id = $product->product_id;
-            $updatedProduct->manf_title = $product->manf_title;
-            $updatedProduct->manf_eng_title = $product->manf_eng_title;
+            $this->getUpdatedProductInfo($updatedProduct, $product);
 
             return ['view'=> 'admin/productView.php', 'product' => $updatedProduct, 'categories'=> $categories,
                 'manufacturers'=>$manufacturers, 'errors' => $errors];
@@ -81,7 +78,15 @@ class AdminProducts extends AdminController {
         $model->updateProduct();
 
         return $this->index($_POST['id']);
+    }
 
+    private function getUpdatedProductInfo($updatedProduct, $product)
+    {
+        $updatedProduct->category_eng_title = $product->category_eng_title;
+        $updatedProduct->category_title = $product->category_title;
+        $updatedProduct->product_id = $product->product_id;
+        $updatedProduct->manf_title = $product->manf_title;
+        $updatedProduct->manf_eng_title = $product->manf_eng_title;
     }
 
 }
