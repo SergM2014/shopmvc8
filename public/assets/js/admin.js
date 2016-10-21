@@ -178,6 +178,11 @@ document.body.addEventListener('click', function(e) {
     }
 
 
+    if(e.target.id == "update-form__add-image-btn"){
+        document.getElementById('update-form__image-area').className = "update-form__image-area";
+        e.target.className = "update-form__add-image-btn--hidden";
+    }
+
 })//end of the body
 
 

@@ -1,20 +1,22 @@
 <section id="admin-product__update-form" class="admin-product__update-form">
 
     <section class="update-form__images">
-        <div class="update-form__images-list">
+        <div class="update-form__images-list" id="update-form__images-list" >
 
-
+            <?php foreach($product->images as $image): ?>
+                <img src="/uploads/productsImages/thumbs/<?= $image ?>" class="product-image-preview" >
+            <?php endforeach; ?>
 
         </div>
 
 
-        <button type="button" class="update-form__add-image-btn"><?= $addImage ?></button>
+        <button type="button" class="update-form__add-image-btn" id="update-form__add-image-btn" ><?= $addImage ?></button>
 
-        <form id="update-form__image-area" class="update-form__image-area" enctype="multipart/form-data" method="post" >
+        <form id="update-form__image-area" class="update-form__image-area--hidden" id="update-form__image-area" enctype="multipart/form-data" method="post"  hidden="true" >
 
             <div class="update-form__image-area-left">
 
-                <img src="/img/nophoto.jpg" class="update-form__image-thumb" id="image_preview" alt="" title="">
+                <img src="<?php echo isset($_SESSION['image'])? '/uploads/productsImages/'.$_SESSION['image']: '/img/nophoto.jpg'; ?>" class="update-form__image-thumb" id="image_preview" alt="" title="">
 
 
                <div class="update-form__progress-container" id="progress-container" hidden >
@@ -25,10 +27,10 @@
 
             </div>
             <div class="update-form__image-area-right">
-                <input type="file" id="file" >
+                <input type="file" id="file"  <?= !isset($_SESSION['image'])? '': 'hidden' ?> >
                 <span class="update-form__image-area-output" id="output"></span>
-                <button type="button" class="update-form__image-area-btn" id="image-submit-btn" hidden ><?= $load ?></button>
-                <button type="button" class="update-form__image-area-btn" id="image-reset-btn" hidden ><?= $delete ?></button>
+                <button type="button" class="update-form__image-area-btn" id="image-submit-btn" <?= !isset($_SESSION['image'])? '': 'hidden' ?> hidden ><?= $load ?></button>
+                <button type="button" class="update-form__image-area-btn" id="image-reset-btn"  <?= isset($_SESSION['image'])? '': 'hidden' ?> ><?= $delete ?></button>
 
             </div>
 

@@ -19,7 +19,10 @@
     define('NAME_BD', 'shopmvc8');
     define('DEBUG_MODE', true ); //режим отладки
 
-	define('UPLOAD_FILE','/public/uploads/');
+	define('UPLOAD_FOLDER','/public/uploads/');
+    define('UPLOADS', '/uploads/');
+    define('PRODUCTS_IMAGES', 'productsImages/');
+    define('PRODUCTS_IMAGES_THUMBS', 'productsImages/thumbs/');
 
 	define('LINKCOUNT',5);
 	define('ADMINEMAIL', 'weisse@ukr.net');

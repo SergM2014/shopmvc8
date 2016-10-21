@@ -76,6 +76,7 @@ class AdminProducts extends AdminController {
         }
 
         $model->updateProduct();
+        $model->addProductsImages();
 
         return $this->index($_POST['id']);
     }
@@ -88,5 +89,7 @@ class AdminProducts extends AdminController {
         $updatedProduct->manf_title = $product->manf_title;
         $updatedProduct->manf_eng_title = $product->manf_eng_title;
     }
+
+
 
 }

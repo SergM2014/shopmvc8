@@ -40,4 +40,19 @@ class Admin_Product extends DataBase
 
     }
 
+    public function addProductsImages()
+    {
+        $sql = "INSERT INTO images (`product_id`, `image`) VALUES (?, ? )";
+        $stmt = $this->conn->prepare($sql);
+
+        foreach ($_SESSION['images'] as $image) {
+
+            $stmt->bindValue(1, $_POST['id']);
+            $stmt->bindValue(2, $image);
+            $stmt->execute();
+        }
+         //unset($_SESSION['image']);
+        unset($_SESSION['images']);
+    }
+
 }

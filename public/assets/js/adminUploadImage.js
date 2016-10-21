@@ -11,7 +11,7 @@ let progressContainer = document.getElementById('progress-container'),
 function progressHandler(event){
 
     let percent=Math.round((event.loaded/event.total)*100);
-   // progress.style.width= percent+"%";
+
     progress.value = percent;
     progress.innerHTML= percent+"%";
 }
@@ -26,10 +26,21 @@ function completeHandler(event){//тут ивент переобразуется
     progress.innerHTML= "0%";
 
 
-    //output.classList.remove('invisible');
+    document.getElementById('file').removeAttribute('hidden');
     submitBtn.setAttribute('hidden', true );
     progressContainer.setAttribute('hidden', true);
-    resetBtn.removeAttribute('disabled');
+    resetBtn.setAttribute('hidden', true);
+    document.getElementById('image_preview').setAttribute('src', '/img/nophoto.jpg');
+    document.getElementById('update-form__image-area').className = 'update-form__image-area--hidden';
+    document.getElementById('update-form__add-image-btn').className = 'update-form__add-image-btn';
+//console.log(response.image)
+
+//create separate div and insert added by ajax image
+    let img = document.createElement('img');
+    img.className = "product-image-preview";
+    img.setAttribute('src',`${response.path}${response.image}`);
+    document.getElementById('update-form__images-list').appendChild(img);
+
 }
 
 
@@ -105,7 +116,7 @@ if(submitBtn){
         send_image.open("POST", url);
         send_image.send(formdata);
 
-        resetBtn.setAttribute('disabled', 'disabled');
+        resetBtn.setAttribute('hidden', true);
 
     };// end of function
 }

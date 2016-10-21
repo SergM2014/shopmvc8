@@ -3,7 +3,7 @@
 namespace App\Models;
 use App\Core\DataBase;
 
-use function \succeeded_upload;
+use function  \succeeded_upload;
 use function \restricted_file_type;
 use function \too_big_file;
 use function \smth_is_wrong;
@@ -14,9 +14,9 @@ class Images extends DataBase
 
     public function uploadImage(){
 
-        $path = PATH_SITE.UPLOAD_FILE.'productsImages/';
-        //$tmp_path= PATH_SITE.UPLOAD_FILE.'tmp/';
-        $thumb_path= PATH_SITE.UPLOAD_FILE.'productsImages/thumbs/';
+        $path = PATH_SITE.UPLOAD_FOLDER.PRODUCTS_IMAGES;
+
+        $thumb_path= PATH_SITE.UPLOAD_FOLDER.PRODUCTS_IMAGES_THUMBS;
 
         // Массив допустимых значений типа файла
         $types = array('image/gif', 'image/png', 'image/jpeg');
@@ -38,14 +38,16 @@ class Images extends DataBase
             $name = $this->resizeImage($_FILES['file'], $thumb_path);
 
             // Загрузка файла и вывод сообщения
-            if(!@copy($thumb_path.$name, $path.$name)) {
+
+            if(!@copy($_FILES['file']['tmp_name'], $path.$name)) {
                 return $response =["message"=>"<span class='image-upload--failed'>". smth_is_wrong()." </span>", "error" => true];
             }
             else {
 
-                $_SESSION['image']= $name;
+               // $_SESSION['image']= $name;
+                $_SESSION['images'][] = $name;
 
-                $response=["message"=>"<span class='image-upload--succeded'>".succeeded_upload()."</span>", "success"=>true, "bild"=>$_SESSION['image']];
+                $response=["message"=>"<span class='image-upload--succeded'>".succeeded_upload()."</span>", "success"=>true, "image"=>$name, 'path'=>UPLOADS.PRODUCTS_IMAGES_THUMBS];
                 chmod ($path.$name , 0777);
             }
             // Удаляем временный файл

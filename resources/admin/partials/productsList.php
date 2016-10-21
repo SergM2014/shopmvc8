@@ -7,8 +7,14 @@
 
 
     <tr class="admin-products-list__row" data-id="<?= $product->product_id ?>">
-        <td><?= $product->startingLineNumber ?></td><td><?= $product->images ?></td><td><?= $product->author ?></td><td><?= $product->product_title ?></td>
-        <td><i><?= $product->description ?></i></td><td><?= $product->price ?></td><td><?= $product->category_title ?></td><td><?= $product->manufacturer_title ?></td>
+        <td><?= $product->startingLineNumber ?></td>
+        <td><img src="<?= '/uploads/productsImages/thumbs/'.$product->images[0] ?>" class="<?= isset($product->images[0])? 'admin-products-list__row-thumb': 'admin-products-list__row-thumb--hidden'; ?>" ></td>
+        <td><?= $product->author ?></td>
+        <td><?= $product->product_title ?></td>
+        <td><i><?= $product->description ?></i></td>
+        <td><?= $product->price ?></td>
+        <td><?= $product->category_title ?></td>
+        <td><?= $product->manufacturer_title ?></td>
     </tr>
 
 <?php endforeach; ?>

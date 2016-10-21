@@ -164,7 +164,8 @@
 }
 .update-form__image-thumb{
   border:1px solid darkblue;
-  width:115px;
+  max-width:115px;
+  max-height:120px;
   float:left;
   margin-bottom:10px;
 }
@@ -192,4 +193,41 @@
 }
 .image-upload--succeded, .image-delete--succeded {
   color: #2bcc26;
+}
+.admin-products-list__row-thumb{
+  max-height:100px;
+  max-width:100px;
+  border:1px solid red;
+}
+
+.admin-products-list__row-thumb--hidden{
+  display:none;
+}
+.update-form__images{
+  margin-bottom:20px;
+}
+.update-form__add-image-btn--hidden{
+  display:none;
+}
+
+.update-form__image-area--hidden {
+  display:none;
+}
+
+.product-image-preview{
+  float:left;
+  margin:10px;
+  cursor:pointer;
+}
+.update-form__images-list:before, .update-form__images-list:after{
+  content:"";
+  display:table;
+}
+.update-form__images-list:after{
+  clear:both;
+
+}
+.update-form__images-list{
+  *zoom:1;
+
 }

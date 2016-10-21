@@ -61,10 +61,12 @@ class DB_Catalog extends DataBase
         }
 
         $sql="SELECT `p`.`id` AS product_id , `p`.`author`, `p`.`title` as product_title , `p`.`description`, `p`.`body`,
-              `p`.`price`, `p`.`cat_id` AS `product_cat_id`, `p`.`manf_id`, `p`.`images`, `c`.`id` AS `category_id`, `c`.`title` AS category_title , 
-              `c`.`eng_translit_title`, `c`.`parent_id`, `m`.`id` as manufacturer_id , `m`.`title` AS manufacturer_title
+              `p`.`price`, `p`.`cat_id` AS `product_cat_id`, `p`.`manf_id`,  `c`.`id` AS `category_id`, `c`.`title` AS category_title , 
+              `c`.`eng_translit_title`, `c`.`parent_id`, `m`.`id` as manufacturer_id , `m`.`title` AS manufacturer_title , GROUP_CONCAT(`im`.`image`) AS `images`
                FROM `products` `p` LEFT JOIN `categories` `c` ON `p`.`cat_id` = `c`.`id` LEFT JOIN `manufacturers` `m` 
-               ON `p`.`manf_id` = `m`.`id` $this->category $this->manufacturer $this->order LIMIT ?, $this->amount";
+               ON `p`.`manf_id` = `m`.`id`
+                LEFT JOIN `images` `im` ON `p`.`id`= `im`.`product_id`
+                $this->category $this->manufacturer GROUP BY `p`.`id` $this->order LIMIT ?, $this->amount  " ;
 
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(1, $page, \PDO::PARAM_INT);
@@ -72,18 +74,20 @@ class DB_Catalog extends DataBase
 
         $result= $stmt->fetchAll();
 
-//добавляем порядковый номер товарыв для вывода таблиць и розюыраемось з изображениямы
+//добавляем порядковый номер товарыв для вывода таблиць // и розюыраемось з изображениямы
         foreach ($result as $key=> $value){
             $startingLineNumber =(!isset($startingLineNumber))? ($this->page-1)*$this->amount+1: $startingLineNumber+1;
             $result[$key]->startingLineNumber= $startingLineNumber;
 
             if(!empty($value->images) && $value->images!= false ){
 
-                $images= unserialize($value->images);
+                $images= explode(',', $value->images);
+//die(var_dump($images));
                 $result[$key]->images= array_values($images);
+//die(var_dump($result[$key]->images));
             }
         }
-
+//die(var_dump($result));
         return $result;
     }
 
