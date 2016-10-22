@@ -138,8 +138,8 @@ $add = "Добавити";
 $addImage = "Додати зоображеня";
 
 $youHaveChangedProductNumber = "Ви успішно обновили продукт під номером № ";
-
-
+$clickToSeePopUp = "Клікніть щоб побачити вспливаюче меню";
+$viewImage = "Продивитись зоображеня";
 
 function has_sub_categories(){
     return "має додаткові категорії";

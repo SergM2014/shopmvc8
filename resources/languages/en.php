@@ -139,6 +139,10 @@ $delete = "Delete";
 $youHaveChangedProductNumber = "You have updated successfuly product № ";
 $add = "Add";
 $addImage = "Add Image";
+$clickToSeePopUp = "Click to see popup menu";
+$viewImage = "view image";
+
+
 
 function has_sub_categories(){
     return "contains additional categories";

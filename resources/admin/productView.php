@@ -4,7 +4,8 @@
         <div class="update-form__images-list" id="update-form__images-list" >
 
             <?php foreach($product->images as $image): ?>
-                <img src="/uploads/productsImages/thumbs/<?= $image ?>" class="product-image-preview" >
+                <img src="/uploads/productsImages/thumbs/<?= $image ?>" class="product-image-preview"
+                     title="<?= $clickToSeePopUp ?>" title="<?= $clickToSeePopUp ?>" data-image="<?= $image ?>" >
             <?php endforeach; ?>
 
         </div>
@@ -16,7 +17,7 @@
 
             <div class="update-form__image-area-left">
 
-                <img src="<?php echo isset($_SESSION['image'])? '/uploads/productsImages/'.$_SESSION['image']: '/img/nophoto.jpg'; ?>" class="update-form__image-thumb" id="image_preview" alt="" title="">
+                <img src="<?php echo isset($_SESSION['image'])? '/uploads/productsImages/'.$_SESSION['image']: '/img/nophoto.jpg'; ?>" class="update-form__image-thumb" id="image_preview">
 
 
                <div class="update-form__progress-container" id="progress-container" hidden >

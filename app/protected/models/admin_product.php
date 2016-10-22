@@ -55,4 +55,22 @@ class Admin_Product extends DataBase
         unset($_SESSION['images']);
     }
 
+    public function removeProductsImages()
+    {
+        $sql = "DELETE FROM `images` WHERE `image`=?";
+        $stmt = $this->conn->prepare($sql);
+
+        foreach (@$_SESSION['deleteImageList'] as $image) {
+
+            $stmt->bindValue(1, $image, \PDO::PARAM_STR);
+
+            $stmt->execute();
+        }
+       /* var_dump($_SESSION['deleteImageList']);
+        die()*/;
+        //unset($_SESSION['image']);
+        unset($_SESSION['images']);
+        unset($_SESSION['deleteImageList']);
+    }
+
 }

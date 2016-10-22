@@ -39,6 +39,7 @@ class DB_Product extends DataBase
         $result->images = $images;
 
         $_SESSION['images'] = [];
+        $_SESSION['deleteImageList'] =[];
 
         return $result;
     }

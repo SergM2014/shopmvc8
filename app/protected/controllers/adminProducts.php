@@ -52,6 +52,11 @@ class AdminProducts extends AdminController {
         return ['view' =>'admin/partials/createProductsPopUpMenu.php', 'ajax'=>true ];
     }
 
+    public function createImagePopUpMenu()
+    {
+        return ['view' =>'admin/partials/createImagePopUpMenu.php', 'ajax'=>true ];
+    }
+
 
 
     public function update()
@@ -77,6 +82,7 @@ class AdminProducts extends AdminController {
 
         $model->updateProduct();
         $model->addProductsImages();
+        $model->removeProductsImages();
 
         return $this->index($_POST['id']);
     }
@@ -89,6 +95,13 @@ class AdminProducts extends AdminController {
         $updatedProduct->manf_title = $product->manf_title;
         $updatedProduct->manf_eng_title = $product->manf_eng_title;
     }
+
+    public function addImageToDeleteList()
+    {
+        $_SESSION['deleteImageList'][] = $_POST['image'];
+        return true;
+    }
+
 
 
 

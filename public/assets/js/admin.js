@@ -43,27 +43,21 @@ class PopupMenu{
 
         this.screenWidth = document.body.clientWidth;
         this.screenHeight = document.body.clientHeight;
-
-        this.id =  e.target.closest('.admin-products-list__row').dataset.id;
-//console.log(`this is x =>${this.x} , thus is y=>${this.y}`)
-//console.log('qwerty')
-        console.log(this.id)
+        this.target = e.target;
     }
 
 
-    drawMenu(){
+    drawMenu(x = 100, y = 60){
        PopupMenu.deleteMenu();
 
         this.popUp = document.createElement('div');
         this.popUp.className = "popup-menu";
         this.popUp.id = "popup-menu";
 
-        //document.body.insertBefore(this.popUp, document.getElementsByClassName('container')[0]);
         document.body.insertBefore(this.popUp, document.body.firstChild);
 
-        if(this.x+100 >this.screenWidth+pageXOffset) this.x= (this.screenWidth+pageXOffset-100);
-        if(this.y+60 >this.screenHeight+pageYOffset) this.y= (this.screenHeight+pageYOffset-60);
-
+        if(this.x+x >this.screenWidth+pageXOffset) this.x= (this.screenWidth+pageXOffset-x);
+        if(this.y+y >this.screenHeight+pageYOffset) this.y= (this.screenHeight+pageYOffset-y);
 
         this.popUp.style.left = this.x+"px";
         this.popUp.style.top = this.y+"px";
@@ -74,13 +68,14 @@ class PopupMenu{
         if(document.getElementById('popup-menu')){document.getElementById('popup-menu').remove();}
     }
 
-    fillUpProdactsContent()
+    fillUpMenuContent()
     {
+        let id =  this.target.closest('.admin-products-list__row').dataset.id;
         let lang =  new LangForAjax().getLanguage();
 
-        let url = lang+"/adminProducts/createProductsPopUpMenu";
+        let url = lang + "/adminProducts/createProductsPopUpMenu";
         let formData = new FormData;
-        formData.append('id', this.id);
+        formData.append('id', id);
 
         fetch(url, {
             method:'POST',
@@ -89,11 +84,33 @@ class PopupMenu{
         })
             .then(response => response.text())
             .then(html =>document.getElementById('popup-menu').innerHTML= html);
-
-
     }
 
+}
 
+class ImagePopUpMenu extends PopupMenu {
+    fillUpMenuContent()
+    {
+//console.log(this.target.src);
+        let arr = this.target.src.split('/');
+//console.log(arr[arr.length-1]);
+        let image = arr[arr.length-1];
+        let product_id =  document.getElementById('id');
+        let lang =  new LangForAjax().getLanguage();
+
+        let url = lang + "/adminProducts/createImagePopUpMenu";
+        let formData = new FormData;
+        formData.append('id', product_id);
+        formData.append('image', image);
+
+        fetch(url, {
+            method:'POST',
+            credentials:'same-origin',
+            body: formData
+        })
+            .then(response => response.text())
+            .then(html =>document.getElementById('popup-menu').innerHTML= html);
+    }
 }
 
 
@@ -143,7 +160,7 @@ document.body.addEventListener('click', function(e) {
 
         let popUp = new PopupMenu(e);
         popUp.drawMenu();
-        popUp.fillUpProdactsContent();
+        popUp.fillUpMenuContent();
 
     }
 
@@ -182,6 +199,36 @@ document.body.addEventListener('click', function(e) {
         document.getElementById('update-form__image-area').className = "update-form__image-area";
         e.target.className = "update-form__add-image-btn--hidden";
     }
+
+// add popupmenu to the update product images
+    if (e.target.closest(".product-image-preview") ) {
+        let popUp = new ImagePopUpMenu(e);
+        popUp.drawMenu();
+        popUp.fillUpMenuContent();
+    }
+
+    if(e.target.id == "popUp-menu-item-delete"){
+//console.log(e.target.dataset.image)
+        let image = e.target.dataset.image;
+        let formData = new FormData;
+        formData.append('image', image);
+        formData.append('ajax', true);
+
+        let founded_lang =  new LangForAjax().getLanguage();
+        let url =  founded_lang+"/adminProducts/addImageToDeleteList";
+
+        fetch( url,
+            {
+                method: "POST",
+                body: formData,
+                credentials:'same-origin'
+            })
+            .then(document.querySelector(`[data-image = "${image}"]`).remove())
+
+    }
+
+
+
 
 })//end of the body
 
