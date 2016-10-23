@@ -35,7 +35,8 @@ class DB_Product extends DataBase
         $stmt->bindValue(1, $id, \PDO::PARAM_INT);
         $stmt->execute();
         $result = $stmt->fetch();
-        $images = explode(',',$result->images);
+
+        $images = isset($result->images)? explode(',',$result->images): NULL ;
         $result->images = $images;
 
         $_SESSION['images'] = [];

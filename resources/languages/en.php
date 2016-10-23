@@ -141,7 +141,7 @@ $add = "Add";
 $addImage = "Add Image";
 $clickToSeePopUp = "Click to see popup menu";
 $viewImage = "view image";
-
+$editProduct = "Edit Product";
 
 
 function has_sub_categories(){

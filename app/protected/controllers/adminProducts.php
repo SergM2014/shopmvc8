@@ -7,9 +7,12 @@ use App\Models\Categories;
 use App\Models\DB_Catalog;
 use App\Models\DB_Product;
 use App\Models\Admin_Product;
+use Lib\CheckFieldsService;
 
 
 class AdminProducts extends AdminController {
+
+    use CheckFieldsService;
 
     public function index($updatedProductId = null )
     {
@@ -79,6 +82,9 @@ class AdminProducts extends AdminController {
                 'manufacturers'=>$manufacturers, 'errors' => $errors];
 
         }
+
+        $_POST['description'] = self::stripTags($_POST['description']);
+        $_POST['body'] = self::stripTags($_POST['body']);
 
         $model->updateProduct();
         $model->addProductsImages();

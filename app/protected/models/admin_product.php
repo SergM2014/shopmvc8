@@ -51,8 +51,8 @@ class Admin_Product extends DataBase
             $stmt->bindValue(2, $image);
             $stmt->execute();
         }
-         //unset($_SESSION['image']);
-        unset($_SESSION['images']);
+
+       // unset($_SESSION['images']);
     }
 
     public function removeProductsImages()
@@ -66,9 +66,7 @@ class Admin_Product extends DataBase
 
             $stmt->execute();
         }
-       /* var_dump($_SESSION['deleteImageList']);
-        die()*/;
-        //unset($_SESSION['image']);
+
         unset($_SESSION['images']);
         unset($_SESSION['deleteImageList']);
     }

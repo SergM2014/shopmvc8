@@ -31,15 +31,16 @@ function completeHandler(event){//тут ивент переобразуется
     progressContainer.setAttribute('hidden', true);
     resetBtn.setAttribute('hidden', true);
     document.getElementById('image_preview').setAttribute('src', '/img/nophoto.jpg');
-    document.getElementById('update-form__image-area').className = 'update-form__image-area--hidden';
-    document.getElementById('update-form__add-image-btn').className = 'update-form__add-image-btn';
+    document.getElementById('product__image-area').className = 'product__image-area--hidden';
+    document.getElementById('product__add-image-btn').className = 'product__add-image-btn';
 //console.log(response.image)
 
 //create separate div and insert added by ajax image
     let img = document.createElement('img');
     img.className = "product-image-preview";
     img.setAttribute('src',`${response.path}${response.image}`);
-    document.getElementById('update-form__images-list').appendChild(img);
+    img.setAttribute('data-image', `${response.image}`)
+    document.getElementById('product-images-list').appendChild(img);
 
 }
 

@@ -1,45 +1,48 @@
-<section id="admin-product__update-form" class="admin-product__update-form">
+<section id="admin-product__form" class="admin-product__form">
 
-    <section class="update-form__images">
-        <div class="update-form__images-list" id="update-form__images-list" >
+    <section class="product-images">
 
-            <?php foreach($product->images as $image): ?>
-                <img src="/uploads/productsImages/thumbs/<?= $image ?>" class="product-image-preview"
-                     title="<?= $clickToSeePopUp ?>" title="<?= $clickToSeePopUp ?>" data-image="<?= $image ?>" >
-            <?php endforeach; ?>
-
+        <div class="product-images-list" id="product-images-list" >
+            <?php if($product->images): ?>
+                <?php  foreach( $product->images as $image): ?>
+                    <img src="/uploads/productsImages/thumbs/<?= $image ?>" class="product-image-preview"
+                         title="<?= $clickToSeePopUp ?>" title="<?= $clickToSeePopUp ?>" data-image="<?= $image ?>" >
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
 
+        <button type="button" class="product__add-image-btn" id="product__add-image-btn" ><?= $addImage ?></button>
+        <input type="hidden" name="_token" id="_token" value="111">
 
-        <button type="button" class="update-form__add-image-btn" id="update-form__add-image-btn" ><?= $addImage ?></button>
+        <form id="product__image-area" class="product__image-area--hidden" enctype="multipart/form-data" method="post"  hidden="true" >
 
-        <form id="update-form__image-area" class="update-form__image-area--hidden" id="update-form__image-area" enctype="multipart/form-data" method="post"  hidden="true" >
+            <div class="product__image-area-left">
 
-            <div class="update-form__image-area-left">
-
-                <img src="<?php echo isset($_SESSION['image'])? '/uploads/productsImages/'.$_SESSION['image']: '/img/nophoto.jpg'; ?>" class="update-form__image-thumb" id="image_preview">
+                <img src="/img/nophoto.jpg" class="product__image-thumb" id="image_preview">
 
 
-               <div class="update-form__progress-container" id="progress-container" hidden >
+               <div  id="progress-container" hidden >
                    <progress id="progress" max="100" value="0">
 
                    </progress>
                </div>
 
             </div>
-            <div class="update-form__image-area-right">
-                <input type="file" id="file"  <?= !isset($_SESSION['image'])? '': 'hidden' ?> >
-                <span class="update-form__image-area-output" id="output"></span>
-                <button type="button" class="update-form__image-area-btn" id="image-submit-btn" <?= !isset($_SESSION['image'])? '': 'hidden' ?> hidden ><?= $load ?></button>
-                <button type="button" class="update-form__image-area-btn" id="image-reset-btn"  <?= isset($_SESSION['image'])? '': 'hidden' ?> ><?= $delete ?></button>
+            <div class="product__image-area-right">
+                <input type="file" id="file" >
+                <span class="product__image-area-output" id="output"></span>
+                <button type="button" class="product__image-area-btn" id="image-submit-btn"  hidden ><?= $load ?></button>
+                <button type="button" class="product__image-area-btn" id="image-reset-btn"  hidden ><?= $delete ?></button>
 
             </div>
 
         </form>
-<script src="/assets/js/adminUploadImage.js"></script>
+
+        <script src="/assets/js/adminUploadImage.js"></script>
+
     </section>
 
-    <h2>This is product</h2>
+    <h2><?= $editProduct ?></h2>
 
     <form action="/adminProducts/update" method="post">
 

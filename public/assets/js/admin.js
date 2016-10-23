@@ -195,8 +195,8 @@ document.body.addEventListener('click', function(e) {
     }
 
 
-    if(e.target.id == "update-form__add-image-btn"){
-        document.getElementById('update-form__image-area').className = "update-form__image-area";
+    if(e.target.id == "product__add-image-btn"){
+        document.getElementById('product__image-area').className = "product__image-area";
         e.target.className = "update-form__add-image-btn--hidden";
     }
 
