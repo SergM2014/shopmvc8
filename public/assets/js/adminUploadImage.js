@@ -33,7 +33,7 @@ function completeHandler(event){//тут ивент переобразуется
     document.getElementById('image_preview').setAttribute('src', '/img/nophoto.jpg');
     document.getElementById('product__image-area').className = 'product__image-area--hidden';
     document.getElementById('product__add-image-btn').className = 'product__add-image-btn';
-//console.log(response.image)
+
 
 //create separate div and insert added by ajax image
     let img = document.createElement('img');
@@ -41,6 +41,19 @@ function completeHandler(event){//тут ивент переобразуется
     img.setAttribute('src',`${response.path}${response.image}`);
     img.setAttribute('data-image', `${response.image}`)
     document.getElementById('product-images-list').appendChild(img);
+
+
+
+//refresh the images order
+    let imgcontainer = document.querySelectorAll('.product-image-preview');
+    // console.log(imgcontainer)
+    let arr = [];
+    for(let i=0; i<imgcontainer.length; i++){
+        arr.push(imgcontainer[i].dataset.image)
+
+    }
+//console.log(arr);
+    document.getElementById('imagesSort').value = arr;
 
 }
 

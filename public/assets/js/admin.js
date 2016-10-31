@@ -113,6 +113,28 @@ class ImagePopUpMenu extends PopupMenu {
     }
 }
 
+class ImageOrder {
+    static reorder(){
+        //refresh the images order
+        let imgcontainer = document.querySelectorAll('.product-image-preview');
+        // console.log(imgcontainer)
+        if(!imgcontainer) return;
+        let arr = [];
+        for(let i=0; i<imgcontainer.length; i++){
+            arr.push(imgcontainer[i].dataset.image)
+            // console.log(imgcontainer[i].dataset.image)
+        }
+//console.log(arr);
+
+        document.getElementById('imagesSort').value = arr;
+    }
+}
+
+
+
+ImageOrder.reorder();
+
+
 
 document.body.addEventListener('click', function(e) {
     if (!e.target.closest("#admin-products-list")) {
@@ -225,12 +247,18 @@ document.body.addEventListener('click', function(e) {
             })
             .then(document.querySelector(`[data-image = "${image}"]`).remove())
 
+        ImageOrder.reorder();
     }
 
 
 
 
+
+
 })//end of the body
+
+
+
 
 
 

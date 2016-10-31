@@ -11,6 +11,7 @@
             <?php endif; ?>
         </div>
 
+
         <button type="button" class="product__add-image-btn" id="product__add-image-btn" ><?= $addImage ?></button>
         <input type="hidden" name="_token" id="_token" value="111">
 
@@ -46,6 +47,7 @@
 
     <form action="/adminProducts/update" method="post">
 
+        <input type="hidden" name="imagesSort" id="imagesSort" >
         <input type="hidden" name="id" id="id" value="<?= $product->product_id ?>">
 
         <div class="admin-product__field" >
@@ -98,6 +100,7 @@
         </div>
 
         <div class="admin-product__field">
+            <button type="button" id="sequance">testing</button>
             <button type="submit"><?= $update ?></button>
         </div>
 
@@ -106,3 +109,5 @@
 
 </section>
 
+<script src="//cdnjs.cloudflare.com/ajax/libs/Sortable/1.4.2/Sortable.min.js"></script>
+<script src="/assets/js/sortable.js"></script>
