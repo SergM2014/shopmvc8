@@ -77,19 +77,20 @@ class AdminProducts extends AdminController {
             $categories = (new Categories)->getAdminDropDownMenu($product);
 
             $this->getUpdatedProductInfo($updatedProduct, $product);
-//in case of error
+
             return ['view'=> 'admin/productView.php', 'product' => $updatedProduct, 'categories'=> $categories,
                 'manufacturers'=>$manufacturers, 'errors' => $errors];
 
         }
-//die(var_dump($_POST['imagesSort']));
+
         $_POST['description'] = self::stripTags($_POST['description']);
         $_POST['body'] = self::stripTags($_POST['body']);
 
         $model->updateProduct();
         $model->addProductsImages();
         $model->removeProductsImages();
-//in success case
+       if(!empty($_POST['imagesSort'])) $model->sortImagesSequence();
+
         return $this->index($_POST['id']);
     }
 

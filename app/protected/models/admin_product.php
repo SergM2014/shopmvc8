@@ -52,7 +52,7 @@ class Admin_Product extends DataBase
             $stmt->execute();
         }
 
-       // unset($_SESSION['images']);
+        unset($_SESSION['images']);
     }
 
     public function removeProductsImages()
@@ -69,6 +69,23 @@ class Admin_Product extends DataBase
 
         unset($_SESSION['images']);
         unset($_SESSION['deleteImageList']);
+    }
+
+    public function sortImagesSequence(){
+        $arr = explode(',', $_POST['imagesSort']);
+        $sortedArr = [];
+        foreach($arr as $key => $value){
+            $sortedArr[$key+1] = $value;
+        }
+
+       $sql = "UPDATE `images` SET `sequence_number` = ? WHERE `image` = ?";
+        $stmt = $this->conn->prepare($sql);
+        foreach($sortedArr as $key =>$value){
+            $stmt->bindValue(1, $key, \PDO::PARAM_INT);
+            $stmt->bindValue(2, $value, \PDO::PARAM_INT);
+            $stmt->execute();
+        }
+
     }
 
 }

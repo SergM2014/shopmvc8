@@ -121,12 +121,11 @@ class ImageOrder {
         if(!imgcontainer) return;
         let arr = [];
         for(let i=0; i<imgcontainer.length; i++){
-            arr.push(imgcontainer[i].dataset.image)
+            arr.push(imgcontainer[i].dataset.image);
             // console.log(imgcontainer[i].dataset.image)
         }
-//console.log(arr);
 
-        document.getElementById('imagesSort').value = arr;
+        if(document.getElementById('imagesSort')) document.getElementById('imagesSort').value = arr;
     }
 }
 
