@@ -138,9 +138,14 @@ $add = "Добавити";
 $addImage = "Додати зоображеня";
 
 $youHaveChangedProductNumber = "Ви успішно обновили продукт під номером № ";
-$clickToSeePopUp = "Клікніть щоб побачити вспливаюче меню";
+$clickToSeePopUp = "Клікніть щоб побачити вспливаюче меню або ж перетянить";
 $viewImage = "Продивитись зоображеня";
 $editProduct = "Редагувати продукт";
+$addProduct = "Добавити Продукт";
+$save = "Зберегти";
+$productUpdated = "Продукт було оновленно! ID продукту ";
+$productAdded = "Продукт було додано! ID продукту ";
+$productDeleted = "Продукт було видаленно! ID продукту ";
 
 function has_sub_categories(){
     return "має додаткові категорії";

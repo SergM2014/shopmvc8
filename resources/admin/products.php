@@ -28,8 +28,8 @@
 
 <div id="insert-products" class="admin-products-list-container">
 
-    <?php if($success): ?>
-        <aside class="admin-product-list-notice"><?= $youHaveChangedProductNumber.$success ?> <span class="admin-products-list-notice__close">X</span></aside>
+    <?php if($action): ?>
+        <aside class="admin-product-list-notice"><?=  $$action.$id ?> <span class="admin-products-list-notice__close">X</span></aside>
     <?php endif; ?>
 
     <?php include PATH_SITE.'/resources/admin/partials/productsList.php'; ?>

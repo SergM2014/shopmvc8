@@ -186,6 +186,15 @@ class Categories extends DataBase
         return $dropDownMenu;
     }
 
+    public function getAddProductAdminDropDownMenu()
+    {
+        $dropDownMenu ="<select id='category_id' name='category_id'>";
+        $dropDownMenu.= $this->printOutAdminDropDownMenu();
+        $dropDownMenu.= "</select>";
+
+        return $dropDownMenu;
+    }
+
 
 
 

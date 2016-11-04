@@ -139,10 +139,14 @@ $delete = "Delete";
 $youHaveChangedProductNumber = "You have updated successfuly product № ";
 $add = "Add";
 $addImage = "Add Image";
-$clickToSeePopUp = "Click to see popup menu";
+$clickToSeePopUp = "Click to see popup menu or drag the image";
 $viewImage = "view image";
 $editProduct = "Edit Product";
-
+$addProduct = "Add Product";
+$save = "Save";
+$productUpdated = "Product was updated! Product ID is  ";
+$productAdded = "Product was added! Product ID is  ";
+$productDeleted = "Product was deleted! Product ID is  ";
 
 function has_sub_categories(){
     return "contains additional categories";

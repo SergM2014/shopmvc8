@@ -14,7 +14,7 @@ class AdminProducts extends AdminController {
 
     use CheckFieldsService;
 
-    public function index($updatedProductId = null )
+    public function index(/*$updatedProductId = null*/$action = null, $id =null )
     {
         $categories = (new Categories)->getDropDownMenu();
         $catalog = new DB_Catalog(true);
@@ -24,7 +24,7 @@ class AdminProducts extends AdminController {
 
 
         return ['view'=> 'admin/products.php', 'categories' => $categories, 'manufacturers'=>$manufacturers,
-            'products' =>$products, 'pages'=>$pages, 'success' =>$updatedProductId ];
+            'products' =>$products, 'pages'=>$pages, /*'success' =>$updatedProductId*/ 'action'=> $action, 'id' => $id ];
     }
 
     public function refresh()
@@ -91,7 +91,7 @@ class AdminProducts extends AdminController {
         $model->removeProductsImages();
        if(!empty($_POST['imagesSort'])) $model->sortImagesSequence();
 
-        return $this->index($_POST['id']);
+        return $this->index('productUpdated', $_POST['id']);
     }
 
     private function getUpdatedProductInfo($updatedProduct, $product)
@@ -107,6 +107,44 @@ class AdminProducts extends AdminController {
     {
         $_SESSION['deleteImageList'][] = $_POST['image'];
         return true;
+    }
+
+    public function create()
+    {
+        $manufacturers = (new DB_Catalog(true))->getManufacturers();
+
+        $categories = (new Categories)->getAddProductAdminDropDownMenu();
+
+        return ['view'=> 'admin/createProduct.php', 'manufacturers'=>$manufacturers, 'categories' => $categories ];
+    }
+
+    public function store()
+    {
+        $product = new \stdClass();
+        $model= new Admin_Product();
+        $errors = $model->checkIfNotEmpty($product);
+        if(!empty($errors)){
+
+            $model->getCategoryAndManufacturerInfo($product);
+
+            $manufacturers = (new DB_Catalog(true))->getManufacturers();
+
+            $categories = (new Categories)->getAdminDropDownMenu($product);
+
+            return ['view'=> 'admin/createProduct.php', 'product' => $product, 'categories'=> $categories,
+                'manufacturers'=>$manufacturers, 'errors' => $errors];
+        }
+
+        $_POST['description'] = self::stripTags($_POST['description']);
+        $_POST['body'] = self::stripTags($_POST['body']);
+
+
+        $addedProductId = $model->addProduct();
+        $model->addProductsImages($addedProductId);
+
+        if(!empty($_POST['imagesSort'])) $model->sortImagesSequence();
+
+        return $this->index('productAdded', $_POST['id']);
     }
 
 

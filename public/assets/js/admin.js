@@ -218,7 +218,7 @@ document.body.addEventListener('click', function(e) {
 
     if(e.target.id == "product__add-image-btn"){
         document.getElementById('product__image-area').className = "product__image-area";
-        e.target.className = "update-form__add-image-btn--hidden";
+        e.target.setAttribute('hidden', true);
     }
 
 // add popupmenu to the update product images
