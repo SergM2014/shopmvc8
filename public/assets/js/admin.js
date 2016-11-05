@@ -136,11 +136,13 @@ ImageOrder.reorder();
 
 
 document.body.addEventListener('click', function(e) {
+
+
     if (!e.target.closest("#admin-products-list")) {
         PopupMenu.deleteMenu();
     }
-
-
+//close alert message
+    if(e.target.id == "admin-products-list-notice__close") document.getElementById('admin-product-list-notice').remove();
 
     //click the pagination
     if (e.target.className == "pagination-item") {
@@ -229,7 +231,7 @@ document.body.addEventListener('click', function(e) {
     }
 
     if(e.target.id == "popUp-menu-item-delete"){
-//console.log(e.target.dataset.image)
+
         let image = e.target.dataset.image;
         let formData = new FormData;
         formData.append('image', image);
@@ -244,10 +246,11 @@ document.body.addEventListener('click', function(e) {
                 body: formData,
                 credentials:'same-origin'
             })
-            .then(document.querySelector(`[data-image = "${image}"]`).remove())
+            .then(document.querySelector(`[data-image = "${image}"]`).remove());
 
         ImageOrder.reorder();
     }
+
 
 
 

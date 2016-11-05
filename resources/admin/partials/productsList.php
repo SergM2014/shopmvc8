@@ -1,13 +1,13 @@
 
 <table class="admin-products-list" id="admin-products-list">
     <tr class="admin-products-list__header" id="admin-products-list__header">
-        <th>№</th><th><?= $images ?></th><th><?= $author ?></th><th><?= $productTitle ?></th><th><?= $description ?></th><th><?= $price ?></th><th><?= $category ?></th><th><?= $manufacturerTitle ?></th>
+        <th>№(ID)</th><th><?= $images ?></th><th><?= $author ?></th><th><?= $productTitle ?></th><th><?= $description ?></th><th><?= $price ?></th><th><?= $category ?></th><th><?= $manufacturerTitle ?></th>
     </tr>
 <?php foreach ($products as $product): ?>
 
 
     <tr class="admin-products-list__row" data-id="<?= $product->product_id ?>">
-        <td><?= $product->startingLineNumber ?></td>
+        <td><?= $product->startingLineNumber.'('.$product->product_id.')' ?></td>
         <td><img src="<?= '/uploads/productsImages/thumbs/'.$product->images[0] ?>" class="<?= isset($product->images[0])? 'admin-products-list__row-thumb': 'admin-products-list__row-thumb--hidden'; ?>" ></td>
         <td><?= $product->author ?></td>
         <td><?= $product->product_title ?></td>

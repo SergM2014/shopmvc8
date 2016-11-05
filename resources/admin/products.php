@@ -29,7 +29,9 @@
 <div id="insert-products" class="admin-products-list-container">
 
     <?php if($action): ?>
-        <aside class="admin-product-list-notice"><?=  $$action.$id ?> <span class="admin-products-list-notice__close">X</span></aside>
+        <aside class="admin-product-list-notice" id="admin-product-list-notice" ><?=  $$action.$id ?>
+            <span id="admin-products-list-notice__close" class="admin-products-list-notice__close">X</span>
+        </aside>
     <?php endif; ?>
 
     <?php include PATH_SITE.'/resources/admin/partials/productsList.php'; ?>

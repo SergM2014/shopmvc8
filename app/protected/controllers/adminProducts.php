@@ -14,7 +14,7 @@ class AdminProducts extends AdminController {
 
     use CheckFieldsService;
 
-    public function index(/*$updatedProductId = null*/$action = null, $id =null )
+    public function index($action = null, $id =null )
     {
         $categories = (new Categories)->getDropDownMenu();
         $catalog = new DB_Catalog(true);
@@ -144,7 +144,12 @@ class AdminProducts extends AdminController {
 
         if(!empty($_POST['imagesSort'])) $model->sortImagesSequence();
 
-        return $this->index('productAdded', $_POST['id']);
+        return $this->index('productAdded', $addedProductId);
+    }
+
+    public function delete(){
+        (new Admin_Product())->deleteProduct();
+        return $this->index('productDeleted', $_POST['id']);
     }
 
 

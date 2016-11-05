@@ -39,7 +39,7 @@ function completeHandler(event){//тут ивент переобразуется
     let img = document.createElement('img');
     img.className = "product-image-preview";
     img.setAttribute('src',`${response.path}${response.image}`);
-    img.setAttribute('data-image', `${response.image}`)
+    img.setAttribute('data-image', `${response.image}`);
     document.getElementById('product-images-list').appendChild(img);
 
 
@@ -54,6 +54,7 @@ function completeHandler(event){//тут ивент переобразуется
     }
 //console.log(arr);
     document.getElementById('imagesSort').value = arr;
+    document.getElementById('product__add-image-btn').removeAttribute('hidden');
 
 }
 

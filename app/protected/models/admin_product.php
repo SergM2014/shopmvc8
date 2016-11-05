@@ -136,4 +136,17 @@ class Admin_Product extends DataBase
 
     }
 
+    public function deleteProduct()
+    {
+        $sql = "DELETE FROM `products` WHERE `id`= ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(1, $_POST['id'], \PDO::PARAM_INT);
+        $stmt->execute();
+//owing toe goreign key images are deleting myself
+        /*$sql = "DELETE FROM `images` WHERE `product_id` = ? ";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(1, $_POST['id'], \PDO::PARAM_INT);
+        $stmt->execute();*/
+    }
+
 }
