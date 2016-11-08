@@ -298,9 +298,7 @@ document.body.addEventListener('click', function(e) {
     if(e.target.id == "modal-confirm-btn--reset") ModalWindow.deleteBackground();
 
 
-    if(e.target.id == "modal-confirm-btn--delete") {
-        console.log('gogo to delete')
-    }
+
 
 
 })//end of the body
