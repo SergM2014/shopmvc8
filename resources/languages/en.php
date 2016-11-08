@@ -147,6 +147,8 @@ $save = "Save";
 $productUpdated = "Product was updated! Product ID is  ";
 $productAdded = "Product was added! Product ID is  ";
 $productDeleted = "Product was deleted! Product ID is  ";
+$areYouShureToDelete = "Are You shure to delete the product ?";
+
 
 function has_sub_categories(){
     return "contains additional categories";

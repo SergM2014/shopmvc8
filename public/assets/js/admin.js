@@ -129,7 +129,42 @@ class ImageOrder {
     }
 }
 
+class ModalWindow {
 
+    static createBackground(){
+        let background = document.createElement('div');
+        background.className = "modal-background";
+        background.id = "modal-background";
+        return background;
+    }
+
+    static createDeletePopUp(id){
+        let popup =document.createElement('div');
+        popup.className = "popup-window";
+
+
+        let founded_lang = new LangForAjax().getLanguage();
+        let url = founded_lang + "/adminProducts/creteConfirmDeleteWindow";
+        let formData = new FormData;
+        formData.append('id', id);
+
+        fetch(url,
+            {
+                method: "POST",
+                body: formData,
+                credentials: 'same-origin'
+            })
+            .then(responce => responce.text())
+            .then(html => { popup.innerHTML = html; return true; })
+            .then(()=> {let modal = ModalWindow.createBackground(); modal.appendChild(popup); document.body.insertBefore(modal, document.body.firstChild )})
+
+    }
+
+    static deleteBackground()
+    {
+        document.getElementById('modal-background').remove();
+    }
+}
 
 ImageOrder.reorder();
 
@@ -169,7 +204,7 @@ document.body.addEventListener('click', function(e) {
             fetch(url,
                 {
                     method: "POST",
-                    body: formData,
+
                     credentials: 'same-origin'
                 })
                 .then(responce => responce.text())
@@ -252,9 +287,20 @@ document.body.addEventListener('click', function(e) {
     }
 
 
+    if(e.target.id == "popUp-admin-product-delete") {
+       let id = e.target.dataset.deleteProductId;
+
+        ModalWindow.createDeletePopUp(id);
+
+    }
 
 
+    if(e.target.id == "modal-confirm-btn--reset") ModalWindow.deleteBackground();
 
+
+    if(e.target.id == "modal-confirm-btn--delete") {
+        console.log('gogo to delete')
+    }
 
 
 })//end of the body
