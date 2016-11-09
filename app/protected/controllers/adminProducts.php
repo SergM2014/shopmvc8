@@ -8,6 +8,7 @@ use App\Models\DB_Catalog;
 use App\Models\DB_Product;
 use App\Models\Admin_Product;
 use Lib\CheckFieldsService;
+use Lib\TokenService;
 
 
 class AdminProducts extends AdminController {
@@ -88,6 +89,7 @@ class AdminProducts extends AdminController {
 
     public function update()
     {
+        TokenService::check('prozessAdmin');
         $updatedProduct = new \stdClass();
         $model= new Admin_Product();
         $errors = $model->checkIfNotEmpty($updatedProduct);
@@ -101,12 +103,13 @@ class AdminProducts extends AdminController {
         return $this->index('productUpdated', $_POST['id']);
     }
 
-
+// delete image in admin products
 
     public function addImageToDeleteList()
     {
+        TokenService::check('prozessAdmin');
         $_SESSION['deleteImageList'][] = $_POST['image'];
-        return true;
+        echo json_encode(["message"=> "added to delete list"]); exit();
     }
 
     public function create()
@@ -121,6 +124,8 @@ class AdminProducts extends AdminController {
 
     public function store()
     {
+        TokenService::check('prozessAdmin');
+
         $product = new \stdClass();
         $model= new Admin_Product();
         $errors = $model->checkIfNotEmpty($product);
@@ -133,6 +138,7 @@ class AdminProducts extends AdminController {
     }
 
     public function delete(){
+        TokenService::check('prozessAdmin');
         (new Admin_Product())->deleteProduct();
         return $this->index('productDeleted', $_POST['id']);
     }

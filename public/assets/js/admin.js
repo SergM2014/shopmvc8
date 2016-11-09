@@ -268,22 +268,39 @@ document.body.addEventListener('click', function(e) {
     if(e.target.id == "popUp-menu-item-delete"){
 
         let image = e.target.dataset.image;
+        let _token = document.getElementById('_token').value;
         let formData = new FormData;
         formData.append('image', image);
+        formData.append('_token', _token);
         formData.append('ajax', true);
 
         let founded_lang =  new LangForAjax().getLanguage();
         let url =  founded_lang+"/adminProducts/addImageToDeleteList";
 
-        fetch( url,
+      p1=  fetch( url,
             {
                 method: "POST",
                 body: formData,
                 credentials:'same-origin'
             })
-            .then(document.querySelector(`[data-image = "${image}"]`).remove());
+            p2 = p1.then(response => response.json() )
+            //p3 = p2.then( json => { if (typeof json.error == 'undefined')  document.querySelector(`[data-image = "${image}"]`).remove(); document.querySelector('#output').setAttribute('hidden', true);})
 
-        ImageOrder.reorder();
+
+        // p3.catch(response)
+
+        p3 = p2.then((json) => {
+            return new Promise((resolve, reject) => {
+                if(typeof json.error != 'undefined'){ reject('123 error'); }
+                resolve('success');
+            })
+        })
+
+            p3.then((response) => { console.log(response); document.querySelector(`[data-image = "${image}"]`).remove(); document.querySelector('#output').setAttribute('hidden', true); ImageOrder.reorder(); });
+            p3.catch((error) => {alert(error)});
+
+
+        //ImageOrder.reorder();
     }
 
 

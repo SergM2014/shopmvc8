@@ -23,7 +23,7 @@
         <form action="/adminProducts/store" method="post">
 
             <input type="hidden" name="imagesSort" id="imagesSort" >
-            <input type="hidden" name="id" id="id" value="">
+            <input type="hidden" name="_token" id="_token" value="<?= \Lib\TokenService::printTocken('prozessAdmin') ?>">
 
             <div class="admin-product__field" >
                 <label for="author" class="admin-product__field-label" ><?= $author ?></label><br>

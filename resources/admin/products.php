@@ -3,6 +3,8 @@
 
 <h2 class="admin__h2-title"><?= $prozessYourProducts ?></h2>
 
+<input type="hidden" name="_token" id="_token" value="<?= \Lib\TokenService::printTocken('prozessAdmin') ?>">
+
 <div  class="products__drop-down-container">
     <select  name="order" id="order-drop-down-menu">
         <option value="default"></option>

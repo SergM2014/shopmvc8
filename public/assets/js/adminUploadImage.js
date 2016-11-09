@@ -19,8 +19,14 @@ function progressHandler(event){
 function completeHandler(event){//тут ивент переобразуется в XMLHttpRequestProgressEvent {}
 
     let response = JSON.parse(event.target.responseText);
+console.log(response.error)
+console.log(typeof response.error)
     output.innerHTML= response.message;
+    output.removeAttribute('hidden');
 
+    //if there is no coinceidance of token;
+    if(typeof response.error != 'undefined') return;
+console.log('afterError');
 
     progress.value = 0;
     progress.innerHTML= "0%";
@@ -108,17 +114,18 @@ if(submitBtn){
     submitBtn.onclick = function(e){
 
         e.preventDefault();
-        //progress.classList.remove('invisible');
+
         progressContainer.removeAttribute('hidden');
 
 
         let file=document.getElementById("file").files[0];
 
         let formdata= new FormData();
-//let _token = document.getElementById('prozessAvatar').value;
+        let _token = document.getElementById('_token').value;
 
         formdata.append("file", file);
-        //formdata.append("_token", _token);
+        formdata.append("_token", _token);
+        formdata.append("ajax", true);
 
         let founded_lang =  new LangForAjax().getLanguage();
         let url =  founded_lang+"/productImage/upload";

@@ -18,8 +18,8 @@ class ProductImage extends BaseController
 
     public function upload()
     {
-        //TokenService::check('prozessAvatar');
-//die(var_dump($_FILES));
+        TokenService::check('prozessAdmin');
+
         $model = new Images;
         $message = $model->uploadImage();
 
@@ -30,7 +30,7 @@ class ProductImage extends BaseController
 
     public function delete()
     {
-       //TokenService::check('prozessAvatar');
+       TokenService::check('prozessAdmin');
 
         $model = new Images;
         $message = $model->deleteImage();

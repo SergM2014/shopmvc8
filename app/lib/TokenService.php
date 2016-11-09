@@ -2,7 +2,7 @@
 
 namespace Lib;
 
-use \smthWentWrong;
+use function  \smthWentWrong;
 
 class TokenService
 {
@@ -37,8 +37,9 @@ class TokenService
 
         $_SESSION['_token']['prozessAvatar'] = md5('prozessAvatar' . $random);
         $_SESSION['_token']['enterAdmin'] = md5('enterAdmin' . $random);
-        //$_SESSION['_token']['prozess_comment'] = md5('prozess_comment' . $random);
+
         $_SESSION['_token']['prozessBusket'] = md5('prozessBusket' . $random);
+        $_SESSION['_token']['prozessAdmin'] = md5('prozessAdmin' . $random);
 
 
     }
@@ -53,10 +54,10 @@ class TokenService
     public static function check($action)
     {
 
-        if(!isset($_POST['_token']) OR $_POST['_token']!= $_SESSION['_token'][$action]) {
+        if(!isset($_POST['_token']) OR $_POST['_token']!= @$_SESSION['_token'][$action]) {
 
             if(isset($_POST['ajax'])) {
-                echo json_encode(["message"=>smthWentWrong(), "error"=> true ]); exit();
+                echo json_encode(["message"=> smthWentWrong(), "error"=> true ]); exit();
             }
 
             header('Location:'.$_SERVER['HTTP_REFERER']); exit();
