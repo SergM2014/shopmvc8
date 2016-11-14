@@ -63,6 +63,58 @@ touchButton.addEventListener('click', function(){
 });
 
 
+class ModalWindow {
+
+    static createBackground(){
+        let background = document.createElement('div');
+        background.className = "modal-background";
+        background.id = "modal-background";
+        return background;
+       // document.body.insertBefore(background, document.body.firstElementChild)
+    }
+
+    static deleteBackground()
+    {
+        document.getElementById('modal-background').remove();
+    }
+
+    static showImage(image)
+    {
+       // document.body.insertBefore(this.createBackground(), document.body.firstElementChild)
+        let background = this.createBackground();
+        let imageView = document.createElement('img');
+        imageView.innerHTML = " alt='' ";
+        imageView.classList = "image-view";
+        background.appendChild(imageView);
+        document.body.insertBefore(background, document.body.firstElementChild)
+        imageView.setAttribute('src', '/uploads/productsImages/'+image);
+        imageView.onload = function(){};
+
+    }
+
+    static showArrows() {
+        let leftArrow = this.createArrow('left');
+        let rightArrow = this.createArrow('right');
+console.log(leftArrow)
+        let modalWindow = document.getElementById('modal-background');
+        modalWindow.insertBefore(leftArrow, modalWindow.firstElementChild);
+        modalWindow.appendChild(rightArrow)
+    }
+
+    static createArrow(direction){
+
+        let arrow = document.createElement('img');
+        arrow.className = "modal-background__"+direction+"-arrow";
+        arrow.id = "modal-background__"+direction+"-arrow";
+        arrow.innerHTML = "alt='' title='' ";
+        arrow.setAttribute('src', '/img/'+direction+'.png');
+        return arrow;
+
+    }
+
+}
+
+
 
 if(windowWidth < 751){
     document.addEventListener('click', function(e){
@@ -103,7 +155,7 @@ document.body.addEventListener('click', function(e){
     if(e.target.closest('.search-results__item')){
         let elem = e.target.closest('.search-results__item');
         let id = elem.dataset.id;
-//console.log(id)
+
         let darkLayer = document.createElement('div'); // слой затемнения
         darkLayer.className = 'background-shadow'; // class чтобы подхватить стиль
         document.body.appendChild(darkLayer); // включаем затемнение
@@ -127,10 +179,7 @@ document.body.addEventListener('click', function(e){
 
     }
 
-    /*if(e.target.id == "close-preview-product" || e.target.className == "background-shadow") {
-        document.getElementsByClassName('background-shadow')[0].remove();
-        document.getElementsByClassName('product-window')[0].remove();
-    }*/
+
 
 
     //vertical menu slideUp/Down
@@ -261,13 +310,23 @@ document.body.addEventListener('click', function(e){
     }
 
 
-    /*if(e.target.id == "final-order-form__submit-btn"){
+    if(e.target.closest('.content__product-image-preview')){
 
+        ModalWindow.showImage(e.target.dataset.image);
+        let ind = e.target.getAttribute('rel');
 
-        document.getElementById("final-order-form__submit-btn").addEventListener('click', function(e){
-            e.preventDefault(); console.log(111); alert ('222');
-        })
-    }*/
+        let ifIsNumber = !isNaN(parseFloat(ind)) && isFinite(ind);
+
+        console.log(ifIsNumber);
+        ModalWindow.showArrows();
+
+    }
+
+    if(e.target.id == "modal-background"){
+        ModalWindow.deleteBackground();
+
+    }
+
 
 });//ends of events hanged on the body
 

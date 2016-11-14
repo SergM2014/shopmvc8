@@ -70,9 +70,14 @@
 
             <div class="content-zone__item-output">
 
-                <img src="/uploads/" alt="" onerror="this.style.display='none'">
-                <h3><span class="content-zone__item-output-title"><?= $productTitle ?> : </span> <?=$item->product_title ?></h3>
-                <h4><span class="content-zone__item-output-title"><?= $author ?> : </span><?= $item->author ?></h4>
+                <?php if(! is_null($item->images)): ?>
+                        <?php foreach($item->images as $image) :?>
+                            <img src="/uploads/productsImages/thumbs/<?= $image ?>" alt="" class="content-zone__item-output-image" data-image="<?= $image ?>">
+                        <?php endforeach; ?>
+                <?php endif; ?>
+
+                <h3><span class="content-zone__item-output-title--shifted"><?= $productTitle ?> : </span> <?=$item->product_title ?></h3>
+                <h4><span class="content-zone__item-output-title--shifted"><?= $author ?> : </span><?= $item->author ?></h4>
                 <p><span class="content-zone__item-output-title"><?= $description ?> : </span><?= $item->description ?></p>
                 <p><span class="content-zone__item-output-title"><?= $body ?> : </span><?= $item->body ?></p>
                 <p><span class="content-zone__item-output-title"><?= $price ?> : </span><?= $item->price .' '.$ukrCurrency?></p>

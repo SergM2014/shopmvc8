@@ -8,16 +8,21 @@
 <section class="content__product-info">
 
     <?php if($productInfo->images) : ?>
-        <section class="content__product-image-container">
+        <section class="content__product-image-container" id="content__product-image-container">
 
             <?php
+            $numberOfImages = count($productInfo->images);
+             $counter = 1;
 
-            $counter=1;
+
             foreach($productInfo->images as $image ) : ?>
 
-                <div class="content__product-image-wrapper">
-                    <img src="/uploads/product_images/thumbs/<?php echo $image; ?>" rel="<?= $counter; ?>" class="content__product-image-preview">
-                </div>
+            <?php
+                $next= $counter ==1  ?  'first' : $counter;
+                if($counter == $numberOfImages) $next= 'last';   ?>
+
+                    <img src="/uploads/productsImages/thumbs/<?= $image; ?>" rel="<?= $next ?>"
+                         class="content__product-image-preview" alt="" data-image="<?= $image ?>" >
 
                 <?php
                 $counter++;

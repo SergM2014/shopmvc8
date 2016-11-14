@@ -283,15 +283,11 @@ document.body.addEventListener('click', function(e) {
                 body: formData,
                 credentials:'same-origin'
             })
-            p2 = p1.then(response => response.json() )
-            //p3 = p2.then( json => { if (typeof json.error == 'undefined')  document.querySelector(`[data-image = "${image}"]`).remove(); document.querySelector('#output').setAttribute('hidden', true);})
-
-
-        // p3.catch(response)
+        p2 = p1.then(response => response.json() )
 
         p3 = p2.then((json) => {
             return new Promise((resolve, reject) => {
-                if(typeof json.error != 'undefined'){ reject('123 error'); }
+                if(typeof json.error != 'undefined'){ reject('That is an CSRF error'); }
                 resolve('success');
             })
         })
