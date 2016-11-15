@@ -7,21 +7,22 @@
 
 <section class="content__product-info">
 
-    <?php if($productInfo->images) : ?>
-        <section class="content__product-image-container" id="content__product-image-container">
+    <?php if($productInfo->images) :
+
+        $numberOfImages = count($productInfo->images);
+        $counter = 1;
+        ?>
+        <section class="content__product-image-container" id="content__product-image-container" data-generalNumber="<?= $numberOfImages ?>">
+
+            <?php foreach($productInfo->images as $image ) : ?>
 
             <?php
-            $numberOfImages = count($productInfo->images);
-             $counter = 1;
+                /*$next= $counter ==1  ?  'first' : $counter;
+                if($counter == $numberOfImages) $next= 'last';
+                if($numberOfImages == 1) $next = 'unique';*/
+                ?>
 
-
-            foreach($productInfo->images as $image ) : ?>
-
-            <?php
-                $next= $counter ==1  ?  'first' : $counter;
-                if($counter == $numberOfImages) $next= 'last';   ?>
-
-                    <img src="/uploads/productsImages/thumbs/<?= $image; ?>" rel="<?= $next ?>"
+                    <img src="/uploads/productsImages/thumbs/<?= $image; ?>" rel="<?= $counter ?>"
                          class="content__product-image-preview" alt="" data-image="<?= $image ?>" >
 
                 <?php
