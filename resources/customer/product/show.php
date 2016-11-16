@@ -7,29 +7,20 @@
 
 <section class="content__product-info">
 
-    <?php if($productInfo->images) :
-
-        $numberOfImages = count($productInfo->images);
-        $counter = 1;
-        ?>
-        <section class="content__product-image-container" id="content__product-image-container" data-generalNumber="<?= $numberOfImages ?>">
+    <?php if($productInfo->images) : ?>
+        <section class="content__product-image-container" id="gallery-box" >
 
             <?php foreach($productInfo->images as $image ) : ?>
 
-            <?php
-                /*$next= $counter ==1  ?  'first' : $counter;
-                if($counter == $numberOfImages) $next= 'last';
-                if($numberOfImages == 1) $next = 'unique';*/
-                ?>
+                    <img src="/uploads/productsImages/thumbs/<?= $image; ?>"
+                         class="content__product-image-preview preview-image" alt="" >
 
-                    <img src="/uploads/productsImages/thumbs/<?= $image; ?>" rel="<?= $counter ?>"
-                         class="content__product-image-preview" alt="" data-image="<?= $image ?>" >
-
-                <?php
-                $counter++;
-            endforeach; ?>
+                <?php endforeach; ?>
 
         </section>
+
+        <script src="/assets/js/gallery.js"></script>
+
     <?php endif; ?>
 
 

@@ -63,99 +63,6 @@ touchButton.addEventListener('click', function(){
 });
 
 
-class ModalWindow {
-
-    static createBackground(){
-        let background = document.createElement('div');
-        background.className = "modal-background";
-        background.id = "modal-background";
-        return background;
-
-    }
-
-    static createImageContainer(ind)
-    {
-        let container = document.createElement('div');
-        container.className = "background__image-container";
-        container.dataset.ind = ind;
-
-        return container;
-    }
-
-    static deleteBackground()
-    {
-        document.getElementById('modal-background').remove();
-    }
-
-    static showImage(image, ind, previous=null, modalBackground = null)
-    {
-
-        let background;
-        if(!modalBackground){
-            background = this.createBackground();
-        } else {
-            background = document.getElementById('modal-background');
-        }
-        let imageContainer = this.createImageContainer(ind);
-        let imageView = document.createElement('img');
-        imageView.innerHTML = " alt='' ";
-        imageView.classList = "gallery__image-view";
-        imageContainer.appendChild(imageView);
-       if(!modalBackground) document.body.insertBefore(background, document.body.firstElementChild)
-        if(previous){
-            background.insertBefore(imageContainer, background.firstElementChild)
-        } else {
-            background.appendChild(imageContainer)
-        }
-        imageView.setAttribute('src', '/uploads/productsImages/'+image);
-
-
-
-        let numberOfImages = document.getElementById('content__product-image-container').dataset.generalnumber
-//console.log(numberOfImages)
-console.log(ind)
-        if(ind >1 && ind<numberOfImages){ ModalWindow.showArrows(ind); }
-
-        if (ind == 1){
-console.log('das ist one');
-            let arrow = ModalWindow.createArrow('right', 2);
-            document.getElementById('modal-background').querySelector('[data-ind="'+ind+'"').appendChild(arrow);
-        }
-
-        if(ind == numberOfImages) {
-
-            let arrow = ModalWindow.createArrow('left', numberOfImages-1);
-            let imageContainer = document.getElementById('modal-background').querySelector('[data-ind="'+ind+'"');
-            imageContainer.insertBefore(arrow, imageContainer.firstElementChild);
-        }
-
-
-    }
-
-    static showArrows(ind) {
-
-        let leftArrow = this.createArrow('left', ind-1);
-        let rightArrow = this.createArrow('right', 1+Number(ind));
-
-        let imageContainer = document.getElementById('modal-background').querySelector('[data-ind="'+ind+'"');
-        imageContainer.insertBefore(leftArrow, imageContainer.firstElementChild);
-        imageContainer.appendChild(rightArrow)
-    }
-
-    static createArrow(direction, ind){
-
-        let arrow = document.createElement('img');
-        arrow.className = "modal-background__arrow";
-        arrow.id = "modal-background__"+direction+"-arrow";
-        arrow.innerHTML = "alt='' title=''  ";
-        arrow.setAttribute('src', '/img/'+direction+'.png');
-        arrow.setAttribute('data-transition', ind)
-        return arrow;
-
-    }
-
-}
-
 
 
 if(windowWidth < 751){
@@ -351,37 +258,7 @@ document.body.addEventListener('click', function(e){
 
     }
 
-//click to show full image
-    if(e.target.closest('.content__product-image-preview' )){
 
-        let ind = e.target.getAttribute('rel');
-        ModalWindow.showImage(e.target.dataset.image, ind);
-
-
-
-
-    }
-//click background to hide background and full image
-    if(e.target.id == "modal-background" || e.target.className =="background__image-container"){ ModalWindow.deleteBackground(); }
-
-    if(e.target.closest('.modal-background__arrow')){
-        let transition = e.target.dataset.transition;
-//console.log(transition);
-         let transitionImage = document.getElementById('content__product-image-container').querySelector('[rel="'+transition+'"]').dataset.image;
-//console.log(transitionImage)
-
-        let currentImgContainer = e.target.closest('.background__image-container');
-        let currentImgContainerInd = currentImgContainer.dataset.ind;
-//console.log(currentImgContainerInd)
-        currentImgContainer.classList.add('hidden');
-
-        let nextImage = document.getElementById('modal-background').querySelector('[data-ind="'+transition+'"]')
-        if(nextImage){
-            nextImage.classList.remove('hidden'); return;
-        }
-
-        ModalWindow.showImage(transitionImage, transition, null, true);
-    }
 
 
 });//ends of events hanged on the body
