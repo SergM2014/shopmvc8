@@ -18,7 +18,7 @@
                 <?php endforeach; ?>
 
         </section>
-
+        <link rel="stylesheet" href="/assets/css/gallery.css" >
         <script src="/assets/js/gallery.js"></script>
 
     <?php endif; ?>

@@ -736,6 +736,7 @@
   border:2px solid green;
 }
 
+
 .modal-background {
   position: fixed;
   width: 100%;
@@ -753,26 +754,6 @@
   max-height:80%;
 
 }
-.modal-background__arrow{
-  width:100px;
-  height:100px;
-  margin:0 10px;
-  cursor:pointer;
-  left:5px;
-}
-.background__image-container{
-  height: 100%;
-  width:100%;
-  display: flex;
-  justify-content: space-between;
-  z-index: 901;
-  align-items: center;
-  margin-top:-20px;
-}
-
-
-
-
 
 
 

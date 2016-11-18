@@ -1,3 +1,5 @@
+let imagePath = '/uploads/productsImages/';
+
 
 class ModalWindow {
 
@@ -18,75 +20,6 @@ class ModalWindow {
         return container;
     }
 
-    static deleteBackground()
-    {
-        document.getElementById('modal-background').remove();
-    }
-
-    static showImage(image, ind, previous=null, modalBackground = null)
-    {
-
-        let background;
-        if(!modalBackground){
-            background = this.createBackground();
-        } else {
-            background = document.getElementById('modal-background');
-        }
-        let imageContainer = this.createImageContainer(ind);
-        let imageView = document.createElement('img');
-        imageView.innerHTML = " alt='' ";
-        imageView.classList = "gallery__image-view";
-        imageContainer.appendChild(imageView);
-        if(!modalBackground) document.body.insertBefore(background, document.body.firstElementChild)
-        if(previous){
-            background.insertBefore(imageContainer, background.firstElementChild)
-        } else {
-            background.appendChild(imageContainer)
-        }
-        imageView.setAttribute('src', '/uploads/productsImages/'+image);
-
-
-
-        let numberOfImages = document.getElementById('gallery-box').querySelectorAll('.preview-image').length;
-
-        if(ind >1 && ind<numberOfImages){ ModalWindow.showArrows(ind); }
-
-        if (ind == 1){
-            let arrow = ModalWindow.createArrow('right', 2);
-            document.getElementById('modal-background').querySelector('[data-ind="'+ind+'"').appendChild(arrow);
-
-
-            let noArrow = document.createElement('div');
-            noArrow.className = "modal-background__arrow"
-            let imageContainer = document.getElementById('modal-background').querySelector('[data-ind="'+ind+'"');
-            imageContainer.insertBefore(noArrow, imageContainer.firstElementChild);
-        }
-
-        if(ind == numberOfImages) {
-
-            let arrow = ModalWindow.createArrow('left', numberOfImages-1);
-            let imageContainer = document.getElementById('modal-background').querySelector('[data-ind="'+ind+'"');
-            imageContainer.insertBefore(arrow, imageContainer.firstElementChild);
-
-
-            let noArrow = document.createElement('div');
-            noArrow.className = "modal-background__arrow"
-            document.getElementById('modal-background').querySelector('[data-ind="'+ind+'"').appendChild(noArrow);
-        }
-
-
-    }
-
-    static showArrows(ind) {
-
-        let leftArrow = this.createArrow('left', ind-1);
-        let rightArrow = this.createArrow('right', 1+Number(ind));
-
-        let imageContainer = document.getElementById('modal-background').querySelector('[data-ind="'+ind+'"');
-        imageContainer.insertBefore(leftArrow, imageContainer.firstElementChild);
-        imageContainer.appendChild(rightArrow)
-    }
-
     static createArrow(direction, ind){
 
         let arrow = document.createElement('img');
@@ -99,43 +32,137 @@ class ModalWindow {
 
     }
 
+    static showArrows(ind) {
+        let leftArrow = this.createArrow('left', ind-1);
+        let rightArrow = this.createArrow('right', 1+Number(ind));
+        let arrowContainer = document.getElementById('modal-background').querySelector('[data-arrowind="'+ind+'"');
+        arrowContainer.insertBefore(leftArrow, arrowContainer.firstElementChild);
+        arrowContainer.appendChild(rightArrow)
+    }
+
+
+
+    static closeSign()
+    {
+        let closeSign = document.createElement('span');
+        closeSign.className = "close-image";
+        closeSign.innerHTML = "CLOSE";
+        return closeSign;
+    }
+
+    static createArrowContainer(ind)
+    {
+        let arrowContainer = document.createElement('div');
+        arrowContainer.className = "arrow-container";
+        arrowContainer.dataset.arrowind = ind;
+        return arrowContainer;
+    }
+
+
+
+    static deleteBackground()
+    {
+        document.getElementById('modal-background').remove();
+    }
+
+    static showFullImage(image, ind, previous=null, modalBackground = null)
+    {
+
+        let background;
+        if(!modalBackground){
+            background = this.createBackground();
+        } else {
+            background = document.getElementById('modal-background');
+        }
+        let imageContainer = this.createImageContainer(ind);
+        let imageView = document.createElement('img');
+        imageView.setAttribute('alt', '');
+        imageView.classList = "gallery__image-view";
+
+        imageContainer.appendChild(imageView);
+
+        imageContainer.appendChild(this.closeSign());
+
+        let arrowContainer = this.createArrowContainer(ind)
+
+        imageContainer.appendChild(arrowContainer)
+
+        if(!modalBackground) document.body.insertBefore(background, document.body.firstElementChild);
+        if(previous){
+            background.insertBefore(imageContainer, background.firstElementChild)
+        } else {
+            background.appendChild(imageContainer)
+        }
+
+        imageView.setAttribute('src', imagePath+image);
+
+
+        let numberOfImages = document.getElementById('gallery-box').querySelectorAll('.preview-image').length;
+
+        if(ind >1 && ind<numberOfImages){ ModalWindow.showArrows(ind); }
+
+        if (ind == 1){
+
+            let noArrow = document.createElement('div');
+            noArrow.className = "modal-background__no-arrow";
+            let arrowContainer = document.getElementById('modal-background').querySelector('[data-arrowind="'+ind+'"');
+            arrowContainer.insertBefore(noArrow, arrowContainer.firstElementChild);
+
+            let arrow = ModalWindow.createArrow('right', 2);
+            document.getElementById('modal-background').querySelector('[data-arrowind="'+ind+'"').appendChild(arrow);
+        }
+
+
+        if(ind == numberOfImages) {
+            let arrow = ModalWindow.createArrow('left', numberOfImages-1);
+            let arrowContainer = document.getElementById('modal-background').querySelector('[data-arrowind="'+ind+'"');
+            arrowContainer.insertBefore(arrow, arrowContainer.firstElementChild);
+
+            let noArrow = document.createElement('div');
+            noArrow.className = "modal-background__no-arrow";
+            document.getElementById('modal-background').querySelector('[data-arrowind="'+ind+'"').appendChild(noArrow);
+        }
+
+
+    }
+
+
+    static initializeImages()
+    {
+        let galleryBox = document.getElementById('gallery-box').querySelectorAll('img');
+        for( let i=0; i < galleryBox.length; i++){
+
+            let imgString = galleryBox[i].getAttribute('src');
+            let imgArr = imgString.split('/');
+            galleryBox[i].dataset.image = imgArr[imgArr.length-1];
+
+
+            galleryBox[i].dataset.order = i+1;
+        }
+
+    }
+
 }
 
-
-let galleryBox = document.getElementById('gallery-box').querySelectorAll('img');
-for( i=0; i < galleryBox.length; i++){
-
-    let imgString = galleryBox[i].getAttribute('src');
-//console.log(img);
-    let imgArr = imgString.split('/');
-
-    galleryBox[i].dataset.image = imgArr[imgArr.length-1];
+ModalWindow.initializeImages();
 
 
-   galleryBox[i].dataset.order = i+1;
-}
-
-//console.log(galleryBox)
 document.body.addEventListener('click', function(e){
 
     //click to show full image
     if(e.target.closest('.preview-image' )){
-
         let ind = e.target.dataset.order;
-        ModalWindow.showImage(e.target.dataset.image, ind);
-
+        ModalWindow.showFullImage(e.target.dataset.image, ind);
     }
 //click background to hide background and full image
-    if(e.target.id == "modal-background" || e.target.className =="background__image-container"){ ModalWindow.deleteBackground(); }
+    if(/*e.target.id == "modal-background" || e.target.className =="background__image-container" ||*/ e.target.className == "close-image"){ ModalWindow.deleteBackground(); }
 
     if(e.target.closest('.modal-background__arrow')){
         let transition = e.target.dataset.transition;
-//console.log(transition);
+
         let transitionImage = document.getElementById('gallery-box').querySelector('[data-order="'+transition+'"]').dataset.image;
-//console.log(transitionImage)
 
         let currentImgContainer = e.target.closest('.background__image-container');
-        let currentImgContainerInd = currentImgContainer.dataset.ind;
 
         currentImgContainer.classList.add('hidden');
 
@@ -144,7 +171,7 @@ document.body.addEventListener('click', function(e){
             nextImage.classList.remove('hidden'); return;
         }
 
-        ModalWindow.showImage(transitionImage, transition, null, true);
+        ModalWindow.showFullImage(transitionImage, transition, null, true);
     }
 
 });
