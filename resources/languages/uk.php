@@ -148,6 +148,8 @@ $productAdded = "Продукт було додано! ID продукту ";
 $productDeleted = "Продукт було видаленно! ID продукту ";
 $areYouShureToDelete = "Ви впевнені, що хочите видалити продукт?";
 $reset = "";
+$created = "Створенно";
+$groupBy = "Сгрупувати по";
 
 
 function has_sub_categories(){

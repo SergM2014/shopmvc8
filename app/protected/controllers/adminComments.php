@@ -8,13 +8,22 @@ use App\Models\DB_Index;
 use Lib\TokenService;
 use App\Models\CheckForm;
 
-class Admincomments extends AdminController {
+use App\Models\Admin_Comment;
+
+class AdminComments extends AdminController {
 
     public function index()
     {
         extract(($this->getCommentsResults()));
 
-        return ['view'=> 'admin/index.php', 'results'=>$results, 'pages'=>$pages, 'loop_counter'=>$loop_counter];
+        return ['view'=> 'admin/comments.php', 'results'=>$results, 'pages'=>$pages, 'loop_counter'=>$loop_counter];
+    }
+
+    public function refresh()
+    {
+        extract(($this->getCommentsResults()));
+
+        return ['view'=> 'admin/partials/commentsList.php', 'results'=>$results, 'pages'=>$pages, 'loop_counter'=>$loop_counter, 'ajax' => true ];
     }
 
     public function paginate()
@@ -26,8 +35,8 @@ class Admincomments extends AdminController {
 
     private function getCommentsResults()
     {
-        $model = new DB_Index;
-        $comments['results'] = $model->getAdminCommentsResult();
+        $model = new Admin_Comment;
+        $comments['results'] = $model->getAllComments();
         $comments['pages'] = $model->countAdminCommentsPages();
         $comments['loop_counter'] = (new AdminModel)->getLoopCounter();
         return $comments;

@@ -80,7 +80,7 @@
   padding:2px;
 
 }
-.pagination-item{
+.pagination-item, .pagination-item-comment{
   cursor: pointer;
   border: 1px solid black;
   padding: 3px;
@@ -89,7 +89,7 @@
   background-color: #83abbf;
 
 }
-.pagination-item-current{
+.pagination-item-current, .pagination-item-comment-current{
   cursor:default;
   border: 1px solid black;
   padding: 3px;
@@ -98,9 +98,9 @@
   background-color: rgba(191, 28, 52, 0.77);
 }
 
-.products-pagination{
+.products-pagination, .comments-pagination{
   text-align:center;
-  margin-top:20px;
+  margin:20px 0;
 }
 
 .popup-menu{
@@ -295,6 +295,36 @@
 .content-zone__item-output-image{
   cursor:pointer;
 }
+
+.admin-comments-list-container{
+  margin-top:20px;
+}
+
+.admin-comments-list__row-thumb{
+  max-height:100px;
+  max-width:100px;
+  border:1px solid red;
+}
+
+.admin-comments-list__header{
+  background: rgba(156, 101, 117, 0.86);
+  color:#ad0521
+}
+.admin-comments-list__row{
+  cursor:pointer;
+  background: rgba(0, 204, 102, 0.53);
+}
+.admin-comments-list__row:nth-child(2n){
+  background: #ada787
+}
+.admin-comments-list th, .admin-comments-list td{
+  padding:2px;
+
+}
+
+
+
+
 
 
 @media screen and(max-width:750px){

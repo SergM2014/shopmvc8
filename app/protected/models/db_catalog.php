@@ -82,12 +82,12 @@ class DB_Catalog extends DataBase
             if(!empty($value->images) && $value->images!= false ){
 
                 $images= explode(',', $value->images);
-//die(var_dump($images));
+
                 $result[$key]->images= array_values($images);
-//die(var_dump($result[$key]->images));
+
             }
         }
-//die(var_dump($result));
+
         return $result;
     }
 

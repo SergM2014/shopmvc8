@@ -312,7 +312,58 @@ document.body.addEventListener('click', function(e) {
 
 
 
+    if(e.target.id == "comments__drop-down-container-btn"){
 
+        let founded_lang =  new LangForAjax().getLanguage();
+        let url =  founded_lang+"/adminComments/refresh";
+
+        let formData = new FormData(document.getElementById('comments_drop-down-container'));
+
+        formData.append('ajax', true);
+        //formData.append('p', p);
+
+        fetch( url,
+            {
+                method: "POST",
+                body: formData,
+                credentials:'same-origin'
+            })
+            .then(responce => responce.text())
+            .then(html => document.getElementById('admin-comments-list-container').innerHTML = html);
+
+
+    }
+
+
+    if (e.target.className == "pagination-item-comment") {
+
+        let the_class = e.target.closest('.pagination-item-comment');
+
+        if (the_class) {
+
+            let p = the_class.dataset.p;
+
+
+            let founded_lang = new LangForAjax().getLanguage();
+            let url = founded_lang + "/adminComments/refresh";
+
+            let formData = new FormData(document.getElementById('comments_drop-down-container'));
+
+            formData.append('ajax', true);
+
+            formData.append('p', p);
+
+            fetch(url,
+                {
+                    method: "POST",
+                    body: formData,
+                    credentials: 'same-origin'
+                })
+                .then(responce => responce.text())
+                .then(html => document.getElementById('admin-comments-list-container').innerHTML = html);
+        }
+
+    }
 
 })//end of the body
 

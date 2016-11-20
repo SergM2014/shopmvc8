@@ -148,6 +148,8 @@ $productUpdated = "Product was updated! Product ID is  ";
 $productAdded = "Product was added! Product ID is  ";
 $productDeleted = "Product was deleted! Product ID is  ";
 $areYouShureToDelete = "Are You shure to delete the product ?";
+$created = "Created";
+$groupBy = "Group by";
 
 
 function has_sub_categories(){
