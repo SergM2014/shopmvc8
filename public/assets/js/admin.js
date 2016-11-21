@@ -91,9 +91,9 @@ class PopupMenu{
 class ImagePopUpMenu extends PopupMenu {
     fillUpMenuContent()
     {
-//console.log(this.target.src);
+
         let arr = this.target.src.split('/');
-//console.log(arr[arr.length-1]);
+
         let image = arr[arr.length-1];
         let product_id =  document.getElementById('id');
         let lang =  new LangForAjax().getLanguage();
@@ -102,6 +102,29 @@ class ImagePopUpMenu extends PopupMenu {
         let formData = new FormData;
         formData.append('id', product_id);
         formData.append('image', image);
+
+        fetch(url, {
+            method:'POST',
+            credentials:'same-origin',
+            body: formData
+        })
+            .then(response => response.text())
+            .then(html =>document.getElementById('popup-menu').innerHTML= html);
+    }
+}
+
+class CommentPopUpMenu extends PopupMenu {
+    fillUpMenuContent()
+    {
+
+        let commentId = this.target.closest('.admin-comments-list__row').id;
+
+        let lang =  new LangForAjax().getLanguage();
+
+        let url = lang + "/adminComments/createCommentsPopUpMenu";
+        let formData = new FormData;
+        formData.append('id', commentId);
+
 
         fetch(url, {
             method:'POST',
@@ -364,6 +387,17 @@ document.body.addEventListener('click', function(e) {
         }
 
     }
+
+
+
+    if (e.target.closest(".admin-comments-list__row") && !e.target.closest(".admin-comments-list__header")) {
+
+        let popUp = new CommentPopUpMenu(e);
+        popUp.drawMenu();
+        popUp.fillUpMenuContent();
+
+    }
+
 
 })//end of the body
 

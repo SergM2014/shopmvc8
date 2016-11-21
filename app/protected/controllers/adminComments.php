@@ -42,6 +42,11 @@ class AdminComments extends AdminController {
         return $comments;
     }
 
+    public function createCommentsPopUpMenu()
+    {
+        return ['view' =>'admin/partials/createCommentsPopUpMenu.php', 'ajax'=>true ];
+    }
+
     public function publish()
     {
         TokenService::check('prozess_comment');

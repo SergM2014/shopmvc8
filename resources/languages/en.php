@@ -150,6 +150,8 @@ $productDeleted = "Product was deleted! Product ID is  ";
 $areYouShureToDelete = "Are You shure to delete the product ?";
 $created = "Created";
 $groupBy = "Group by";
+$publish = "Publish";
+$unpublish = "Unpublish";
 
 
 function has_sub_categories(){

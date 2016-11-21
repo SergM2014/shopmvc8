@@ -13,7 +13,7 @@
     </tr>
 
     <?php foreach($results as $comment): ?>
-        <tr class="admin-comments-list__row">
+        <tr class="admin-comments-list__row" id="<?= $comment->id ?>">
             <th><?= $loop_counter++ ?></th>
             <th><?=  $comment->title.'('.$comment->product_id.')' ?></th>
             <th><?php if ($comment->avatar) : ?><img src="/uploads/avatars/<?= $comment->avatar ?>" alt="" class="admin-comments-list__row-thumb" ><?php endif; ?></th>
