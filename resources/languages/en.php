@@ -153,6 +153,8 @@ $groupBy = "Group by";
 $publish = "Publish";
 $unpublish = "Unpublish";
 
+$commentPublished = "Comment is published. Comments ID is ";
+
 
 function has_sub_categories(){
     return "contains additional categories";

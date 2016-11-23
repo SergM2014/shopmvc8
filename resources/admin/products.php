@@ -31,8 +31,8 @@
 <div id="insert-products" class="admin-products-list-container">
 
     <?php if($action): ?>
-        <aside class="admin-product-list-notice" id="admin-product-list-notice" ><?=  $$action.$id ?>
-            <span id="admin-products-list-notice__close" class="admin-products-list-notice__close">X</span>
+        <aside class="admin-notice" id="admin-notice" ><?=  $$action.$id ?>
+            <span id="admin-notice__close" class="admin-notice__close">X</span>
         </aside>
     <?php endif; ?>
 

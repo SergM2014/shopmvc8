@@ -21,8 +21,8 @@
             <th><?= $comment->email ?></th>
             <th><?= $comment->comment ?></th>
             <th><?= $comment->created_at ?></th>
-            <th><?= $comment->changed ?></th>
-            <th><?= $comment->published ?></th>
+            <th class ="<?= $comment->changed ? 'changed' : 'notChanged' ?>"><?=  $comment->changed ? $yes : $no; ?></th>
+            <th class="<?= $comment->published ? 'published' : 'notPublished' ?>"><?= $comment->published ? $yes : $no; ?></th>
         </tr>
     <?php endforeach; ?>
 

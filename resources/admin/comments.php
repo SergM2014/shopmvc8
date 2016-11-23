@@ -28,6 +28,13 @@
 <div class="admin-comments-list-container" id="admin-comments-list-container">
 
 
+    <?php if($action): ?>
+        <aside class="admin-notice" id="admin-notice" ><?=  $$action.$id ?>
+            <span id="admin-notice__close" class="admin-notice__close">X</span>
+        </aside>
+    <?php endif; ?>
+
+
     <?php include PATH_SITE.'/resources/admin/partials/commentsList.php'; ?>
 
 </div>

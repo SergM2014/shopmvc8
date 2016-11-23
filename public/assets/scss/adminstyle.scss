@@ -133,7 +133,7 @@
   color:red;
   display:block;
 }
-.admin-product-list-notice{
+.admin-notice{
   border: 1px solid red;
   text-align: center;
   background-color: #489455;
@@ -141,7 +141,7 @@
   margin: 20px 0;
   color: red;
 }
-.admin-products-list-notice__close{
+.admin-notice__close, .admin-notice__close{
   color: red;
   float: right;
   cursor: pointer;
@@ -320,6 +320,13 @@
 .admin-comments-list th, .admin-comments-list td{
   padding:2px;
 
+}
+
+.changed, .notPublished{
+  background-color: rgba(196, 37, 40, 0.8);
+}
+.notChanged, .published {
+  background-color: #469943;
 }
 
 

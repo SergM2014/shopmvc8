@@ -189,7 +189,7 @@ class ModalWindow {
     }
 }
 
-ImageOrder.reorder();
+//ImageOrder.reorder();
 
 
 
@@ -200,9 +200,10 @@ document.body.addEventListener('click', function(e) {
         PopupMenu.deleteMenu();
     }
 //close alert message
-    if(e.target.id == "admin-products-list-notice__close") document.getElementById('admin-product-list-notice').remove();
 
-    //click the pagination
+    if(e.target.id == "admin-notice__close")  document.getElementById('admin-notice').remove();
+
+    //click the pagination f the product
     if (e.target.className == "pagination-item") {
 
         let the_class = e.target.closest('.pagination-item');
@@ -396,6 +397,12 @@ document.body.addEventListener('click', function(e) {
         popUp.drawMenu();
         popUp.fillUpMenuContent();
 
+    }
+
+    if(e.target.id == "popUp-admin-comment-publish"){
+
+       let form = e.target.closest('#publish-comment-item');
+        form.submit();
     }
 
 

@@ -153,6 +153,8 @@ $groupBy = "Сгрупувати по";
 $publish = "Публікувати";
 $unpublish = "Зняти з публікації";
 
+$commentPublished = "Коментарий опублікованно. ID продукту ";
+
 
 function has_sub_categories(){
     return "має додаткові категорії";

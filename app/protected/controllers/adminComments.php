@@ -12,11 +12,12 @@ use App\Models\Admin_Comment;
 
 class AdminComments extends AdminController {
 
-    public function index()
+    public function index($fullfilledAction = null, $id =null )
     {
         extract(($this->getCommentsResults()));
 
-        return ['view'=> 'admin/comments.php', 'results'=>$results, 'pages'=>$pages, 'loop_counter'=>$loop_counter];
+        return ['view'=> 'admin/comments.php', 'results'=>$results, 'pages'=>$pages, 'loop_counter'=>$loop_counter,
+            'action'=> $fullfilledAction, 'id' => $id ];
     }
 
     public function refresh()
@@ -26,12 +27,6 @@ class AdminComments extends AdminController {
         return ['view'=> 'admin/partials/commentsList.php', 'results'=>$results, 'pages'=>$pages, 'loop_counter'=>$loop_counter, 'ajax' => true ];
     }
 
-    public function paginate()
-    {
-        extract(($this->getCommentsResults()));
-
-        return ['view'=>'admin/partials/comments_list.php', 'results'=>$results, 'pages'=>$pages, 'loop_counter'=>$loop_counter, 'ajax'=> true ];
-    }
 
     private function getCommentsResults()
     {
@@ -47,13 +42,6 @@ class AdminComments extends AdminController {
         return ['view' =>'admin/partials/createCommentsPopUpMenu.php', 'ajax'=>true ];
     }
 
-    public function publish()
-    {
-        TokenService::check('prozess_comment');
-        $result = (new DB_Index)->publishAll($_POST['checked']);
-
-       echo json_encode($result); exit();
-    }
 
     public function unpublish()
     {
@@ -64,13 +52,14 @@ class AdminComments extends AdminController {
         echo json_encode($result); exit();
     }
 
-    public function deleteItems()
+    public function publish()
     {
-        TokenService::check('prozess_comment');
+        TokenService::check('prozessAdmin');
 
-        $result = (new DB_Index)->deleteAll($_POST['checked']);
+       if(!(new Admin_Comment())->publish()) return $this->index();
 
-        echo json_encode($result); exit();
+       return $this->index('commentPublished', $_POST['id']);
+
     }
 
     public function getOneComment()
@@ -98,4 +87,6 @@ class AdminComments extends AdminController {
         $comment = (new DB_Index)-> getOneComment();
         return ['view'=> 'admin/partials/updated_comment_table_row.php', 'comment'=> $comment, 'ajax'=>true ];
     }
+
+
 }
