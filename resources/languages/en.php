@@ -154,7 +154,7 @@ $publish = "Publish";
 $unpublish = "Unpublish";
 
 $commentPublished = "Comment is published. Comments ID is ";
-
+$commentUnpublished = "Comment is unpublished. Comments ID is ";
 
 function has_sub_categories(){
     return "contains additional categories";

@@ -83,4 +83,22 @@ class Admin_Comment extends DataBase
 
     }
 
+    public function unpublish()
+    {
+        $sql = "SELECT `published` FROM `comments` WHERE  `id` =?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(1, $_POST['id'], \PDO::PARAM_INT);
+        $stmt->execute();
+        $published = $stmt->fetchColumn();
+        if($published == "0") return false;
+
+
+        $sql = "UPDATE `comments` SET `published`='0' WHERE `id`= ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(1, $_POST['id'], \PDO::PARAM_INT);
+        $stmt->execute();
+        return true;
+
+    }
+
 }

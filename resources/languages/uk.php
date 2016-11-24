@@ -154,6 +154,7 @@ $publish = "Публікувати";
 $unpublish = "Зняти з публікації";
 
 $commentPublished = "Коментарий опублікованно. ID продукту ";
+$commentUnpublished = "Коментарий знято з публікації. ID продукту ";
 
 
 function has_sub_categories(){

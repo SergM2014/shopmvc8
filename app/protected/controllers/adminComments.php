@@ -39,17 +39,18 @@ class AdminComments extends AdminController {
 
     public function createCommentsPopUpMenu()
     {
+
         return ['view' =>'admin/partials/createCommentsPopUpMenu.php', 'ajax'=>true ];
     }
 
 
     public function unpublish()
     {
-        TokenService::check('prozess_comment');
+        TokenService::check('prozessAdmin');
 
-        $result = (new DB_Index)->unpublishAll($_POST['checked']);
+        if(!(new Admin_Comment())->unpublish()) return $this->index();
 
-        echo json_encode($result); exit();
+        return $this->index('commentUnpublished', $_POST['id']);
     }
 
     public function publish()

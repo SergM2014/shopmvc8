@@ -405,6 +405,12 @@ document.body.addEventListener('click', function(e) {
         form.submit();
     }
 
+    if(e.target.id == "popUp-admin-comment-unpublish"){
+
+        let form = e.target.closest('#unpublish-comment-item');
+        form.submit();
+    }
+
 
 })//end of the body
 
