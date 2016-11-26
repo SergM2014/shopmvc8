@@ -1,5 +1,5 @@
 
-<p><a href='/adminComments/show?id=<?= (int)$_POST['id'] ?>' class='popUp-menu-item'><?= $update ?></a></p>
+<p><a href='/adminComments/edit?id=<?= (int)$_POST['id'] ?>' class='popUp-menu-item'><?= $update ?></a></p>
 
 
 <form id="publish-comment-item" action="/adminComments/publish" method="post" class="">

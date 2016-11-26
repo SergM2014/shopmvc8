@@ -155,6 +155,11 @@ $unpublish = "Unpublish";
 
 $commentPublished = "Comment is published. Comments ID is ";
 $commentUnpublished = "Comment is unpublished. Comments ID is ";
+$adminCommentPage = "You are on admin commentpage";
+$updateComment = "Update Comment";
+$notPublished = "not published";
+$notChanged = "was not changed";
+$commentChanged = "Comment is changed! Id is : ";
 
 function has_sub_categories(){
     return "contains additional categories";

@@ -1,4 +1,4 @@
-<h2> This ia admin comment page</h2>
+<h2> <?= $adminCommentPage ?></h2>
 
 <input type="hidden" name="_token" id="_token" value="<?= \Lib\TokenService::printTocken('prozessAdmin') ?>">
 

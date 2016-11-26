@@ -63,24 +63,33 @@ class AdminComments extends AdminController {
 
     }
 
-    public function getOneComment()
+    public function edit($error = null)
     {
-        $comment = (new DB_Index)-> getOneComment();
-        return ['view'=> 'admin/partials/update_comment_form.php', 'comment'=> $comment, 'ajax'=>true ];
+        $comment = (new Admin_Comment())->getOneComment();
+
+        $_SESSION['edit'] = true;
+
+        return ['view'=>'admin/updateComment.php', 'comment'=>$comment , 'error' => $error];
     }
 
-    public function updateComment()
+
+
+    public function update()
     {
-        TokenService::check('prozess_comment');
+        TokenService::check('prozessAdmin');
         $model = new CheckForm;
-        $error_response = $model->ifCommentNotEmpty();
-        if (@ $error_response) {
-            echo json_encode($error_response); exit();
+        $error = $model->ifCommentEmpty();
+
+        if ( $error) return   $this->edit($error);
+
+
+        if(@$_SESSION['edit']) {
+
+           (new Admin_Comment())->updateCommentText();
+           return $this->index('commentChanged', $_POST['id']);
         }
 
-        $response = $model->updateComment();
-
-        echo json_encode($response); exit();
+       return $this->index();
     }
 
     public function getUpdatedComment()

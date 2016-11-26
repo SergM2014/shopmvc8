@@ -308,6 +308,18 @@ html, body {
 .notChanged, .published {
   background-color: #469943; }
 
+.update-comment__block-title {
+  font: bold italic 20px serif;
+  color: red; }
+
+.update-comment__block {
+  width: 400px;
+  margin: 0 auto; }
+
+.update-comment__block-field-error {
+  color: red;
+  border-bottom: 1px solid red; }
+
 @media screen and (max-width: 750px) {
   .admin-product__form {
     padding-left: 5px; } }

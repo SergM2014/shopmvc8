@@ -155,7 +155,11 @@ $unpublish = "Зняти з публікації";
 
 $commentPublished = "Коментарий опублікованно. ID продукту ";
 $commentUnpublished = "Коментарий знято з публікації. ID продукту ";
-
+$adminCommentPage = "Ви знаходитеся на сторинці адміністрування коментарів";
+$updateComment = "Оновити коментар";
+$notPublished = "Не опублікований";
+$notChanged = "Не було змінено";
+$commentChanged = "Коментар змінено ID коментарю : ";
 
 function has_sub_categories(){
     return "має додаткові категорії";

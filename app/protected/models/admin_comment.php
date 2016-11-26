@@ -5,9 +5,11 @@ namespace App\Models;
 
 
 use App\Core\DataBase;
+use Lib\CheckFieldsService;
 
 class Admin_Comment extends DataBase
 {
+    use CheckFieldsService;
 
     public function getAllComments()
     {
@@ -98,6 +100,32 @@ class Admin_Comment extends DataBase
         $stmt->bindValue(1, $_POST['id'], \PDO::PARAM_INT);
         $stmt->execute();
         return true;
+
+    }
+
+    public function getOneComment()
+    {
+        $id = @$_GET['id']? : @$_POST['id'];
+
+        $sql = "SELECT `c`.`id`, `c`.`product_id`, `c`.`avatar`, `c`.`name`, `c`.`email`, `c`.`comment`,
+        `c`.`created_at`, `c`.`changed`, `c`.`published`, `p`.`title` AS `product_title` FROM `comments` `c` JOIN `products` `p`
+         ON c.product_id = p.id WHERE `c`.`id`=?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(1, $id, \PDO::PARAM_INT);
+        $stmt->execute();
+        $res = $stmt->fetch();
+        return $res;
+    }
+
+    public function updateCommentText()
+    {
+        $comment = $this->stripTags($_POST['comment']);
+        $sql= "UPDATE `comments` SET `comment`=?, `published`='1' WHERE `id`=?";
+        $stmt = $this ->conn->prepare($sql);
+        $stmt->bindValue(1, $comment, \PDO::PARAM_STR);
+        $stmt->bindValue(2, $_POST['id'], \PDO::PARAM_STR);
+        $stmt->execute();
+        unset($_SESSION['edit']);
 
     }
 

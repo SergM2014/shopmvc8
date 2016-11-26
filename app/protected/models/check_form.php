@@ -79,6 +79,12 @@ class CheckForm extends DataBase
         if(empty($_POST['message'])) return ["message_error" => empty_message()];
     }
 
+    public function ifCommentEmpty()
+    {
+        if(empty($_POST['comment'])) return  empty_field();
+        return false;
+    }
+
 
 
 
