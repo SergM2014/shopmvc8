@@ -46,6 +46,7 @@
                      <li class="main-header__menu-item"><a href="/<?= \Lib\HelperService::currentLang() ?>adminProducts" class="main-header__menu-item-link"><?= $editProducts ?></a></li>
 
                      <li class="main-header__menu-item"><a href="/<?= \Lib\HelperService::currentLang() ?>adminComments" class="main-header__menu-item-link"><?= $comments ?></a></li>
+                     <li class="main-header__menu-item"><a href="/<?= \Lib\HelperService::currentLang() ?>adminCategories" class="main-header__menu-item-link"><?= $categoriesTitles ?></a></li>
 
                      <li class="main-header__admin"> <a href="/<?= \Lib\HelperService::currentLang() ?>admin/leave" ><?= $exit ?></a></li>
 

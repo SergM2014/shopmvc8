@@ -92,11 +92,7 @@ class AdminComments extends AdminController {
        return $this->index();
     }
 
-    public function getUpdatedComment()
-    {
-        $comment = (new DB_Index)-> getOneComment();
-        return ['view'=> 'admin/partials/updated_comment_table_row.php', 'comment'=> $comment, 'ajax'=>true ];
-    }
+
 
 
 }

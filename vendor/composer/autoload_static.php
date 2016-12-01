@@ -31,6 +31,7 @@ class ComposerStaticInit14fc953014b49481d3c9d0477a55e3f8
     public static $classMap = array (
         'App\\Controllers\\Aboutus' => __DIR__ . '/../..' . '/app/protected/controllers/aboutUs.php',
         'App\\Controllers\\Admin' => __DIR__ . '/../..' . '/app/protected/controllers/admin.php',
+        'App\\Controllers\\AdminCategories' => __DIR__ . '/../..' . '/app/protected/controllers/adminCategories.php',
         'App\\Controllers\\AdminComments' => __DIR__ . '/../..' . '/app/protected/controllers/adminComments.php',
         'App\\Controllers\\AdminProducts' => __DIR__ . '/../..' . '/app/protected/controllers/adminProducts.php',
         'App\\Controllers\\Busket' => __DIR__ . '/../..' . '/app/protected/controllers/busket.php',
@@ -51,6 +52,7 @@ class ComposerStaticInit14fc953014b49481d3c9d0477a55e3f8
         'App\\Core\\DataBase' => __DIR__ . '/../..' . '/app/core/database.php',
         'App\\Core\\Upper\\MainDispatcher' => __DIR__ . '/../..' . '/app/core/upper/maindispatcher.php',
         'App\\Models\\AdminModel' => __DIR__ . '/../..' . '/app/protected/models/admin.php',
+        'App\\Models\\Admin_Category' => __DIR__ . '/../..' . '/app/protected/models/admin_category.php',
         'App\\Models\\Admin_Comment' => __DIR__ . '/../..' . '/app/protected/models/admin_comment.php',
         'App\\Models\\Admin_Product' => __DIR__ . '/../..' . '/app/protected/models/admin_product.php',
         'App\\Models\\Avatar' => __DIR__ . '/../..' . '/app/protected/models/avatar.php',

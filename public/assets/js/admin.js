@@ -136,6 +136,29 @@ class CommentPopUpMenu extends PopupMenu {
     }
 }
 
+class CategoryPopUpMenu extends PopupMenu {
+    fillUpMenuContent()
+    {
+
+        let categoryId = this.target.closest('.categories-menu__item').dataset.id;
+console.log(categoryId)
+        let lang =  new LangForAjax().getLanguage();
+
+        let url = lang + "/adminCategories/createCategoriesPopUpMenu";
+        let formData = new FormData;
+        formData.append('id', categoryId);
+
+
+        fetch(url, {
+            method:'POST',
+            credentials:'same-origin',
+            body: formData
+        })
+            .then(response => response.text())
+            .then(html =>document.getElementById('popup-menu').innerHTML= html);
+    }
+}
+
 class ImageOrder {
     static reorder(){
         //refresh the images order
@@ -409,6 +432,14 @@ document.body.addEventListener('click', function(e) {
 
         let form = e.target.closest('#unpublish-comment-item');
         form.submit();
+    }
+
+
+    if(e.target.closest('.categories-menu__item')){
+
+        let popUp = new CategoryPopUpMenu(e);
+        popUp.drawMenu();
+        popUp.fillUpMenuContent();
     }
 
 

@@ -161,6 +161,15 @@ $notPublished = "not published";
 $notChanged = "was not changed";
 $commentChanged = "Comment is changed! Id is : ";
 
+$createCategory = "Create category";
+$deleteCategory = "Delete category";
+$updateTitle = "Change title";
+$editCategory = "Edit category";
+$editCategoryTitle = "Edit category title";
+$chooseParentCategory = "Choose parent category";
+$updateCategory = "Оновити категорію";
+$categoryUpdated = "Category is updated. ID category is : ";
+
 function has_sub_categories(){
     return "contains additional categories";
 }
@@ -246,4 +255,8 @@ return " deleted";
 function smthWentWrong()
 {
     return "Something went wrong";
+}
+function makeMainCategory()
+{
+    return "make main category";
 }

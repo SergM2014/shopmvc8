@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Controllers\\Aboutus' => $baseDir . '/app/protected/controllers/aboutUs.php',
     'App\\Controllers\\Admin' => $baseDir . '/app/protected/controllers/admin.php',
+    'App\\Controllers\\AdminCategories' => $baseDir . '/app/protected/controllers/adminCategories.php',
     'App\\Controllers\\AdminComments' => $baseDir . '/app/protected/controllers/adminComments.php',
     'App\\Controllers\\AdminProducts' => $baseDir . '/app/protected/controllers/adminProducts.php',
     'App\\Controllers\\Busket' => $baseDir . '/app/protected/controllers/busket.php',
@@ -28,6 +29,7 @@ return array(
     'App\\Core\\DataBase' => $baseDir . '/app/core/database.php',
     'App\\Core\\Upper\\MainDispatcher' => $baseDir . '/app/core/upper/maindispatcher.php',
     'App\\Models\\AdminModel' => $baseDir . '/app/protected/models/admin.php',
+    'App\\Models\\Admin_Category' => $baseDir . '/app/protected/models/admin_category.php',
     'App\\Models\\Admin_Comment' => $baseDir . '/app/protected/models/admin_comment.php',
     'App\\Models\\Admin_Product' => $baseDir . '/app/protected/models/admin_product.php',
     'App\\Models\\Avatar' => $baseDir . '/app/protected/models/avatar.php',

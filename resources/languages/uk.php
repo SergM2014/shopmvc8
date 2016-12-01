@@ -161,6 +161,16 @@ $notPublished = "Не опублікований";
 $notChanged = "Не було змінено";
 $commentChanged = "Коментар змінено ID коментарю : ";
 
+$createCategory = "Створити категорію";
+$deleteCategory = "Видалити категорію";
+$updateTitle = "Змінити назву";
+$editCategory = "Редагувати категорію";
+$editCategoryTitle = "Редагувати назву категорії";
+$chooseParentCategory = "Вибрати батьківську категорію";
+$updateCategory = "Оновити категорію";
+$categoryUpdated = "Категорію оновленою ID категорії : ";
+
+
 function has_sub_categories(){
     return "має додаткові категорії";
 }
@@ -246,4 +256,9 @@ function deleted ()
 function smthWentWrong()
 {
     return "Щось пішло не так";
+}
+
+function makeMainCategory()
+{
+    return "зробити головною категорією";
 }

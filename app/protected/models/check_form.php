@@ -84,6 +84,11 @@ class CheckForm extends DataBase
         if(empty($_POST['comment'])) return  empty_field();
         return false;
     }
+    public function  ifCategoryTitleEmpty()
+    {
+        if(empty($_POST['category_title'])) return  empty_field();
+        return false;
+    }
 
 
 
