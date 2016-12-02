@@ -36,7 +36,7 @@ class AdminCategories extends AdminController {
         TokenService::check('prozessAdmin');
         $model = new CheckForm;
         $error = $model->ifCategoryTitleEmpty();
-//var_dump($error);
+
         if ( $error) return   $this->edit($error);
 
 
@@ -44,6 +44,31 @@ class AdminCategories extends AdminController {
 
             (new Admin_Category())->updateCategory();
             return $this->index('categoryUpdated', $_POST['id']);
+        }
+
+        return $this->index();
+    }
+
+    public function create($error = null )
+    {
+        $_SESSION['createCategory'] =true;
+        $categories = (new Admin_Category())->getAdminDropDownMenu();
+        return  ['view' =>'admin/createCategory.php',  'categories'=> $categories, 'error' => $error  ];
+    }
+
+    public function store()
+    {
+        TokenService::check('prozessAdmin');
+        $model = new CheckForm;
+        $error = $model->ifCategoryTitleEmpty();
+
+        if ( $error) return   $this->create($error);
+
+
+        if(@$_SESSION['createCategory']) {
+
+            $id = (new Admin_Category())->storeCategory();
+            return $this->index('categoryCreated', $id);
         }
 
         return $this->index();

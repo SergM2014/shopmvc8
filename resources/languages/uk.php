@@ -169,7 +169,10 @@ $editCategoryTitle = "Редагувати назву категорії";
 $chooseParentCategory = "Вибрати батьківську категорію";
 $updateCategory = "Оновити категорію";
 $categoryUpdated = "Категорію оновленою ID категорії : ";
-
+$createCategoryTitle = "Створити назву категорії";
+$createCategory = "Створити категорію";
+$createCategoryHeader = "Створити нову категорію";
+$categoryCreated = "Категорію створенно. ID : ";
 
 function has_sub_categories(){
     return "має додаткові категорії";

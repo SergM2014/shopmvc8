@@ -110,14 +110,15 @@ class Admin_Category extends DataBase
     }
 
 
-    public function getAdminDropDownMenu($category)
+    public function getAdminDropDownMenu($category= null )
     {
         $categories = $this->getCategories();
+        $parentId= @$category->parent_id ?: 0;
 
         $disclaimer = @$category->parent_title ? : makeMainCategory();
 
         $dropDownMenu ="<select id='category_id' name='category_id'>";
-        $dropDownMenu.="<option class='drop-down-menu-item' selected value='$category->parent_id' >$disclaimer </option>";
+        $dropDownMenu.="<option class='drop-down-menu-item' selected value='$parentId' >$disclaimer </option>";
         $dropDownMenu.= $this->printOutAdminDropDownMenu($categories);
         $dropDownMenu.= "</select>";
 
@@ -138,6 +139,25 @@ class Admin_Category extends DataBase
         $stmt->bindValue(4, $_POST['id'], \PDO::PARAM_INT);
         $stmt->execute();
         unset ($_SESSION['editCategorytitle']);
+    }
+
+
+    public function storeCategory()
+    {
+        $categoryTitle = $this->stripTags($_POST['category_title']);
+
+        $engTranslitTitle = LangService::translite_in_Latin($categoryTitle);
+
+        $sql = "INSERT INTO `categories` ( `title`, `parent_id`, `eng_translit_title`) VALUES (?, ?, ? )";
+        $stmt= $this->conn->prepare($sql);
+        $stmt->bindValue(1, $categoryTitle, \PDO::PARAM_STR);
+        $stmt->bindValue(2, $_POST['category_id'], \PDO::PARAM_INT);
+        $stmt->bindValue(3, $engTranslitTitle, \PDO::PARAM_STR);
+
+        $stmt->execute();
+        $id = $this->conn->lastInsertId();
+        unset ($_SESSION['createCategory']);
+        return $id;
     }
 
 }

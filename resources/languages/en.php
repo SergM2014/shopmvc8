@@ -169,6 +169,10 @@ $editCategoryTitle = "Edit category title";
 $chooseParentCategory = "Choose parent category";
 $updateCategory = "Оновити категорію";
 $categoryUpdated = "Category is updated. ID category is : ";
+$createCategoryTitle = "Create category title";
+$createCategory = "Create Category";
+$createCategoryHeader = "Create new category";
+$categoryCreated = "Category is created! ID : ";
 
 function has_sub_categories(){
     return "contains additional categories";

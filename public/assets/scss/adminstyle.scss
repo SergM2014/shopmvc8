@@ -329,16 +329,16 @@
   background-color: #469943;
 }
 
-.update-comment__block-title, .update-category__block-title{
+.update-comment__block-title, .update-category__block-title, .create-category__block-title {
   font: bold italic 20px serif;
   color:red;
 }
-.update-comment__block, .admin-categories__block, .update-category__block {
+.update-comment__block, .admin-categories__block, .update-category__block, .create-category__block {
   width:400px;
   margin:0 auto;
   padding-top:20px;
 }
-.update-comment__block-field-error, .update-category__block-field-error{
+.update-comment__block-field-error, .update-category__block-field-error, .create-category__block-field-error {
   color:red;
   border-bottom:1px solid red;
 }
