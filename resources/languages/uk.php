@@ -173,6 +173,9 @@ $createCategoryTitle = "Створити назву категорії";
 $createCategory = "Створити категорію";
 $createCategoryHeader = "Створити нову категорію";
 $categoryCreated = "Категорію створенно. ID : ";
+$categoryHasChildren = "Видалення заборонено! категорія мае підкатегорії";
+$categoryHasProducts = "Видалення заборонено! Категорія містить продукти";
+$categoryDeleted = "Категорію видаленно!. ID : ";
 
 function has_sub_categories(){
     return "має додаткові категорії";

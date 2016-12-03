@@ -173,6 +173,9 @@ $createCategoryTitle = "Create category title";
 $createCategory = "Create Category";
 $createCategoryHeader = "Create new category";
 $categoryCreated = "Category is created! ID : ";
+$categoryHasChildren = "Delete is restricted! Category has subcategories";
+$categoryHasProducts = "Delete is restricted! Category has products";
+$categoryDeleted = "Category is deleted!. ID : ";
 
 function has_sub_categories(){
     return "contains additional categories";

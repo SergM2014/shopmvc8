@@ -160,4 +160,37 @@ class Admin_Category extends DataBase
         return $id;
     }
 
+    public function findChildCategories()
+    {
+        $sql = "SELECT `id` FROM `categories` WHERE `parent_id` =?";
+        $stmt = $this->conn ->prepare($sql);
+        $stmt->bindValue(1, $_POST['id'], \PDO::PARAM_INT);
+        $stmt->execute();
+        $res= $stmt->fetch();
+
+        unset($_SESSION['deleteCategory']);
+        return !!$res;
+
+    }
+
+    public function findProductsInCategory()
+    {
+        $sql = "SELECT `id` FROM `products` WHERE `cat_id` =?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(1, $_POST['id'], \PDO::PARAM_INT);
+        $stmt ->execute();
+        $res = $stmt->fetch();
+        unset($_SESSION['deleteCategory']);
+        return !!$res;
+    }
+
+    public function deleteCategory()
+    {
+        $sql = "DELETE FROM `categories` WHERE `id`=?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(1 ,$_POST['id'], \PDO::PARAM_INT);
+        $stmt->execute();
+        unset($_SESSION['deleteCategory']);
+    }
+
 }

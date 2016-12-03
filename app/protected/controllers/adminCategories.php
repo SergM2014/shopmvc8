@@ -11,11 +11,11 @@ use App\Models\CheckForm;
 class AdminCategories extends AdminController {
 
 
-    public function index($fullfilledAction = null, $id =null)
+    public function index($fullfilledAction = null, $id =null, $error = null )
     {
         $categories = (new Admin_Category())->getCategoriesMenu();
 
-        return ['view'=>'admin/categories.php', 'categories'=>$categories, 'action'=> $fullfilledAction, 'id' => $id  ];
+        return ['view'=>'admin/categories.php', 'categories'=>$categories, 'action'=> $fullfilledAction, 'id' => $id , 'error'=> $error ];
     }
 
     public function createCategoriesPopUpMenu()
@@ -72,6 +72,32 @@ class AdminCategories extends AdminController {
         }
 
         return $this->index();
+    }
+
+    public function creteConfirmDeleteWindow()
+    {
+        $_SESSION['deleteCategory'] = true;
+
+        return ['view' =>'admin/partials/createConfirmDeleteCategoryWindow.php', 'ajax'=>true ];
+    }
+
+    public function delete()
+    {
+        TokenService::check('prozessAdmin');
+        if(!isset($_SESSION['deleteCategory'])) return $this->index();
+
+        $model = new Admin_Category();
+
+        $error = $model ->findChildCategories();
+
+        if($error)  return $this->index('categoryHasChildren', null, 'error');
+
+        $error = $model->findProductsInCategory();
+        if($error)  return $this->index('categoryHasProducts', null, 'error');
+
+        $model->deleteCategory();
+        return $this->index('categoryDeleted', $_POST['id']);
+
     }
    
 
