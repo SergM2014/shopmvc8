@@ -176,6 +176,9 @@ $categoryCreated = "Category is created! ID : ";
 $categoryHasChildren = "Delete is restricted! Category has subcategories";
 $categoryHasProducts = "Delete is restricted! Category has products";
 $categoryDeleted = "Category is deleted!. ID : ";
+$createManufacturer = "Create manufacturer";
+$updateManufacturer = "Update manufacturer";
+$deleteManufacturer = "Delete";
 
 function has_sub_categories(){
     return "contains additional categories";

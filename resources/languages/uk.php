@@ -176,6 +176,9 @@ $categoryCreated = "Категорію створенно. ID : ";
 $categoryHasChildren = "Видалення заборонено! категорія мае підкатегорії";
 $categoryHasProducts = "Видалення заборонено! Категорія містить продукти";
 $categoryDeleted = "Категорію видаленно!. ID : ";
+$createManufacturer = "Створити виробника";
+$updateManufacturer = "Оновити виробника";
+$deleteManufacturer = "Видалити";
 
 function has_sub_categories(){
     return "має додаткові категорії";

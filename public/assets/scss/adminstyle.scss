@@ -333,7 +333,7 @@
   font: bold italic 20px serif;
   color:red;
 }
-.update-comment__block, .admin-categories__block, .update-category__block, .create-category__block {
+.update-comment__block, .admin-categories__block, .update-category__block, .create-category__block, .admin-manufacturers__block {
   width:400px;
   margin:0 auto;
   padding-top:20px;
@@ -342,19 +342,19 @@
   color:red;
   border-bottom:1px solid red;
 }
-.categories-menu{
+.categories-menu, .manufacturers-menu{
   margin-left:20px;
 
 }
-.categories-menu li{
+.categories-menu li, .manufacturers-menu li{
   list-style-type: none;
 }
 
-.categories-menu__item-container{
+.categories-menu__item-container, .manufacturers-menu__item-container{
   padding-left: 10px;
 
 }
-.categories-menu__item{
+.categories-menu__item, .manufacturers-menu__item{
   border:1px solid black;
   margin-top:5px;
   display:block;
@@ -367,7 +367,7 @@
  text-align:center;
 }
 
-.categories-menu__item:hover{
+.categories-menu__item:hover, .manufacturers-menu__item:hover{
   background-color: #c46a74;
 }
 
