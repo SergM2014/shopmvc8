@@ -90,6 +90,18 @@ class CheckForm extends DataBase
         return false;
     }
 
+    public function  ifManufacturerTitleEmpty()
+    {
+        if(empty($_POST['manufacturer_title'])) return  empty_field();
+        return false;
+    }
+
+    public function  ifManufacturerUrlEmpty()
+    {
+        if(empty($_POST['manufacturer_url'])) return  empty_field();
+        return false;
+    }
+
 
 
 

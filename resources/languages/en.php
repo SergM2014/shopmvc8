@@ -179,6 +179,11 @@ $categoryDeleted = "Category is deleted!. ID : ";
 $createManufacturer = "Create manufacturer";
 $updateManufacturer = "Update manufacturer";
 $deleteManufacturer = "Delete";
+$createManufacturerHeader = "Create manufacturer";
+$createManufacturerTitle = "Enter manufacturer's title";
+$createManufacturer = "Create manufacturer";
+$manufacturerCreated = "New manufacturer is created! ID : ";
+$createManufacturerUrl = "Create manufacturer's Url";
 
 function has_sub_categories(){
     return "contains additional categories";

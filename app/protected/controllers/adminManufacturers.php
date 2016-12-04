@@ -6,10 +6,12 @@ use App\Core\AdminController;
 use App\Models\Admin_Manufacturer;
 use \Lib\TokenService;
 use App\Models\CheckForm;
+use \Lib\CheckFieldsService;
 
 
 class AdminManufacturers extends AdminController {
 
+    use CheckFieldsService;
 
     public function index($fullfilledAction = null, $id =null, $error = null )
     {
@@ -23,9 +25,41 @@ class AdminManufacturers extends AdminController {
         return ['view'=>'admin/partials/createManufacturersPopUpMenu.php', 'ajax'=> true ];
     }
 
+
+    public function create($error = null )
+    {
+        $_SESSION['createManufacturer'] =true;
+
+        $title = $this->stripTags(@$_POST['manufacturer_title']);
+        $url = $this->stripTags(@$_POST['manufacturer_url']);
+
+        return  ['view' =>'admin/createManufacturer.php', 'error' => $error , 'title' => $title, 'url' => $url ];
+    }
+
+
+    public function store()
+    {
+        TokenService::check('prozessAdmin');
+        $model = new CheckForm;
+        $error['title'] = $model->ifManufacturerTitleEmpty() ;
+        $error['url'] = $model->ifManufacturerUrlEmpty() ;
+
+        if ( $error['title'] !== false AND $error['url'] !== false) return   $this->create($error);
+
+
+        if(@$_SESSION['createManufacturer']) {
+
+            $id = (new Admin_Manufacturer())->storeManufacturer();
+            return $this->index('manufacturerCreated', $id);
+        }
+
+        return $this->index();
+    }
+
+
     public function edit($error = null )
     {
-        $category = (new Admin_Category())->getOneCategory();
+        $category = (new Admin_Manufacturer())->getOneManufacturer();
         $_SESSION['editCategorytitle'] = true;
         $categories = (new Admin_Category())->getAdminDropDownMenu($category);
         return  ['view' =>'admin/updateCategory.php', 'category'=> $category, 'categories'=> $categories, 'error' => $error  ];
@@ -49,30 +83,9 @@ class AdminManufacturers extends AdminController {
         return $this->index();
     }
 
-    public function create($error = null )
-    {
-        $_SESSION['createCategory'] =true;
-        $categories = (new Admin_Category())->getAdminDropDownMenu();
-        return  ['view' =>'admin/createCategory.php',  'categories'=> $categories, 'error' => $error  ];
-    }
-
-    public function store()
-    {
-        TokenService::check('prozessAdmin');
-        $model = new CheckForm;
-        $error = $model->ifCategoryTitleEmpty();
-
-        if ( $error) return   $this->create($error);
 
 
-        if(@$_SESSION['createCategory']) {
 
-            $id = (new Admin_Category())->storeCategory();
-            return $this->index('categoryCreated', $id);
-        }
-
-        return $this->index();
-    }
 
     public function creteConfirmDeleteWindow()
     {

@@ -179,6 +179,11 @@ $categoryDeleted = "Категорію видаленно!. ID : ";
 $createManufacturer = "Створити виробника";
 $updateManufacturer = "Оновити виробника";
 $deleteManufacturer = "Видалити";
+$createManufacturerHeader = "Створити виробника";
+$createManufacturerTitle = "Введiть назву виробника";
+$createManufacturer = "Створити виробника";
+$manufacturerCreated = "Нового виробника створенно! ID : ";
+$createManufacturerUrl = "Введіть URL виробника";
 
 function has_sub_categories(){
     return "має додаткові категорії";

@@ -22,48 +22,33 @@ class Admin_Manufacturer extends DataBase
 
    }
 
-    public function getCategoriesMenu()
+    public function storeManufacturer()
     {
-        $categories = $this->getCategories();
+        $manufacturerTitle = $this->stripTags($_POST['manufacturer_title']);
 
-        $leftMenu ="<ul class='categories-menu'>";
-        $leftMenu.= $this->printOutCategoriesMenu($categories);
-        $leftMenu.= "</ul>";
-        return $leftMenu;
+        $engTranslitTitle = LangService::translite_in_Latin($manufacturerTitle);
+
+        $url = $this->stripTags($_POST['manufacturer_url']);
+
+        $sql = "INSERT INTO `manufacturers` ( `title`, `eng_translit_title`, `url`) VALUES (?, ?, ? )";
+        $stmt= $this->conn->prepare($sql);
+        $stmt->bindValue(1, $manufacturerTitle, \PDO::PARAM_STR);
+        $stmt->bindValue(2, $engTranslitTitle, \PDO::PARAM_STR);
+        $stmt->bindValue(3, $url, \PDO::PARAM_STR);
+
+        $stmt->execute();
+        $id = $this->conn->lastInsertId();
+        unset ($_SESSION['createManufacturer']);
+        return $id;
     }
 
 
-    protected function printOutCategoriesMenu( $categories, $parent = 0)
-    {
-        if(!isset($print)){$print='';}
-        foreach($categories as $category){
-            if($category->parent_id ==$parent ){
 
-                $print.='<li  class="categories-menu__item-container"><span class="categories-menu__item" data-id="'.$category->id .'">'.$category->title.'</span>' ;
-                foreach($categories as $sub_cat){
-                    if($sub_cat->parent_id == $category->id){
-                        $flag = TRUE; break;
-                    }
-                }
-
-                if(isset($flag)){
-                    $print.= "<ul>";
-                    $print.= $this->printOutCategoriesMenu($categories, $category->id);
-                    $print.= "</ul>";
-                    $print.= "</li>";
-                } else{
-                    $print.="</li>";
-                }
-            }
-        }
-        return $print;
-    }
-
-    public function getOneCategory()
+    public function getOneManufacturer()
     {
         $id = @$_GET['id']?: @$_POST['id'];
 
-        $sql = "SELECT `id`, `parent_id`, `title`, `eng_translit_title` FROM `categories` WHERE `id`=? ";
+        $sql = "SELECT `id`, `title`, `eng_translit_title`, `url` FROM `categories` WHERE `id`=? ";
 
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(1, $id, \PDO::PARAM_INT);
@@ -142,23 +127,7 @@ class Admin_Manufacturer extends DataBase
     }
 
 
-    public function storeCategory()
-    {
-        $categoryTitle = $this->stripTags($_POST['category_title']);
 
-        $engTranslitTitle = LangService::translite_in_Latin($categoryTitle);
-
-        $sql = "INSERT INTO `categories` ( `title`, `parent_id`, `eng_translit_title`) VALUES (?, ?, ? )";
-        $stmt= $this->conn->prepare($sql);
-        $stmt->bindValue(1, $categoryTitle, \PDO::PARAM_STR);
-        $stmt->bindValue(2, $_POST['category_id'], \PDO::PARAM_INT);
-        $stmt->bindValue(3, $engTranslitTitle, \PDO::PARAM_STR);
-
-        $stmt->execute();
-        $id = $this->conn->lastInsertId();
-        unset ($_SESSION['createCategory']);
-        return $id;
-    }
 
     public function findChildCategories()
     {
