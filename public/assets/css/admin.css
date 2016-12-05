@@ -344,6 +344,10 @@ html, body {
 .categories-menu__item:hover, .manufacturers-menu__item:hover {
   background-color: #c46a74; }
 
+.error {
+  background-color: red !important;
+  color: black !important; }
+
 @media screen and (max-width: 750px) {
   .admin-product__form {
     padding-left: 5px; } }

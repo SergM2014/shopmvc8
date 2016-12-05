@@ -189,6 +189,8 @@ $updateManufacturerTitle = "Update manufacturer title";
 $updateManufacturerUrl = "Update manufacturer's url";
 $updateManufacturer = "Update manufacturer";
 $manufacturerUpdated = "Manufacturer is updated! ID : ";
+$manufacturerHasProducts = "Delete is restricted! The manufacturer has products";
+$manufactureryDeleted = "Manufacturer is deleted! ID : ";
 
 function has_sub_categories(){
     return "contains additional categories";

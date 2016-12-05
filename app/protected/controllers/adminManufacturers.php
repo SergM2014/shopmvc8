@@ -79,9 +79,7 @@ class AdminManufacturers extends AdminController {
 
         if ( $error['title'] !== false OR $error['url'] !== false) return   $this->edit($error);
 
-
         if(@$_SESSION['editManufacturer']) {
-
             (new Admin_Manufacturer())->updateManufacturer();
             return $this->index('manufacturerUpdated', $_POST['id']);
         }
@@ -95,27 +93,25 @@ class AdminManufacturers extends AdminController {
 
     public function creteConfirmDeleteWindow()
     {
-        $_SESSION['deleteCategory'] = true;
+        $_SESSION['deleteManufacturer'] = true;
 
-        return ['view' =>'admin/partials/createConfirmDeleteCategoryWindow.php', 'ajax'=>true ];
+        return ['view' =>'admin/partials/createConfirmDeleteManufacturerWindow.php', 'ajax'=>true ];
     }
 
     public function delete()
     {
         TokenService::check('prozessAdmin');
-        if(!isset($_SESSION['deleteCategory'])) return $this->index();
+        if(!isset($_SESSION['deleteManufacturer'])) return $this->index();
 
-        $model = new Admin_Category();
+        $model = new Admin_Manufacturer();
 
-        $error = $model ->findChildCategories();
+        $error = $model ->findProductsInIt();
 
-        if($error)  return $this->index('categoryHasChildren', null, 'error');
+        if($error)  return $this->index('manufacturerHasProducts', null, 'error');
 
-        $error = $model->findProductsInCategory();
-        if($error)  return $this->index('categoryHasProducts', null, 'error');
 
-        $model->deleteCategory();
-        return $this->index('categoryDeleted', $_POST['id']);
+        $model->deleteManufacturer();
+        return $this->index('manufactureryDeleted', $_POST['id']);
 
     }
    

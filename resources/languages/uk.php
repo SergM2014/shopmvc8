@@ -189,6 +189,8 @@ $updateManufacturerTitle = "Змініть назву виробника";
 $updateManufacturerUrl = "Змінити Url виробника";
 $updateManufacturer = "Зберегти зміни виробника";
 $manufacturerUpdated = "Виробника оновлено! ID : ";
+$manufacturerHasProducts = "Видалити неможливо. Данній виробник містить продукти";
+$manufactureryDeleted = "Виробника видалено! ID : ";
 
 function has_sub_categories(){
     return "має додаткові категорії";

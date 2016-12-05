@@ -264,6 +264,32 @@ class CategoryModalWindow extends ModalWindow {
 
 }
 
+class ManufacturerModalWindow extends ModalWindow {
+
+    static createDeletePopUp(id){
+        let popup =document.createElement('div');
+        popup.className = "popup-window";
+
+
+        let founded_lang = new LangForAjax().getLanguage();
+        let url = founded_lang + "/adminManufacturers/creteConfirmDeleteWindow";
+        let formData = new FormData;
+        formData.append('id', id);
+
+        fetch(url,
+            {
+                method: "POST",
+                body: formData,
+                credentials: 'same-origin'
+            })
+            .then(responce => responce.text())
+            .then(html => { popup.innerHTML = html; return true; })
+            .then(()=> {let modal = ModalWindow.createBackground(); modal.appendChild(popup); document.body.insertBefore(modal, document.body.firstChild )})
+
+    }
+
+}
+
 //ImageOrder.reorder();
 
 
@@ -508,6 +534,13 @@ document.body.addEventListener('click', function(e) {
         let popUp = new ManufacturerPopUpMenu(e);
         popUp.drawMenu();
         popUp.fillUpMenuContent();
+    }
+
+    if(e.target.id == "popUp-admin-manufacturer-delete") {
+        let id = e.target.dataset.manufacturerId;
+// console.log(id)
+        ManufacturerModalWindow.createDeletePopUp(id);
+
     }
 
 

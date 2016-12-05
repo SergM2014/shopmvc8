@@ -84,37 +84,28 @@ class Admin_Manufacturer extends DataBase
 
 
 
-    public function findChildCategories()
+    public function findProductsInIt()
     {
-        $sql = "SELECT `id` FROM `categories` WHERE `parent_id` =?";
+        $sql = "SELECT `id` FROM `products` WHERE `manf_id` =?";
         $stmt = $this->conn ->prepare($sql);
         $stmt->bindValue(1, $_POST['id'], \PDO::PARAM_INT);
         $stmt->execute();
         $res= $stmt->fetch();
 
-        unset($_SESSION['deleteCategory']);
+        unset($_SESSION['deleteManufacturer']);
         return !!$res;
 
     }
 
-    public function findProductsInCategory()
-    {
-        $sql = "SELECT `id` FROM `products` WHERE `cat_id` =?";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bindValue(1, $_POST['id'], \PDO::PARAM_INT);
-        $stmt ->execute();
-        $res = $stmt->fetch();
-        unset($_SESSION['deleteCategory']);
-        return !!$res;
-    }
 
-    public function deleteCategory()
+
+    public function deleteManufacturer()
     {
-        $sql = "DELETE FROM `categories` WHERE `id`=?";
+        $sql = "DELETE FROM `manufacturers` WHERE `id`=?";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(1 ,$_POST['id'], \PDO::PARAM_INT);
         $stmt->execute();
-        unset($_SESSION['deleteCategory']);
+        unset($_SESSION['deleteManufacturer']);
     }
 
 }
