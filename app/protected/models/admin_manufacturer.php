@@ -48,82 +48,37 @@ class Admin_Manufacturer extends DataBase
     {
         $id = @$_GET['id']?: @$_POST['id'];
 
-        $sql = "SELECT `id`, `title`, `eng_translit_title`, `url` FROM `categories` WHERE `id`=? ";
+        $sql = "SELECT `id`, `title`, `eng_translit_title`, `url` FROM `manufacturers` WHERE `id`=? ";
 
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(1, $id, \PDO::PARAM_INT);
         $stmt->execute();
         $res = $stmt->fetch();
 
-
-        $sql = "SELECT `title` AS `parent_title` FROM `categories` WHERE  `id`= $res->parent_id";
-        $stmt = $this->conn->query($sql);
-        $res2 = $stmt->fetchColumn();
-
-        if($res2) $res->parent_title = $res2;
-
         return $res;
-
-    }
-
-    protected function printOutAdminDropDownMenu($categories, $parent=0)
-    {
-        static $suffix = 1;
-        if(!isset($print)){$print='';}
-
-        foreach($categories as $category){
-            if($category->parent_id ==$parent ){
-
-                $print.="<option class='drop-down-menu-item  nested-$suffix' value='$category->id' >$category->title</option>" ;
-                foreach($categories as $sub_cat){
-                    if($sub_cat->parent_id == $category->id){
-                        $flag = TRUE; break;
-                    }
-                }
-
-                if(isset($flag)){
-                    $suffix++;
-                    $print.= $this->printOutAdminDropDownMenu($categories, $category->id);
-                    $print.= "</option>";
-                    $suffix--;
-                } else{
-                    $print.="</option>";
-                }
-            }
-        }
-        return $print;
     }
 
 
-    public function getAdminDropDownMenu($category= null )
+
+
+
+
+    public function updateManufacturer ()
     {
-        $categories = $this->getCategories();
-        $parentId= @$category->parent_id ?: 0;
+        $manufacturerTitle = $this->stripTags($_POST['manufacturer_title']);
 
-        $disclaimer = @$category->parent_title ? : makeMainCategory();
+        $engTranslitTitle = LangService::translite_in_Latin($manufacturerTitle);
 
-        $dropDownMenu ="<select id='category_id' name='category_id'>";
-        $dropDownMenu.="<option class='drop-down-menu-item' selected value='$parentId' >$disclaimer </option>";
-        $dropDownMenu.= $this->printOutAdminDropDownMenu($categories);
-        $dropDownMenu.= "</select>";
+        $manufacturerUrl = $this->stripTags($_POST['manufacturer_url']);
 
-        return $dropDownMenu;
-    }
-
-    public function updateCategory ()
-    {
-        $categoryTitle = $this->stripTags($_POST['category_title']);
-
-        $engTranslitTitle = LangService::translite_in_Latin($categoryTitle);
-
-        $sql = "UPDATE `categories` SET `title`=? , `parent_id`=? , `eng_translit_title`=? WHERE `id`=?";
+        $sql = "UPDATE `manufacturers` SET `title`=? , `url`=? , `eng_translit_title`=? WHERE `id`=?";
         $stmt= $this->conn->prepare($sql);
-        $stmt->bindValue(1, $categoryTitle, \PDO::PARAM_STR);
-        $stmt->bindValue(2, $_POST['category_id'], \PDO::PARAM_INT);
+        $stmt->bindValue(1, $manufacturerTitle, \PDO::PARAM_STR);
+        $stmt->bindValue(2, $manufacturerUrl, \PDO::PARAM_STR);
         $stmt->bindValue(3, $engTranslitTitle, \PDO::PARAM_STR);
         $stmt->bindValue(4, $_POST['id'], \PDO::PARAM_INT);
         $stmt->execute();
-        unset ($_SESSION['editCategorytitle']);
+        unset ($_SESSION['editManufacturer']);
     }
 
 

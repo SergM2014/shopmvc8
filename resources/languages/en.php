@@ -184,6 +184,11 @@ $createManufacturerTitle = "Enter manufacturer's title";
 $createManufacturer = "Create manufacturer";
 $manufacturerCreated = "New manufacturer is created! ID : ";
 $createManufacturerUrl = "Create manufacturer's Url";
+$updateManufacturerHeader = "Update Manufacturer";
+$updateManufacturerTitle = "Update manufacturer title";
+$updateManufacturerUrl = "Update manufacturer's url";
+$updateManufacturer = "Update manufacturer";
+$manufacturerUpdated = "Manufacturer is updated! ID : ";
 
 function has_sub_categories(){
     return "contains additional categories";

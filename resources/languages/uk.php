@@ -184,6 +184,11 @@ $createManufacturerTitle = "Введiть назву виробника";
 $createManufacturer = "Створити виробника";
 $manufacturerCreated = "Нового виробника створенно! ID : ";
 $createManufacturerUrl = "Введіть URL виробника";
+$updateManufacturerHeader = "Редагувати виробника";
+$updateManufacturerTitle = "Змініть назву виробника";
+$updateManufacturerUrl = "Змінити Url виробника";
+$updateManufacturer = "Зберегти зміни виробника";
+$manufacturerUpdated = "Виробника оновлено! ID : ";
 
 function has_sub_categories(){
     return "має додаткові категорії";

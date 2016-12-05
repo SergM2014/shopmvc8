@@ -44,7 +44,9 @@ class AdminManufacturers extends AdminController {
         $error['title'] = $model->ifManufacturerTitleEmpty() ;
         $error['url'] = $model->ifManufacturerUrlEmpty() ;
 
-        if ( $error['title'] !== false AND $error['url'] !== false) return   $this->create($error);
+
+
+        if ( $error['title'] !== false OR $error['url'] !== false) return   $this->create($error);
 
 
         if(@$_SESSION['createManufacturer']) {
@@ -59,25 +61,29 @@ class AdminManufacturers extends AdminController {
 
     public function edit($error = null )
     {
-        $category = (new Admin_Manufacturer())->getOneManufacturer();
-        $_SESSION['editCategorytitle'] = true;
-        $categories = (new Admin_Category())->getAdminDropDownMenu($category);
-        return  ['view' =>'admin/updateCategory.php', 'category'=> $category, 'categories'=> $categories, 'error' => $error  ];
+        $manufacturer = (new Admin_Manufacturer())->getOneManufacturer();
+        $_SESSION['editManufacturer'] = true;
+
+        $title = $this->stripTags(@$_POST['manufacturer_title']);
+        $url = $this->stripTags(@$_POST['manufacturer_url']);
+
+        return  ['view' =>'admin/updateManufacturer.php', 'manufacturer'=> $manufacturer,  'error' => $error, 'title'=>$title, 'url'=>$url  ];
     }
 
     public function update()
     {
         TokenService::check('prozessAdmin');
         $model = new CheckForm;
-        $error = $model->ifCategoryTitleEmpty();
+        $error['title'] = $model->ifManufacturerTitleEmpty() ;
+        $error['url'] = $model->ifManufacturerUrlEmpty() ;
 
-        if ( $error) return   $this->edit($error);
+        if ( $error['title'] !== false OR $error['url'] !== false) return   $this->edit($error);
 
 
-        if(@$_SESSION['editCategorytitle']) {
+        if(@$_SESSION['editManufacturer']) {
 
-            (new Admin_Category())->updateCategory();
-            return $this->index('categoryUpdated', $_POST['id']);
+            (new Admin_Manufacturer())->updateManufacturer();
+            return $this->index('manufacturerUpdated', $_POST['id']);
         }
 
         return $this->index();
