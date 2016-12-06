@@ -19,7 +19,7 @@
             <th><?php if ($comment->avatar) : ?><img src="/uploads/avatars/<?= $comment->avatar ?>" alt="" class="admin-comments-list__row-thumb" ><?php endif; ?></th>
             <th><?= $comment->name ?></th>
             <th><?= $comment->email ?></th>
-            <th><?= $comment->comment ?></th>
+            <th><?= htmlspecialchars_decode($comment->comment) ?></th>
             <th><?= $comment->created_at ?></th>
             <th class ="<?= $comment->changed ? 'changed' : 'notChanged' ?>"><?=  $comment->changed ? $yes : $no; ?></th>
             <th class="<?= $comment->published ? 'published' : 'notPublished' ?>"><?= $comment->published ? $yes : $no; ?></th>

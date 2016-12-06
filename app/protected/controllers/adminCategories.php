@@ -34,8 +34,7 @@ class AdminCategories extends AdminController {
     public function update()
     {
         TokenService::check('prozessAdmin');
-        $model = new CheckForm;
-        $error = $model->ifCategoryTitleEmpty();
+        $error =( new CheckForm())-> checkIfNotEmptyList('category_title');
 
         if ( $error) return   $this->edit($error);
 
@@ -60,7 +59,7 @@ class AdminCategories extends AdminController {
     {
         TokenService::check('prozessAdmin');
         $model = new CheckForm;
-        $error = $model->ifCategoryTitleEmpty();
+        $error = $model->checkIfNotEmptyList('category_title');
 
         if ( $error) return   $this->create($error);
 

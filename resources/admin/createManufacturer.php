@@ -10,16 +10,16 @@
 
         <label for="category_title" class="create__block-title"><?= $createManufacturerTitle ?></label>
         <p>
-            <input type="text" name="manufacturer_title" id="manufacturer_title" value="<?= @$error['title']? "" : @$title  ?>" >
+            <input type="text" name="manufacturer_title" id="manufacturer_title" value="<?= @$error['manufacturer_title']? "" : strip_tags(@$_POST['manufacturer_title'])  ?>" >
         </p>
-        <p><small class="create__block-field-error"><?= @$error['title'] ?></small></p>
+        <p><small class="create__block-field-error"><?= @$error['manufacturer_title'] ?></small></p>
 
         <br>
         <label for="category_url" class="create__block-title"><?= $createManufacturerUrl ?></label>
         <p>
-            <input type="text" name="manufacturer_url" id="manufacturer_url" value="<?= @$error['url']? "" : @$url  ?>" >
+            <input type="text" name="manufacturer_url" id="manufacturer_url" value="<?= @$error['manufacturer_url']? "" : strip_tags(@$_POST['manufacturer_url'])  ?>" >
         </p>
-        <p><small class="create__block-field-error"><?= @$error['url'] ?></small></p>
+        <p><small class="create__block-field-error"><?= @$error['manufacturer_url'] ?></small></p>
 
         <br>
 

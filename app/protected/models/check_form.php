@@ -79,30 +79,19 @@ class CheckForm extends DataBase
         if(empty($_POST['message'])) return ["message_error" => empty_message()];
     }
 
-    public function ifCommentEmpty()
-    {
-        if(empty($_POST['comment'])) return  empty_field();
-        return false;
-    }
-    public function  ifCategoryTitleEmpty()
-    {
-        if(empty($_POST['category_title'])) return  empty_field();
-        return false;
-    }
 
-    public function  ifManufacturerTitleEmpty()
+    public function  checkIfNotEmptyList(...$args)
     {
-        if(empty($_POST['manufacturer_title'])) return  empty_field();
-        return false;
-    }
+        $emptyErrors = [];
+        foreach ($args as $arg){
+            if(isset($_POST[$arg])) { if(!strlen($_POST[$arg])) $emptyErrors[$arg]= empty_field(); }
+        }
 
-    public function  ifManufacturerUrlEmpty()
-    {
-        if(empty($_POST['manufacturer_url'])) return  empty_field();
-        return false;
-    }
+        if(empty($emptyErrors)) return;
+        return $emptyErrors;
 
 
+    }
 
 
 

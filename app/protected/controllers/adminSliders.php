@@ -3,21 +3,21 @@
 namespace App\Controllers;
 
 use App\Core\AdminController;
-use App\Models\Admin_Manufacturer;
+use App\Models\Admin_Slider;
 use \Lib\TokenService;
 use App\Models\CheckForm;
 use \Lib\CheckFieldsService;
 
 
-class AdminManufacturers extends AdminController {
+class AdminSliders extends AdminController {
 
     use CheckFieldsService;
 
     public function index($fullfilledAction = null, $id =null, $error = null )
     {
-        $manufacturers = (new Admin_Manufacturer())->getManufacturers();
+        $sliders = (new Admin_Slider())->getSliders();
 
-        return ['view'=>'admin/manufacturers.php', 'manufacturers'=>$manufacturers, 'action'=> $fullfilledAction, 'id' => $id , 'error'=> $error ];
+        return ['view'=>'admin/sliders.php', 'sliders'=>$sliders, 'action'=> $fullfilledAction, 'id' => $id , 'error'=> $error ];
     }
 
     public function createManufacturersPopUpMenu()
@@ -30,17 +30,24 @@ class AdminManufacturers extends AdminController {
     {
         $_SESSION['createManufacturer'] =true;
 
-        return  ['view' =>'admin/createManufacturer.php', 'error' => $error  ];
+        $title = $this->stripTags(@$_POST['manufacturer_title']);
+        $url = $this->stripTags(@$_POST['manufacturer_url']);
+
+        return  ['view' =>'admin/createManufacturer.php', 'error' => $error , 'title' => $title, 'url' => $url ];
     }
 
 
     public function store()
     {
         TokenService::check('prozessAdmin');
+        $model = new CheckForm;
+        $error['title'] = $model->ifManufacturerTitleEmpty() ;
+        $error['url'] = $model->ifManufacturerUrlEmpty() ;
 
-        $errors = (new CheckForm())->checkIfNotEmptyList('manufacturer_title', 'manufacturer_url');
 
-        if(@$errors) return $this->create($errors);
+
+        if ( $error['title'] !== false OR $error['url'] !== false) return   $this->create($error);
+
 
         if(@$_SESSION['createManufacturer']) {
 
@@ -57,15 +64,20 @@ class AdminManufacturers extends AdminController {
         $manufacturer = (new Admin_Manufacturer())->getOneManufacturer();
         $_SESSION['editManufacturer'] = true;
 
-        return  ['view' =>'admin/updateManufacturer.php', 'manufacturer'=> $manufacturer,  'error' => $error ];
+        $title = $this->stripTags(@$_POST['manufacturer_title']);
+        $url = $this->stripTags(@$_POST['manufacturer_url']);
+
+        return  ['view' =>'admin/updateManufacturer.php', 'manufacturer'=> $manufacturer,  'error' => $error, 'title'=>$title, 'url'=>$url  ];
     }
 
     public function update()
     {
         TokenService::check('prozessAdmin');
-        $errors = (new CheckForm())->checkIfNotEmptyList('manufacturer_title', 'manufacturer_url');
+        $model = new CheckForm;
+        $error['title'] = $model->ifManufacturerTitleEmpty() ;
+        $error['url'] = $model->ifManufacturerUrlEmpty() ;
 
-        if ( @$errors) return   $this->edit($errors);
+        if ( $error['title'] !== false OR $error['url'] !== false) return   $this->edit($error);
 
         if(@$_SESSION['editManufacturer']) {
             (new Admin_Manufacturer())->updateManufacturer();

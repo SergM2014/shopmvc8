@@ -10,9 +10,9 @@
 
         <label for="category_title" class="create-category__block-title"><?= $createCategoryTitle ?></label>
         <p>
-            <input type="text" name="category_title" id="category_title" value="<?= @!$error ? @$category->title: '' ?>" >
+            <input type="text" name="category_title" id="category_title" value="<?= @$error['category_title'] ? strip_tags(@$_POST['category_title']): @$category->title ?>" maxlength="50" >
         </p>
-        <p><small class="create-category__block-field-error"><?= @$error ?></small></p>
+        <p><small class="create-category__block-field-error"><?= @$error['category_title'] ?></small></p>
 
         <br>
 

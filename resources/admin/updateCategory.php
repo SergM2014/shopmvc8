@@ -9,9 +9,9 @@
 
         <label for="category_title" class="update-category__block-title"><?= $editCategoryTitle ?></label>
         <p>
-            <input type="text" name="category_title" id="category_title" value="<?= @!$error ? $category->title: '' ?>" >
+            <input type="text" name="category_title" id="category_title" value="<?= @$error['category_title'] ? strip_tags(@$_POST['category_title']): $category->title ?>" maxlength="50" >
         </p>
-        <p><small class="update-category__block-field-error"><?= @$error ?></small></p>
+        <p><small class="update-category__block-field-error"><?= @$error['category_title'] ?></small></p>
 
         <br>
 

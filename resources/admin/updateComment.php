@@ -24,9 +24,9 @@
 
         <div class="update-comment__block-title"><label><?= $commentTitle ?></label></div>
 
-        <p> <textarea cols="45" rows="15" name="comment" ><?= @!$error ? $comment->comment: '' ?></textarea></p>
+        <p> <textarea cols="45" rows="15" name="comment" ><?= @$error['comment'] ? htmlspecialchars(@$_POST['comment']): $comment->comment ?></textarea></p>
 
-        <p><small class="update-comment__block-field-error"><?= @$error ?></small></p>
+        <p><small class="update-comment__block-field-error"><?= @$error['comment'] ?></small></p>
 
     <span class="update-comment__block-title"><?= $created ?>: </span>
     <?= $comment->created_at ?>

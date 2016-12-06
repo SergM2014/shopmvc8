@@ -192,6 +192,8 @@ $manufacturerUpdated = "Виробника оновлено! ID : ";
 $manufacturerHasProducts = "Видалити неможливо. Данній виробник містить продукти";
 $manufactureryDeleted = "Виробника видалено! ID : ";
 
+$slider = "Слайдер";
+
 function has_sub_categories(){
     return "має додаткові категорії";
 }

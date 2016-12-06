@@ -77,14 +77,11 @@ class AdminComments extends AdminController {
     public function update()
     {
         TokenService::check('prozessAdmin');
-        $model = new CheckForm;
-        $error = $model->ifCommentEmpty();
-
+        $error = (new CheckForm())->checkIfNotEmptyList('comment');
         if ( $error) return   $this->edit($error);
 
 
         if(@$_SESSION['edit']) {
-
            (new Admin_Comment())->updateCommentText();
            return $this->index('commentChanged', $_POST['id']);
         }
