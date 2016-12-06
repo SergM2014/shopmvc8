@@ -20,9 +20,9 @@ class AdminSliders extends AdminController {
         return ['view'=>'admin/sliders.php', 'sliders'=>$sliders, 'action'=> $fullfilledAction, 'id' => $id , 'error'=> $error ];
     }
 
-    public function createManufacturersPopUpMenu()
+    public function createslidersPopUpMenu()
     {
-        return ['view'=>'admin/partials/createManufacturersPopUpMenu.php', 'ajax'=> true ];
+        return ['view'=>'admin/partials/createSlidersPopUpMenu.php', 'ajax'=> true ];
     }
 
 

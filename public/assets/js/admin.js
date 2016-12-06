@@ -184,6 +184,30 @@ class ManufacturerPopUpMenu extends PopupMenu {
 }
 
 
+class SliderPopUpMenu extends PopupMenu {
+    fillUpMenuContent()
+    {
+
+        let categoryId = this.target.closest('.sliders-menu__item-container').dataset.id;
+
+        let lang =  new LangForAjax().getLanguage();
+
+        let url = lang + "/adminSliders/createSlidersPopUpMenu";
+        let formData = new FormData;
+        formData.append('id', categoryId);
+
+
+        fetch(url, {
+            method:'POST',
+            credentials:'same-origin',
+            body: formData
+        })
+            .then(response => response.text())
+            .then(html =>document.getElementById('popup-menu').innerHTML= html);
+    }
+}
+
+
 class ImageOrder {
     static reorder(){
         //refresh the images order
@@ -289,6 +313,9 @@ class ManufacturerModalWindow extends ModalWindow {
     }
 
 }
+
+
+
 
 //ImageOrder.reorder();
 
@@ -538,9 +565,16 @@ document.body.addEventListener('click', function(e) {
 
     if(e.target.id == "popUp-admin-manufacturer-delete") {
         let id = e.target.dataset.manufacturerId;
-// console.log(id)
+
         ManufacturerModalWindow.createDeletePopUp(id);
 
+    }
+
+    if(e.target.closest('.sliders-menu__item-container')){
+
+        let popUp = new SliderPopUpMenu(e);
+        popUp.drawMenu();
+        popUp.fillUpMenuContent();
     }
 
 

@@ -193,6 +193,10 @@ $manufacturerHasProducts = "Видалити неможливо. Данній в
 $manufactureryDeleted = "Виробника видалено! ID : ";
 
 $slider = "Слайдер";
+$sliderName = "імя Слайдера";
+$sliderUrl = "Url слайдеру";
+$createSlider ="Створити слай";
+$deleteSlider = "Видалити слайд";
 
 function has_sub_categories(){
     return "має додаткові категорії";

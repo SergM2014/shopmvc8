@@ -192,6 +192,10 @@ $manufacturerUpdated = "Manufacturer is updated! ID : ";
 $manufacturerHasProducts = "Delete is restricted! The manufacturer has products";
 $manufactureryDeleted = "Manufacturer is deleted! ID : ";
 $slider = "Slider";
+$sliderName = "Slider's title";
+$sliderUrl = "Slider's Url";
+$createSlider ="Create slider";
+$deleteSlider = "Delete";
 
 function has_sub_categories(){
     return "contains additional categories";

@@ -329,11 +329,11 @@
   background-color: #469943;
 }
 
-.update-comment__block-title, .update-category__block-title, .create-category__block-title, .create__block-title {
+.update-comment__block-title, .update-category__block-title, .create-category__block-title, .create__block-title, .admin__block-title {
   font: bold italic 20px serif;
   color:red;
 }
-.update-comment__block, .admin-categories__block, .update-category__block, .create-category__block, .admin-manufacturers__block, .create__block {
+.update-comment__block, .admin-categories__block, .update-category__block, .create-category__block, .admin-manufacturers__block, .create__block, .admin__block {
   width:400px;
   margin:0 auto;
   padding-top:20px;
@@ -374,6 +374,18 @@
 .error {
   background-color: red !important;
   color:black !important;
+}
+.slider-menu__image{
+  max-width:400px;
+  max-height:400px;
+}
+.sliders-menu__item-container{
+  margin-top:17px;
+}
+
+.sliders-menu__item-container:hover{
+  cursor: pointer;
+
 }
 
 

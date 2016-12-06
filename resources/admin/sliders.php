@@ -7,11 +7,15 @@
         </aside>
     <?php endif; ?>
 
-    <ul class=sliders-menu">
+    <ul class="sliders-menu">
 
         <?php foreach ($sliders as $slider): ?>
 
-        <li  class="manufacturers-menu__item-container"><span class="manufacturers-menu__item" data-id="<?= $slider->id ?>"><?= $slider->title ?></span></li>
+        <li  class="sliders-menu__item-container" data-id="<?= $slider->id ?>" >
+               <p> <span class="admin__block-title"> <?= $sliderName ?> </span> <?= $slider->title ?> </p>
+               <p> <span class="admin__block-title"><?= $sliderUrl ?> </span> <?= $slider->url ?></p>
+            <img src="/uploads/slider/<?= $slider->image ?>" alt="" class="slider-menu__image">
+        </li>
 
         <?php endforeach; ?>
     </ul>
