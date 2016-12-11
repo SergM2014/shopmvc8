@@ -7,6 +7,7 @@ use App\Models\Admin_Slider;
 use \Lib\TokenService;
 use App\Models\CheckForm;
 use \Lib\CheckFieldsService;
+use function noSlider;
 
 
 class AdminSliders extends AdminController {
@@ -15,6 +16,7 @@ class AdminSliders extends AdminController {
 
     public function index($fullfilledAction = null, $id =null, $error = null )
     {
+
         $sliders = (new Admin_Slider())->getSliders();
 
         return ['view'=>'admin/sliders.php', 'sliders'=>$sliders, 'action'=> $fullfilledAction, 'id' => $id , 'error'=> $error ];
@@ -28,31 +30,19 @@ class AdminSliders extends AdminController {
 
     public function create($error = null )
     {
-        $_SESSION['createManufacturer'] =true;
+        $_SESSION['makeSlider'] = true;
 
-        $title = $this->stripTags(@$_POST['manufacturer_title']);
-        $url = $this->stripTags(@$_POST['manufacturer_url']);
-
-        return  ['view' =>'admin/createManufacturer.php', 'error' => $error , 'title' => $title, 'url' => $url ];
+        return  ['view' =>'admin/createSlider.php', 'error' => $error  ];
     }
 
 
     public function store()
     {
         TokenService::check('prozessAdmin');
-        $model = new CheckForm;
-        $error['title'] = $model->ifManufacturerTitleEmpty() ;
-        $error['url'] = $model->ifManufacturerUrlEmpty() ;
 
+        if(@$_SESSION['makeSlider']) {
 
-
-        if ( $error['title'] !== false OR $error['url'] !== false) return   $this->create($error);
-
-
-        if(@$_SESSION['createManufacturer']) {
-
-            $id = (new Admin_Manufacturer())->storeManufacturer();
-            return $this->index('manufacturerCreated', $id);
+            return $this->persistSlider();
         }
 
         return $this->index();
@@ -61,27 +51,21 @@ class AdminSliders extends AdminController {
 
     public function edit($error = null )
     {
-        $manufacturer = (new Admin_Manufacturer())->getOneManufacturer();
-        $_SESSION['editManufacturer'] = true;
+        $slider = (new Admin_Slider())->getOneSlider();
+        $_SESSION['editSlider'] = true;
 
-        $title = $this->stripTags(@$_POST['manufacturer_title']);
-        $url = $this->stripTags(@$_POST['manufacturer_url']);
 
-        return  ['view' =>'admin/updateManufacturer.php', 'manufacturer'=> $manufacturer,  'error' => $error, 'title'=>$title, 'url'=>$url  ];
+        return  ['view' =>'admin/updateSlider.php', 'theSlider'=> $slider,  'error' => $error  ];
     }
 
     public function update()
     {
         TokenService::check('prozessAdmin');
-        $model = new CheckForm;
-        $error['title'] = $model->ifManufacturerTitleEmpty() ;
-        $error['url'] = $model->ifManufacturerUrlEmpty() ;
 
-        if ( $error['title'] !== false OR $error['url'] !== false) return   $this->edit($error);
 
-        if(@$_SESSION['editManufacturer']) {
-            (new Admin_Manufacturer())->updateManufacturer();
-            return $this->index('manufacturerUpdated', $_POST['id']);
+        if(@$_SESSION['editSlider']) {
+
+            return $this->updateSlider();
         }
 
         return $this->index();
@@ -93,28 +77,48 @@ class AdminSliders extends AdminController {
 
     public function creteConfirmDeleteWindow()
     {
-        $_SESSION['deleteManufacturer'] = true;
+        $_SESSION['deleteSlider'] = true;
 
-        return ['view' =>'admin/partials/createConfirmDeleteManufacturerWindow.php', 'ajax'=>true ];
+        return ['view' =>'admin/partials/createConfirmDeleteSliderWindow.php', 'ajax'=>true ];
     }
 
     public function delete()
     {
         TokenService::check('prozessAdmin');
-        if(!isset($_SESSION['deleteManufacturer'])) return $this->index();
+        if(!isset($_SESSION['deleteSlider'])) return $this->index();
 
-        $model = new Admin_Manufacturer();
+        $model = new Admin_Slider();
 
-        $error = $model ->findProductsInIt();
-
-        if($error)  return $this->index('manufacturerHasProducts', null, 'error');
-
-
-        $model->deleteManufacturer();
-        return $this->index('manufactureryDeleted', $_POST['id']);
+        $model->deleteSlider();
+        return $this->index('sliderDeleted', $_POST['id']);
 
     }
-   
+
+    /**
+     * @return array
+     */
+    private function persistSlider()
+    {
+        $error = (new CheckForm())->checkIfNotEmptyList('slider_title', 'slider_url');
+
+        if (@!$_SESSION['createSlider']) $error['noSlider'] = noSlider();
+
+        if ($error) return $this->create($error);
+
+        $id = (new Admin_Slider())->storeSlider();
+        return $this->index('sliderCreated', $id);
+    }
+
+    /**
+     * @return array
+     */
+    private function updateSlider()
+    {
+        $error = (new CheckForm())->checkIfNotEmptyList('slider_title', 'slider_url');
+        if ($error) return $this->edit($error);
+        (new Admin_Slider())->updateSlider();
+        return $this->index('sliderUpdated', $_POST['id']);
+    }
 
 
 }

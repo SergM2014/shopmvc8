@@ -24,6 +24,8 @@
     define('PRODUCTS_IMAGES', 'productsImages/');
     define('PRODUCTS_IMAGES_THUMBS', 'productsImages/thumbs/');
 
+    define('SLIDER_IMAGES', 'slider/');
+
 	define('LINKCOUNT',5);
 	define('ADMINEMAIL', 'weisse@ukr.net');
     define('DEFAULT_LANG', 'uk');

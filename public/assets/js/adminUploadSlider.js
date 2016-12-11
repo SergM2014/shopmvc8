@@ -31,35 +31,14 @@ function completeHandler(event){//тут ивент переобразуется
     progress.innerHTML= "0%";
 
 
-    document.getElementById('file').removeAttribute('hidden');
+    //document.getElementById('file').removeAttribute('hidden');
     submitBtn.setAttribute('hidden', true );
     progressContainer.setAttribute('hidden', true);
-    resetBtn.setAttribute('hidden', true);
-    document.getElementById('image_preview').setAttribute('src', '/img/nophoto.jpg');
-    document.getElementById('product__image-area').className = 'product__image-area--hidden';
-    document.getElementById('product__add-image-btn').className = 'product__add-image-btn';
+    //resetBtn.setAttribute('hidden', true);
+    //document.getElementById('image_preview').setAttribute('src', '/img/nophoto.jpg');
+    //document.getElementById('admin__image-area').className = 'product__image-area--hidden';
+    resetBtn.removeAttribute('hidden');
 
-
-//create separate div and insert added by ajax image
-    let img = document.createElement('img');
-    img.className = "product-image-preview";
-    img.setAttribute('src',`${response.path}${response.image}`);
-    img.setAttribute('data-image', `${response.image}`);
-    document.getElementById('product-images-list').appendChild(img);
-
-
-
-//refresh the images order
-    let imgcontainer = document.querySelectorAll('.product-image-preview');
-    // console.log(imgcontainer)
-    let arr = [];
-    for(let i=0; i<imgcontainer.length; i++){
-        arr.push(imgcontainer[i].dataset.image)
-
-    }
-//console.log(arr);
-    document.getElementById('imagesSort').value = arr;
-    document.getElementById('product__add-image-btn').removeAttribute('hidden');
 
 }
 
@@ -121,13 +100,15 @@ if(submitBtn){
 
         let formdata= new FormData();
         let _token = document.getElementById('_token').value;
+        let action = document.getElementsByName('action')[0].value;
 
         formdata.append("file", file);
         formdata.append("_token", _token);
         formdata.append("ajax", true);
+        formdata.append("action", action);
 
         let founded_lang =  new LangForAjax().getLanguage();
-        let url =  founded_lang+"/productImage/upload";
+        let url =  founded_lang+"/sliderImage/upload";
 
         let send_image=new XMLHttpRequest();
         send_image.upload.addEventListener("progress", progressHandler, false);
@@ -155,16 +136,19 @@ if(resetBtn) {
         document.getElementById('file').removeAttribute('hidden');
 
         let founded_lang =  new LangForAjax().getLanguage();
-        let url =  founded_lang+"/productImage/delete";
+        let url =  founded_lang+"/sliderImage/delete";
+        let _token = document.getElementById('_token').value;
+        let action = document.getElementsByName('action')[0].value;
 
-        let formData = new FormData;
-       // formData.append('_token', _token);
+        let formdata = new FormData;
+        formdata.append('_token', _token);
+        formdata.append("action", action);
 
         fetch( url,
             {
                 method : "POST",
                 credentials: "same-origin",
-                body:formData
+                body:formdata
 
             })
             .then(responce => responce.json())
@@ -174,7 +158,7 @@ if(resetBtn) {
 
 
         submitBtn.setAttribute('hidden', true );
-
+      
         resetBtn.setAttribute('hidden', true );
 
     };

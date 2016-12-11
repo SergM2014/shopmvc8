@@ -314,6 +314,32 @@ class ManufacturerModalWindow extends ModalWindow {
 
 }
 
+class SliderModalWindow extends ModalWindow {
+
+    static createDeletePopUp(id){
+        let popup =document.createElement('div');
+        popup.className = "popup-window";
+
+
+        let founded_lang = new LangForAjax().getLanguage();
+        let url = founded_lang + "/adminSliders/creteConfirmDeleteWindow";
+        let formData = new FormData;
+        formData.append('id', id);
+
+        fetch(url,
+            {
+                method: "POST",
+                body: formData,
+                credentials: 'same-origin'
+            })
+            .then(responce => responce.text())
+            .then(html => { popup.innerHTML = html; return true; })
+            .then(()=> {let modal = ModalWindow.createBackground(); modal.appendChild(popup); document.body.insertBefore(modal, document.body.firstChild )})
+
+    }
+
+}
+
 
 
 
@@ -575,6 +601,15 @@ document.body.addEventListener('click', function(e) {
         let popUp = new SliderPopUpMenu(e);
         popUp.drawMenu();
         popUp.fillUpMenuContent();
+    }
+
+
+    if(e.target.id == "popUp-admin-slider-delete") {
+//console.log(111)
+        let id = e.target.dataset.sliderId;
+//console.log(id)
+        SliderModalWindow.createDeletePopUp(id);
+
     }
 
 

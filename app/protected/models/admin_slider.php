@@ -22,34 +22,33 @@ class Admin_Slider extends DataBase
 
    }
 
-    public function storeManufacturer()
+    public function storeSlider()
     {
-        $manufacturerTitle = $this->stripTags($_POST['manufacturer_title']);
+        $sliderTitle = strip_tags($_POST['slider_title']);
 
-        $engTranslitTitle = LangService::translite_in_Latin($manufacturerTitle);
 
-        $url = $this->stripTags($_POST['manufacturer_url']);
+        $sliderUrl = strip_tags($_POST['slider_url']);
 
-        $sql = "INSERT INTO `manufacturers` ( `title`, `eng_translit_title`, `url`) VALUES (?, ?, ? )";
+        $sql = "INSERT INTO `slider` ( `image`, `url`, `title` ) VALUES (?, ?, ? )";
         $stmt= $this->conn->prepare($sql);
-        $stmt->bindValue(1, $manufacturerTitle, \PDO::PARAM_STR);
-        $stmt->bindValue(2, $engTranslitTitle, \PDO::PARAM_STR);
-        $stmt->bindValue(3, $url, \PDO::PARAM_STR);
+        $stmt->bindValue(1, $_SESSION['createSlider'], \PDO::PARAM_STR);
+        $stmt->bindValue(2, $sliderUrl, \PDO::PARAM_STR);
+        $stmt->bindValue(3, $sliderTitle, \PDO::PARAM_STR);
+
 
         $stmt->execute();
         $id = $this->conn->lastInsertId();
-        unset ($_SESSION['createManufacturer']);
+        unset ($_SESSION['createSlider']);
+        unset ($_SESSION['makeSlider']);
         return $id;
     }
 
 
 
-    public function getOneManufacturer()
+    public function getOneSlider()
     {
         $id = @$_GET['id']?: @$_POST['id'];
-
-        $sql = "SELECT `id`, `title`, `eng_translit_title`, `url` FROM `manufacturers` WHERE `id`=? ";
-
+        $sql = "SELECT `id`, `image`,  `url`, `title` FROM `slider` WHERE `id`=? ";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(1, $id, \PDO::PARAM_INT);
         $stmt->execute();
@@ -60,52 +59,44 @@ class Admin_Slider extends DataBase
 
 
 
-
-
-
-    public function updateManufacturer ()
+    public function updateSlider ()
     {
-        $manufacturerTitle = $this->stripTags($_POST['manufacturer_title']);
+        $sliderTitle = strip_tags($_POST['slider_title']);
 
-        $engTranslitTitle = LangService::translite_in_Latin($manufacturerTitle);
+        $sliderUrl = strip_tags($_POST['slider_url']);
 
-        $manufacturerUrl = $this->stripTags($_POST['manufacturer_url']);
+        if(@$_SESSION['updateSlider']) {
 
-        $sql = "UPDATE `manufacturers` SET `title`=? , `url`=? , `eng_translit_title`=? WHERE `id`=?";
-        $stmt= $this->conn->prepare($sql);
-        $stmt->bindValue(1, $manufacturerTitle, \PDO::PARAM_STR);
-        $stmt->bindValue(2, $manufacturerUrl, \PDO::PARAM_STR);
-        $stmt->bindValue(3, $engTranslitTitle, \PDO::PARAM_STR);
-        $stmt->bindValue(4, $_POST['id'], \PDO::PARAM_INT);
+            $sql = "UPDATE `slider` SET `title` = ? , `url` = ? , `image` = ? WHERE `id`=?";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindValue(1, $sliderTitle, \PDO::PARAM_STR);
+            $stmt->bindValue(2, $sliderUrl, \PDO::PARAM_STR);
+            $stmt->bindValue(3, $_SESSION['updateSlider'], \PDO::PARAM_STR);
+            $stmt->bindValue(4, $_POST['id'], \PDO::PARAM_INT);
+        } else {
+            $sql = "UPDATE `slider` SET `title` = ? , `url` = ?  WHERE `id`=?";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindValue(1, $sliderTitle, \PDO::PARAM_STR);
+            $stmt->bindValue(2, $sliderUrl, \PDO::PARAM_STR);
+            $stmt->bindValue(3, $_POST['id'], \PDO::PARAM_INT);
+        }
+
         $stmt->execute();
-        unset ($_SESSION['editManufacturer']);
+        unset ($_SESSION['editSlider']);
+        unset ($_SESSION['updateSlider']);
     }
 
 
 
 
-    public function findProductsInIt()
+
+    public function deleteSlider()
     {
-        $sql = "SELECT `id` FROM `products` WHERE `manf_id` =?";
-        $stmt = $this->conn ->prepare($sql);
-        $stmt->bindValue(1, $_POST['id'], \PDO::PARAM_INT);
-        $stmt->execute();
-        $res= $stmt->fetch();
-
-        unset($_SESSION['deleteManufacturer']);
-        return !!$res;
-
-    }
-
-
-
-    public function deleteManufacturer()
-    {
-        $sql = "DELETE FROM `manufacturers` WHERE `id`=?";
+        $sql = "DELETE FROM `slider` WHERE `id`=?";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(1 ,$_POST['id'], \PDO::PARAM_INT);
         $stmt->execute();
-        unset($_SESSION['deleteManufacturer']);
+        unset($_SESSION['deleteSlider']);
     }
 
 }

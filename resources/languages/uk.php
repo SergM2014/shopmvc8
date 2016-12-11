@@ -190,13 +190,26 @@ $updateManufacturerUrl = "Змінити Url виробника";
 $updateManufacturer = "Зберегти зміни виробника";
 $manufacturerUpdated = "Виробника оновлено! ID : ";
 $manufacturerHasProducts = "Видалити неможливо. Данній виробник містить продукти";
-$manufactureryDeleted = "Виробника видалено! ID : ";
+$manufacturerDeleted = "Виробника видалено! ID : ";
 
 $slider = "Слайдер";
 $sliderName = "імя Слайдера";
 $sliderUrl = "Url слайдеру";
-$createSlider ="Створити слай";
+$createSlider ="Створити слайд";
 $deleteSlider = "Видалити слайд";
+$createSliderHeader = "Створити слайд";
+$createSliderTitle = "Bведіть назву слайда";
+$createSliderUrl = "Введіть Url слайду";
+$createSlide = "Створити слайд";
+$addImage = "Додати зоображення";
+$sliderCreated = "Слайдер створено! ID : ";
+$updateSliderHeader = "Оновити слайдер";
+$updateSliderTitle = "Оновити назву слайдера";
+$updateSliderUrl = "Оновити Url слайдера";
+$updateSlider = "Оновити слайдер";
+$updateImage = "Змінити зоображення";
+$sliderUpdated = "Слайдер оновленно! ID : ";
+$sliderDeleted = "Слайдер видалено! ID : ";
 
 function has_sub_categories(){
     return "має додаткові категорії";
@@ -288,4 +301,9 @@ function smthWentWrong()
 function makeMainCategory()
 {
     return "зробити головною категорією";
+}
+
+function noSlider()
+{
+    return "Відсутній слайд";
 }

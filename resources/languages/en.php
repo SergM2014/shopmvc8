@@ -190,12 +190,25 @@ $updateManufacturerUrl = "Update manufacturer's url";
 $updateManufacturer = "Update manufacturer";
 $manufacturerUpdated = "Manufacturer is updated! ID : ";
 $manufacturerHasProducts = "Delete is restricted! The manufacturer has products";
-$manufactureryDeleted = "Manufacturer is deleted! ID : ";
+$manufacturerDeleted = "Manufacturer is deleted! ID : ";
 $slider = "Slider";
 $sliderName = "Slider's title";
 $sliderUrl = "Slider's Url";
 $createSlider ="Create slider";
 $deleteSlider = "Delete";
+$createSliderHeader = "Create slide";
+$createSliderTitle = "Enter slider title";
+$createSliderUrl = "Enter Slider Url";
+$createSlide = "Create slider";
+$addImage = "Add image";
+$sliderCreated = "Slider created! ID : ";
+$updateSliderHeader = "Update slider";
+$updateSliderTitle = "Update slider title";
+$updateSliderUrl = "Update slider url";
+$updateSlider = "Update slider";
+$updateImage = "Update Image";
+$sliderUpdated = "Slider is updated! ID : ";
+$sliderDeleted = "Slider Deleted! ID : ";
 
 function has_sub_categories(){
     return "contains additional categories";
@@ -286,4 +299,8 @@ function smthWentWrong()
 function makeMainCategory()
 {
     return "make main category";
+}
+function noSlider()
+{
+    return "No slider";
 }
