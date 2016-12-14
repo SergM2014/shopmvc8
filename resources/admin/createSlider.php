@@ -42,7 +42,7 @@
 
             <div class="admin__image-area-right">
 
-                <input type="file" id="file" <?php if(@$_SESSION['slider']) echo "hidden = 'true'"?> >
+                <input type="file" id="file" <?php if(@$_SESSION['createSlider']) echo "hidden = 'true'"?> >
                 <span class="product__image-area-output" id="output"></span>
                 <button type="button" class="product__image-area-btn" id="image-submit-btn"  hidden ><?= $load ?></button>
                 <button type="button" class="product__image-area-btn" id="image-reset-btn"  <?php if(@!$_SESSION['createSlider']) echo "hidden = 'true'"?> ><?= $delete ?></button>

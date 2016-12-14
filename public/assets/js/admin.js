@@ -206,6 +206,28 @@ class SliderPopUpMenu extends PopupMenu {
             .then(html =>document.getElementById('popup-menu').innerHTML= html);
     }
 }
+class CarouselPopUpMenu extends PopupMenu {
+    fillUpMenuContent()
+    {
+
+        let categoryId = this.target.closest('.carousels-menu__item-container').dataset.id;
+
+        let lang =  new LangForAjax().getLanguage();
+
+        let url = lang + "/adminCarousels/createCarouselsPopUpMenu";
+        let formData = new FormData;
+        formData.append('id', categoryId);
+
+
+        fetch(url, {
+            method:'POST',
+            credentials:'same-origin',
+            body: formData
+        })
+            .then(response => response.text())
+            .then(html =>document.getElementById('popup-menu').innerHTML= html);
+    }
+}
 
 
 class ImageOrder {
@@ -323,6 +345,32 @@ class SliderModalWindow extends ModalWindow {
 
         let founded_lang = new LangForAjax().getLanguage();
         let url = founded_lang + "/adminSliders/creteConfirmDeleteWindow";
+        let formData = new FormData;
+        formData.append('id', id);
+
+        fetch(url,
+            {
+                method: "POST",
+                body: formData,
+                credentials: 'same-origin'
+            })
+            .then(responce => responce.text())
+            .then(html => { popup.innerHTML = html; return true; })
+            .then(()=> {let modal = ModalWindow.createBackground(); modal.appendChild(popup); document.body.insertBefore(modal, document.body.firstChild )})
+
+    }
+
+}
+
+class CarouselModalWindow extends ModalWindow {
+
+    static createDeletePopUp(id){
+        let popup =document.createElement('div');
+        popup.className = "popup-window";
+
+
+        let founded_lang = new LangForAjax().getLanguage();
+        let url = founded_lang + "/adminCarousels/createConfirmDeleteWindow";
         let formData = new FormData;
         formData.append('id', id);
 
@@ -605,10 +653,25 @@ document.body.addEventListener('click', function(e) {
 
 
     if(e.target.id == "popUp-admin-slider-delete") {
-//console.log(111)
+
         let id = e.target.dataset.sliderId;
-//console.log(id)
+
         SliderModalWindow.createDeletePopUp(id);
+
+    }
+
+    if(e.target.closest('.carousels-menu__item-container')){
+
+        let popUp = new CarouselPopUpMenu(e);
+        popUp.drawMenu();
+        popUp.fillUpMenuContent();
+    }
+
+    if(e.target.id == "popUp-admin-carousel-delete") {
+//console.log(111)
+        let id = e.target.dataset.carouselId;
+//console.log(id)
+        CarouselModalWindow.createDeletePopUp(id);
 
     }
 

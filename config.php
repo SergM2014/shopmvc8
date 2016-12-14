@@ -25,11 +25,14 @@
     define('PRODUCTS_IMAGES_THUMBS', 'productsImages/thumbs/');
 
     define('SLIDER_IMAGES', 'slider/');
+    define('CAROUSEL_IMAGES', 'carousel/');
 
 	define('LINKCOUNT',5);
 	define('ADMINEMAIL', 'weisse@ukr.net');
     define('DEFAULT_LANG', 'uk');
     define('DEFAULT_LANG_TITLE', 'Українська');
+    define('CAROUSEL_W', 175);
+    define('CAROUSEL_H', 70);
 
     const LANG = ['uk=>Українська', 'en=>English'];
 	

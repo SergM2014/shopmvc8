@@ -210,6 +210,17 @@ $updateSlider = "Оновити слайдер";
 $updateImage = "Змінити зоображення";
 $sliderUpdated = "Слайдер оновленно! ID : ";
 $sliderDeleted = "Слайдер видалено! ID : ";
+$carousel = "Карусель";
+$create = "Створити";
+$createCarouselHeader = "Створите елемент каруселі";
+$createCarouselUrl = "Створити Url каруселі";
+$createCarousel = "Зберегти елемент каруселі";
+$carouselCreated= "Елемент каруселi створено! ID : ";
+$updateCarouselHeader = "Оновити елемент каруселі";
+$updateCarouselUrl = "Оновити Url ";
+$updateCarousel = "Зберегти зміни";
+$carouselUpdated = "Зміни до каруселі улементу каруселі внесені! ID : ";
+$carouselDeleted = "Елемент каруселі видаленно! ID : ";
 
 function has_sub_categories(){
     return "має додаткові категорії";
@@ -306,4 +317,9 @@ function makeMainCategory()
 function noSlider()
 {
     return "Відсутній слайд";
+}
+
+function noCarousel()
+{
+    return "Відсутне зоображення";
 }

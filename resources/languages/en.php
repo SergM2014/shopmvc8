@@ -209,6 +209,17 @@ $updateSlider = "Update slider";
 $updateImage = "Update Image";
 $sliderUpdated = "Slider is updated! ID : ";
 $sliderDeleted = "Slider Deleted! ID : ";
+$carousel = "Carousel";
+$create = "Create";
+$createCarouselHeader = "Create element of carousel";
+$createCarouselUrl = "Create carousel Url";
+$createCarousel = "Create carousel";
+$carouselCreated= "Element of carousel is created! ID : ";
+$updateCarouselHeader = "Update element of carousel";
+$updateCarouselUrl = "Update carousel's url ";
+$updateCarousel = "Update changes in carousel";
+$carouselUpdated = "Carousel's element is changed! ID : ";
+$carouselDeleted = "Carousel's element is deleted! ID : ";
 
 function has_sub_categories(){
     return "contains additional categories";
@@ -303,4 +314,8 @@ function makeMainCategory()
 function noSlider()
 {
     return "No slider";
+}
+function noCarousel()
+{
+    return "Mo image";
 }

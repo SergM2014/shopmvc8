@@ -366,6 +366,17 @@ html, body {
 .sliders-menu__item-container:hover {
   cursor: pointer; }
 
+.carousels-menu__item-container {
+  margin: 17px 5px;
+  background: #b59970;
+  border-radius: 3px;
+  cursor: pointer; }
+
+.carousels-menu {
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap; }
+
 .sliders-menu {
   margin-bottom: 20px; }
 
