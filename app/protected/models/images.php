@@ -13,7 +13,7 @@ class Images extends DataBase
 {
 
     public function uploadImage(){
-
+//var_dump($_FILES); //array{0}
         $path = PATH_SITE.UPLOAD_FOLDER.PRODUCTS_IMAGES;
 
         $thumb_path= PATH_SITE.UPLOAD_FOLDER.PRODUCTS_IMAGES_THUMBS;

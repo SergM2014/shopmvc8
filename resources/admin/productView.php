@@ -88,5 +88,6 @@
     </section>
 </section>
 
+
 <script src="//cdnjs.cloudflare.com/ajax/libs/Sortable/1.4.2/Sortable.min.js"></script>
 <script src="/assets/js/sortable.js"></script>

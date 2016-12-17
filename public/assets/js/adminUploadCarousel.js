@@ -73,7 +73,7 @@ if(document.getElementById('file')) {
 
                 document.getElementById('file').setAttribute('hidden', true);
 
-                //output.classList.add('invisible');
+
 
                 resetBtn.removeAttribute('hidden');
 

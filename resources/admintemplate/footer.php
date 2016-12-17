@@ -11,7 +11,10 @@
             </footer>
 
 
-            <?php if (isset($_SESSION['admin'])) : ?> <script src="/assets/js/admin.js"></script> <?php endif; ?>
+            <?php if (isset($_SESSION['admin'])) : ?>
+                <script src="/assets/js/admin.js"></script>
+                <script src="/assets/js/adminUploadImage.js"></script>
+            <?php endif; ?>
 
     </div><!-- container-->
 </body>

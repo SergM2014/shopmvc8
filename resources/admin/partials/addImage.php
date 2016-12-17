@@ -5,12 +5,13 @@
 
 <form id="product__image-area" class="product__image-area--hidden" enctype="multipart/form-data" method="post"  hidden="true" >
 
+
     <div class="product__image-area-left">
 
         <img src="/img/nophoto.jpg" class="product__image-thumb" id="image_preview">
 
-        <div  id="progress-container" hidden >
-            <progress id="progress" max="100" value="0"></progress>
+        <div  id="progress-container" hidden="true" >
+            <progress id="progress" max="100" value="0" ></progress>
         </div>
 
     </div>
@@ -26,4 +27,3 @@
 
 </form>
 
-<script src="/assets/js/adminUploadImage.js"></script>

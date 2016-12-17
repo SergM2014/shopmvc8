@@ -7,6 +7,7 @@ use App\Models\Categories;
 use App\Models\DB_Catalog;
 use App\Models\DB_Product;
 use App\Models\Admin_Product;
+use App\Models\Admin_Category;
 use Lib\CheckFieldsService;
 use Lib\TokenService;
 
@@ -43,7 +44,7 @@ class AdminProducts extends AdminController {
 
         $manufacturers = (new DB_Catalog(true))->getManufacturers();
 
-        $categories = (new Categories)->getAdminDropDownMenu($product);
+        $categories = (new Admin_Category())->getAdminDropDownMenu($product);
 
 
         return ['view'=> 'admin/productView.php', 'product' => $product, 'categories'=> $categories, 'manufacturers'=>$manufacturers];

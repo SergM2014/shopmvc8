@@ -668,9 +668,9 @@ document.body.addEventListener('click', function(e) {
     }
 
     if(e.target.id == "popUp-admin-carousel-delete") {
-//console.log(111)
+
         let id = e.target.dataset.carouselId;
-//console.log(id)
+
         CarouselModalWindow.createDeletePopUp(id);
 
     }

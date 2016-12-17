@@ -98,7 +98,7 @@ if(submitBtn){
 
         let file=document.getElementById("file").files[0];
 
-        let formdata= new FormData();
+        let formdata = new FormData();
         let _token = document.getElementById('_token').value;
         let action = document.getElementsByName('action')[0].value;
 
