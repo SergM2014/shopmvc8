@@ -48,19 +48,18 @@ class ImageUpload {
 
     uploadImage(currentClass) {
 
-
-
         progressContainer.removeAttribute('hidden');
-
 
         let file = document.getElementById("file").files[0];
 
         let formdata = new FormData();
         let _token = document.getElementById('_token').value;
+        let action = document.getElementsByName('action')[0].value;
 
         formdata.append("file", file);
         formdata.append("_token", _token);
         formdata.append("ajax", true);
+        formdata.append('action', action );
 
         let founded_lang = new LangForAjax().getLanguage();
         let url = founded_lang + `/${this.urlDirection}/upload`;
@@ -157,7 +156,7 @@ class ProductImageUpload extends ImageUpload {
             arr.push(imgcontainer[i].dataset.image)
 
         }
-//console.log(arr);
+
         document.getElementById('imagesSort').value = arr;
         document.getElementById('product__add-image-btn').removeAttribute('hidden');
 
@@ -167,7 +166,7 @@ class ProductImageUpload extends ImageUpload {
 
         if(document.getElementById('file')) document.getElementById('file').addEventListener('change',  ImageUpload.previewImage )
 
-        if(submitBtn) submitBtn.addEventListener('click',  () => this.uploadImage(ProductImageUpload) );
+        if(submitBtn) submitBtn.addEventListener('click',  () => { this.uploadImage(ProductImageUpload) });
 
         if(resetBtn) resetBtn.addEventListener('click', () => this.deleteImage());
     }
@@ -175,7 +174,97 @@ class ProductImageUpload extends ImageUpload {
 }
 
 
-let upload = new ProductImageUpload();
+// let upload = new ProductImageUpload();
+//
+// upload.init();
 
-upload.init();
+class SliderImageUpload extends ImageUpload {
+
+    constructor()
+    {
+        super();
+
+        this.urlDirection = 'sliderImage';
+
+    }
+
+    static completeHandler(event){//тут ивент переобразуется в XMLHttpRequestProgressEvent {}
+
+    let response = JSON.parse(event.target.responseText);
+
+    output.innerHTML= response.message;
+    output.removeAttribute('hidden');
+
+    //if there is no coinceidance of token;
+    if(typeof response.error != 'undefined') return;
+
+    progress.value = 0;
+    progress.innerHTML= "0%";
+
+    submitBtn.setAttribute('hidden', true );
+    progressContainer.setAttribute('hidden', true);
+
+    resetBtn.removeAttribute('hidden');
+
+
+}
+
+    init (){
+
+        if(document.getElementById('file')) document.getElementById('file').addEventListener('change',  ImageUpload.previewImage )
+
+        if(submitBtn) submitBtn.addEventListener('click',  () => { this.uploadImage(SliderImageUpload) });
+
+        if(resetBtn) resetBtn.addEventListener('click', () => this.deleteImage());
+    }
+
+}
+
+
+class CarouselImageUpload extends ImageUpload {
+
+    constructor()
+    {
+        super();
+
+        this.urlDirection = 'carouselImage';
+
+    }
+
+    static completeHandler(event){//тут ивент переобразуется в XMLHttpRequestProgressEvent {}
+
+        let response = JSON.parse(event.target.responseText);
+
+        output.innerHTML= response.message;
+        output.removeAttribute('hidden');
+
+        //if there is no coinceidance of token;
+        if(typeof response.error != 'undefined') return;
+
+
+        progress.value = 0;
+        progress.innerHTML= "0%";
+
+
+        //document.getElementById('file').removeAttribute('hidden');
+        submitBtn.setAttribute('hidden', true );
+        progressContainer.setAttribute('hidden', true);
+        //resetBtn.setAttribute('hidden', true);
+        //document.getElementById('image_preview').setAttribute('src', '/img/nophoto.jpg');
+        //document.getElementById('admin__image-area').className = 'product__image-area--hidden';
+        resetBtn.removeAttribute('hidden');
+
+
+    }
+
+    init (){
+
+        if(document.getElementById('file')) document.getElementById('file').addEventListener('change',  ImageUpload.previewImage )
+
+        if(submitBtn) submitBtn.addEventListener('click',  () => { this.uploadImage(CarouselImageUpload) });
+
+        if(resetBtn) resetBtn.addEventListener('click', () => this.deleteImage());
+    }
+
+}
 

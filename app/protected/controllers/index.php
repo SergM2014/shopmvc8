@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Core\BaseController;
 use App\Models\DB_Index;
 use App\Models\Categories;
-
+use Lib\HelperService;
 
 
   class Index  extends BaseController
@@ -35,7 +35,5 @@ use App\Models\Categories;
           return ['view' => 'customer/partials/captcha.php', 'builder' => $builder, 'ajax' => true];
       }
 
-
-	
   }
   

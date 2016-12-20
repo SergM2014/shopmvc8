@@ -57,7 +57,12 @@
 
     </form>
 
-    <script src="/assets/js/adminUploadSlider.js"></script>
+    <script>
+        window.onload = function(){
+            let upload = new SliderImageUpload();
+            upload.init();
+        }
+    </script
 
 
 </section>

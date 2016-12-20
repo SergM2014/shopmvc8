@@ -176,7 +176,6 @@ class HelperService {
         if($question_mark){$url = $url.'&';} else {$url = $url.'?';}
 
         return $url;
-
     }
 
 

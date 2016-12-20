@@ -52,7 +52,12 @@
 
     </form>
 
-    <script src="/assets/js/adminUploadCarousel.js"></script>
+    <script>
+        window.onload = function(){
+            let upload = new CarouselImageUpload();
+            upload.init();
+        }
+    </script>
 
 
 </section>

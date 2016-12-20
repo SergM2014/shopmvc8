@@ -27,3 +27,10 @@
 
 </form>
 
+<script>
+    window.onload = function(){
+        let upload = new ProductImageUpload();
+
+        upload.init();
+    }
+</script>
