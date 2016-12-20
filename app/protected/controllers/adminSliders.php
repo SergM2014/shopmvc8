@@ -24,7 +24,7 @@ class AdminSliders extends AdminController {
 
     public function createslidersPopUpMenu()
     {
-        return ['view'=>'admin/partials/createSlidersPopUpMenu.php', 'ajax'=> true ];
+        return ['view'=>'admin/partials/createPopUpMenu.php', 'sidnificant'=>'slider', 'ajax'=> true ];
     }
 
 

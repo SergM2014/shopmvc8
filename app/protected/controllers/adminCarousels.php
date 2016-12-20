@@ -24,7 +24,7 @@ class AdminCarousels extends AdminController {
 
     public function createCarouselsPopUpMenu()
     {
-        return ['view'=>'admin/partials/createCarouselsPopUpMenu.php', 'ajax'=> true ];
+        return ['view'=>'admin/partials/createPopUpMenu.php', 'significant'=> 'carousel'  , 'ajax'=> true ];
     }
 
 

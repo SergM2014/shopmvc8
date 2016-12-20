@@ -20,7 +20,7 @@ class AdminCategories extends AdminController {
 
     public function createCategoriesPopUpMenu()
     {
-        return ['view'=>'admin/partials/createCategoriesPopUpMenu.php', 'ajax'=> true ];
+        return ['view'=>'admin/partials/createPopUpMenu.php', 'significant' => 'category', 'ajax'=> true ];
     }
 
     public function edit($error = null )

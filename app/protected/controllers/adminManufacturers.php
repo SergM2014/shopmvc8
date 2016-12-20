@@ -22,7 +22,7 @@ class AdminManufacturers extends AdminController {
 
     public function createManufacturersPopUpMenu()
     {
-        return ['view'=>'admin/partials/createManufacturersPopUpMenu.php', 'ajax'=> true ];
+        return ['view'=>'admin/partials/createPopUpMenu.php', 'significant' =>'manufacturer', 'ajax'=> true ];
     }
 
 

@@ -53,7 +53,7 @@ class AdminProducts extends AdminController {
 
     public function createProductsPopUpMenu()
     {
-        return ['view' =>'admin/partials/createProductsPopUpMenu.php', 'ajax'=>true ];
+        return ['view' =>'admin/partials/createPopUpMenu.php', 'significant' =>'product', 'ajax'=>true ];
     }
 
     public function createImagePopUpMenu()
