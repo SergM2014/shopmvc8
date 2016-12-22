@@ -83,7 +83,7 @@ class AdminManufacturers extends AdminController {
     {
         $_SESSION['deleteManufacturer'] = true;
 
-        return ['view' =>'admin/partials/createConfirmDeleteManufacturerWindow.php', 'ajax'=>true ];
+        return ['view' =>'admin/partials/createConfirmDeleteWindow.php', 'significant' =>'manufacturer', 'ajax'=>true ];
     }
 
     public function delete()

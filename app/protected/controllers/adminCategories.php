@@ -77,7 +77,7 @@ class AdminCategories extends AdminController {
     {
         $_SESSION['deleteCategory'] = true;
 
-        return ['view' =>'admin/partials/createConfirmDeleteCategoryWindow.php', 'ajax'=>true ];
+        return ['view' =>'admin/partials/createConfirmDeleteWindow.php', 'significant' => 'category', 'ajax'=>true ];
     }
 
     public function delete()

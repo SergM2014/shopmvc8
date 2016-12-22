@@ -1,5 +1,5 @@
 <p class="popup-text"><?= $areYouShureToDelete ?></p>
-<form id="delete-product-item" action="/adminProducts/delete" method="post" class="modal-confirm-btn-container">
+<form id="delete-product-item" action="/admin<?= ucfirst($significant == 'category' ? 'categorie' : $significant) ?>s/delete" method="post" class="modal-confirm-btn-container">
 
     <input type="hidden" name="id" value="<?= (int)$_POST['id'] ?>">
     <input type="hidden" name="_token" value="<?= \Lib\TokenService::printTocken('prozessAdmin') ?>" >

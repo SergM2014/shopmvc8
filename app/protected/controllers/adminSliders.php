@@ -24,7 +24,7 @@ class AdminSliders extends AdminController {
 
     public function createslidersPopUpMenu()
     {
-        return ['view'=>'admin/partials/createPopUpMenu.php', 'sidnificant'=>'slider', 'ajax'=> true ];
+        return ['view'=>'admin/partials/createPopUpMenu.php', 'significant'=>'slider', 'ajax'=> true ];
     }
 
 
@@ -79,7 +79,7 @@ class AdminSliders extends AdminController {
     {
         $_SESSION['deleteSlider'] = true;
 
-        return ['view' =>'admin/partials/createConfirmDeleteSliderWindow.php', 'ajax'=>true ];
+        return ['view' =>'admin/partials/createConfirmDeleterWindow.php', 'significant'=>'slider', 'ajax'=>true ];
     }
 
     public function delete()

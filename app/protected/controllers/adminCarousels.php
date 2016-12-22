@@ -79,7 +79,7 @@ class AdminCarousels extends AdminController {
     {
         $_SESSION['deleteCarousel'] = true;
 
-        return ['view' =>'admin/partials/createConfirmDeleteCarouselWindow.php', 'ajax'=>true ];
+        return ['view' =>'admin/partials/createConfirmDeleteWindow.php', 'significant'=> 'carousel'  , 'ajax'=>true ];
     }
 
     public function delete()

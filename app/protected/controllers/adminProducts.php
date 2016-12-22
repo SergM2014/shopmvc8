@@ -146,7 +146,7 @@ class AdminProducts extends AdminController {
 
     public function creteConfirmDeleteWindow()
     {
-        return ['view' =>'admin/partials/createConfirmDeleteWindow.php', 'ajax'=>true ];
+        return ['view' =>'admin/partials/createConfirmDeleteWindow.php', 'significant' =>'product', 'ajax'=>true ];
     }
 
 
