@@ -31,7 +31,7 @@
 
     <h2 class="content-zone__header"><?= $catalog ?></h2>
 
-    <p>
+    <div>
 
         <form action="/catalog/index" id="reset_all" class="content-zone__reset-filters">
             <button><?= $resetAllFilters ?></button>
@@ -61,7 +61,7 @@
 
         <?php endif; ?>
 
-    </p>
+    </div>
 
     <?php foreach ($catalogResults as $item) : ?>
 

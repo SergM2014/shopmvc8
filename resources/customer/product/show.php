@@ -31,7 +31,7 @@
         <p><b><?= $author ?>:</b>  <?php echo $productInfo->author; ?></p><br>
         <p><b><?= $description ?>:</b> <?php echo $productInfo->description; ?></p><br>
         <p><b><?= $body ?>:</b> <?php echo $productInfo->body; ?></p><br>
-        <?php if (isset($productInfo->category_title)) echo '<p> <b>'.  $category .' :</b> '.$productInfo->category_eng_title.'</p><br>'; ?>
+        <?php if (isset($productInfo->category_title)) echo '<p> <b>'.  $category .' :</b> '.$productInfo->category_title.'</p><br>'; ?>
         <?php if (isset($productInfo->manufacturer_title)) echo '<p> <b>'.$manufacturer.' :</b> '.$productInfo->manufacturer_title.'</p><br>'; ?>
         <p class="red"><b><?= $price ?>:</b> <span id="the_price"><?php echo $productInfo->price; ?></span> грн</p>
         <button  id="add-item" data-item="<?php echo $_GET['id']; ?>" class="content__product--add" data-token="">  <?= $buy ?>  </button>

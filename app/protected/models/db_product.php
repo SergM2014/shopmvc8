@@ -26,10 +26,13 @@ class DB_Product extends DataBase
         $id= $_GET['id'] ?? $_POST['id'];
 
         $sql = "SELECT `p`.`id` AS `product_id`, `p`.`author`, `p`.`title` AS `title`, `p`.`description`,
-        `p`.`body`, `p`.`price`, `p`.`cat_id`, `p`.`manf_id`,  `c`.`id`, `c`.`title` AS `category_title`,
-        `c`.`parent_id`, `c`.`eng_translit_title` AS `category_eng_title`, `m`.`id`, `m`.`eng_translit_title` AS `manf_eng_title`,
-        `m`.`title` AS `manf_title`, `m`.`url` AS `manf_url`, GROUP_CONCAT(`im`.`image`) AS `images`   FROM `products` `p` LEFT JOIN `categories` `c`
-        ON `p`.`cat_id`=`c`.`id` LEFT JOIN `manufacturers` `m` ON `p`.`manf_id`= `m`.`id`LEFT JOIN `images` `im` ON `p`.`id` = `im`.`product_id`  WHERE `p`.`id`=? ";
+        `p`.`body`, `p`.`price`, `p`.`cat_id`, `p`.`manf_id`,   GROUP_CONCAT( DISTINCT `c`.`title` SEPARATOR ', ') AS `category_title`,
+         `m`.`id`, `m`.`eng_translit_title` AS `manf_eng_title`,
+        `m`.`title` AS `manf_title`, `m`.`url` AS `manf_url`, GROUP_CONCAT(`im`.`image`) AS `images` 
+          FROM `products` `p`  LEFT JOIN `manufacturers` `m` ON `p`.`manf_id`= `m`.`id` 
+          LEFT JOIN `images` `im` ON `p`.`id` = `im`.`product_id` 
+           JOIN `products_categories` `pivot` ON `p`.`id` = `pivot`.`product_id` JOIN `categories` `c` ON `pivot`.`category_id` = `c`.`id`
+           WHERE `p`.`id`=? ";
 
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(1, $id, \PDO::PARAM_INT);
