@@ -26,7 +26,7 @@ class DB_Product extends DataBase
         $id= $_GET['id'] ?? $_POST['id'];
 
         $sql = "SELECT `p`.`id` AS `product_id`, `p`.`author`, `p`.`title` AS `title`, `p`.`description`,
-        `p`.`body`, `p`.`price`, `p`.`cat_id`, `p`.`manf_id`,   GROUP_CONCAT( DISTINCT `c`.`title` SEPARATOR ', ') AS `category_title`,
+        `p`.`body`, `p`.`price`,  `p`.`manf_id`,   GROUP_CONCAT( DISTINCT `c`.`title` SEPARATOR ', ') AS `category_title`, GROUP_CONCAT( DISTINCT `c`.`id`) AS `category_id`,
          `m`.`id`, `m`.`eng_translit_title` AS `manf_eng_title`,
         `m`.`title` AS `manf_title`, `m`.`url` AS `manf_url`, GROUP_CONCAT(`im`.`image`) AS `images` 
           FROM `products` `p`  LEFT JOIN `manufacturers` `m` ON `p`.`manf_id`= `m`.`id` 
@@ -73,6 +73,22 @@ class DB_Product extends DataBase
 
         return $result;
 
+    }
+
+    public static function getCategoriesArray($product)
+    {
+        $array = [];
+
+        $categoryIds = explode(',', $product->category_id);
+        $categoryTitles = explode(', ', $product->category_title);
+
+        $size = sizeof($categoryIds);
+
+        for ($i=0; $i < $size; $i++ )
+        {
+            $array[$categoryIds[$i]] =$categoryTitles[$i];
+        }
+        return $array;
     }
 
 }

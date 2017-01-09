@@ -420,6 +420,22 @@
   clear:both;
 }
 
+.admin-product__existing-categories{
+  margin:10px 0;
+}
+.admin-product__add-category-btn{
+  cursor:pointer;
+}
+.admin-product__add-category-notice{
+  color:red;
+  background-color: #00A000;
+  text-align: center;
+  margin-top:10px;
+}
+.admin-product__add-category--hidden, .admin-product__add-category-btn--hidden{
+  display:none;
+}
+
 
 
 

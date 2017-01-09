@@ -37,7 +37,7 @@ class AdminProducts extends AdminController {
 
         return ['view'=> 'admin/partials/productsList.php', 'products' =>$products, 'pages'=>$pages, 'ajax'=>true ];
     }
-
+//this method theems to be unnassacery
     public function show()
     {
         $product = (new DB_Product())->getProduct();
@@ -50,6 +50,23 @@ class AdminProducts extends AdminController {
         return ['view'=> 'admin/productView.php', 'product' => $product, 'categories'=> $categories, 'manufacturers'=>$manufacturers];
 
     }
+
+
+    public function edit()
+    {
+        $product = (new DB_Product())->getProduct();
+
+        $productExistingCategories =  DB_Product::getCategoriesArray($product);
+
+        $manufacturers = (new DB_Catalog(true))->getManufacturers();
+
+        $categories = (new Admin_Category())->getCategoriesMenu();
+
+
+        return ['view'=> 'admin/productView.php', 'product' => $product, 'productExistingCategories' => $productExistingCategories, 'categories'=> $categories, 'manufacturers'=>$manufacturers];
+
+    }
+
 
     public function createProductsPopUpMenu()
     {

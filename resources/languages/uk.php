@@ -221,6 +221,9 @@ $updateCarouselUrl = "Оновити Url ";
 $updateCarousel = "Зберегти зміни";
 $carouselUpdated = "Зміни до каруселі улементу каруселі внесені! ID : ";
 $carouselDeleted = "Елемент каруселі видаленно! ID : ";
+$existingCategories = "Існуючі категорії";
+$addCategory = "Додати Категорію";
+$clickToAddCategory = "Клікніть щоб добавити категорію!";
 
 function has_sub_categories(){
     return "має додаткові категорії";

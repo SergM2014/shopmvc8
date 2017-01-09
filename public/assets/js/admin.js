@@ -616,7 +616,7 @@ document.body.addEventListener('click', function(e) {
     }
 
 
-    if(e.target.closest('.categories-menu__item')){
+    if(e.target.closest('.categories-menu__item') && e.target.closest('#admin-categories__block')){
 
         let popUp = new CategoryPopUpMenu(e);
         popUp.drawMenu();
@@ -673,6 +673,11 @@ document.body.addEventListener('click', function(e) {
 
         CarouselModalWindow.createDeletePopUp(id);
 
+    }
+    if(e.target.id == "admin-product__add-category-btn"){
+
+        document.getElementById('admin-product__add-category').className ='';
+        e.target.className = "admin-product__add-category-btn--hidden";
     }
 
 

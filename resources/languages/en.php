@@ -220,6 +220,9 @@ $updateCarouselUrl = "Update carousel's url ";
 $updateCarousel = "Update changes in carousel";
 $carouselUpdated = "Carousel's element is changed! ID : ";
 $carouselDeleted = "Carousel's element is deleted! ID : ";
+$existingCategories = "existing categories";
+$addCategory = "Add Category";
+$clickToAddCategory = "click to add the category!";
 
 function has_sub_categories(){
     return "contains additional categories";
