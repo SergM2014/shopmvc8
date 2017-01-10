@@ -680,6 +680,40 @@ document.body.addEventListener('click', function(e) {
         e.target.className = "admin-product__add-category-btn--hidden";
     }
 
+    if(e.target.closest('.categories-menu__item') && e.target.closest('#admin-product__add-category')){
+//console.log('hura')
+
+        let existingCategoriesList = document .getElementById('admin-product__existing-categories').querySelectorAll('li');
+//console.log(existingCategoriesList)
+
+        let categoryId = e.target.dataset.id;
+        let categoryTitle = e.target.innerText;
+// console.log(categoryId);
+// console.log(categoryTitle);
+        let categoryCoincidence = false;
+
+        for (let i=0; i<existingCategoriesList.length; i++){
+//console.log(existingCategoriesList[i].dataset.categoryId)
+            if(existingCategoriesList[i].dataset.categoryId == categoryId) categoryCoincidence = true;
+        }
+
+        if(!categoryCoincidence) {
+//console.log('go-go')
+            let formData = new FormData;
+            formData.append('categoryId', categoryId);
+            formData.append('categoryTitle', categoryTitle);
+
+            fetch('/adminProducts/addCategory',
+                {
+                    method: "POST",
+                    body: formData,
+                    credentials: 'same-origin'
+                })
+                .then(responce => responce.text())
+                .then(html => document.getElementById('admin-product__existing-categories').insertAdjacentHTML('beforeEnd', html) );
+        }
+    }
+
 
 })//end of the body
 

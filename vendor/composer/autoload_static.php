@@ -73,7 +73,6 @@ class ComposerStaticInit14fc953014b49481d3c9d0477a55e3f8
         'App\\Models\\DB_Product' => __DIR__ . '/../..' . '/app/protected/models/db_product.php',
         'App\\Models\\DB_Search' => __DIR__ . '/../..' . '/app/protected/models/db_search.php',
         'App\\Models\\Images' => __DIR__ . '/../..' . '/app/protected/models/images.php',
-        'App\\Models\\Slider_Images' => __DIR__ . '/../..' . '/app/protected/models/slider_images.php',
         'Gregwar\\Captcha\\CaptchaBuilder' => __DIR__ . '/..' . '/gregwar/captcha/CaptchaBuilder.php',
         'Gregwar\\Captcha\\CaptchaBuilderInterface' => __DIR__ . '/..' . '/gregwar/captcha/CaptchaBuilderInterface.php',
         'Gregwar\\Captcha\\ImageFileHandler' => __DIR__ . '/..' . '/gregwar/captcha/ImageFileHandler.php',

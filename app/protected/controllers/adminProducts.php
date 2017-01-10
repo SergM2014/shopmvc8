@@ -166,6 +166,11 @@ class AdminProducts extends AdminController {
         return ['view' =>'admin/partials/createConfirmDeleteWindow.php', 'significant' =>'product', 'ajax'=>true ];
     }
 
+    public function addCategory()
+    {
+        return ['view' => 'admin/partials/existingCategory.php', 'ajax' => true ];
+    }
+
 
 
 

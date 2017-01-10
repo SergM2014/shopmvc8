@@ -66,7 +66,9 @@
                 <ul id="admin-product__existing-categories" class="admin-product__existing-categories">
                     <?php foreach($productExistingCategories as $key =>$value) : ?>
 
-                        <li class="categories-menu__item" data-category-id="<?= $key ?>"><?= $value ?></li>
+                        <?php include(PATH_SITE.'/resources/admin/partials/existingCategory.php') ?>
+
+
 
                     <?php endforeach  ?>
                 </ul>

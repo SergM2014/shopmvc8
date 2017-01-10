@@ -50,7 +50,6 @@ return array(
     'App\\Models\\DB_Product' => $baseDir . '/app/protected/models/db_product.php',
     'App\\Models\\DB_Search' => $baseDir . '/app/protected/models/db_search.php',
     'App\\Models\\Images' => $baseDir . '/app/protected/models/images.php',
-    'App\\Models\\Slider_Images' => $baseDir . '/app/protected/models/slider_images.php',
     'Gregwar\\Captcha\\CaptchaBuilder' => $vendorDir . '/gregwar/captcha/CaptchaBuilder.php',
     'Gregwar\\Captcha\\CaptchaBuilderInterface' => $vendorDir . '/gregwar/captcha/CaptchaBuilderInterface.php',
     'Gregwar\\Captcha\\ImageFileHandler' => $vendorDir . '/gregwar/captcha/ImageFileHandler.php',
