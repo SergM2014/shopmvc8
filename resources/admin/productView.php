@@ -5,7 +5,7 @@
     <section class="product-images">
 
         <div class="product-images-list" id="product-images-list" >
-            <?php if($product->images): ?>
+            <?php if(@$product->images): ?>
                 <?php  foreach( $product->images as $image): ?>
                     <img src="/uploads/productsImages/thumbs/<?= $image ?>" class="product-image-preview"
                          title="<?= $clickToSeePopUp ?>" alt="image" data-image="<?= $image ?>" >

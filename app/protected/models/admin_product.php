@@ -66,6 +66,7 @@ class Admin_Product extends DataBase
         $_POST['body'] = self::stripTags($_POST['body']);
 
         $this->updateProductInDb();
+        $this->updateProductCategories();
         $this->addProductsImages();
         $this->removeProductsImages();
         if(!empty($_POST['imagesSort'])) $this->sortImagesSequence();
@@ -74,17 +75,35 @@ class Admin_Product extends DataBase
 
     protected function updateProductInDb()
     {
-        $sql = "UPDATE `products` SET `author`=?, `title`=?, `description`=?, `body`=?, `price`=?, `cat_id`=?, `manf_id`=? WHERE `id`=?";
+        $sql = "UPDATE `products` SET `author`=?, `title`=?, `description`=?, `body`=?, `price`=?,  `manf_id`=? WHERE `id`=?";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(1, $_POST['author'], \PDO::PARAM_STR);
         $stmt->bindValue(2, $_POST['title'], \PDO::PARAM_STR);
         $stmt->bindValue(3, $_POST['description'], \PDO::PARAM_STR);
         $stmt->bindValue(4, $_POST['body'], \PDO::PARAM_STR);
         $stmt->bindValue(5, $_POST['price'], \PDO::PARAM_STR);
-        $stmt->bindValue(6, $_POST['category_id'], \PDO::PARAM_INT);
-        $stmt->bindValue(7, $_POST['manufacturer_id'], \PDO::PARAM_INT);
-        $stmt->bindValue(8, $_POST['id'], \PDO::PARAM_INT);
+        $stmt->bindValue(6, $_POST['manufacturer_id'], \PDO::PARAM_INT);
+        $stmt->bindValue(7, $_POST['id'], \PDO::PARAM_INT);
         $stmt->execute();
+
+    }
+
+    protected function updateProductCategories()
+    {
+        $sql = "DELETE from `products_categories` WHERE `product_id`=?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(1, $_POST['id'], \PDO::PARAM_INT);
+        $stmt->execute();
+
+        $categoryIds= explode(',', $_POST['category_id']);
+        $sql= "INSERT INTO `products_categories` (`product_id`, `category_id`) VALUES (?, ?)";
+        $stmt = $this->conn->prepare($sql);
+        foreach($categoryIds as $id){
+            $stmt->bindValue(1, $_POST['id'], \PDO::PARAM_INT);
+            $stmt->bindValue(2, $id, \PDO::PARAM_INT);
+            $stmt->execute();
+        }
+
 
     }
 
@@ -176,7 +195,7 @@ class Admin_Product extends DataBase
 
     public function getUpdatedProductInfo($updatedProduct, $product)
     {
-        $updatedProduct->category_eng_title = $product->category_eng_title;
+       // $updatedProduct->category_eng_title = $product->category_eng_title;
         $updatedProduct->category_title = $product->category_title;
         $updatedProduct->product_id = $product->product_id;
         $updatedProduct->manf_title = $product->manf_title;

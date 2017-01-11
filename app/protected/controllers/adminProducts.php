@@ -42,12 +42,14 @@ class AdminProducts extends AdminController {
     {
         $product = (new DB_Product())->getProduct();
 
+        $productExistingCategories =  DB_Product::getCategoriesArray($product);
+
         $manufacturers = (new DB_Catalog(true))->getManufacturers();
 
         $categories = (new Admin_Category())->getAdminDropDownMenu($product);
 
 
-        return ['view'=> 'admin/productView.php', 'product' => $product, 'categories'=> $categories, 'manufacturers'=>$manufacturers];
+        return ['view'=> 'admin/productView.php', 'product' => $product, 'categories'=> $categories, 'manufacturers'=>$manufacturers, 'productExistingCategories' => $productExistingCategories,];
 
     }
 
@@ -85,7 +87,8 @@ class AdminProducts extends AdminController {
 
         $manufacturers = (new DB_Catalog(true))->getManufacturers();
 
-        $categories = (new Categories)->getAdminDropDownMenu($product);
+       // $categories = (new Categories)->getAdminDropDownMenu($product);
+        $categories = (new Admin_Category())->getCategoriesMenu();
 
         (new Admin_Product())->getUpdatedProductInfo($updatedProduct, $product);
 
