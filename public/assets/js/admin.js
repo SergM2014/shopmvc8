@@ -388,6 +388,21 @@ class CarouselModalWindow extends ModalWindow {
 
 }
 
+class CategoryList {
+    static refresh(){
+        let ids= [];
+        let categoriesList = document.getElementById('admin-product__existing-categories').querySelectorAll('li');
+//console.log(categoriesList);
+        for (let i=0; i<categoriesList.length; i++){
+            ids.push(categoriesList[i].dataset.categoryId);
+        }
+//console.log(ids);
+        let idsValue = ids.join(',');
+//console.log(idsValue)
+        document.getElementById('category_id').value= idsValue;
+    }
+}
+
 
 
 
@@ -681,24 +696,20 @@ document.body.addEventListener('click', function(e) {
     }
 
     if(e.target.closest('.categories-menu__item') && e.target.closest('#admin-product__add-category')){
-//console.log('hura')
 
         let existingCategoriesList = document .getElementById('admin-product__existing-categories').querySelectorAll('li');
-//console.log(existingCategoriesList)
 
         let categoryId = e.target.dataset.id;
         let categoryTitle = e.target.innerText;
-// console.log(categoryId);
-// console.log(categoryTitle);
+
         let categoryCoincidence = false;
 
         for (let i=0; i<existingCategoriesList.length; i++){
-//console.log(existingCategoriesList[i].dataset.categoryId)
             if(existingCategoriesList[i].dataset.categoryId == categoryId) categoryCoincidence = true;
         }
 
         if(!categoryCoincidence) {
-//console.log('go-go')
+
             let formData = new FormData;
             formData.append('categoryId', categoryId);
             formData.append('categoryTitle', categoryTitle);
@@ -710,8 +721,24 @@ document.body.addEventListener('click', function(e) {
                     credentials: 'same-origin'
                 })
                 .then(responce => responce.text())
-                .then(html => document.getElementById('admin-product__existing-categories').insertAdjacentHTML('beforeEnd', html) );
+                .then(html => document.getElementById('admin-product__existing-categories').insertAdjacentHTML('beforeEnd', html) )
+                .then(()=>{
+                    CategoryList.refresh()
+                })
+
+
+
+
         }
+    }
+
+
+
+    if(e.target.className == "categories-menu__item-close-sign") {
+
+        e.target.closest('.categories-menu__item').remove();
+
+        CategoryList.refresh()
     }
 
 
