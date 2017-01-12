@@ -193,4 +193,28 @@ class Admin_Category extends DataBase
         unset($_SESSION['deleteCategory']);
     }
 
+    /**
+     * get the aray of categories where $id => $title
+     *
+     * @return array
+     */
+    public function getPointedCategories()
+    {
+        if(!$_POST['category_ids']) return false;
+        $ids = explode(',', $_POST['category_ids']);
+
+
+        $array =[];
+        $sql ="SELECT `title` FROM `categories` WHERE `id`=?";
+        $stmt = $this->conn->prepare($sql);
+        foreach($ids as $id) {
+            $stmt->bindValue(1, $id, \PDO::PARAM_INT);
+            $stmt->execute();
+            $title= $stmt->fetchColumn();
+
+            $array[$id]= $title;
+        }
+        return $array;
+    }
+
 }

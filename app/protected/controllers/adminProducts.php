@@ -37,21 +37,7 @@ class AdminProducts extends AdminController {
 
         return ['view'=> 'admin/partials/productsList.php', 'products' =>$products, 'pages'=>$pages, 'ajax'=>true ];
     }
-//this method theems to be unnassacery
-    public function show()
-    {
-        $product = (new DB_Product())->getProduct();
 
-        $productExistingCategories =  DB_Product::getCategoriesArray($product);
-
-        $manufacturers = (new DB_Catalog(true))->getManufacturers();
-
-        $categories = (new Admin_Category())->getAdminDropDownMenu($product);
-
-
-        return ['view'=> 'admin/productView.php', 'product' => $product, 'categories'=> $categories, 'manufacturers'=>$manufacturers, 'productExistingCategories' => $productExistingCategories,];
-
-    }
 
 
     public function edit()
@@ -87,12 +73,15 @@ class AdminProducts extends AdminController {
 
         $manufacturers = (new DB_Catalog(true))->getManufacturers();
 
-       // $categories = (new Categories)->getAdminDropDownMenu($product);
         $categories = (new Admin_Category())->getCategoriesMenu();
+
+        $productExistingCategories= (new Admin_Category())->getPointedCategories();
+
+
 
         (new Admin_Product())->getUpdatedProductInfo($updatedProduct, $product);
 
-        return ['view'=> 'admin/productView.php', 'product' => $updatedProduct, 'categories'=> $categories,
+        return ['view'=> 'admin/productView.php', 'product' => $updatedProduct, 'categories'=> $categories, 'productExistingCategories'=>$productExistingCategories,
             'manufacturers'=>$manufacturers, 'errors' => $errors];
     }
 
@@ -102,7 +91,8 @@ class AdminProducts extends AdminController {
 
         $manufacturers = (new DB_Catalog(true))->getManufacturers();
 
-        $categories = (new Categories)->getAdminDropDownMenu($product);
+
+        $categories = (new Admin_Category())->getCategoriesMenu();
 
         return ['view'=> 'admin/createProduct.php', 'product' => $product, 'categories'=> $categories,
             'manufacturers'=> $manufacturers, 'errors' => $errors];
@@ -110,12 +100,14 @@ class AdminProducts extends AdminController {
 
     public function update()
     {
+
         TokenService::check('prozessAdmin');
         $updatedProduct = new \stdClass();
         $model= new Admin_Product();
         $errors = $model->checkIfNotEmpty($updatedProduct);
 
         if(!empty($errors)){
+
             return $this->showUpdateErrors($updatedProduct, $errors);
         }
 
@@ -137,7 +129,8 @@ class AdminProducts extends AdminController {
     {
         $manufacturers = (new DB_Catalog(true))->getManufacturers();
 
-        $categories = (new Categories)->getAddProductAdminDropDownMenu();
+        //$categories = (new Categories)->getAddProductAdminDropDownMenu();
+        $categories = (new Admin_Category())->getCategoriesMenu();
 
         return ['view'=> 'admin/createProduct.php', 'manufacturers'=>$manufacturers, 'categories' => $categories ];
     }

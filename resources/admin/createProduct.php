@@ -55,10 +55,7 @@
                 <small class="admin-product__field-error"><?= @ $errors['price'] ?><?= @$product->price ?></small>
             </div>
 
-            <div class="admin-product__field">
-                <label for="category_id" class="admin-product__field-label"><?= $category ?></label><br>
-                <?= $categories ?>
-            </div>
+            <?php include_once(PATH_SITE.'/resources/admin/partials/categorySection.php') ?>
 
             <div class="admin-product__field">
                 <label for="manufacturer_id" class="admin-product__field-label"><?= $manufacturerTitle ?></label><br>
@@ -66,9 +63,9 @@
 
 
                     <?php foreach ($manufacturers as $manufacturer): ?>
-                       <?php if (isset($product->manf_id)): ?>
+                        <?php if (isset($product->manf_id)): ?>
                             <option selected value="<?= $product->manf_id ?>"><?= $product->manf_title ?></option>
-                       <?php endif; ?>
+                        <?php endif; ?>
                         <option value ="<?= $manufacturer->id ?>"><?= $manufacturer->title ?></option>
 
                     <?php endforeach; ?>

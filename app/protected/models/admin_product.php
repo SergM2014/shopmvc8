@@ -16,7 +16,7 @@ class Admin_Product extends DataBase
 
     public function checkIfNotEmpty($product)
     {
-        $fieldsArray=['author', 'title', 'price', 'description', 'body', 'manufacturer_id', 'category_id'];
+        $fieldsArray=['author', 'title', 'price', 'description', 'body', 'manufacturer_id', 'category_ids'];
         $error= [];
 
         foreach ($fieldsArray as $item){
@@ -95,7 +95,7 @@ class Admin_Product extends DataBase
         $stmt->bindValue(1, $_POST['id'], \PDO::PARAM_INT);
         $stmt->execute();
 
-        $categoryIds= explode(',', $_POST['category_id']);
+        $categoryIds= explode(',', $_POST['category_ids']);
         $sql= "INSERT INTO `products_categories` (`product_id`, `category_id`) VALUES (?, ?)";
         $stmt = $this->conn->prepare($sql);
         foreach($categoryIds as $id){
@@ -176,8 +176,8 @@ class Admin_Product extends DataBase
         $stmt->execute();
         $manf = $stmt->fetch();
 
-        $product->cat_id = $cat->id;
-        $product->category_title = $cat->title;
+       // $product->cat_id = $cat->id;
+       // $product->category_title = $cat->title;
         $product->manf_id = $manf->id;
         $product->manf_title = $manf->title;
 

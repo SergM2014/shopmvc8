@@ -399,7 +399,7 @@ class CategoryList {
 //console.log(ids);
         let idsValue = ids.join(',');
 //console.log(idsValue)
-        document.getElementById('category_id').value= idsValue;
+        document.getElementById('category_ids').value= idsValue;
     }
 }
 
