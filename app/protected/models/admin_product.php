@@ -195,6 +195,11 @@ class Admin_Product extends DataBase
         $stmt->bindValue(1, $_POST['id'], \PDO::PARAM_INT);
         $stmt->execute();
 
+        $sql= "DELETE FROM `products_categories` WHERE `product_id`=?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(1, $_POST['id'], \PDO::PARAM_INT);
+        $stmt->execute();
+
     }
 
 

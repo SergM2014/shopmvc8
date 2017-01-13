@@ -542,7 +542,7 @@ document.body.addEventListener('click', function(e) {
 
 
     if(e.target.id == "popUp-admin-product-delete") {
-       let id = e.target.dataset.deleteProductId;
+       let id = e.target.dataset.productId;
 
         ModalWindow.createDeletePopUp(id);
 
