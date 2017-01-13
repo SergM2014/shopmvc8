@@ -87,20 +87,20 @@ class AdminProducts extends AdminController {
 
     protected function showAddErrors($product, $errors)
     {
-        (new Admin_Product())->getCategoryAndManufacturerInfo($product);
+        (new Admin_Product())->getManufacturerInfo($product);
 
         $manufacturers = (new DB_Catalog(true))->getManufacturers();
 
+        $productExistingCategories= (new Admin_Category())->getPointedCategories();
 
         $categories = (new Admin_Category())->getCategoriesMenu();
 
-        return ['view'=> 'admin/createProduct.php', 'product' => $product, 'categories'=> $categories,
+        return ['view'=> 'admin/createProduct.php', 'product' => $product, 'categories'=> $categories, 'productExistingCategories'=>$productExistingCategories,
             'manufacturers'=> $manufacturers, 'errors' => $errors];
     }
 
     public function update()
     {
-
         TokenService::check('prozessAdmin');
         $updatedProduct = new \stdClass();
         $model= new Admin_Product();
@@ -117,7 +117,6 @@ class AdminProducts extends AdminController {
     }
 
 // delete image in admin products
-
     public function addImageToDeleteList()
     {
         TokenService::check('prozessAdmin');
@@ -129,7 +128,6 @@ class AdminProducts extends AdminController {
     {
         $manufacturers = (new DB_Catalog(true))->getManufacturers();
 
-        //$categories = (new Categories)->getAddProductAdminDropDownMenu();
         $categories = (new Admin_Category())->getCategoriesMenu();
 
         return ['view'=> 'admin/createProduct.php', 'manufacturers'=>$manufacturers, 'categories' => $categories ];

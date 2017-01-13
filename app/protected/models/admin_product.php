@@ -35,6 +35,7 @@ class Admin_Product extends DataBase
 
 
         $addedProductId = $this->addProductInDb();
+        $this->addCategoriesInDb($addedProductId);
         $this->addProductsImages($addedProductId);
 
         if(!empty($_POST['imagesSort'])) $this->sortImagesSequence();
@@ -44,19 +45,31 @@ class Admin_Product extends DataBase
 
     protected function addProductInDb()
     {
-        $sql = "INSERT INTO `products` (`author`, `title`, `description`, `body`, `price`, `cat_id`, `manf_id`) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO `products` (`author`, `title`, `description`, `body`, `price`, `manf_id`) VALUES (?,  ?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(1, $_POST['author'], \PDO::PARAM_STR);
         $stmt->bindValue(2, $_POST['title'], \PDO::PARAM_STR);
         $stmt->bindValue(3, $_POST['description'], \PDO::PARAM_STR);
         $stmt->bindValue(4, $_POST['body'], \PDO::PARAM_STR);
         $stmt->bindValue(5, $_POST['price'], \PDO::PARAM_STR);
-        $stmt->bindValue(6, $_POST['category_id'], \PDO::PARAM_INT);
-        $stmt->bindValue(7, $_POST['manufacturer_id'], \PDO::PARAM_INT);
+        $stmt->bindValue(6, $_POST['manufacturer_id'], \PDO::PARAM_INT);
 
         $stmt->execute();
 
         return $this->conn->lastInsertId();
+    }
+
+    protected function addCategoriesInDb($addedProductId)
+    {
+        $ids = explode(',', $_POST['category_ids']);
+        $sql = "INSERT INTO `products_categories` (`product_id`, `category_id`) VALUES (?, ?)";
+        $stmt = $this->conn->prepare($sql);
+
+        foreach ($ids as $id){
+            $stmt ->bindValue(1, $addedProductId, \PDO::PARAM_INT);
+            $stmt ->bindValue(2, $id, \PDO::PARAM_INT);
+            $stmt ->execute();
+        }
     }
 
 
@@ -161,23 +174,15 @@ class Admin_Product extends DataBase
 
     }
 
-    public function getCategoryAndManufacturerInfo($product)
+    public function getManufacturerInfo($product)
     {
-
-        $sql = "SELECT `id` , `title` FROM `categories` WHERE `id` = ?";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bindValue(1, $_POST['category_id'], \PDO::PARAM_INT);
-        $stmt->execute();
-        $cat = $stmt->fetch();
-
         $sql = "SELECT `id`, `title` FROM `manufacturers` WHERE `id` = ?";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(1, $_POST['manufacturer_id'], \PDO::PARAM_INT);
         $stmt->execute();
         $manf = $stmt->fetch();
 
-       // $product->cat_id = $cat->id;
-       // $product->category_title = $cat->title;
+
         $product->manf_id = $manf->id;
         $product->manf_title = $manf->title;
 

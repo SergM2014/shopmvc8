@@ -114,7 +114,7 @@ class DB_Catalog extends DataBase
         }
 
         $sql= "SELECT COUNT(`p`.`id`) AS number FROM `products` `p` LEFT JOIN
-              `categories` `c` ON `p`.`cat_id` = `c`.`id` LEFT JOIN `manufacturers` `m` ON `p`.`id` = `m`.`id`$this->category $this->manufacturer";
+              /*`categories` `c` ON `p`.`cat_id` = `c`.`id` LEFT JOIN*/ `manufacturers` `m` ON `p`.`id` = `m`.`id`$this->category $this->manufacturer";
         $res= $this->conn->query($sql);
         $res= $res->fetch();
    
