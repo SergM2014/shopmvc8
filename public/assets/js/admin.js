@@ -422,7 +422,7 @@ document.body.addEventListener('click', function(e) {
 
     //click the pagination f the product
     if (e.target.className == "pagination-item") {
-
+console.log('your are in pagination now')
         let the_class = e.target.closest('.pagination-item');
 
         if (the_class) {
@@ -445,11 +445,11 @@ document.body.addEventListener('click', function(e) {
             fetch(url,
                 {
                     method: "POST",
-
+                    body: formData,
                     credentials: 'same-origin'
                 })
                 .then(responce => responce.text())
-                .then(html => document.getElementById('insert-products').innerHTML = html);
+                .then(html => document.getElementById('insert-products').innerHTML =   html);
         }
 
     }
@@ -467,7 +467,7 @@ document.body.addEventListener('click', function(e) {
 
     if(e.target.id == 'products__drop-down-container-btn'){
 
-        let p = document.getElementById('pagination-item-current').dataset.p;
+        let p = (document.getElementById('pagination-item-current'))? document.getElementById('pagination-item-current').dataset.p : null;
         let order = document.getElementById('order-drop-down-menu').value;
         let category = document.getElementById('categories-drop-down-menu').value;
         let manufacturer = document.getElementById('manufacturers-drop-down-menu').value;
@@ -476,6 +476,8 @@ document.body.addEventListener('click', function(e) {
         let url =  founded_lang+"/adminProducts/refresh";
 
         let formData = new FormData;
+
+        if(p) formData.append('p', p);
         formData.append('order', order);
         if(category) formData.append('category', category);
         if(manufacturer) formData.append('manufacturer', manufacturer);

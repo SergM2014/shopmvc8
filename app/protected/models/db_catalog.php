@@ -26,7 +26,7 @@ class DB_Catalog extends DataBase
     public function getCatalog()
     {
 
-        $page= ($this->page-1)*$this->amount;
+        $startPage= ($this->page-1)*$this->amount;
         $this->order='';
 
 
@@ -74,7 +74,7 @@ class DB_Catalog extends DataBase
 
 
         $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(1, $page, \PDO::PARAM_INT);
+        $stmt->bindParam(1, $startPage, \PDO::PARAM_INT);
         $stmt->execute();
 
         $result= $stmt->fetchAll();
@@ -103,7 +103,7 @@ class DB_Catalog extends DataBase
 
         if(isset($category)){
             $this->category = $this->conn->quote($category);
-            $this->category = "WHERE `c`.`title`=".$this->category." ";
+            $this->category = "WHERE `c`.`eng_translit_title`=".$this->category." ";
             $conjunction =" AND";
         }
 
@@ -113,11 +113,14 @@ class DB_Catalog extends DataBase
             $this->manufacturer = $conjunction."`m`.`title`=".$name." ";
         }
 
-        $sql= "SELECT COUNT(`p`.`id`) AS number FROM `products` `p` LEFT JOIN
-              /*`categories` `c` ON `p`.`cat_id` = `c`.`id` LEFT JOIN*/ `manufacturers` `m` ON `p`.`id` = `m`.`id`$this->category $this->manufacturer";
+        $sql="SELECT COUNT( DISTINCT `p`.`id`) AS number FROM `products` `p`  LEFT JOIN `manufacturers` `m`  ON `p`.`manf_id` = `m`.`id`
+                JOIN `products_categories` `pivot` ON `p`.`id` = `pivot`.`product_id` JOIN `categories` `c` ON `pivot`.`category_id` = `c`.`id`
+                $this->category $this->manufacturer " ;
+
         $res= $this->conn->query($sql);
         $res= $res->fetch();
-   
+
+
         $pages= ceil($res->number/$this->amount);
 
         return $pages;

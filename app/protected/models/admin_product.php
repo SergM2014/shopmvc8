@@ -205,7 +205,6 @@ class Admin_Product extends DataBase
 
     public function getUpdatedProductInfo($updatedProduct, $product)
     {
-       // $updatedProduct->category_eng_title = $product->category_eng_title;
         $updatedProduct->category_title = $product->category_title;
         $updatedProduct->product_id = $product->product_id;
         $updatedProduct->manf_title = $product->manf_title;
