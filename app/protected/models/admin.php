@@ -26,4 +26,76 @@ class AdminModel extends DataBase
         return $counter;
     }
 
+    public  function removeUnnecessaryImages()
+    {
+        $this->cleanDirectory(PRODUCTS_IMAGES, 'images');
+        $this->cleanDirectory(PRODUCTS_IMAGES_THUMBS, 'images');
+        $this->cleanDirectory(SLIDER_IMAGES, 'slider');
+        $this->cleanDirectory(CAROUSEL_IMAGES, 'images');
+        $this->cleanDirectory(AVATARS_IMAGES, 'comments', 'avatar');
+
+        /*
+        $productImagesArray = $this->getDirectoryImages(AVATARS_IMAGES);
+
+        $sql = "SELECT `avatar` FROM `comments`";
+        $result = $this->conn->query($sql);
+        $res = $result->fetchAll();
+
+        $productImagesDbArray =[];
+
+        foreach ($res as $one){
+            if(!is_null($one->avatar))
+            $productImagesDbArray[] =$one->avatar;
+        }
+
+        $arrayDiff = array_diff($productImagesArray, $productImagesDbArray);
+        foreach($arrayDiff as $image){
+            @unlink(PATH_SITE.UPLOAD_FOLDER.AVATARS_IMAGES.$image);
+
+        }*/
+
+
+
+
+
+    }
+
+    private function getDirectoryImages($directory)
+    {
+        $extentionsArray = ['jpg','png','jpeg','gif'];
+        $productImagesArray = [];
+
+        $dir = new \DirectoryIterator(PATH_SITE.UPLOAD_FOLDER.$directory);
+
+        foreach ($dir as $file){
+            if ($file->isFile()) {
+                $ext = $file->getExtension();
+                if(in_array($ext, $extentionsArray)){
+                    $productImagesArray[] = $file->getFilename();
+                }
+            }
+        }
+        return $productImagesArray;
+    }
+
+    private function cleanDirectory($folder, $table, $column = 'image')
+    {
+        $productImagesArray = $this->getDirectoryImages($folder);
+
+        $sql = "SELECT `$column` FROM `$table`";
+        $result = $this->conn->query($sql);
+        $res = $result->fetchAll();
+
+        $productImagesDbArray =[];
+
+        foreach ($res as $one){
+            $productImagesDbArray[] =$one->image;
+        }
+        $arrayDiff = array_diff($productImagesArray, $productImagesDbArray);
+        foreach($arrayDiff as $image){
+            @unlink(PATH_SITE.UPLOAD_FOLDER.$folder.$image);
+
+        }
+    }
+
 }

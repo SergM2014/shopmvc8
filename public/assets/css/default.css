@@ -689,6 +689,14 @@ html, body {
   max-width: 80%;
   max-height: 80%; }
 
+.notice {
+  border: 1px solid red;
+  text-align: center;
+  background-color: #489455;
+  padding: 10px;
+  margin: 20px 0;
+  color: red; }
+
 /*this is technical classes*/
 .hidden {
   display: none; }

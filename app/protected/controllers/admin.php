@@ -13,12 +13,16 @@ class Admin  extends BaseController
     public function index()
     {
         TokenService::checkAdmin('enterAdmin');
-
-        (new AdminModel)->getAdminUser();
+        $adminModel = new AdminModel();
+        $adminModel->getAdminUser();
+//echo '222';//it works
 
       if(!isset($_SESSION['admin'])){
+
           return ['view'=>'admin/notAdmin.php'];
       }
+        //delete unnecessary images
+        $adminModel->removeUnnecessaryImages();
         return ['view'=>'admin/admin.php'];
 
     }

@@ -26,6 +26,7 @@
 
     define('SLIDER_IMAGES', 'slider/');
     define('CAROUSEL_IMAGES', 'carousel/');
+    define('AVATARS_IMAGES', 'avatars/');
 
 	define('LINKCOUNT',5);
 	define('ADMINEMAIL', 'weisse@ukr.net');

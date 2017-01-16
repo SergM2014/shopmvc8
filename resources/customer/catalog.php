@@ -63,6 +63,8 @@
 
     </div>
 
+    <?php if($catalogResults) : ?>
+
     <?php foreach ($catalogResults as $item) : ?>
 
         <article class="content-zone__item clearfix">
@@ -90,10 +92,14 @@
         </article>
     <?php endforeach; ?>
 
+    <?php else: ?>
+
+        <h2 class="notice"><?= $nothingFound ?></h2>
+
+    <?php endif ?>
 
 
-
-
+        <?php if(@$pages>1): ?>
         <nav class="pagination">
 
             <?php
@@ -123,6 +129,7 @@
             <?php endfor; ?>
 
         </nav>
+    <?php endif; ?>
 
 
 
