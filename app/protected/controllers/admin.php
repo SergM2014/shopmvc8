@@ -15,7 +15,7 @@ class Admin  extends BaseController
         TokenService::checkAdmin('enterAdmin');
         $adminModel = new AdminModel();
         $adminModel->getAdminUser();
-//echo '222';//it works
+
 
       if(!isset($_SESSION['admin'])){
 

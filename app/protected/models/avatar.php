@@ -14,8 +14,8 @@ class Avatar extends DataBase
 
     public function uploadAvatar(){
 
-        $path = PATH_SITE.UPLOAD_FILE.'avatars/';
-        $tmp_path= PATH_SITE.UPLOAD_FILE.'tmp/';
+        $path = PATH_SITE.UPLOAD_FOLDER.'avatars/';
+        $tmp_path= PATH_SITE.UPLOAD_FOLDER.'tmp/';
 
         // Массив допустимых значений типа файла
         $types = array('image/gif', 'image/png', 'image/jpeg');
@@ -49,7 +49,7 @@ class Avatar extends DataBase
                 chmod ($path.$name , 0777);
             }
             // Удаляем временный файл
-            unlink(PATH_SITE.UPLOAD_FILE.'tmp/' . $name);
+            unlink(PATH_SITE.UPLOAD_FOLDER.'tmp/' . $name);
         }
 
         return $response;
@@ -119,7 +119,7 @@ class Avatar extends DataBase
     public function deleteAvatar()
     {
         $avatar = @ $_SESSION['avatar'];
-        @ unlink ( PATH_SITE.UPLOAD_FILE.'avatars/'.$_SESSION['avatar']);
+        @ unlink ( PATH_SITE.UPLOAD_FOLDER.'avatars/'.$_SESSION['avatar']);
         unset ( $_SESSION['avatar']);
         $response= ["message"=>"<span class='avatar-delete--succeded'>". file_deleted() ."</span>", "bild"=> $avatar];
 

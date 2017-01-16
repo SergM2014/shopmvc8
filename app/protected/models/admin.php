@@ -89,7 +89,7 @@ class AdminModel extends DataBase
         $productImagesDbArray =[];
 
         foreach ($res as $one){
-            $productImagesDbArray[] =$one->image;
+            $productImagesDbArray[] =$one->$column;
         }
         $arrayDiff = array_diff($productImagesArray, $productImagesDbArray);
         foreach($arrayDiff as $image){
