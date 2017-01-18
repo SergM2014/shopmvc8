@@ -10,13 +10,18 @@ class AdminModel extends DataBase
     {
 
         if( @!$_POST['login'] OR !$_POST['password']) return;
-        $sql = "SELECT `login` , `password`, `role` FROM `users` WHERE `login`=? ";
+        $sql = "SELECT `login` , `password`, `role_title`, `upgrading_status` FROM `users` WHERE `login`=? ";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(1, $_POST['login'], \PDO::PARAM_STR);
         $stmt->execute();
         $user = $stmt->fetch();
 
-        if( password_verify( $_POST['password'], $user->password ) ) $_SESSION['admin']= true;
+        if( password_verify( $_POST['password'], $user->password ) ) {
+            $_SESSION['admin'] ['enter'] = true;
+            $_SESSION['admin']['login'] = $user->login;
+            $_SESSION['admin']['role_title'] = $user->role_title;
+            $_SESSION['admin']['upgrading_status'] = $user->upgrading_status;
+        }
 
     }
     public function getLoopCounter()
@@ -31,33 +36,8 @@ class AdminModel extends DataBase
         $this->cleanDirectory(PRODUCTS_IMAGES, 'images');
         $this->cleanDirectory(PRODUCTS_IMAGES_THUMBS, 'images');
         $this->cleanDirectory(SLIDER_IMAGES, 'slider');
-        $this->cleanDirectory(CAROUSEL_IMAGES, 'images');
+        $this->cleanDirectory(CAROUSEL_IMAGES, 'carousel');
         $this->cleanDirectory(AVATARS_IMAGES, 'comments', 'avatar');
-
-        /*
-        $productImagesArray = $this->getDirectoryImages(AVATARS_IMAGES);
-
-        $sql = "SELECT `avatar` FROM `comments`";
-        $result = $this->conn->query($sql);
-        $res = $result->fetchAll();
-
-        $productImagesDbArray =[];
-
-        foreach ($res as $one){
-            if(!is_null($one->avatar))
-            $productImagesDbArray[] =$one->avatar;
-        }
-
-        $arrayDiff = array_diff($productImagesArray, $productImagesDbArray);
-        foreach($arrayDiff as $image){
-            @unlink(PATH_SITE.UPLOAD_FOLDER.AVATARS_IMAGES.$image);
-
-        }*/
-
-
-
-
-
     }
 
     private function getDirectoryImages($directory)
@@ -96,6 +76,44 @@ class AdminModel extends DataBase
             @unlink(PATH_SITE.UPLOAD_FOLDER.$folder.$image);
 
         }
+    }
+
+    public function getUsers()
+    {
+        $sql ="SELECT `id`, `login`, `role_title`, `upgrading_status` FROM `users`";
+        $result = $this->conn->query($sql);
+        $users = $result->fetchAll();
+
+        return $users;
+    }
+
+    public function storeUser()
+    {
+
+        switch($_POST['user_role'])
+        {
+            case 'superadmin':
+                $status= 3; break;
+            case 'admin':
+                 $status=2;break;
+
+            default:
+                $status=1;
+        }
+        $password= password_hash($_POST['user_password'], PASSWORD_DEFAULT);
+
+
+        $sql = "INSERT INTO `users` (`login`, `password`, `role_title`, `upgrading_status`) VALUES (?, ?, ?, ?)";
+        $stmt =$this->conn->prepare($sql);
+        $stmt->bindValue(1, $_POST['user_name'], \PDO::PARAM_STR);
+        $stmt->bindValue(2, $password, \PDO::PARAM_STR);
+        $stmt->bindValue(3, $_POST['user_role'], \PDO::PARAM_STR);
+        $stmt->bindValue(4, $status, \PDO::PARAM_INT);
+        $stmt->execute();
+
+        $id = $this->conn->lastInsertId();
+        unset ($_SESSION['makeUser']);
+        return $id;
     }
 
 }

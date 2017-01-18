@@ -229,6 +229,29 @@ class CarouselPopUpMenu extends PopupMenu {
     }
 }
 
+class UserPopUpMenu extends PopupMenu {
+    fillUpMenuContent()
+    {
+
+        let categoryId = this.target.closest('.user-menu__item-container').dataset.id;
+
+        let lang =  new LangForAjax().getLanguage();
+
+        let url = lang + "/adminUsers/createUsersPopUpMenu";
+        let formData = new FormData;
+        formData.append('id', categoryId);
+
+
+        fetch(url, {
+            method:'POST',
+            credentials:'same-origin',
+            body: formData
+        })
+            .then(response => response.text())
+            .then(html =>document.getElementById('popup-menu').innerHTML= html);
+    }
+}
+
 
 class ImageOrder {
     static reorder(){
@@ -680,6 +703,13 @@ console.log('your are in pagination now')
     if(e.target.closest('.carousels-menu__item-container')){
 
         let popUp = new CarouselPopUpMenu(e);
+        popUp.drawMenu();
+        popUp.fillUpMenuContent();
+    }
+
+    if(e.target.closest('.user-menu__item-container')){
+
+        let popUp = new UserPopUpMenu(e);
         popUp.drawMenu();
         popUp.fillUpMenuContent();
     }

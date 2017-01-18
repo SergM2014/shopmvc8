@@ -224,6 +224,15 @@ $carouselDeleted = "Елемент каруселі видаленно! ID : ";
 $existingCategories = "Існуючі категорії";
 $addCategory = "Додати Категорію";
 $clickToAddCategory = "Клікніть щоб добавити категорію!";
+$users = "Користувачі";
+$upgradingStatus = "Важливість";
+$createUserHeader = "Створити користувача";
+$createUserName = "Додати імя користувача";
+$createUserRole = "Додати роль користувача";
+$createUser = "Створити користувача";
+$createUserPassword = "Створити пароль";
+$repeatUserPassword = "Повторіть пароль";
+$userCreated= "Користувач створенний! ID : ";
 
 function has_sub_categories(){
     return "має додаткові категорії";
@@ -325,4 +334,14 @@ function noSlider()
 function noCarousel()
 {
     return "Відсутне зоображення";
+}
+
+function passwordsDoNotMatch()
+{
+    return "Паролі не співпадають";
+}
+
+function tooSmallPassword()
+{
+    return "Занадто малий пароль! Потрібно мінімум 6 знаків";
 }

@@ -14,6 +14,7 @@ return array(
     'App\\Controllers\\AdminManufacturers' => $baseDir . '/app/protected/controllers/adminManufacturers.php',
     'App\\Controllers\\AdminProducts' => $baseDir . '/app/protected/controllers/adminProducts.php',
     'App\\Controllers\\AdminSliders' => $baseDir . '/app/protected/controllers/adminSliders.php',
+    'App\\Controllers\\AdminUsers' => $baseDir . '/app/protected/controllers/adminUsers.php',
     'App\\Controllers\\Busket' => $baseDir . '/app/protected/controllers/busket.php',
     'App\\Controllers\\CarouselImage' => $baseDir . '/app/protected/controllers/carouselImage.php',
     'App\\Controllers\\Catalog' => $baseDir . '/app/protected/controllers/catalog.php',

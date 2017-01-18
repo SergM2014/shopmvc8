@@ -37,6 +37,7 @@ class ComposerStaticInit14fc953014b49481d3c9d0477a55e3f8
         'App\\Controllers\\AdminManufacturers' => __DIR__ . '/../..' . '/app/protected/controllers/adminManufacturers.php',
         'App\\Controllers\\AdminProducts' => __DIR__ . '/../..' . '/app/protected/controllers/adminProducts.php',
         'App\\Controllers\\AdminSliders' => __DIR__ . '/../..' . '/app/protected/controllers/adminSliders.php',
+        'App\\Controllers\\AdminUsers' => __DIR__ . '/../..' . '/app/protected/controllers/adminUsers.php',
         'App\\Controllers\\Busket' => __DIR__ . '/../..' . '/app/protected/controllers/busket.php',
         'App\\Controllers\\CarouselImage' => __DIR__ . '/../..' . '/app/protected/controllers/carouselImage.php',
         'App\\Controllers\\Catalog' => __DIR__ . '/../..' . '/app/protected/controllers/catalog.php',

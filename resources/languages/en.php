@@ -223,6 +223,15 @@ $carouselDeleted = "Carousel's element is deleted! ID : ";
 $existingCategories = "existing categories";
 $addCategory = "Add Category";
 $clickToAddCategory = "click to add the category!";
+$users = "Users";
+$upgradingStatus = "Upgrading status";
+$createUserHeader = "Create User";
+$createUserName = "Create user name";
+$createUserRole = "Create user role";
+$createUser = "Створити користувача";
+$createUserPassword = "Create password";
+$repeatUserPassword = "Повторіть пароль";
+$userCreated= "User created! ID : ";
 
 function has_sub_categories(){
     return "contains additional categories";
@@ -321,4 +330,14 @@ function noSlider()
 function noCarousel()
 {
     return "Mo image";
+}
+
+function passwordsDoNotMatch()
+{
+    return "Passwords do not match";
+}
+
+function tooSmallPassword()
+{
+    return "Too small Password! Min 6 characters required";
 }

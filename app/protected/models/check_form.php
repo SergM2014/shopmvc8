@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use App\Core\DataBase;
 use Lib\CheckFieldsService;
 use Lib\HelperService;
@@ -9,6 +10,8 @@ use function \wrong_email;
 use function \wrong_captcha;
 use function \empty_message;
 
+use function \passwordsDoNotMatch;
+use function \tooSmallPassword;
 
 class CheckForm extends DataBase
 {
@@ -90,6 +93,18 @@ class CheckForm extends DataBase
         if(empty($emptyErrors)) return;
         return $emptyErrors;
 
+    }
+
+    public function deal2PasswordsFields()
+    {
+        if(strlen($_POST['user_password'])<6) {
+           return ['user_password' => tooSmallPassword()];
+
+        }
+        if($_POST['user_password'] != $_POST['user_password2']) {
+            return ['user_password2' => passwordsDoNotMatch()];
+
+        }
 
     }
 
