@@ -14,6 +14,19 @@ class AdminSliders extends AdminController {
 
     use CheckFieldsService;
 
+    public function __construct()
+    {
+        session_start();
+
+        if(@$_SESSION['admin']['upgrading_status']<2){
+            if (isset($_POST['ajax'])){
+                echo json_encode(["message" => "you do not have permission to fire off the controller"]); exit();
+            }
+            header('Location: /admin');
+        }
+
+    }
+
     public function index($fullfilledAction = null, $id =null, $error = null )
     {
 

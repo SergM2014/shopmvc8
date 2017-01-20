@@ -45,17 +45,24 @@
 
                      <li class="main-header__menu-item"><a href="/<?= \Lib\HelperService::currentLang() ?>adminProducts" class="main-header__menu-item-link"><?= $editProducts ?></a></li>
 
-                     <li class="main-header__menu-item"><a href="/<?= \Lib\HelperService::currentLang() ?>adminComments" class="main-header__menu-item-link"><?= $comments ?></a></li>
+                     <?php if($_SESSION['admin']['upgrading_status'] >1) : ?>
+                         <li class="main-header__menu-item"><a href="/<?= \Lib\HelperService::currentLang() ?>adminComments" class="main-header__menu-item-link"><?= $comments ?></a></li>
+                     <?php endif ; ?>
+
                      <li class="main-header__menu-item"><a href="/<?= \Lib\HelperService::currentLang() ?>adminCategories" class="main-header__menu-item-link"><?= $categoriesTitles ?></a></li>
                      <li class="main-header__menu-item"><a href="/<?= \Lib\HelperService::currentLang() ?>adminManufacturers" class="main-header__menu-item-link"><?= $manufacturersTitles ?></a></li>
-                     <li class="main-header__menu-item"><a href="/<?= \Lib\HelperService::currentLang() ?>adminSliders" class="main-header__menu-item-link"><?= $slider ?></a></li>
-                     <li class="main-header__menu-item"><a href="/<?= \Lib\HelperService::currentLang() ?>adminCarousels" class="main-header__menu-item-link"><?= $carousel ?></a></li>
+
+
+                     <?php if($_SESSION['admin']['upgrading_status'] >1) : ?>
+                         <li class="main-header__menu-item"><a href="/<?= \Lib\HelperService::currentLang() ?>adminSliders" class="main-header__menu-item-link"><?= $slider ?></a></li>
+                         <li class="main-header__menu-item"><a href="/<?= \Lib\HelperService::currentLang() ?>adminCarousels" class="main-header__menu-item-link"><?= $carousel ?></a></li>
+                     <?php endif ; ?>
 
                      <?php if($_SESSION['admin']['upgrading_status'] >2) : ?>
                         <li class="main-header__menu-item"><a href="/<?= \Lib\HelperService::currentLang() ?>adminUsers" class="main-header__menu-item-link"><?= $users ?></a></li>
                      <?php endif ; ?>
 
-                     <li class="main-header__admin"> <a href="/<?= \Lib\HelperService::currentLang() ?>admin/leave" ><?= $exit ?></a></li>
+                     <li class="main-header__admin"> <a href="/<?= \Lib\HelperService::currentLang() ?>admin/leave" ><?= $_SESSION['admin']['login'].' / '. $exit ?></a></li>
 
                      <li class="main-header__language-select">
 
