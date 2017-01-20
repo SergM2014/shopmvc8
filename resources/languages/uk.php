@@ -239,7 +239,7 @@ $updateUserPassword = "Оновити пароль";
 $updateUserRole = "Оновити роль";
 $updateUser = "Оновити користувача";
 $userUpdated = "Зміни до користувача внесені! ID : ";
-
+$userDeleted = "Користувача видаленно! ID : ";
 
 
 function has_sub_categories(){

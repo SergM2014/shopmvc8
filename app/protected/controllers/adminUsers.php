@@ -90,20 +90,18 @@ class AdminUsers extends AdminController {
 
     public function createConfirmDeleteWindow()
     {
-        $_SESSION['deleteCarousel'] = true;
+        $_SESSION['deleteUser'] = true;
 
-        return ['view' =>'admin/partials/createConfirmDeleteWindow.php', 'significant'=> 'carousel'  , 'ajax'=>true ];
+        return ['view' =>'admin/partials/createConfirmDeleteWindow.php', 'significant'=> 'user'  , 'ajax'=>true ];
     }
 
     public function delete()
     {
         TokenService::check('prozessAdmin');
-        if(!isset($_SESSION['deleteCarousel'])) return $this->index();
+        if(!isset($_SESSION['deleteUser'])) return $this->index();
 
-        $model = new Admin_Carousel();
-
-        $model->deleteCarousel();
-        return $this->index('carouselDeleted', $_POST['id']);
+        (new AdminModel())->deleteUser();
+        return $this->index('userDeleted', $_POST['id']);
 
     }
 

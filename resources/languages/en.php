@@ -237,6 +237,7 @@ $updateUserName = "Update user name";
 $updateUserPassword = "Update Password";
 $updateUserRole = "Update Role";
 $updateUser = "Update User";
+$userDeleted = "User is deleted! ID : ";
 
 
 
