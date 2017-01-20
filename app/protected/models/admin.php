@@ -89,17 +89,8 @@ class AdminModel extends DataBase
 
     public function storeUser()
     {
+        $status = $this->getUserUpgradingStatus();
 
-        switch($_POST['user_role'])
-        {
-            case 'superadmin':
-                $status= 3; break;
-            case 'admin':
-                 $status=2;break;
-
-            default:
-                $status=1;
-        }
         $password= password_hash($_POST['user_password'], PASSWORD_DEFAULT);
 
 
@@ -114,6 +105,58 @@ class AdminModel extends DataBase
         $id = $this->conn->lastInsertId();
         unset ($_SESSION['makeUser']);
         return $id;
+    }
+
+
+    public function getOneUser()
+    {
+        $id = $_GET['id']?? $_POST['id'];
+
+        $sql= "SELECT `id`, `login`, `password`, `role_title`, `upgrading_status` FROM `users` WHERE `id` =?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(1, $id, \PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetch();
+        return $result;
+    }
+
+    public function updateUser()
+    {
+        $status = $this->getUserUpgradingStatus();
+
+
+        $sql = "UPDATE `users` SET `login`=?,  `role_title`=?, `upgrading_status`=? WHERE `id`=?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(1, $_POST['user_name'], \PDO::PARAM_STR);
+        $stmt->bindValue(2, $_POST['user_role'], \PDO::PARAM_STR);
+        $stmt->bindValue(3, $status, \PDO::PARAM_INT);
+        $stmt->bindValue(4, $_POST['id'], \PDO::PARAM_INT);
+        $stmt->execute();
+
+        if(!empty($_POST['user_password'])){
+            $password= password_hash($_POST['user_password'], PASSWORD_DEFAULT);
+
+            $sql = "UPDATE `users` SET `password`=? WHERE `id`=?";
+            $stmt = $this->conn->prepare($sql);
+            $stmt -> bindValue(1, $password, \PDO::PARAM_STR);
+            $stmt -> bindValue(2, $_POST['id'], \PDO::PARAM_INT);
+            $stmt -> execute();
+        }
+    }
+
+    private function getUserUpgradingStatus()
+    {
+        switch($_POST['user_role'])
+        {
+            case 'superadmin':
+                $status= 3; break;
+            case 'admin':
+                $status=2;break;
+
+            default:
+                $status=1;
+        }
+        return $status;
     }
 
 }

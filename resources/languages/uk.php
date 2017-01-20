@@ -233,6 +233,14 @@ $createUser = "Створити користувача";
 $createUserPassword = "Створити пароль";
 $repeatUserPassword = "Повторіть пароль";
 $userCreated= "Користувач створенний! ID : ";
+$updateUserHeader = "Оновити користувача";
+$updateUserName = "Оновити імя користувача";
+$updateUserPassword = "Оновити пароль";
+$updateUserRole = "Оновити роль";
+$updateUser = "Оновити користувача";
+$userUpdated = "Зміни до користувача внесені! ID : ";
+
+
 
 function has_sub_categories(){
     return "має додаткові категорії";

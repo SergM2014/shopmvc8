@@ -63,11 +63,12 @@ class AdminUsers extends AdminController {
 
     public function edit($error = null )
     {
-        $slider = (new Admin_Carousel())->getOneCarousel();
-        $_SESSION['editCarousel'] = true;
+
+        $theUser = (new AdminModel())->getOneUser();
+        $_SESSION['editUser'] = true;
 
 
-        return  ['view' =>'admin/updateCarousel.php', 'theCarousel'=> $slider,  'error' => $error  ];
+        return  ['view' =>'admin/updateUser.php', 'theUser' => $theUser, 'error' => $error  ];
     }
 
     public function update()
@@ -75,9 +76,9 @@ class AdminUsers extends AdminController {
         TokenService::check('prozessAdmin');
 
 
-        if(@$_SESSION['editCarousel']) {
+        if(@$_SESSION['editUser']) {
 
-            return $this->updateCarousel();
+            return $this->updateUser();
         }
 
         return $this->index();
@@ -126,12 +127,20 @@ class AdminUsers extends AdminController {
     /**
      * @return array
      */
-    private function updateCarousel()
+    private function updateUser()
     {
-        $error = (new CheckForm())->checkIfNotEmptyList( 'carousel_url');
+        $checkFormModel = new CheckForm();
+        $error = $checkFormModel->checkIfNotEmptyList( 'user_name');
         if ($error) return $this->edit($error);
-        (new Admin_Carousel())->updateCarousel();
-        return $this->index('carouselUpdated', $_POST['id']);
+
+        if(@!empty($_POST['user_password'])){
+            $error = $checkFormModel->deal2PasswordsFields();
+            if ($error) return $this->edit($error);
+        }
+
+
+        (new AdminModel())->updateUser();
+        return $this->index('userUpdated', $_POST['id']);
     }
 
 
