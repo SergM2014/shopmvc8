@@ -155,7 +155,7 @@ class AdminProducts extends AdminController {
         return $this->index('productDeleted', $_POST['id']);
     }
 
-    public function creteConfirmDeleteWindow()
+    public function createConfirmDeleteWindow()
     {
         return ['view' =>'admin/partials/createConfirmDeleteWindow.php', 'significant' =>'product', 'ajax'=>true ];
     }

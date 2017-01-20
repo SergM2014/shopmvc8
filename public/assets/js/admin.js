@@ -269,7 +269,10 @@ class ImageOrder {
     }
 }
 
-class ModalWindow {
+
+
+
+class UnifiedModalWindow {
 
     static createBackground(){
         let background = document.createElement('div');
@@ -278,13 +281,13 @@ class ModalWindow {
         return background;
     }
 
-    static createDeletePopUp(id){
+    static createDeletePopUp(id, controller){
         let popup =document.createElement('div');
         popup.className = "popup-window";
 
 
         let founded_lang = new LangForAjax().getLanguage();
-        let url = founded_lang + "/adminProducts/creteConfirmDeleteWindow";
+        let url = founded_lang + "/admin"+controller+"/createConfirmDeleteWindow";
         let formData = new FormData;
         formData.append('id', id);
 
@@ -307,136 +310,8 @@ class ModalWindow {
 }
 
 
-class CategoryModalWindow extends ModalWindow {
-
-    static createDeletePopUp(id){
-        let popup =document.createElement('div');
-        popup.className = "popup-window";
 
 
-        let founded_lang = new LangForAjax().getLanguage();
-        let url = founded_lang + "/adminCategories/creteConfirmDeleteWindow";
-        let formData = new FormData;
-        formData.append('id', id);
-
-        fetch(url,
-            {
-                method: "POST",
-                body: formData,
-                credentials: 'same-origin'
-            })
-            .then(responce => responce.text())
-            .then(html => { popup.innerHTML = html; return true; })
-            .then(()=> {let modal = ModalWindow.createBackground(); modal.appendChild(popup); document.body.insertBefore(modal, document.body.firstChild )})
-
-    }
-
-}
-
-class ManufacturerModalWindow extends ModalWindow {
-
-    static createDeletePopUp(id){
-        let popup =document.createElement('div');
-        popup.className = "popup-window";
-
-
-        let founded_lang = new LangForAjax().getLanguage();
-        let url = founded_lang + "/adminManufacturers/creteConfirmDeleteWindow";
-        let formData = new FormData;
-        formData.append('id', id);
-
-        fetch(url,
-            {
-                method: "POST",
-                body: formData,
-                credentials: 'same-origin'
-            })
-            .then(responce => responce.text())
-            .then(html => { popup.innerHTML = html; return true; })
-            .then(()=> {let modal = ModalWindow.createBackground(); modal.appendChild(popup); document.body.insertBefore(modal, document.body.firstChild )})
-
-    }
-
-}
-
-class SliderModalWindow extends ModalWindow {
-
-    static createDeletePopUp(id){
-        let popup =document.createElement('div');
-        popup.className = "popup-window";
-
-
-        let founded_lang = new LangForAjax().getLanguage();
-        let url = founded_lang + "/adminSliders/creteConfirmDeleteWindow";
-        let formData = new FormData;
-        formData.append('id', id);
-
-        fetch(url,
-            {
-                method: "POST",
-                body: formData,
-                credentials: 'same-origin'
-            })
-            .then(responce => responce.text())
-            .then(html => { popup.innerHTML = html; return true; })
-            .then(()=> {let modal = ModalWindow.createBackground(); modal.appendChild(popup); document.body.insertBefore(modal, document.body.firstChild )})
-
-    }
-
-}
-
-class CarouselModalWindow extends ModalWindow {
-
-    static createDeletePopUp(id){
-        let popup =document.createElement('div');
-        popup.className = "popup-window";
-
-
-        let founded_lang = new LangForAjax().getLanguage();
-        let url = founded_lang + "/adminCarousels/createConfirmDeleteWindow";
-        let formData = new FormData;
-        formData.append('id', id);
-
-        fetch(url,
-            {
-                method: "POST",
-                body: formData,
-                credentials: 'same-origin'
-            })
-            .then(responce => responce.text())
-            .then(html => { popup.innerHTML = html; return true; })
-            .then(()=> {let modal = ModalWindow.createBackground(); modal.appendChild(popup); document.body.insertBefore(modal, document.body.firstChild )})
-
-    }
-
-}
-
-
-class UserModalWindow extends ModalWindow {
-
-    static createDeletePopUp(id){
-        let popup =document.createElement('div');
-        popup.className = "popup-window";
-
-
-        let founded_lang = new LangForAjax().getLanguage();
-        let url = founded_lang + "/adminUsers/createConfirmDeleteWindow";
-        let formData = new FormData;
-        formData.append('id', id);
-
-        fetch(url,
-            {
-                method: "POST",
-                body: formData,
-                credentials: 'same-origin'
-            })
-            .then(responce => responce.text())
-            .then(html => { popup.innerHTML = html; return true; })
-            .then(()=> {let modal = ModalWindow.createBackground(); modal.appendChild(popup); document.body.insertBefore(modal, document.body.firstChild )})
-
-    }
-
-}
 
 
 
@@ -474,7 +349,7 @@ document.body.addEventListener('click', function(e) {
 
     //click the pagination f the product
     if (e.target.className == "pagination-item") {
-console.log('your are in pagination now')
+
         let the_class = e.target.closest('.pagination-item');
 
         if (the_class) {
@@ -598,8 +473,8 @@ console.log('your are in pagination now')
     if(e.target.id == "popUp-admin-product-delete") {
        let id = e.target.dataset.productId;
 
-        ModalWindow.createDeletePopUp(id);
-
+       // ModalWindow.createDeletePopUp(id);
+        UnifiedModalWindow.createDeletePopUp(id, "Products")
     }
 
 
@@ -695,8 +570,7 @@ console.log('your are in pagination now')
     if(e.target.id == "popUp-admin-category-delete") {
         let id = e.target.dataset.categoryId;
 
-        CategoryModalWindow.createDeletePopUp(id);
-
+        UnifiedModalWindow.createDeletePopUp(id, "Categories")
     }
 
     if(e.target.closest('.manufacturers-menu__item')){
@@ -709,7 +583,7 @@ console.log('your are in pagination now')
     if(e.target.id == "popUp-admin-manufacturer-delete") {
         let id = e.target.dataset.manufacturerId;
 
-        ManufacturerModalWindow.createDeletePopUp(id);
+        UnifiedModalWindow.createDeletePopUp(id, "Manufacturers")
 
     }
 
@@ -725,7 +599,7 @@ console.log('your are in pagination now')
 
         let id = e.target.dataset.sliderId;
 
-        SliderModalWindow.createDeletePopUp(id);
+        UnifiedModalWindow.createDeletePopUp(id, "Sliders")
 
     }
 
@@ -747,16 +621,14 @@ console.log('your are in pagination now')
 
         let id = e.target.dataset.carouselId;
 
-        CarouselModalWindow.createDeletePopUp(id);
-
+        UnifiedModalWindow.createDeletePopUp(id, "Carousels")
     }
 
     if(e.target.id == "popUp-admin-user-delete") {
 
         let id = e.target.dataset.userId;
 
-        UserModalWindow.createDeletePopUp(id);
-
+        UnifiedModalWindow.createDeletePopUp(id, "Users")
     }
 
 

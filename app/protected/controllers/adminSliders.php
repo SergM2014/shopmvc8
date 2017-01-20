@@ -88,11 +88,11 @@ class AdminSliders extends AdminController {
 
 
 
-    public function creteConfirmDeleteWindow()
+    public function createConfirmDeleteWindow()
     {
         $_SESSION['deleteSlider'] = true;
 
-        return ['view' =>'admin/partials/createConfirmDeleterWindow.php', 'significant'=>'slider', 'ajax'=>true ];
+        return ['view' =>'admin/partials/createConfirmDeleteWindow.php', 'significant'=>'slider', 'ajax'=>true ];
     }
 
     public function delete()

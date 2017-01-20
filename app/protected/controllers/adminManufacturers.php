@@ -79,7 +79,7 @@ class AdminManufacturers extends AdminController {
 
 
 
-    public function creteConfirmDeleteWindow()
+    public function createConfirmDeleteWindow()
     {
         $_SESSION['deleteManufacturer'] = true;
 

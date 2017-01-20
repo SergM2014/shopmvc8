@@ -73,7 +73,7 @@ class AdminCategories extends AdminController {
         return $this->index();
     }
 
-    public function creteConfirmDeleteWindow()
+    public function createConfirmDeleteWindow()
     {
         $_SESSION['deleteCategory'] = true;
 
