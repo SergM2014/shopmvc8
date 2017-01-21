@@ -175,7 +175,7 @@ class Admin_Category extends DataBase
 
     public function findProductsInCategory()
     {
-        $sql = "SELECT `id` FROM `products` WHERE `cat_id` =?";
+        $sql = "SELECT `product_id` FROM `products_categories` WHERE `category_id` =?";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(1, $_POST['id'], \PDO::PARAM_INT);
         $stmt ->execute();

@@ -262,7 +262,7 @@ class ImageOrder {
         let arr = [];
         for(let i=0; i<imgcontainer.length; i++){
             arr.push(imgcontainer[i].dataset.image);
-            // console.log(imgcontainer[i].dataset.image)
+
         }
 
         if(document.getElementById('imagesSort')) document.getElementById('imagesSort').value = arr;
@@ -299,7 +299,7 @@ class UnifiedModalWindow {
             })
             .then(responce => responce.text())
             .then(html => { popup.innerHTML = html; return true; })
-            .then(()=> {let modal = ModalWindow.createBackground(); modal.appendChild(popup); document.body.insertBefore(modal, document.body.firstChild )})
+            .then(()=> {let modal = UnifiedModalWindow.createBackground(); modal.appendChild(popup); document.body.insertBefore(modal, document.body.firstChild )})
 
     }
 
@@ -480,7 +480,7 @@ document.body.addEventListener('click', function(e) {
 
 
 
-    if(e.target.id == "modal-confirm-btn--reset") ModalWindow.deleteBackground();
+    if(e.target.id == "modal-confirm-btn--reset") UnifiedModalWindow.deleteBackground();
 
 
 
