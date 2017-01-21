@@ -122,7 +122,6 @@ html, body {
   width: 100px; }
 
 .main-header__language-select {
-  /*display:inline-block;*/
   background-color: #8abeb7;
   list-style-type: none;
   cursor: pointer;
@@ -796,6 +795,28 @@ html, body {
 
   .main-header__search-result-box {
     left: 0;
-    width: 285px; } }
+    /* width:285px;*/ }
+
+  .main-header__search-field-label {
+    display: none; }
+
+  .busket-window {
+    width: 100%;
+    border-radius: 0;
+    padding: 15px 35px 15px 0; }
+
+  .busket__make-order {
+    margin-right: 0; }
+
+  .order-form {
+    width: 100%;
+    padding-left: 0;
+    border-radius: 0; }
+
+  .avatar-submit-btn, .avatar-reset-btn {
+    float: none; }
+
+  .content-zone__form-element-submit {
+    float: none; } }
 
 /*# sourceMappingURL=default.css.map */

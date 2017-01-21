@@ -1,1 +1,1 @@
-<h2>Success!!</h2>
+<h2 class="success">Success!!</h2>
