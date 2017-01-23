@@ -100,17 +100,19 @@ document.body.addEventListener('click', function(e){
         searchResultsBox.className = "main-header__search-result-box--hidden";
         searchResultsBox.innerHTML ='';
     }
-
+//show product preview
     if(e.target.closest('.search-results__item')){
         let elem = e.target.closest('.search-results__item');
         let id = elem.dataset.id;
 
         let darkLayer = document.createElement('div'); // слой затемнения
         darkLayer.className = 'background-shadow'; // class чтобы подхватить стиль
+        darkLayer.id = 'background-shadow';
         document.body.appendChild(darkLayer); // включаем затемнение
 
         let modalwindow = document.createElement('section');
         modalwindow.className = 'product-window';
+        modalwindow.id= 'product-window';
         document.body.appendChild(modalwindow);
 
         let formData = new FormData;
@@ -126,6 +128,11 @@ document.body.addEventListener('click', function(e){
             .then(html => modalwindow.innerHTML = html)
 
 
+    }
+
+    if(e.target.id == "close-preview-product"){
+        document.getElementById('product-window').remove();
+        document.getElementById('background-shadow').remove();
     }
 
 
@@ -171,12 +178,12 @@ document.body.addEventListener('click', function(e){
         let id= e.target.dataset.item;
 
         let price = document.getElementById('the_price').innerText;
-//console.log(price);
+
 
         let formData = new FormData;
         formData.append('id', id);
         formData.append('price', price);
-//formData.append('ajax', true);
+        formData.append('ajax', true);
 
         fetch( url,
             {
@@ -188,7 +195,7 @@ document.body.addEventListener('click', function(e){
             .then(html => document.getElementById('busket-info').innerHTML = html)
 
     }
-
+    //close busket
     if(e.target.id == "busket-close" || e.target.id == "busket-close-btn"){
         document.getElementsByClassName('background-shadow')[0].remove();
         document.getElementById('busket-window').remove();

@@ -42,7 +42,7 @@ class Categories extends DataBase
         foreach($this->categories as $category){
             if($category->parent_id ==$parent ){
 
-                $print.='<li class="left-menu_li" data-category-id ='.$category->id.' data-parent-id='.$category->parent_id.'> <div class="left-menu__item  nested-'.$suffix.'"  ><a href="/categories?title='.$category->eng_translit_title.'" class="left-menu__link">'. $category->title .'</a>' ;
+                $print.='<li class="left-menu_li" data-category-id ='.$category->id.' data-parent-id='.$category->parent_id.'> <div class="left-menu__item  nested-'.$suffix.'"  ><a href="/catalog?category='.$category->eng_translit_title.'" class="left-menu__link">'. $category->title .'</a>' ;
 
                 foreach($this->categories as $sub_cat){
                     if($sub_cat->parent_id == $category->id){ $flag = TRUE; break; }
@@ -149,14 +149,7 @@ class Categories extends DataBase
 
 
 
-    public function getAddProductAdminDropDownMenu()
-    {
-        $dropDownMenu ="<select id='category_id' name='category_id'>";
-        $dropDownMenu.= $this->printOutAdminDropDownMenu();
-        $dropDownMenu.= "</select>";
 
-        return $dropDownMenu;
-    }
 
 
 
