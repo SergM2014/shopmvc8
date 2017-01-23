@@ -67,13 +67,15 @@ html, body {
   background-color: rgba(156, 132, 126, 0.8); }
 
 .categories-drop-down-menu, .manufacturers-drop-down-menu {
-  margin-left: 5px; }
+  margin: 10px 0 0 5px; }
 
 .admin-products-list {
   border-spacing: 2px; }
 
 .admin-products-list-container {
-  margin-top: 20px; }
+  margin-top: 20px;
+  width: 100%;
+  overflow: auto; }
 
 .admin-products-list__header {
   background: rgba(156, 101, 117, 0.86);
@@ -288,6 +290,9 @@ html, body {
 .content-zone__item-output-image {
   cursor: pointer; }
 
+.content {
+  padding-top: 20px; }
+
 .admin-comments-list-container {
   margin-top: 20px; }
 
@@ -323,7 +328,7 @@ html, body {
 .update-comment__block, .admin-categories__block, .update-category__block, .create-category__block, .admin-manufacturers__block, .create__block, .admin__block {
   width: 400px;
   margin: 0 auto;
-  padding-top: 20px; }
+  padding: 20px 0; }
 
 .update-comment__block-field-error, .update-category__block-field-error, .create-category__block-field-error, .create__block-field-error, .admin__block-field-error {
   color: red;
@@ -380,6 +385,10 @@ html, body {
 .sliders-menu {
   margin-bottom: 20px; }
 
+.main-header__right-side {
+  display: inline-block;
+  float: right; }
+
 .clearfix:before, .clearfix:after {
   content: "";
   display: table; }
@@ -418,6 +427,13 @@ html, body {
 
 @media screen and (max-width: 750px) {
   .admin-product__form {
-    padding-left: 5px; } }
+    padding-left: 5px; }
+
+  .main-header__right-side {
+    margin-top: 10px;
+    display: block; }
+
+  .admin__image-area-output {
+    margin-bottom: 10px; } }
 
 /*# sourceMappingURL=admin.css.map */

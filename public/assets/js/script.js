@@ -129,7 +129,7 @@ document.body.addEventListener('click', function(e){
 
 
     }
-
+//close previe product window
     if(e.target.id == "close-preview-product"){
         document.getElementById('product-window').remove();
         document.getElementById('background-shadow').remove();

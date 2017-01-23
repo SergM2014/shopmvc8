@@ -62,22 +62,25 @@
                         <li class="main-header__menu-item"><a href="/<?= \Lib\HelperService::currentLang() ?>adminUsers" class="main-header__menu-item-link"><?= $users ?></a></li>
                      <?php endif ; ?>
 
-                     <li class="main-header__admin"> <a href="/<?= \Lib\HelperService::currentLang() ?>admin/leave" ><?= $_SESSION['admin']['login'].' / '. $exit ?></a></li>
 
-                     <li class="main-header__language-select">
+                        <div class="main-header__right-side">
+                             <li class="main-header__admin"> <a href="/<?= \Lib\HelperService::currentLang() ?>admin/leave" ><?= $_SESSION['admin']['login'].' / '. $exit ?></a></li>
 
-                         <?php $langs = \Lib\HelperService::prozessLangArray(); ?>
+                             <li class="main-header__language-select">
 
-                         <select name="language"  onchange="window.location.href=this.options[this.selectedIndex].value" >
-                             <option selected disabled>Language/Мова</option>
+                                 <?php $langs = \Lib\HelperService::prozessLangArray(); ?>
 
-                             <?php foreach ($langs as $key => $value): ?>
-                                 <option VALUE="/<?= \Lib\HelperService::overrideLangInUrl($key) ?>"><?= $value ?></option>
-                             <?php endforeach; ?>
+                                 <select name="language"  onchange="window.location.href=this.options[this.selectedIndex].value" >
+                                     <option selected disabled>Language/Мова</option>
 
-                         </select>
+                                     <?php foreach ($langs as $key => $value): ?>
+                                         <option VALUE="/<?= \Lib\HelperService::overrideLangInUrl($key) ?>"><?= $value ?></option>
+                                     <?php endforeach; ?>
 
-                     </li>
+                                 </select>
+
+                             </li>
+                     </div>
 
                 </ul>
 
