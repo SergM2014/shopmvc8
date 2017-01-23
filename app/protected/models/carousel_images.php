@@ -130,7 +130,7 @@ class Carousel_Images extends DataBase
     {
         $avatar = @ $_SESSION[$_POST['action']];
         @ unlink ( PATH_SITE.UPLOAD_FOLDER.CAROUSEL_IMAGES.$avatar);
-        unset ( $_SESSION[$_POST['action']]);
+        unset ( $_SESSION[@$_POST['action']]);
         $response= ["message"=>"<span class='image-delete--succeded'>". file_deleted() ."</span>", "image"=> $avatar];
 
         return $response;

@@ -160,7 +160,7 @@ class Admin_Slider extends DataBase
 
         @unlink(PATH_SITE.UPLOAD_FOLDER.SLIDER_IMAGES.$slider);
 
-        unset ( $_SESSION[$_POST['action']]);
+        unset ( $_SESSION[@$_POST['action']]);
         $response= ["message"=>"<span class='image-delete--succeded'>". file_deleted() ."</span>", "bild"=> $slider];
 
         return $response;
