@@ -73,9 +73,9 @@
             <div class="content-zone__item-output">
 
                 <?php if(! is_null($item->images)): ?>
-                        <?php foreach($item->images as $image) :?>
-                            <img src="/uploads/productsImages/thumbs/<?= $image ?>" alt="" class="content-zone__item-output-image" data-image="<?= $image ?>">
-                        <?php endforeach; ?>
+
+                            <img src="/public/uploads/productsImages/thumbs/<?= $item->images[0] ?>" alt="" class="content-zone__item-output-image" data-image="<?= $image ?>">
+
                 <?php endif; ?>
 
                 <h3><span class="content-zone__item-output-title--shifted"><?= $productTitle ?> : </span> <?=$item->product_title ?></h3>

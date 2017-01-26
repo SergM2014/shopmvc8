@@ -9,7 +9,7 @@
     <title>Admin Comments Page</title>
 
 
-	<link href="/assets/css/admin.css" rel="stylesheet">
+	<link href="/public/assets/css/admin.css" rel="stylesheet">
 
 
     </head>

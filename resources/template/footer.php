@@ -9,7 +9,7 @@
 
             </footer>
 
-            <?php if(!isset($no_footer_js)) : ?><script src="/assets/js/script.js"></script> <?php endif; ?>
+            <?php if(!isset($no_footer_js)) : ?><script src="/public/assets/js/script.js"></script> <?php endif; ?>
 
     </div><!-- container-->
 </body>

@@ -12,14 +12,14 @@
 
             <?php foreach($productInfo->images as $image ) : ?>
 
-                    <img src="/uploads/productsImages/thumbs/<?= $image; ?>"
+                    <img src="/public/uploads/productsImages/thumbs/<?= $image; ?>"
                          class="content__product-image-preview preview-image" alt="" >
 
                 <?php endforeach; ?>
 
         </section>
-        <link rel="stylesheet" href="/assets/css/gallery.css" >
-        <script src="/assets/js/gallery.js"></script>
+        <link rel="stylesheet" href="/public/assets/css/gallery.css" >
+        <script src="/public/assets/js/gallery.js"></script>
 
     <?php endif; ?>
 

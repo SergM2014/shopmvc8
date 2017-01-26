@@ -14,7 +14,7 @@
         <div  class="carousels-menu__item-container" data-id="<?= $carousel->id ?>" >
 
                <p> <span class="admin__block-title"><?= $sliderUrl ?> </span> <?= $carousel->url ?></p>
-            <img src="/uploads/carousel/<?= $carousel->image ?>" alt="" class="carousel-menu__image">
+            <img src="/public/uploads/carousel/<?= $carousel->image ?>" alt="" class="carousel-menu__image">
         </div>
 
         <?php endforeach; ?>

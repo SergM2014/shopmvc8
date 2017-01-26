@@ -5,7 +5,7 @@
     <input type="hidden" name="_token" id="prozessAvatar" value="<?= \Lib\TokenService::printTocken('prozessAvatar') ?>">
 
     <div id="avatar_area"  class="clearfix">
-        <img alt="" id="image_preview" class="avatar-thumb-preview" src="<?php if(isset($_SESSION['avatar'])) {echo '/uploads/avatars/'.$_SESSION['avatar'];} else {echo URL.'img/noavatar.jpg';} ?>"  />
+        <img alt="" id="image_preview" class="avatar-thumb-preview" src="<?php if(isset($_SESSION['avatar'])) {echo '/uploads/avatars/'.$_SESSION['avatar'];} else {echo URL.'public/img/noavatar.jpg';} ?>"  />
 
         <div id="output" class="avatar__progress-container invisible" ></div>
         <div class="progress ">
@@ -30,4 +30,4 @@
 
 </form>
 
-<script src="/assets/js/uploadimage.js"></script>
+<script src="/public/assets/js/uploadimage.js"></script>

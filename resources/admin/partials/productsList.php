@@ -8,7 +8,7 @@
 
         <tr class="admin-products-list__row" data-id="<?= $product->product_id ?>">
             <td><?= $product->startingLineNumber.'('.$product->product_id.')' ?></td>
-            <td><img src="<?= '/uploads/productsImages/thumbs/'.$product->images[0] ?>" class="<?= isset($product->images[0])? 'admin-products-list__row-thumb': 'admin-products-list__row-thumb--hidden'; ?>" ></td>
+            <td><img src="<?= '/public/uploads/productsImages/thumbs/'.$product->images[0] ?>" class="<?= isset($product->images[0])? 'admin-products-list__row-thumb': 'admin-products-list__row-thumb--hidden'; ?>" ></td>
             <td><?= $product->author ?></td>
             <td><?= $product->product_title ?></td>
             <td><i><?= $product->description ?></i></td>

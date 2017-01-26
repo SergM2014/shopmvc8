@@ -7,7 +7,7 @@
         <div class="product-images-list" id="product-images-list" >
             <?php if(@$product->images): ?>
                 <?php  foreach( $product->images as $image): ?>
-                    <img src="/uploads/productsImages/thumbs/<?= $image ?>" class="product-image-preview"
+                    <img src="/public/uploads/productsImages/thumbs/<?= $image ?>" class="product-image-preview"
                          title="<?= $clickToSeePopUp ?>" alt="image" data-image="<?= $image ?>" >
                 <?php endforeach; ?>
             <?php endif; ?>
@@ -28,6 +28,7 @@
             <input type="hidden" name="imagesSort" id="imagesSort" >
             <input type="hidden" name="id" id="id" value="<?= $product->product_id ?>">
             <input type="hidden" name="_token" id="_token" value="<?= \Lib\TokenService::printTocken('prozessAdmin') ?>">
+            <input type="hidden" type="hidden" name="action" value="updateProduct" >
 
             <div class="admin-product__field" >
                 <label for="author" class="admin-product__field-label" ><?= $author ?></label><br>
@@ -87,4 +88,4 @@
 
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/Sortable/1.4.2/Sortable.min.js"></script>
-<script src="/assets/js/sortable.js"></script>
+<script src="/public/assets/js/sortable.js"></script>

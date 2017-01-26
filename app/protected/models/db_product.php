@@ -28,7 +28,7 @@ class DB_Product extends DataBase
         $sql = "SELECT `p`.`id` AS `product_id`, `p`.`author`, `p`.`title` AS `title`, `p`.`description`,
         `p`.`body`, `p`.`price`,  `p`.`manf_id`,   GROUP_CONCAT( DISTINCT `c`.`title` SEPARATOR ', ') AS `category_title`, GROUP_CONCAT( DISTINCT `c`.`id`) AS `category_id`,
          `m`.`id`, `m`.`eng_translit_title` AS `manf_eng_title`,
-        `m`.`title` AS `manf_title`, `m`.`url` AS `manf_url`, GROUP_CONCAT(`im`.`image`) AS `images` 
+        `m`.`title` AS `manf_title`, `m`.`url` AS `manf_url`, GROUP_CONCAT(DISTINCT `im`.`image`) AS `images` 
           FROM `products` `p`  LEFT JOIN `manufacturers` `m` ON `p`.`manf_id`= `m`.`id` 
           LEFT JOIN `images` `im` ON `p`.`id` = `im`.`product_id` 
            JOIN `products_categories` `pivot` ON `p`.`id` = `pivot`.`product_id` JOIN `categories` `c` ON `pivot`.`category_id` = `c`.`id`
@@ -54,7 +54,8 @@ class DB_Product extends DataBase
 
         $order = (@ $_POST['order'] == 'old_first')? 'ASC': 'DESC';
 
-        $sql = "SELECT `avatar`, `name`, `email`, `comment`, `created_at`, `changed`, `published` FROM `comments` WHERE `product_id`= ? AND `published`='1' ORDER BY `created_at` $order";
+        $sql = "SELECT `avatar`, `name`, `email`, `comment`, `created_at`, `changed`, `published` FROM `comments` WHERE
+                `product_id`= ? AND `published`='1' ORDER BY `created_at` $order";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(1, $id, \PDO::PARAM_INT);
         $stmt-> execute();

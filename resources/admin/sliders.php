@@ -14,7 +14,7 @@
         <li  class="sliders-menu__item-container" data-id="<?= $slider->id ?>" >
                <p> <span class="admin__block-title"> <?= $sliderName ?> </span> <?= $slider->title ?> </p>
                <p> <span class="admin__block-title"><?= $sliderUrl ?> </span> <?= $slider->url ?></p>
-            <img src="/uploads/slider/<?= $slider->image ?>" alt="" class="slider-menu__image" data-image="<?= $slider->image ?>">
+            <img src="/public/uploads/slider/<?= $slider->image ?>" alt="" class="slider-menu__image" data-image="<?= $slider->image ?>">
         </li>
 
         <?php endforeach; ?>

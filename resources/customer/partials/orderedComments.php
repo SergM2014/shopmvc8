@@ -3,7 +3,7 @@
 
     <article class="product__comment-item">
         <div class=" product__comment-item-avatar ">
-            <?php if (isset($commentItem->avatar)){ ?> <p><img src="/uploads/avatars/<?php echo $commentItem->avatar; ?>" > </p> <?php } ?>
+            <?php if (isset($commentItem->avatar)){ ?> <p><img src="/public/uploads/avatars/<?php echo $commentItem->avatar; ?>" > </p> <?php } ?>
             <b> <?php echo $commentItem->name ?></b>
         </div>
         <div class="product__comment-item-text">

@@ -1,4 +1,4 @@
-let imagePath = '/uploads/productsImages/';
+let imagePath = '/public/uploads/productsImages/';
 
 
 class ModalWindow {
@@ -26,7 +26,7 @@ class ModalWindow {
         arrow.className = "modal-background__arrow";
         arrow.id = "modal-background__"+direction+"-arrow";
         arrow.innerHTML = "alt='' title=''  ";
-        arrow.setAttribute('src', '/img/'+direction+'.png');
+        arrow.setAttribute('src', '/public/img/'+direction+'.png');
         arrow.setAttribute('data-transition', ind);
         return arrow;
 

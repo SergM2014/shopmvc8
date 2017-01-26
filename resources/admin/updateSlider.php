@@ -33,7 +33,7 @@
         <div id="admin__image-area" class=" admin__image-area clearfix">
             <div class="admin__image-area-left">
 
-                <img src="<?= @$_SESSION['updateSlider']?'/uploads/slider/'.$_SESSION['updateSlider'] : '/uploads/slider/'.$theSlider->image ?>" class="product__image-thumb" id="image_preview">
+                <img src="<?= @$_SESSION['updateSlider']?'/public/uploads/slider/'.$_SESSION['updateSlider'] : '/public/uploads/slider/'.$theSlider->image ?>" class="product__image-thumb" id="image_preview">
 
                 <div  id="progress-container" hidden >
                     <progress id="progress" max="100" value="0"></progress>

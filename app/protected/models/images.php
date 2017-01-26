@@ -47,7 +47,7 @@ class Images extends DataBase
                // $_SESSION['image']= $name;
                 $_SESSION['images'][] = $name;
 
-                $response=["message"=>"<span class='image-upload--succeded'>".succeeded_upload()."</span>", "success"=>true, "image"=>$name, 'path'=>UPLOADS.PRODUCTS_IMAGES_THUMBS];
+                $response=["message"=>"<span class='image-upload--succeded'>".succeeded_upload()."</span>", "success"=>true, "image"=>$name,'path'=>'/public'.UPLOADS.PRODUCTS_IMAGES_THUMBS ];
                 chmod ($path.$name , 0777);
             }
             // Удаляем временный файл

@@ -426,6 +426,7 @@ document.body.addEventListener('click', function(e) {
     if(e.target.id == "product__add-image-btn"){
         document.getElementById('product__image-area').className = "product__image-area";
         e.target.setAttribute('hidden', true);
+        document.getElementById('output').innerText='';
     }
 
 // add popupmenu to the update product images

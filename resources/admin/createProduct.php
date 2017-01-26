@@ -24,6 +24,7 @@
 
             <input type="hidden" name="imagesSort" id="imagesSort" >
             <input type="hidden" name="_token" id="_token" value="<?= \Lib\TokenService::printTocken('prozessAdmin') ?>">
+            <input type="hidden" type="hidden" name="action" value="createProduct" >
 
             <div class="admin-product__field" >
                 <label for="author" class="admin-product__field-label" ><?= $author ?></label><br>
@@ -85,4 +86,4 @@
 
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/Sortable/1.4.2/Sortable.min.js"></script>
-<script src="/assets/js/sortable.js"></script>
+<script src="/public/assets/js/sortable.js"></script>

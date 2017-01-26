@@ -1,4 +1,4 @@
-<p><img src="/img/small-close.png" alt ="close" class="close-preview-product" id="close-preview-product"></p>
+<p><img src="/public/img/small-close.png" alt ="close" class="close-preview-product" id="close-preview-product"></p>
 <h2><?php echo $product_info->title ?></h2>
 <p><b><?= $author ?>: </b><?php echo $product_info->author ?></p>
 <p><b><?= $description ?>:</b><?php echo $product_info->description ?></p>

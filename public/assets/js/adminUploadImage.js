@@ -78,7 +78,7 @@ class ImageUpload {
     deleteImage() {
        // e.preventDefault();
 
-        document.getElementById('image_preview').setAttribute('src', '/img/nophoto.jpg');
+        document.getElementById('image_preview').setAttribute('src', '/public/img/nophoto.jpg');
 
         document.getElementById('file').removeAttribute('hidden');
 
@@ -135,7 +135,7 @@ class ProductImageUpload extends ImageUpload {
         submitBtn.setAttribute('hidden', true);
         progressContainer.setAttribute('hidden', true);
         resetBtn.setAttribute('hidden', true);
-        document.getElementById('image_preview').setAttribute('src', '/img/nophoto.jpg');
+        document.getElementById('image_preview').setAttribute('src', '/public/img/nophoto.jpg');
         document.getElementById('product__image-area').className = 'product__image-area--hidden';
         document.getElementById('product__add-image-btn').className = 'product__add-image-btn';
 
@@ -246,12 +246,9 @@ class CarouselImageUpload extends ImageUpload {
         progress.innerHTML= "0%";
 
 
-        //document.getElementById('file').removeAttribute('hidden');
+
         submitBtn.setAttribute('hidden', true );
         progressContainer.setAttribute('hidden', true);
-        //resetBtn.setAttribute('hidden', true);
-        //document.getElementById('image_preview').setAttribute('src', '/img/nophoto.jpg');
-        //document.getElementById('admin__image-area').className = 'product__image-area--hidden';
         resetBtn.removeAttribute('hidden');
 
 

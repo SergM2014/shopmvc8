@@ -50,7 +50,7 @@ class Categories extends DataBase
 
                 if(isset($flag)){
                     $suffix=$suffix+1;
-                    $print.= "<img src='/img/arrow_down.png' alt='".has_sub_categories()."' title='".click_it()."' class='left-menu__contains-subcatetegories-sign'  > </div> <ul class='hidden'>";
+                    $print.= "<img src='/public/img/arrow_down.png' alt='".has_sub_categories()."' title='".click_it()."' class='left-menu__contains-subcatetegories-sign'  > </div> <ul class='hidden'>";
                     $print.= $this->printOutLeftMenu($category->id);
                     $print.= "</ul>";
                     $print.= "</li>";

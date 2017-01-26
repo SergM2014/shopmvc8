@@ -9,7 +9,7 @@
     <title>Internet shop</title>
 
 
-	<link href="/assets/css/default.css" rel="stylesheet">
+	<link href="/public/assets/css/default.css" rel="stylesheet">
       <!-- Bootstrap -->
       <!--<link href="/vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">-->
 
@@ -67,7 +67,7 @@ $langs = \Lib\HelperService::prozessLangArray(); ?>
 
 <div class="clearfix">
     <div class="busket__container" id="busket-container">
-        <img src="/img/busket.jpg" class="busket" alt="the busket">
+        <img src="/public/img/busket.jpg" class="busket" alt="the busket">
         <div class="busket__info" id="busket-info">
             <?php \Lib\CookieService::getCookies(); ?>
 

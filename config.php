@@ -1,12 +1,12 @@
 <?php
 
-//    define('PATH_SITE',  $_SERVER['DOCUMENT_ROOT']);
+    define('PATH_SITE',  $_SERVER['DOCUMENT_ROOT']);
 
     //if document root is public  then find and delete string 'public in root
-    $arr = explode('/', $_SERVER['DOCUMENT_ROOT']);
-    array_pop($arr);
-    $document_root = implode('/', $arr);
-    define('PATH_SITE', $document_root);
+//    $arr = explode('/', $_SERVER['DOCUMENT_ROOT']);
+//    array_pop($arr);
+//    $document_root = implode('/', $arr);
+//    define('PATH_SITE', $document_root);
 
     define('NAMESITE','shopmvc8');
     define('URL','http://shopmvc8/');

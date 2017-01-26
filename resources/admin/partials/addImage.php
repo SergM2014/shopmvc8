@@ -8,7 +8,7 @@
 
     <div class="product__image-area-left">
 
-        <img src="/img/nophoto.jpg" class="product__image-thumb" id="image_preview">
+        <img src="/public/img/nophoto.jpg" class="product__image-thumb" id="image_preview">
 
         <div  id="progress-container" hidden="true" >
             <progress id="progress" max="100" value="0" ></progress>

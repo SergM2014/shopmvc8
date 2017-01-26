@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Янв 24 2017 г., 08:52
+-- Время создания: Янв 26 2017 г., 09:16
 -- Версия сервера: 5.7.17-0ubuntu0.16.04.1
--- Версия PHP: 7.0.14-2+deb.sury.org~xenial+1
+-- Версия PHP: 7.0.15-1+deb.sury.org~xenial+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -63,7 +63,7 @@ INSERT INTO `carousel` (`id`, `image`, `url`) VALUES
 (40, 'fon_1484635790.jpeg', '777'),
 (41, 'tigrenok_1484635816.jpg', '777'),
 (42, 'f1_1484635829.gif', '777'),
-(43, 'f2_1484635843.gif', '777'),
+(43, 'p1010034_1485340394.jpg', '777'),
 (44, 'f3_1484635856.gif', '777'),
 (45, 'mazda_1484635876.jpg', '777'),
 (46, 'fish_1484635916.gif', '777'),
@@ -158,11 +158,7 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`id`, `product_id`, `image`, `sequence_number`, `time`) VALUES
-(1, 16, 'img_20141011_190251_1476787698.jpg', 1, '2016-11-01 05:58:42'),
-(2, 16, 'img_20140922_121943_1476787634.jpg', 2, '2016-11-01 05:58:42'),
-(3, 16, 'p1010021_1477899315.jpg', 3, '2016-11-01 05:58:42'),
-(6, 21, '6_1478350689.jpg', 1, '2016-11-05 12:58:29'),
-(7, 21, 'p1010006_1478350696.jpg', 2, '2016-11-05 12:58:29');
+(16, 16, 'p1010006_1485412834.jpg', 1, '2017-01-26 06:43:58');
 
 -- --------------------------------------------------------
 
@@ -315,11 +311,10 @@ INSERT INTO `products_categories` (`product_id`, `category_id`) VALUES
 (13, 7),
 (14, 2),
 (15, 9),
-(16, 1),
-(16, 2),
-(23, 1),
 (4, 1),
-(4, 4);
+(4, 4),
+(16, 1),
+(16, 2);
 
 -- --------------------------------------------------------
 
@@ -339,7 +334,7 @@ CREATE TABLE `slider` (
 --
 
 INSERT INTO `slider` (`id`, `image`, `url`, `title`) VALUES
-(20, '111.jpg', '/qwerty', 'qwerty'),
+(20, 'p1010046_1485340254.jpg', '/qwerty', 'qwerty'),
 (21, 'img_20130726_105756_1484505584.jpg', '/qwerty2', 'qwerty2');
 
 -- --------------------------------------------------------
@@ -477,7 +472,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT для таблицы `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT для таблицы `manufacturers`
 --
@@ -497,7 +492,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT для таблицы `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT для таблицы `slider`
 --

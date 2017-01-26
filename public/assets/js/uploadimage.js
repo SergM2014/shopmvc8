@@ -113,7 +113,7 @@ if(reset_btn) {
 
         let _token = document.getElementById('prozessAvatar').value;
 
-        document.getElementById('image_preview').setAttribute('src', '/img/noavatar.jpg');
+        document.getElementById('image_preview').setAttribute('src', '/public/img/noavatar.jpg');
         document.getElementById('FileInput').classList.remove('invisible');
 
         let founded_lang =  new LangForAjax().getLanguage();
