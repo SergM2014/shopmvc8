@@ -10,4 +10,7 @@ aproach, features etc
  
  Min. required php7 , es-6, Innodb
  Tested on LAMP ,Chromium  55.0.2883.87 Built on Ubuntu
+ 
+ for now , a shared hosting do not support php7 , hence all my attampts
+ to launch site failed
 
