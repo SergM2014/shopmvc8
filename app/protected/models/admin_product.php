@@ -38,6 +38,7 @@ class Admin_Product extends DataBase
         $this->addCategoriesInDb($addedProductId);
         $this->addProductsImages($addedProductId);
 
+        $this->removeProductsImages();
         if(!empty($_POST['imagesSort'])) $this->sortImagesSequence();
 
         return $addedProductId;

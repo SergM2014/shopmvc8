@@ -3,11 +3,8 @@
 namespace App\Core;
 
 
-
 use function \restricted_file_type;
 use function \too_big_file;
-
-
 
 class Prozess_Image
 {
@@ -36,9 +33,9 @@ class Prozess_Image
         $w_src = imagesx($source);
         $h_src = imagesy($source);
 
-        $h = $height; //PRODUCT_IMAGES_H;
+        $h = $height;
 
-        $w = $width;//CAROUSEL_W;
+        $w = $width;
 
         $baseOriginSide = $h_src;
         $baseThumbSide = $h;

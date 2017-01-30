@@ -40,16 +40,16 @@ class Images extends Prozess_Image
 
 
 
-    public function deleteImage()
+/*    public function deleteImage()
     {
         $avatar = @ $_SESSION['image'];
         @ unlink ( PATH_SITE.UPLOAD_FOLDER.'productsImages/'.$_SESSION['image']);
         @ unlink ( PATH_SITE.UPLOAD_FOLDER.'productsImages/thumbs/'.$_SESSION['image']);
         unset ( $_SESSION['image']);
-        $response= ["message"=>"<span class='image-delete--succeded'>". file_deleted() ."</span>", "bild"=> $avatar];
+        $response= ["message"=>"<span class='image-delete--succeded'>". file_deleted() ."</span>", "image"=> $avatar];
 
         return $response;
-    }
+    }*/
 
 
 
