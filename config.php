@@ -19,6 +19,7 @@
     define('NAME_BD', 'shopmvc8');
     define('DEBUG_MODE', true ); //режим отладки
 
+    define('IMAGE_TYPES',['image/gif', 'image/png', 'image/jpeg']);
 	define('UPLOAD_FOLDER','/public/uploads/');
     define('UPLOADS', '/uploads/');
     define('PRODUCTS_IMAGES', 'productsImages/');
@@ -27,13 +28,17 @@
     define('SLIDER_IMAGES', 'slider/');
     define('CAROUSEL_IMAGES', 'carousel/');
     define('AVATARS_IMAGES', 'avatars/');
+    define('CAROUSEL_W', 175);
+    define('CAROUSEL_H', 70);
+    define('PRODUCT_IMAGES_H', 300);
+    define('AVATAR_IMAGES_H',135);
+    define('IMAGE_SIZE', 20480000);//20mb
 
 	define('LINKCOUNT',5);
 	define('ADMINEMAIL', 'weisse@ukr.net');
     define('DEFAULT_LANG', 'uk');
     define('DEFAULT_LANG_TITLE', 'Українська');
-    define('CAROUSEL_W', 175);
-    define('CAROUSEL_H', 70);
+
 
     const LANG = ['uk=>Українська', 'en=>English'];
 	

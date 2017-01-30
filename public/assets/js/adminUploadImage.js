@@ -85,9 +85,11 @@ class ImageUpload {
         let founded_lang = new LangForAjax().getLanguage();
         let url = founded_lang + `/${this.urlDirection}/delete`;
         let _token = document.getElementById('_token').value;
+        let action = document.getElementsByName('action')[0].value;
 
         let formData = new FormData;
         formData.append('_token', _token);
+        formData.append('action', action);
 
         fetch(url,
             {

@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\BaseController;
-use App\Models\Admin_Slider;
+use App\Models\Slider_Images;
 use Lib\TokenService;
 
 /**
@@ -20,7 +20,7 @@ class SliderImage extends BaseController
     {
         TokenService::check('prozessAdmin');
 
-        $message = (new Admin_Slider())->uploadImage();
+        $message = (new Slider_Images())->uploadImage();
 
         echo json_encode($message);
         exit();
@@ -31,7 +31,7 @@ class SliderImage extends BaseController
     {
        TokenService::check('prozessAdmin');
 
-        $message = (new Admin_Slider())->deleteImage();
+        $message = (new Slider_Images())->deleteImage();
 
         echo json_encode($message);
         exit();

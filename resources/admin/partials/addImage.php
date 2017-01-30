@@ -5,7 +5,7 @@
 
 <form id="product__image-area" class="product__image-area--hidden" enctype="multipart/form-data" method="post"  hidden="true" >
 
-
+<input type="hidden" name="action" id="action" value="images">
     <div class="product__image-area-left">
 
         <img src="/public/img/nophoto.jpg" class="product__image-thumb" id="image_preview">

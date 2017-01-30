@@ -44,8 +44,8 @@ function abortHandler(event){
 
 
 
-if(document.getElementById('FileInput')) {
-    document.getElementById('FileInput').onchange = function () {
+if(document.getElementById('file')) {
+    document.getElementById('file').onchange = function () {
 
         let input = this;
 
@@ -58,7 +58,7 @@ if(document.getElementById('FileInput')) {
                 };
                 reader.readAsDataURL(input.files[0]);
 
-                document.getElementById('FileInput').classList.add('invisible');
+                document.getElementById('file').classList.add('invisible');
 
                 output.classList.add('invisible');
 
@@ -81,13 +81,15 @@ if(submit_btn){
         progress.classList.remove('invisible');
 
 
-        let file=document.getElementById("FileInput").files[0];
+        let file=document.getElementById("file").files[0];
 
         let formdata= new FormData();
         let _token = document.getElementById('prozessAvatar').value;
+        let action = document.getElementById('action').value;
 
-        formdata.append("FileInput", file);
+        formdata.append("file", file);
         formdata.append("_token", _token);
+        formdata.append("action", action );
 
         let founded_lang =  new LangForAjax().getLanguage();
         let url =  founded_lang+"/image/upload";
@@ -114,7 +116,7 @@ if(reset_btn) {
         let _token = document.getElementById('prozessAvatar').value;
 
         document.getElementById('image_preview').setAttribute('src', '/public/img/noavatar.jpg');
-        document.getElementById('FileInput').classList.remove('invisible');
+        document.getElementById('file').classList.remove('invisible');
 
         let founded_lang =  new LangForAjax().getLanguage();
         let url =  founded_lang+"/image/delete";
