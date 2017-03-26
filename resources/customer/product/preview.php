@@ -3,4 +3,4 @@
 <p><b><?= $author ?>: </b><?php echo $product_info->author ?></p>
 <p><b><?= $description ?>:</b><?php echo $product_info->description ?></p>
 <p><b><?= $price ?>: </b><?php echo $product_info->price ?></p>
-<a href="/product/show?id=<?= $product_info->id ?>" class="go-to-product"><?= $goToProduct ?></a>
+<a href="/<?= \Lib\HelperService::currentLang() ?>product/show?id=<?= $product_info->id ?>" class="go-to-product"><?= $goToProduct ?></a>

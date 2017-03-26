@@ -16,7 +16,7 @@
         <ul class="left-catalog-menu">
             <?php foreach($manufacturersList as $manuf): ?>
 
-                <li><a href="/catalog?manufacturer=<?= $manuf->eng_translit_title ?>" class="left-catalog-menu__link"><?= $manuf->title ?></a></li>
+                <li><a href="/<?= \Lib\HelperService::currentLang() ?>catalog?manufacturer=<?= $manuf->eng_translit_title ?>" class="left-catalog-menu__link"><?= $manuf->title ?></a></li>
 
             <?php endforeach; ?>
         </ul>
@@ -33,7 +33,7 @@
 
     <div>
 
-        <form action="/catalog/index" id="reset_all" class="content-zone__reset-filters">
+        <form action="/<?= \Lib\HelperService::currentLang() ?>catalog/index" id="reset_all" class="content-zone__reset-filters">
             <button><?= $resetAllFilters ?></button>
         </form>
 
@@ -41,7 +41,7 @@
 
 
 
-        <form  method="GET" action="/catalog/index" class="sort-container">
+        <form  method="GET" action="/<?= \Lib\HelperService::currentLang() ?>catalog/index" class="sort-container">
 
             <?php if (isset($_GET['category'])) { ?> <input type="hidden" name="category" value="<?php echo $_GET['category']; ?>" > <?php }
             if(isset($_GET['manufacturer'])) { ?> <input type="hidden" name="manufacturer" value="<?php echo $_GET['manufacturer']; ?>" > <?php } ?>
@@ -85,7 +85,7 @@
                 <p><span class="content-zone__item-output-title"><?= $price ?> : </span><?= $item->price .' '.$ukrCurrency?></p>
                 <p><span class="content-zone__item-output-title"><?= $category ?> : </span><?= $item->category_title ?></p>
                 <p><span class="content-zone__item-output-title"><?= $manufacturer ?> : <?= $item->manufacturer_title ?></span></p>
-                <p><a href="/product/show?id=<?= $item->product_id ?>" class="content-zone__display-btn"><?= $displayItem ?></a></p>
+                <p><a href="/<?= \Lib\HelperService::currentLang() ?>product/show?id=<?= $item->product_id ?>" class="content-zone__display-btn"><?= $displayItem ?></a></p>
 
             </div>
 

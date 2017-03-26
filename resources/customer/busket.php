@@ -1,4 +1,4 @@
-<div><img src="/img/small-close.png" class="busket__close" id="busket-close"> </div>
+<div><img src="/public/img/small-close.png" class="busket__close" id="busket-close"> </div>
 
 <?php if(!empty($busketItems)) : ?>
 
