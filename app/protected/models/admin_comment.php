@@ -117,13 +117,15 @@ class Admin_Comment extends DataBase
         return $res;
     }
 
-    public function updateCommentText()
+    public function update()
     {
+
         $comment = $this->stripTags($_POST['comment']);
-        $sql= "UPDATE `comments` SET `comment`=?, `published`='1' WHERE `id`=?";
+        $sql= "UPDATE `comments` SET `comment`=?, `changed`='1', `published` =?  WHERE `id`=?";
         $stmt = $this ->conn->prepare($sql);
         $stmt->bindValue(1, $comment, \PDO::PARAM_STR);
-        $stmt->bindValue(2, $_POST['id'], \PDO::PARAM_STR);
+        $stmt->bindValue(2, $_POST['published'], \PDO::PARAM_STR);
+        $stmt->bindValue(3, $_POST['id'], \PDO::PARAM_STR);
         $stmt->execute();
         unset($_SESSION['edit']);
 

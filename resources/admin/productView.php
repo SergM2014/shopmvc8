@@ -65,7 +65,7 @@
             <div class="admin-product__field">
                 <label for="manufacturer_id" class="admin-product__field-label"><?= $manufacturerTitle ?></label><br>
                 <select name="manufacturer_id"  id="manufacturer_id">
-                    <option selected value="<?= $product->manf_id ?>"><?= $product->manf_title ?></option>
+                    <option selected value="<?= $product->manf_id?? $_POST['manufacturer_id'] ?>"><?= $product->manf_title ?></option>
 
                     <?php foreach ($manufacturers as $manufacturer): ?>
 

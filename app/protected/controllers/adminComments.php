@@ -95,7 +95,7 @@ class AdminComments extends AdminController {
 
 
         if(@$_SESSION['edit']) {
-           (new Admin_Comment())->updateCommentText();
+           (new Admin_Comment())->update();
            return $this->index('commentChanged', $_POST['id']);
         }
 

@@ -74,7 +74,8 @@
                                      <option selected disabled>Language/Мова</option>
 
                                      <?php foreach ($langs as $key => $value): ?>
-                                         <option VALUE="/<?= \Lib\HelperService::overrideLangInUrl($key) ?>"><?= $value ?></option>
+
+                                         <option VALUE="/<?= $key ?>/admin"><?= $value ?></option>
                                      <?php endforeach; ?>
 
                                  </select>

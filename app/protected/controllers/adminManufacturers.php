@@ -99,7 +99,7 @@ class AdminManufacturers extends AdminController {
 
 
         $model->deleteManufacturer();
-        return $this->index('manufactureryDeleted', $_POST['id']);
+        return $this->index('manufacturerDeleted', $_POST['id']);
 
     }
    

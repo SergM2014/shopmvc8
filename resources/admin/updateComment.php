@@ -30,7 +30,7 @@
 
     <span class="update-comment__block-title"><?= $created ?>: </span>
     <?= $comment->created_at ?>
-    <p><?= $comment->changed== 1? 'span class="changed">'.$changed.'</span>' : '<span class="notChanged">'.$notChanged.'</span>' ?></p>
+    <p><?= $comment->changed == 1? '<span class="changed">'.$changed.'</span>' : '<span class="notChanged">'.$notChanged.'</span>' ?></p>
     <p>
         <input type="radio" name="published" value="1" <?= $comment->published == "1"? 'checked':'' ?> ><span class="<?= $comment->published == "1"? 'published':'' ?>"><?= $published ?></span>
         <input type="radio" name="published" value="0" <?= $comment->published == "0"? 'checked':'' ?> ><span class="<?= $comment->published == "0"? 'notPublished':'' ?>"> <?= $notPublished ?></span>
