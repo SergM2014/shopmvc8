@@ -3,7 +3,7 @@
 
     <h2><?= $updateSliderHeader ?></h2>
 
-    <form enctype="multipart/form-data" action="/adminSliders/update" method="post" >
+    <form enctype="multipart/form-data" action="/<?= \Lib\HelperService::currentLang() ?>adminSliders/update" method="post" >
 
         <input type="hidden" name="id" value="<?= $theSlider->id ?>">
         <input type="hidden" type="hidden" name="action" value="updateSlider" >

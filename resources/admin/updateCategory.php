@@ -2,7 +2,7 @@
 
 
     <h2><?= $editCategory ?></h2>
-    <form action="/adminCategories/update" method="post">
+    <form action="/<?= \Lib\HelperService::currentLang() ?>adminCategories/update" method="post">
 
         <input type="hidden" name="id" value="<?= $category->id ?>">
         <input type="hidden" name="_token" value="<?= \Lib\TokenService::printTocken('prozessAdmin') ?>">

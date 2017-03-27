@@ -398,7 +398,7 @@ document.body.addEventListener('click', function(e) {
         let order = document.getElementById('order-drop-down-menu').value;
         let category = document.getElementById('categories-drop-down-menu').value;
         let manufacturer = document.getElementById('manufacturers-drop-down-menu').value;
-//console.log(p);
+
         let founded_lang =  new LangForAjax().getLanguage();
         let url =  founded_lang+"/adminProducts/refresh";
 
@@ -551,13 +551,18 @@ document.body.addEventListener('click', function(e) {
     if(e.target.id == "popUp-admin-comment-publish"){
 
        let form = e.target.closest('#publish-comment-item');
+        document.body.appendChild(form);
+
         form.submit();
+        document.body.remove(form);
     }
 
     if(e.target.id == "popUp-admin-comment-unpublish"){
 
         let form = e.target.closest('#unpublish-comment-item');
+        document.body.appendChild(form);
         form.submit();
+        document.body.remove(form);
     }
 
 

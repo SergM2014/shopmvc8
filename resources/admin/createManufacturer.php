@@ -3,7 +3,7 @@
 
     <h2><?= $createManufacturerHeader ?></h2>
 
-    <form action="/adminManufacturers/store" method="post">
+    <form action="/<?= \Lib\HelperService::currentLang() ?>adminManufacturers/store" method="post">
 
 
         <input type="hidden" name="_token" value="<?= \Lib\TokenService::printTocken('prozessAdmin') ?>">

@@ -3,7 +3,7 @@
 
     <h2><?= $createCarouselHeader ?></h2>
 
-    <form enctype="multipart/form-data" action="/adminCarousels/store" method="post" >
+    <form enctype="multipart/form-data" action="/<?= \Lib\HelperService::currentLang() ?>adminCarousels/store" method="post" >
 
         <input type="hidden" type="hidden" name="action" value="createCarousel" >
         <input type="hidden" id="_token" name="_token" value="<?= \Lib\TokenService::printTocken('prozessAdmin') ?>">

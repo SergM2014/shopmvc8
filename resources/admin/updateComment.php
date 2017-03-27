@@ -16,7 +16,7 @@
     <div class="update-comment__block-title"><?= $email ?>: </div>
     <p> <?= $comment->email ?></p>
 
-    <form action="/adminComments/update" method ="post">
+    <form action="/<?= \Lib\HelperService::currentLang() ?>adminComments/update" method ="post">
 
         <input type="hidden" name="id" value="<?= $comment->id ?>">
 

@@ -20,7 +20,7 @@
 
 
 
-        <form action="/adminProducts/store" method="post">
+        <form action="/<?= \Lib\HelperService::currentLang() ?>adminProducts/store" method="post">
 
             <input type="hidden" name="imagesSort" id="imagesSort" >
             <input type="hidden" name="_token" id="_token" value="<?= \Lib\TokenService::printTocken('prozessAdmin') ?>">

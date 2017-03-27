@@ -3,7 +3,7 @@
 
     <h2><?= $updateUserHeader ?></h2>
 
-    <form  action="/adminUsers/update" method="post" >
+    <form  action="/<?= \Lib\HelperService::currentLang() ?>adminUsers/update" method="post" >
 
         <input type="hidden" type="hidden" name="action" value="updateUser" >
         <input type="hidden" id="_token" name="_token" value="<?= \Lib\TokenService::printTocken('prozessAdmin') ?>">

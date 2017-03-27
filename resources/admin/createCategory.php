@@ -3,7 +3,7 @@
 
     <h2><?= $createCategoryHeader ?></h2>
 
-    <form action="/adminCategories/store" method="post">
+    <form action="/<?= \Lib\HelperService::currentLang() ?>adminCategories/store" method="post">
 
 
         <input type="hidden" name="_token" value="<?= \Lib\TokenService::printTocken('prozessAdmin') ?>">

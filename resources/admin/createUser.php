@@ -3,7 +3,7 @@
 
     <h2><?= $createUserHeader ?></h2>
 
-    <form enctype="multipart/form-data" action="/adminUsers/store" method="post" >
+    <form enctype="multipart/form-data" action="/<?= \Lib\HelperService::currentLang() ?>adminUsers/store" method="post" >
 
         <input type="hidden" type="hidden" name="action" value="createUser" >
         <input type="hidden" id="_token" name="_token" value="<?= \Lib\TokenService::printTocken('prozessAdmin') ?>">

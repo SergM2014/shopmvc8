@@ -23,7 +23,7 @@
     <section class="form">
 
 
-        <form action="/adminProducts/update" method="post">
+        <form action="/<?= \Lib\HelperService::currentLang() ?>adminProducts/update" method="post">
 
             <input type="hidden" name="imagesSort" id="imagesSort" >
             <input type="hidden" name="id" id="id" value="<?= $product->product_id ?>">

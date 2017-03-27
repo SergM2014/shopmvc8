@@ -3,7 +3,7 @@
 
     <h2><?= $createSliderHeader ?></h2>
 
-    <form enctype="multipart/form-data" action="/adminSliders/store" method="post" >
+    <form enctype="multipart/form-data" action="/<?= \Lib\HelperService::currentLang() ?>adminSliders/store" method="post" >
 
         <input type="hidden" type="hidden" name="action" value="createSlider" >
         <input type="hidden" id="_token" name="_token" value="<?= \Lib\TokenService::printTocken('prozessAdmin') ?>">
